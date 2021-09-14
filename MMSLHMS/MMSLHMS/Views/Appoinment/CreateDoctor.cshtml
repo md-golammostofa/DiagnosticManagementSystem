@@ -1,0 +1,444 @@
+﻿
+@{
+    ViewBag.Title = "Create Doctor";
+}
+
+<div class="row">
+    <div class="col-md-12 text-center">
+        <div class="card card-gray shadow">
+            <div class="card-header">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-4 text-left">
+                            <a href="/Appoinment/GetDoctorList" class="btn btn-sm btn-outline-primary" title="Back To List"><i class="fas fa-arrow-alt-circle-left"></i></a>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <h4><b>Doctors Profile</b></h4>
+                        </div>
+                        <div class="col-md-4 hide">
+                            <button class="btn btn-outline-danger btn-sm float-lg-right" id="btnReset" title="RESET UI"><i class="fas fa-sync-alt"></i> </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-7">
+        <div class="card shadow">
+            <div class="card-header">
+                @Html.AntiForgeryToken()
+                <div class="row text-sm">
+                    <div class="col-md-4">
+                        <div class="form-group col-md-12">
+                            <label for="txtHospital" class="control-label font-weight-bold">Hospital</label>
+                            <input type="text" name="Hospital" value="" id="txtHospital" class="form-control form-control-sm search-control" />
+                            <span class="error hide require-hospital font-weight-bold">Hospital is required !</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group col-md-12">
+                            <label for="ddlDocType" class="control-label font-weight-bold">DocType</label>
+                            <select id="ddlDocType" name="docType" class="form-control form-control-sm search-control">
+                                <option value="">--Selecet One--</option>
+                                <option value="Specialist">Specialist</option>
+                                <option value="Other Profession">Other Profession</option>
+                                <option value="General Practioner">General Practioner</option>
+                            </select>
+                            <span class="error hide require-docType font-weight-bold">Doctor is required !</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="ddlSpecialist" class="control-label font-weight-bold">Specialist</label>
+                        @Html.DropDownList("ddlSpecialist", (IEnumerable<SelectListItem>)ViewBag.ddlSpecialist, "--Select Specialist--", new { @class = "form-control form-control-sm select2" })
+                        <span class="error hide require-specialist font-weight-bold">Specialist is required !</span>
+                    </div>
+                </div>
+                <div class="row text-sm">
+                    <div class="col-md-4">
+                        <label for="ddlOtherProfession" class="control-label font-weight-bold">Other Prof.</label>
+                        @Html.DropDownList("ddlOtherProfession", (IEnumerable<SelectListItem>)ViewBag.ddlOtherProfession, "--Select Profession--", new { @class = "form-control form-control-sm select2" })
+                        <span class="error hide require-otherProfession font-weight-bold">Other Profession is required !</span>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group col-md-12">
+                            <label for="txtDocName" class="control-label font-weight-bold">Doc Name</label>
+                            <input type="text" name="name" value="" id="txtDocName" class="form-control form-control-sm search-control" />
+                            <span class="error hide require-doctorName font-weight-bold">Doctor is required !</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group col-md-12">
+                            <label for="txtDocRegNo" class="control-label font-weight-bold">REG No.</label>
+                            <input type="text" name="name" value="" id="txtDocRegNo" class="form-control form-control-sm search-control" />
+                            <span class="error hide require-regNo font-weight-bold">REG No is required !</span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="row text-sm">
+                    <div class="col-md-4">
+                        <div class="form-group col-md-12">
+                            <label for="txtDegreeName" class="control-label font-weight-bold">Doc Degree</label>
+                            <input type="text" name="degree" value="" id="txtDegreeName" class="form-control form-control-sm search-control" />
+                            <span class="error hide require-degreeName font-weight-bold">Degree is required !</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group col-md-12">
+                            <label for="txtMobileNo" class="control-label font-weight-bold">Doc Mobile</label>
+                            <input type="text" name="degree" value="" id="txtMobileNo" class="form-control form-control-sm search-control" />
+                            <span class="error hide require-mobileNo font-weight-bold">Mobile No is required !</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group col-md-12">
+                            <label for="txtDocAddress" class="control-label font-weight-bold">Doc Address</label>
+                            <input type="text" name="degree" value="" id="txtDocAddress" class="form-control form-control-sm search-control" />
+                            <span class="error hide require-docAddress font-weight-bold">Address No is required !</span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="row text-sm">
+                    <div class="col-md-4">
+                        <div class="form-group col-md-12">
+                            <label for="ddlDocSex" class="control-label font-weight-bold">Sex</label>
+                            <select id="ddlDocSex" name="docsex" class="form-control form-control-sm search-control">
+                                <option value="">--Selecet One--</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Others">Others</option>
+                            </select>
+                            <span class="error hide require-doctorSex font-weight-bold">Sex is required !</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group col-md-12">
+                            <label for="txtDOB" class="control-label font-weight-bold">DOB</label>
+                            <input type="date" name="name" value="" id="txtDOB" class="form-control form-control-sm search-control" />
+                            <span class="error hide require-regNo font-weight-bold">BirthDate No is required !</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group col-md-12">
+                            <label for="txtEmail" class="control-label font-weight-bold">Email</label>
+                            <input type="text" name="degree" value="" id="txtEmail" class="form-control form-control-sm search-control" />
+                            <span class="error hide require-emailAddress font-weight-bold">Degree is required !</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row text-sm">
+                    <div class="col-md-4">
+                        <div class="form-group col-md-12">
+                            <label for="txtGeneralFee" class="control-label font-weight-bold">General Fee</label>
+                            <input type="number" name="degree" value="" id="txtGeneralFee" class="form-control form-control-sm search-control" />
+                            <span class="error hide require-generalFee font-weight-bold">General Fee is required !</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group col-md-12">
+                            <label for="txtReportShowingFee" class="control-label font-weight-bold">Report Fee</label>
+                            <input type="number" name="degree" value="" id="txtReportShowingFee" class="form-control form-control-sm search-control" />
+                            <span class="error hide require-reportShowFee font-weight-bold">Report Showing Fee is required !</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group col-md-12">
+                            <label for="txtFollowUpFee" class="control-label font-weight-bold">Follow Up Fee</label>
+                            <input type="number" name="degree" value="" id="txtFollowUpFee" class="form-control form-control-sm search-control" />
+                            <span class="error hide require-followUpFee font-weight-bold">Follow Up Fee is required !</span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="row text-sm">
+                    <div class="col-md-4">
+                        <div class="form-group col-md-12">
+                            <label for="txtCounselingFee" class="control-label font-weight-bold">Counseling Fee</label>
+                            <input type="number" name="degree" value="" id="txtCounselingFee" class="form-control form-control-sm search-control" />
+                            <span class="error hide require-counselingFee font-weight-bold">CounselingUpFee Up Fee is required !</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group col-md-12">
+                            <label for="txtRemarks" class="control-label font-weight-bold">Remarks</label>
+                            <input type="text" name="remarks" value="" id="txtRemarks" class="form-control form-control-sm search-control" />
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-left">
+                        <label for="" class="control-label font-weight-bold" style="visibility:hidden"> Add Button</label>
+                        <div class="clearfix">
+                            <button type="submit" class="btn btn-sm btn-primary mr-1" id="btnSubmit" title="Save">Save <i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="card shadow">
+            <div class="card-header">
+                <div class="row text-sm">
+                    <div class="col-md-6">
+                        <div class="form-group col-md-12">
+                            <label for="txtDays" class="control-label font-weight-bold">Days</label>
+                            <select id="txtDays" name="docType" class="form-control form-control-sm">
+                                <option value="">--Selecet One--</option>
+                                <option value="Saturday">Saturday</option>
+                                <option value="Sunday">Sunday</option>
+                                <option value="Monday">Monday</option>
+                                <option value="Tuesday">Tuesday</option>
+                                <option value="Wednesday">Wednesday</option>
+                                <option value="Thursday">Thursday</option>
+                                <option value="Friday">Friday</option>
+                            </select>
+                            <span class="error hide require-daysTime font-weight-bold">Hospital is required !</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group col-md-12">
+                            <label for="txtShifTime" class="control-label font-weight-bold">Shift</label>
+                            <select id="txtShifTime" name="docType" class="form-control form-control-sm">
+                                <option value="">--Selecet One--</option>
+                                <option value="Morning">Morning</option>
+                                <option value="Evening">Evening</option>
+                                <option value="AllDay">AllDay</option>
+                            </select>
+                            <span class="error hide require-shiftTime font-weight-bold">Hospital is required !</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row text-sm">
+                    <div class="col-md-5">
+                        <label for="ddlStartTime" class="control-label font-weight-bold">Start Time</label>
+                        @Html.DropDownList("ddlStartTime", (IEnumerable<SelectListItem>)ViewBag.ddlStartTime, "--Select Time--", new { @class = "form-control form-control-sm" })
+                        <span class="error hide require-startTime font-weight-bold">Start Time is required !</span>
+                    </div>
+                    <div class="col-md-5">
+                        <label for="ddlEndTime" class="control-label font-weight-bold">End Time</label>
+                        @Html.DropDownList("ddlEndTime", (IEnumerable<SelectListItem>)ViewBag.ddlEndTime, "--Select Time--", new { @class = "form-control form-control-sm" })
+                        <span class="error hide require-endTime font-weight-bold">End Time is required !</span>
+                    </div>
+                    <div class="col-md-2 text-right">
+                        <label for="" class="control-label font-weight-bold" style="visibility:hidden"> Add</label>
+                        <div class="clearfix">
+                            <button type="submit" class="btn btn-sm btn-success float-lg-right mr-1" id="btnAddToList" title="Add To List"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-12 text-sm ">
+                                        <table class="table table-bordered table-sm table-striped table-responsive-lg" id="tblTimes">
+                                            <thead>
+                                                <tr class="btn-info text-center">
+                                                    <th>SL</th>
+                                                    <th>Days</th>
+                                                    <th>Shift</th>
+                                                    <th>Start T</th>
+                                                    <th>End T</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript">
+        //Times Details Part
+        var txtDays = $("#txtDays");
+        var txtShifTime = $("#txtShifTime");
+        var ddlStartTime = $("#ddlStartTime");
+        var ddlEndTime = $("#ddlEndTime");
+        //Doctor Info Part
+        var txtHospital = $("#txtHospital");
+        var ddlDocType = $("#ddlDocType");
+        var ddlSpecialist = $("#ddlSpecialist");
+        var ddlOtherProfession = $("#ddlOtherProfession");
+        var txtDocName = $("#txtDocName");
+        var txtDocRegNo = $("#txtDocRegNo");
+        var txtDegreeName = $("#txtDegreeName");
+        var txtMobileNo = $("#txtMobileNo");
+        var txtDocAddress = $("#txtDocAddress");
+        var ddlDocSex = $("#ddlDocSex");
+        var txtDOB = $("#txtDOB");
+        var txtEmail = $("#txtEmail");
+        var txtGeneralFee = $("#txtGeneralFee");
+        var txtReportShowingFee = $("#txtReportShowingFee");
+        var txtFollowUpFee = $("#txtFollowUpFee");
+        var txtCounselingFee = $("#txtCounselingFee");
+        var txtRemarks = $("#txtRemarks");
+
+        function validateInput() {
+            $('.error').addClass('hide');
+            var isValid = true;
+            if ($.trim(txtDays.val()) == "") {
+                $(".require-daysTime").removeClass("hide");
+                isValid = false;
+            }
+            if ($.trim(txtShifTime.val()) == "") {
+                $(".require-shiftTime").removeClass("hide");
+                isValid = false;
+            }
+            if ($.trim(ddlStartTime.val()) == "") {
+                $(".require-startTime").removeClass("hide");
+                isValid = false;
+            }
+            if ($.trim(ddlEndTime.val()) == "") {
+                $(".require-endTime").removeClass("hide");
+                isValid = false;
+            }
+            return isValid;
+        }
+
+        $("#btnAddToList").click(function (e) {
+            e.preventDefault();
+            if (validateInput() == true) {
+                //disable("#ddlServicesWarehouse");
+                //disable("#ddlBranchName");
+                var sl = $("#tblTimes tbody tr").length;
+                var td1 = "<td class='text-center text-bold'>" + (sl + 1) + "</td>"
+                var td2 = "<td class='text-center'>" + txtDays.val() + "</td>";
+                var td3 = "<td class='text-center'>" + txtShifTime.val() + "</td>";
+                var td4 = "<td>" + $("#ddlStartTime option:selected").text() + "</td>";
+                var td5 = "<td>" + $("#ddlEndTime option:selected").text() + "</td>";
+                var td6 = "<td class='text-center'><a href='#' class='btn btn-sm btn-danger data-onfly-del'><i class='far fa-trash-alt'></i></a></td>";
+
+                var tr = "<tr>" + td1 + td2 + td3 + td4 + td5 + td6 + "</tr>";
+                
+                if ($("#tblTimes tbody tr").length == 0) {
+                    $("#tblTimes tbody").append(tr);
+                }
+                else {
+                    $("#tblTimes tbody tr").eq(0).before(tr);
+                }
+                clearCtrl();
+            }
+        })
+
+        function clearCtrl() {
+            txtDays.val('');
+            txtShifTime.val('');
+            ddlStartTime.val('');
+            ddlEndTime.val('');
+        }
+        $(document).on("click", "a.data-onfly-del", function (e) {
+            e.preventDefault();
+            var index = $(this).parent().parents('tbody tr').index();
+            removeTableRow("#tblTimes tbody", index);
+            fnFixTheTbodyRowSerialInDecsOrder("#tblTimes", index);
+        });
+
+
+        function validateInputDoc() {
+            $('.error').addClass('hide');
+            var isValid = true;
+            if ($.trim(ddlDocType.val()) == "") {
+                $(".require-docType").removeClass("hide");
+                isValid = false;
+            }
+            if ($.trim(ddlSpecialist.val()) == "") {
+                $(".require-specialist").removeClass("hide");
+                isValid = false;
+            }
+            if ($.trim(txtDocName.val()) == "") {
+                $(".require-doctorName").removeClass("hide");
+                isValid = false;
+            }
+            if ($.trim(txtDegreeName.val()) == "") {
+                $(".txtDegreeName").removeClass("hide");
+                isValid = false;
+            }
+            if ($.trim(txtMobileNo.val()) == "") {
+                $(".require-mobileNo").removeClass("hide");
+                isValid = false;
+            }
+            if ($.trim(ddlDocSex.val()) == "") {
+                $(".require-doctorSex").removeClass("hide");
+                isValid = false;
+            }
+            return isValid;
+        }
+
+
+        $("#btnSubmit").click(function (e) {
+            e.preventDefault();
+            if ($("#tblTimes tbody tr").length > 0) {
+                $('.error').addClass('hide');
+                if (validateInputDoc() == true) {
+                    var doctor = {
+                        DocName: txtDocName.val(),
+                        DocDegree: txtDegreeName.val(),
+                        DocRegNo: txtDocRegNo.val(),
+                        DocAddress: txtDocAddress.val(),
+                        DocType: ddlDocType.val(),
+                        DocSpecialist: ddlSpecialist.val(),
+                        DocMobile: txtMobileNo.val(),
+                        DocEmail: txtEmail.val(),
+                        HospitalName: txtHospital.val(),
+                        Remarks: txtRemarks.val(),
+                        GenerelFee: TryParseFloat(txtGeneralFee.val(), 0),
+                        ReportFee: TryParseFloat(txtReportShowingFee.val(), 0),
+                        FollowUpFee: TryParseFloat(txtFollowUpFee.val(), 0),
+                        CounselingFee: TryParseFloat(txtCounselingFee.val(), 0),
+                        OtherProfession: ddlOtherProfession.val(),
+                        Sex: ddlDocSex.val(),
+                        DOB: txtDOB.val(),
+                    }
+                    var details = []; details.length = 0;
+                    $.each($("#tblTimes tbody tr"), function (index, item) {
+                        var tds = $(this).children("td");
+                        var days = tds.eq("1").html();
+                        var sift = tds.eq("2").html();
+                        var sttime = tds.eq("3").html();
+                        var edtime = tds.eq("4").html();
+                        details.push({
+                            Day: days,
+                            DayOfTime: sift,
+                            StartTime: sttime,
+                            EndTime: edtime,
+                        })
+                    });
+
+                    doctor.doctorDetails = details;
+                    var data = JSON.stringify({ model: doctor });
+                    //return console.log(data);
+                    $.when(postReqWithToken(dataType.applicationJson, dataType.json, 'POST', '/Appoinment/SaveDoctorProfile', data, getToken())).then(function (res, status) {
+                        if (res == true) {
+                            alert(execuStatus.successSave);
+
+                                setTimeout(function () {
+                                    redirectPage('@Url.Action("GetDoctorList")');
+                                }, 1000);
+                            }
+                            else {
+                            alert(execuStatus.fail);
+                            }
+                    }).fail(function (err) {
+                        alert(execuStatus.fail);
+                    })
+                }
+            }
+        });
+
+        function redirectPage(page) {
+            window.location.replace(page);
+        }
+
+
+    </script>
+    }

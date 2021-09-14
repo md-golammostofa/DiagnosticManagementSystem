@@ -1,0 +1,197 @@
+﻿@model IEnumerable<HMSBO.Models.Role>
+
+@{
+    ViewBag.Title = "List of Role";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.BgColor = "#fff";
+}
+
+<div class="row">
+    <input type="hidden" value="0" id="hdRoleId" />
+    <div class="col-md-12">
+        <h2 class="float-left" style="display:inline-block">
+            Role List
+        </h2>
+        <button class="btn btn-primary float-right" type="button" id="btnAddRole" title="Add New User" onclick="OpenModal()">Add New User</button>
+
+    </div>
+    <div class="col-md-12" style="overflow-y:scroll;height:650px">
+        <table class="table table-bordered table-hover table-responsive" id="roleData">
+            <thead class="btn-info">
+                <tr>
+                    <th>Role Name</th>
+                    <th>Description</th>
+                    <th>Entry User</th>
+                    <th>Entry Date</th>
+                    <th>Approved User</th>
+                    <th>Approved Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="display:none">@item.RoleId</td>
+                        <td>@item.RoleName</td>
+                        <td>@item.Description</td>
+                        <td>@item.EntryUser</td>
+                        <td>@Html.DisplayFor(m => item.EntryDate)</td>
+                        <td>@item.ApprovedBy</td>
+                        <td>@Html.DisplayFor(m => item.ApprovedDate)</td>
+                        <td>
+                            <a href="#" class="data-edit btn btn-success btn-circle btn-sm" title="Edit"> <i class="fas fa-pen"></i></a> @*| <a href="#" class="data-delete"><span class="glyphicon glyphicon-trash"></span> Delete</a>*@
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
+<div id="modal" role="dialog" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header btn-primary">
+                <h4 class="modal-title">Add New Role</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <form id="formModule">
+                @Html.AntiForgeryToken()
+                <div class="modal-body">
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-apple"></span></span>
+                        <input type="text" name="RoleName" class="form-control" id="txtRoleName" aria-describedby="" placeholder="Enter Role Name">
+                    </div>
+                    <span class="hide error roleName">Role name is required.</span>
+                    @*<span class="hide error invalid">Invalid Role.</span>*@
+                    <br />
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-th-list"></span></span>
+                        <input type="text" name="description" class="form-control" id="txtDescription" aria-describedby="" placeholder="Enter Description">
+                    </div>
+                    <span class="hide error description">Description is required.</span>
+                    <br />
+                </div>
+                <div class="modal-footer">
+                    @*<i class="fa fa-paper-plane"></i>*@
+                    <button type="submit" id="btnSubmit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts{
+    <script type="text/javascript">
+
+        var txtRoleName = $("#txtRoleName");
+        var txtDescription = $("#txtDescription");
+        var hdRoleId = $("#hdRoleId");
+
+        function OpenModal() {
+            clearCtrl();
+            $("#modal").modal();
+            $("h4.modal-title").text('Add New Role');
+            $("#btnSubmit").text('Save');
+
+        }
+
+        function clearCtrl() {
+            txtRoleName.val('');
+            txtDescription.val('');
+            hdRoleId.val('0');
+        }
+
+        function validateForm() {
+            var isValid = true;
+            if ($.trim(txtRoleName.val()) == '') {
+                $('.error.roleName').removeClass('hide');
+                isValid = false;
+            }
+            else {
+                //if ($.trim(txtRoleName.val() == "System Admin" && TryParseInt(hdRoleId.roleId, 0) == 0))
+                //{
+                //    isValid = false;
+                //    $('.error.invalid').removeClass('hide');
+                //}
+                $('.error.roleName').addClass('hide');
+            }
+            if (txtDescription.val() == '') {
+                $('.error.description').removeClass('hide');
+                isValid = false;
+            }
+            else {
+                $('.error.description').addClass('hide');
+            }
+            
+            return isValid;
+        }
+
+        $("#btnSubmit").click(function (e) {
+            e.preventDefault();
+            if (validateForm() == true) {
+                var data = JSON.stringify({ roleId: hdRoleId.val(), roleName: txtRoleName.val(), description: txtDescription.val() });
+                console.log(data);
+
+                $.when(postReqWithToken(dataType.applicationJson, dataType.json, 'post', '/Admin/SaveRole', data, getToken())).then(function (res) {
+                    //console.log('isSuccess');
+                    //console.log(res.isSuccess);
+
+                    if (res == true) {
+                        clearCtrl();
+                        alert(execuStatus.successSave);
+                        $("#modal").hide();
+                        modalBackdropRemove();
+                        location.reload();
+                    }
+                    else {
+                        alert(execuStatus.fail);
+                    }
+                }).fail(function (err) {
+                    console.log(err);
+                })
+            }
+        })
+
+        $(document).on('click', 'a.data-edit', function (e) {
+            e.preventDefault();
+            var tr = $(this).parent().parents('tr');
+            var id = tr.find('td:eq(0)').html();
+            var roleName = tr.find('td:eq(1)').html();
+            var des = tr.find('td:eq(2)').html();
+            OpenModal();
+            hdRoleId.val(id);
+            txtRoleName.val(roleName);
+            txtDescription.val(des);
+            $("h4.modal-title").text('Edit Role');
+            $("#btnSubmit").text('Update');
+        })
+
+        //postReqWithData('', 'json', 'post', '/Admin/SaveRole', {})
+        //function SaveData(data) {
+        //    return $.ajax({
+        //        contentType: contentType,
+        //        dataType: dataType,
+        //        type: type,
+        //        url: url,
+        //        data: data,
+        //        success: function (result) {
+        //            console.log(result);
+        //            alert(result);
+        //        },
+        //        error: function (err) {
+        //            console.log(err);
+        //        }
+        //    })
+        //}
+
+        $('#modal').on('hidden.bs.modal', function () {
+            clearCtrl();
+        })
+    </script>
+}

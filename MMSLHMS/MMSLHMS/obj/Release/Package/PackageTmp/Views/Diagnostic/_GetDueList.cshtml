@@ -1,0 +1,56 @@
+﻿@model IEnumerable<HMSBO.ViewModels.vmDianosticBillDueAdjustment>
+@{
+    Layout = null;
+    int count = 0;
+}
+
+<div class="col-md-12">
+    <table class="table table-sm table-bordered table-responsive-lg table-hover">
+        <thead class="btn-info">
+            <tr>
+                <th class="hide">Id</th>
+                <th>SLNo</th>
+                <th>Invoice No</th>
+                <th>Patient Name</th>
+                <th>Mobile No</th>
+                <th>Total Test</th>
+                <th>Net Amount</th>
+                <th>Receive Amount</th>
+                <th>Due Amount</th>
+                <th>Bill Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Count() > 0)
+            {
+                foreach (var item in Model)
+                {
+                    count = count + 1;
+                    <tr>
+                        <td class="hide">@item.Id</td>
+                        <td class="text-center">@count</td>
+                        <td>@item.InvoiceNo</td>
+                        <td>@item.PatientName</td>
+                        <td>@item.MobileNo</td>
+                        <td>@item.InvestigationQty</td>
+                        <td align="right">@item.NetAmount</td>
+                        <td align="right">@item.ReceiveAmount</td>
+                        <td align="right">@item.DueAmount</td>
+                        <td>@Html.DisplayFor(model => item.EntryDate)</td>
+                        <td><a href="#" data-edit-item="@item.Id" class="btn btn-success btn-sm data-item"><i class="fa fa-money-bill"></i> Due Adjust</a></td>
+                    </tr>
+                }
+            }
+            else
+            {
+                count = 0;
+                <tr class="text-danger text-center">
+                    <td colspan="10">No Data Found</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+

@@ -1,0 +1,408 @@
+﻿@model  IEnumerable<HMSBO.Models.InvestigationChart>
+
+@{
+    ViewBag.Title = "Investigation Chart";
+    int slNo = 0;
+}
+
+<div class="row">
+    <div class="col-md-12 text-center">
+        <h4>Investigation Chart</h4>
+        <hr />
+    </div>
+    <div class="col-md-12">
+        <form id="frmSearchPayment">
+            <div class="form-row">
+                <div class="form-group col-md-5">
+                    <label class="control-label col-md-12 font-weight-bold" for="txtSearchby">
+                        Search By Investigation Name
+                    </label>
+                    <div class="col-md-12">
+                        <input type="text" name="txtSearchInvestigation" class="form-control form-control-sm" id="txtSearchby" placeholder="Search By Investigation Name" />
+                    </div>
+                </div>
+                <div class="form-group col-md-4">
+                    <label class="control-label col-md-12 font-weight-bold" style="visibility:hidden">Row Count:</label>
+                    <div class="input-group">
+                        <div class="col-md-4">
+                            <h3><label id="lblRowCount">0</label><span style="font-size:x-small">Row(s)</span></h3>
+                        </div>
+                        <div class="col-md-8">
+                            <button type="button" class="btn btn-primary btn-sm" style="font-size:smaller" id="btnAddNew"> <i class="fa fa-plus"></i> Create New </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-3"></div>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-12">
+        <table class="table table-bordered table-hover table-sm table-responsive-lg" id="tblInvestigationChart">
+            <thead>
+                <tr class="btn-info">
+                    <th width="10%">SL No</th>
+                    <th class="hide">Id</th>
+                    <th>Investiongation Name</th>
+                    <th>Added Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    slNo = slNo + 1;
+                    <tr>
+                        <td width="10%" class="text-center">@slNo</td>
+                        <td class="hide">@item.Id</td>
+                        <td>@item.InvestigationName</td>
+                        <td class="text-center">@item.EntryDate.Value.ToString("dd-MMM-yyyy")</td>
+                        <td class="text-center"><a href="#" data-edit-item="@item.Id" class="btn btn-circle btn-success btn-sm data-edit-item"><i class='fas fa-pen' title="Edit"></i></a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="modal fade" id="modalInvestigation">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="modalHeading" class="modal-title">Add New Investigation</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                @Html.AntiForgeryToken()
+                <form id="frmInvestigation">
+                    <div class="form-row">
+                        <div class="input-group">
+
+                            <input type="text" name="txtNewInvestigation" class="form-control form-control-sm" id="txtNewInvestigation" placeholder="Enter New Investigation" data-val-required="Investigation is required" data-val-maxLenght="Maximum length is 100" data-val-duplicateList="This is already added to the list" data-val-duplicate="The item is already exist into the system"/>
+
+                            <div class="input-group-append">
+                                <button class="btn btn-sm btn-primary" id="btnAddToList" title="Add To List">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="error new hide"></span>
+                    </div>
+                    <div class="form-row" style="margin-top:5px">
+                        <table class="table table-bordered table-responsive-lg table-sm" id="tblNewInvestigation">
+                            <thead class="btn-success">
+                                <tr>
+                                    <th width="15%">SL No</th>
+                                    <th>Investigation</th>
+                                    <th width="20%">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-info" id="btnClear" title="Clear the table"><i class="fas fa-trash"></i> Clear </button>
+                <button type="button" class="btn btn-sm btn-danger" id="btnCancel" title="Cancel the process"><i>X</i> Cancel </button>
+                <button type="submit" class="btn btn-sm btn-primary" id="btnSubmit" title="Save the data"><i class="fas fa-save"></i> Save </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modelInvestigationEdit" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="modalHeading" class="modal-title">Update Investigation Name</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="frmInvestigationUpdate">
+                    @Html.Hidden("hdfInvestigationId")
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label class="control-label col-md-12 font-weight-bold">Investigation Name:</label>
+                            <div class="col-md-12">
+                                <input type="text" name="EditInvestigation" id="txtEditInvestigation" class="form-control form-control-sm" data-val-required="Investigation is required" data-val-maxLenght="Maximum length is 100" data-val-duplicate="This investigation is already exist"/>
+                            </div>
+                            <div class="col-md-12">
+                                <span class="error hide edit"></span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary btn-sm" id="btnUpdate"><i class="fas fa-save"></i> Update </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        var txtSearchby = $("#txtSearchby");
+        var lblRowCount = $("#lblRowCount");
+        var txtNewInvestigation = $("#txtNewInvestigation");
+        var txtEditInvestigation = $("#txtEditInvestigation");
+        var hdfInvestigationId = $("#hdfInvestigationId")
+
+        $(document).ready(function () {
+            lblRowCount.text($("#tblInvestigationChart tbody tr").length);
+        })
+
+        txtSearchby.keyup(function () {
+            loadDataTable();
+        })
+
+        function loadDataTable() {
+            var data = { Flag: "Search", Name: txtSearchby.val() };
+            $.when(getReqWithData(dataType.json, 'GET', '/Diagnostic/GetInvestigationChart', data)).then(function (res) {
+                //console.log(res);
+                fnRebindTable(res);
+            }).fail(function (err) {
+                console.log(err);
+            });
+        }
+
+        function fnRebindTable(dataObj)
+        {
+            $("#tblInvestigationChart tbody").empty();
+            if (dataObj.length > 0) {
+               //tblInvestigationChart
+                $.each(dataObj, function (index,item) {
+                    var td1 = "<td class='hide'>" + item.Id + "</td>";
+                    var td2 = "<td  width='10%' class='text-center'>" + (index + 1) + "</td>";
+                    var td3 = "<td>" + item.InvestigationName + "</td>";
+                    var dob = new Date(parseInt(item.EntryDate.replace("/Date(", "").replace(")/", ""), 10));
+                    var day = (dob.getDate().toString().length > 1 ? dob.getDate().toString() : '0' + dob.getDate().toString());
+                    var dateData = day + '-' + (getMonthName(dob.getMonth(), "MMM")) + '-' + dob.getFullYear();
+                    var td4 = "<td class='text-center'>" + dateData + "</td>";
+                    var td5 = "<td class='text-center'><a href='#' data-edit-item=" + item.Id + " class='btn btn-circle btn-success btn-sm data-edit-item'><i class='fas fa-pen' title='Edit'></i></a></td>";
+                    var tr = "<tr>" + td1 + td2 + td3 + td4 + td5 + "</tr>";
+                    $("#tblInvestigationChart tbody").append(tr);
+                })
+            }
+            else {
+
+            }
+            lblRowCount.text(dataObj.length);
+        }
+
+        function OpenModal() {
+            $("#modalInvestigation").modal("show");
+        }
+
+        $("#btnAddNew").click(function (e) {
+            e.preventDefault();
+            OpenModal();
+        })
+
+        function validateInvestigation(execuation) {
+            var isValid = true;
+            $(".error").addClass("hide");
+
+            if (execuation == "new") {
+                if ($.trim(txtNewInvestigation.val()) == "") {
+                    $(".error.new").removeClass("hide");
+                    $("span.error.new").text(txtNewInvestigation.attr("data-val-required"));
+                    isValid = false;
+                }
+                else {
+                    if (txtNewInvestigation.val().trim().length > 100) {
+                        $(".error.new").removeClass("hide");
+                        $("span.error.new").text(txtNewInvestigation.attr("data-val-maxLenght"));
+                        isValid = false;
+                    }
+
+                    // Duplicate Checking //
+                    else {
+                        var id =0;
+                        var name = $.trim(txtNewInvestigation.val());
+                        var data = JSON.stringify({ InvestigationId: id, InvestigationName: name });
+                        if (ajaxBooleanChecker(data, '/Common/IsInvestigationChartExist', getToken()) == false) {
+                            $(".error.new").removeClass("hide");
+                            $(".error.new").text(txtNewInvestigation.attr("data-val-duplicate"));
+                            isValid = false;
+                        }
+                    }
+                }
+                if ($("#tblNewInvestigation tbody tr").length > 0) {
+                    $.each($("#tblNewInvestigation tbody tr"), function (index, item) {
+                        var chldtxt = item.children.item(1).textContent;
+                        if (chldtxt == txtNewInvestigation.val()) {
+                            $(".error.new").removeClass("hide");
+                            $("span.error.new").text(txtNewInvestigation.attr("data-val-duplicateList"));
+                            isValid = false;
+                        }
+                    })
+                }
+            }
+
+            else if (execuation == "edit") {
+                if ($.trim(txtEditInvestigation.val()) == "")
+                {
+                    $(".error.edit").removeClass("hide");
+                    $(".error.edit").text("Investigation is required.");
+                    isValid = false;
+                }
+                else {
+                    // Checking the existency
+                    //IsInvestigationExist
+                    var id = hdfInvestigationId.val() == "" ? "0" : hdfInvestigationId.val();
+                    var name = $.trim(txtEditInvestigation.val());
+                    var data = JSON.stringify({ InvestigationId: id, InvestigationName: name });
+                    if (ajaxBooleanChecker(data, '/Common/IsInvestigationChartExist', getToken()) == false)
+                    {
+                        $(".error.edit").removeClass("hide");
+                        $(".error.edit").text(txtEditInvestigation.attr("data-val-duplicate"));
+                        isValid = false;
+                    }
+                }
+            }
+            else {
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        $("#btnAddToList").click(function (e) {
+            e.preventDefault();
+            console.log("click");
+            if (validateInvestigation("new") == true) {
+                var tableRows = $("#tblNewInvestigation tbody tr").length;
+                var td1 = "<td width='15%' class='text-center'>" + (tableRows + 1) + "</td>";
+                var td2 = "<td>" + txtNewInvestigation.val().trim() + "</td>";
+                var td3 = "<td width='20%' class='text-center'><a href='#' class='btn btn-circle btn-danger btn-sm data-del-item'><i class='fas fa-trash' title='Delete'></i></a></td>";
+                var tr = "<tr>" + td1+td2+td3+"</tr>";
+                $("#tblNewInvestigation tbody").append(tr);
+                txtNewInvestigation.val('');
+            }
+        })
+
+        $(document).on("click", "a.data-del-item", function (e) {
+            e.preventDefault();
+            var ind = $(this).parent().parents('tr').index();
+            //console.log(ind);
+            $("#tblNewInvestigation tbody tr").eq(ind).css("background-color", "#ff6347").fadeOut(800,
+                function () {
+                    $("#tblNewInvestigation tbody tr").eq(ind).remove();
+                });
+            //console.log($("#tblNewInvestigation tbody tr").length);
+            fixtheRowSerial(ind);
+        })
+
+        function fixtheRowSerial(idx) {
+            $.each($("#tblNewInvestigation tbody tr"), function (index, item) {
+                if (idx != index) {
+                    var td = $(this).find('td:eq(0)');
+                    var sumSL = (index > idx ) ? 0 : 1; 
+                        $(this).find('td:eq(0)').text(index + sumSL);
+                }
+            })
+        }
+       
+        $("#btnClear").on("click", function (e) {
+            e.preventDefault();
+            $("#tblNewInvestigation tbody").empty();
+        })
+
+        $("#btnCancel").click(function (e) {
+            e.preventDefault();
+            $("#tblNewInvestigation tbody").empty();
+            $("#modalInvestigation").modal("toggle");
+        })
+
+        // Save List of Data
+        $("#btnSubmit").click(function (e) {
+            e.preventDefault();
+            $(".error").addClass("hide");
+            if ($("#tblNewInvestigation tbody tr").length > 0) {
+
+                $("#btnSubmit").prop("disabled", true);
+                var itemArray = [];
+                itemArray.length = 0;
+
+                $.each($("#tblNewInvestigation tbody tr"), function (index,item) {
+                    itemArray.push(item.children.item(1).textContent);
+                })
+                //console.log("This is item array");
+                //console.log(itemArray);
+                var data = JSON.stringify({ items: itemArray, id: 0, name: "",flag:"add" })
+                console.log(data);
+                $.when(postReqWithToken(dataType.applicationJson, dataType.json, 'POST', '/Diagnostic/SaveInvestigationForChart', data, getToken())).then(function (res,status) {
+                    console.log(res);
+                    console.log(status);
+                    if (res == true)
+                    {
+                        alert(execuStatus.successSave);
+                        $("#btnCancel").trigger("click");
+                        loadDataTable();
+                    }
+                    else {
+                        alert(execuStatus.fail);
+                    }
+                }).fail(function (error) {
+                    console.log(error);
+                })
+            }
+            else {
+                $(".error").removeClass("hide");
+                $(".error").text("Please add at least one investigation.");
+            }
+            $("#btnSubmit").prop("disabled", false);
+        })    
+
+        // Save single item
+
+        $(document).on("click", "a.data-edit-item", function (e) {
+            e.preventDefault();
+            $(".error.edit").addClass("hide");
+            txtEditInvestigation.val('');
+            hdfInvestigationId.val('0');
+
+            $("#modelInvestigationEdit").modal("show");
+
+            var id = $(this).attr("data-edit-item");
+            var name = $(this).parent().parents('tr').find("td:eq(2)").html();
+
+            hdfInvestigationId.val(id);
+            txtEditInvestigation.val(name);
+        })
+
+        $("#btnUpdate").click(function (e) {
+            e.preventDefault();
+            if (validateInvestigation("edit") == true)
+            {
+                var id = hdfInvestigationId.val();
+                var name = txtEditInvestigation.val();
+                var items = [];
+
+                var data = JSON.stringify({ items: items, id: id, name: name, flag:"edit" });
+                console.log(data);
+                $.when(postReqWithToken(dataType.applicationJson, dataType.json, 'POST', '/Diagnostic/SaveInvestigationForChart', data, getToken())).then(function (res, status) {
+                    console.log(res);
+                    console.log(status);
+                    if (res == true) {
+                        alert(execuStatus.successSave);
+                        $("#modelInvestigationEdit").modal("toggle");
+                        txtEditInvestigation.val('');
+                        hdfInvestigationId.val('0');
+                        loadDataTable();
+                    }
+                    else {
+                        alert(execuStatus.fail);
+                    }
+                    //
+                }).fail(function (error) {
+                    console.log(error);
+                })
+            }
+        })
+
+    </script>
+}
+
+

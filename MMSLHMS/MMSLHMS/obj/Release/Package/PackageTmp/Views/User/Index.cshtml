@@ -1,0 +1,194 @@
+﻿@*@model IEnumerable<HMSBO.Models.Module>*@
+@{
+    ViewBag.Title = "Index";
+    int itemCount = 0;
+    string colSetClass = string.Empty;
+    ViewBag.TotalAmountThisMonth = ViewBag.TotalAmountThisMonth == "" ? "0" : ViewBag.TotalAmountThisMonth;
+    ViewBag.TotalInvestigationThisMonth = ViewBag.TotalInvestigationThisMonth == "" ? "0" : ViewBag.TotalInvestigationThisMonth;
+    ViewBag.TotalAmountThisYear = ViewBag.TotalAmountThisYear == "" ? "0" : ViewBag.TotalAmountThisYear;
+    ViewBag.TotalInvestigationThisYear = ViewBag.TotalInvestigationThisYear == "" ? "0" : ViewBag.TotalInvestigationThisYear;
+}
+
+
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+    @*<a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>*@
+</div>
+
+<!-- Content Row -->
+<div class="row">
+    <!-- Total amount (Yearly) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Earnings (This Year)</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.TotalAmountThisYear</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Total Investigation (Yearly) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Investigation (This Year)</div>
+                        <div class="row no-gutters align-items-center">
+                            <div class="col-auto">
+                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">@ViewBag.TotalInvestigationThisYear</div>
+                            </div>
+                            <div class="col">
+                                <div class="progress progress-sm mr-2">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Total amount (Monthly) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings (This Month)</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.TotalAmountThisMonth</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Total Investigation(Monthly) -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Investigation (This Month)</div>
+                        <div class="row no-gutters align-items-center">
+                            <div class="col-auto">
+                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">@ViewBag.TotalInvestigationThisMonth</div>
+                            </div>
+                            <div class="col">
+                                <div class="progress progress-sm mr-2">
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="row">
+    <!-- Earnings (Today) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-info shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings (Today)</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">@ViewBag.TotalAmountToday</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Total Investigation (Today) Card Example -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-info shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Investigation (Today)</div>
+                        <div class="row no-gutters align-items-center">
+                            <div class="col-auto">
+                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">@ViewBag.TotalInvestigationToday</div>
+                            </div>
+                            <div class="col">
+                                <div class="progress progress-sm mr-2">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Content Row -->
+<div class="row">
+
+    <!-- Area Chart -->
+    <div class="col-xl-12 col-lg-12">
+        <div class="card shadow mb-4">
+
+            <!-- Card Body -->
+            <div class="card-body">
+
+                <div class="row">
+                    @*@foreach (var item in Model)
+                        {
+
+                            itemCount = itemCount + 1;
+                            <div class="col-md-3">
+                                <a href="#">
+
+                                    <div class="module-icon" style="color:#cea369">
+                                        <a href="#"><i class="@item.IconName" style="color:@item.IconColor" aria-hidden="true"></i></a>
+                                    </div>
+                                    <a href="#">@item.ModuleName</a>
+
+                                </a>
+                            </div>
+                        }*@
+                    The System is under Construction....
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+

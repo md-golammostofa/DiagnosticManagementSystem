@@ -1,0 +1,329 @@
+﻿
+@{
+    ViewBag.Title = "List of Department";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-6"><h2>List of Department</h2></div>
+            <div class="col-md-6">
+                <button id="btnAddDept" class="btn btn-success btn-sm float-right">Add New Department</button>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-6">
+                        <select id="ddlOrg" class="form-control" style="width:300px">
+                            <option value="-1">Select Organization</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" id="txtDept" onkeyup="triggeringSearch()" class="form-control" placeholder="Search By Department Name"/>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <br />
+            <div class="col-md-12" style="overflow-y:scroll;height:580px">
+                <table class="table table-bordered" id="tblDepartment">
+                    <thead>
+                        <tr class="btn-info">
+                            <th class="hide">
+                                DepartmentId
+                            </th>
+                            <th>Department Name</th>
+                            <th>Short Name</th>
+                            <th>Organization</th>
+                            <th>Entry User</th>
+                            <th class="hide">OrgId</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalDept">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header btn-success">
+                <h4 class="modal-title" id="modalHeading">Add New User</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <form id="frmDept" autocomplete="off">
+                <input type="hidden" id="hdfDepartmentId" value="0" />
+                @Html.AntiForgeryToken()
+                <div class="modal-body">
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-globe"></span></span>
+                        <select class="form-control" name="Org" id="ddlFormOrg">
+                            <option value="-1">Select Organization</option>
+                        </select>
+                    </div>
+                    <span class="hide error Org">Please select an Organization.</span>
+                    <br />
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-link"></span></span>
+                        <input type="text" name="DeptName" class="form-control" id="txtDeptName" aria-describedby="" placeholder="Enter Department Name ">
+                    </div>
+                    <span class="hide error DeptName">Department name is required.</span>
+                    <span class="hide error text-length">Department name lenght must be at least 5 character.</span>
+                    <br />
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-link"></span></span>
+                        <input type="text" name="shortName" class="form-control" id="txtShortName" aria-describedby="" placeholder="Enter Short Name ">
+                    </div>
+                    <span class="hide error ShortName">Short name is required.</span>
+                    <div>
+                        <span class="hide error uniqueness">Department Name and Short Name Must Be Unique.</span>
+                    </div>
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="submit" id="btnSubmit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script type="text/javascript">
+        var ddlOrg = $("#ddlOrg");
+        var ddlFormOrg = $("#ddlFormOrg");
+        var tblDepartment = $("#tblDepartment");
+        var txtDeptName = $("#txtDeptName");
+        var txtShortName = $("#txtShortName");
+        var hdfDepartmentId = $("#hdfDepartmentId");
+        var btnSubmit = $("#btnSubmit");
+        var txtDept = $("#txtDept");
+
+        $(document).ready(function () {
+            LoadDropDown('/Common/GetOrgList', 'POST', ddlOrg);
+            LoadDropDown('/Common/GetOrgList', 'POST', ddlFormOrg);
+            fnGetData(); // Ajax Call for retreiving data from controller action method 
+        })
+
+        function fnGetData() {
+            $("#tblDepartment tbody tr").remove();
+            var OrgId = ddlOrg.val() <= 0 ? 0 : ddlOrg.val();
+            var DeptName = $.trim(txtDept.val()) == '' ? '' : $.trim(txtDept.val());
+            $.when(getReqWithData("json", "GET", "/Organization/GetDepartmentList", { OrgId: OrgId, DeptName: DeptName })).then(function (res) {
+                console.log(res);
+                fnLoadTable(res);
+            }).fail(function (err) {
+                console.log(err);
+            });
+        }
+        //< a href = '#' class='data-edit btn btn-circle btn-success btn-sm' > <i class='fas fa-pen'></i></a >
+        function fnLoadTable(dataObj) {
+            if (dataObj != null) {
+                var tr = "";
+                $.each(dataObj, function (index, item) {
+                    tr += "<tr>" + "<td class='hide'>" + item.DepartmentId + "</td>" + "<td>" + item.DepartmentName + "</td>" + "<td>" + item.ShortName + "</td>" + "<td>" + item.Name + "</td>" + "<td class='text-center'>" + item.EntryUser + "</td>" + "<td class='hide'>" + item.OrgId + "</td>" + "<td class='text-center'><a href='#' class='data-edit btn btn-circle btn-success btn-sm'><i class='fas fa-pen'></i></a></td>" + "</tr>";
+                })
+                if (dataObj.length == 0) {
+                    tr = "<tr class='text-center'><td colspan='5'> No Rows Returned..</td></tr>";
+                }
+                $("#tblDepartment tbody").append(tr);
+            }
+            else {
+                $("#tblDepartment tbody tr").remove();
+                var tr = "<tr class='text-center'><td colspan='5'> No Rows Returned..</td></tr>";
+                $("#tblDepartment tbody").append(tr);
+            }
+        }
+
+        ddlOrg.change(function () {
+            //console.log(ddlOrg.val());
+            //if (ddlOrg.val() > 0) {
+            //    $("#tblDepartment tbody tr").remove();
+            //    fnGetData();
+            //}
+            //else {
+            //    $("#tblDepartment tbody tr").remove();
+            //}
+            fnGetData();
+        })
+  
+        txtDept.autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: '@Url.Action("GetDepartmentItems", "Common")',
+                    type:'POST',
+                    dataType: "json",
+                    data: { contextKey: txtDept.val() },
+                    headers:getToken(),
+                    success: function (data) {
+                        objData = {};
+                        response($.map(data, function (item) {
+                            return { label: item.DepartmentName, value: item.DepartmentName, id: item.DepartmentName};
+                        }));
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error");
+                    }
+                });
+            },
+            select: function (event, ui) {
+                txtDept.trigger('change');
+                //hdfUserId.val('0');
+                //objData = {};
+                //objData = ui.item;
+                //hdfUserId.val(ui.item.id);
+            }
+        })
+
+        function triggeringSearch() {
+            txtDept.val($.trim(txtDept.val()));
+            if ($.trim(txtDept.val()).length == 0) {
+                txtDept.trigger('change');
+            }
+        }
+
+        txtDept.change(function () {
+            fnGetData();
+        })
+
+      
+        //--------------- Save Department --------------//
+        $("#btnAddDept").click(function (e) {
+            e.preventDefault();
+            OpenModal();
+            $("#modalHeading").empty();
+            $("#modalHeading").text('Add New Department');
+        })
+
+        function validateForm() {
+            var isValid = true;
+            if ($.trim(txtDeptName.val()) == "") {
+                $(".error.DeptName").removeClass("hide");
+                isValid = false;
+            }
+            else {
+                $(".error.DeptName").addClass("hide");
+            }
+            if ($.trim(txtDeptName.val()) != "") {
+                if ($.trim(txtDeptName.val()).length < 5) {
+                    $(".error.text-length").removeClass("hide");
+                    isValid = false;
+                }
+                else {
+                    $(".error.text-length").addClass("hide");
+                }
+            }
+            if (ddlFormOrg.val() <= 0) {
+                $(".error.Org").removeClass("hide");
+                isValid = false;
+            }
+            else {
+                $(".error.Org").addClass("hide");
+            }
+
+            if ($.trim(txtShortName.val()) == "") {
+                $(".error.ShortName").removeClass("hide");
+                isValid = false;
+            }
+            else {
+                $(".error.ShortName").addClass("hide");
+            }
+
+            if (isValid == true)
+            {
+                var data = JSON.stringify({ deptName: $.trim(txtDeptName.val()), shortName: $.trim(txtShortName.val()), orgId: ddlFormOrg.val() });
+                isValid = ajaxBooleanChecker(data, "/Common/IsUniqueDeptShortName", getToken());
+                if (!isValid)
+                {
+                    $(".error.uniqueness").removeClass("hide");
+                }
+                else {
+                    $(".error.uniqueness").addClass("hide");
+                }
+            }
+
+            return isValid;
+        }
+
+        $("#btnSubmit").click(function (e) {
+            e.preventDefault();
+            if (validateForm()) {
+                var deptId = hdfDepartmentId.val() == "" ? "0" : hdfDepartmentId.val();
+                hdfDepartmentId.val(deptId)
+                var data = JSON.stringify({ DepartmentId: hdfDepartmentId.val(), DepartmentName: $.trim(txtDeptName.val()), ShortName: $.trim(txtShortName.val()), OrgId: ddlFormOrg.val() });
+                //console.log(data);
+                $.when(postReqWithToken(dataType.applicationJson, dataType.json, "POST", "/Organization/SaveDepartment", data, getToken())).then(function (res) {
+                    if (res == true)
+                    {
+                        alert(execuStatus.successSave);
+                        //console.log("I'm Save");
+                        clearCtrl();
+                        $("#modalDept").modal('toggle');
+                        var dropdownVal = ddlOrg.val();
+                        ddlOrg.val(dropdownVal);
+                        ddlOrg.trigger("change");
+                    }
+                    else {
+                        alert(execuStatus.fail);
+                        //console.log("I'm fail");
+                    }
+
+                }).fail(function (err) {
+                    //console.log(err);
+                })
+            }
+        })
+
+        //-------------- Update Department -------------//
+        $(document).on("click", "a.data-edit", function (e) {
+            e.preventDefault();
+            OpenModal();
+            btnSubmit.text('Update');
+            $("#modalHeading").empty();
+            $("#modalHeading").text('Update Department');
+
+            var deptId = $(this).parent().parents('tr').find('td:eq(0)').html();
+            var deptName = $(this).parent().parents('tr').find('td:eq(1)').html();
+            var shortName = $(this).parent().parents('tr').find('td:eq(2)').html();
+            var orgId = $(this).parent().parents('tr').find('td:eq(5)').html();
+            //alert(deptName);
+            hdfDepartmentId.val(deptId)
+            ddlFormOrg.val(orgId);
+            txtDeptName.val(deptName);
+            txtShortName.val(shortName);
+
+        })
+
+        function OpenModal() {
+            clearCtrl();
+            $(".error").addClass("hide");
+            //console.log("I'm Modal");
+            $("#modalDept").modal();
+            btnSubmit.text('Save');
+        }
+
+        function clearCtrl() {
+            $("#modalDept").modal('toggle');
+            txtDeptName.val('');
+            txtShortName.val('');
+            hdfDepartmentId.val('0');
+            ddlFormOrg.val('-1')
+        }
+
+        $('#modal').on('hidden.bs.modal', function (e) {
+            ('.modal-backdrop').remove();
+            clearCtrl();
+        })
+
+
+    </script>
+
+}
+
+

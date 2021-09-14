@@ -1,0 +1,223 @@
+﻿
+@{
+    ViewBag.Title = "Set User Menu";
+    ViewBag.BgColor = "#fff";
+}
+<br />
+<div class="row" style="padding:15px">
+    <div class="col-md-12">
+        <div class="alert alert-success">
+            <span class="glyphicon glyphicon-menu-hamburger"></span><b> User Authorization</b> 
+        </div>
+        <div class="input-group">
+            <!--Find User Autocomplete-->
+            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+            <input type="text" name="findUser" class="form-control" id="txtfindUser" placeholder="Find User">
+            <input type="hidden" id="hdfUserId" value="0" />
+            <!--Find User Autocomplete End-->
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table" id="tblUserInfo"></table>
+                <div class="col-lg-12" style="overflow-y:scroll;max-height:500px">
+                    <table class="table" id="tblMenuData"></table>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        var txtfindUser = $("#txtfindUser");
+        var hdfUserId = $("#hdfUserId");
+        var tblUserInfo = $("#tblUserInfo");
+        var objData = {};
+        var tblMenuData = $("#tblMenuData")
+
+        // Autocomplete for user
+        txtfindUser.autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: '@Url.Action("GetUserList", "Common")',
+                    dataType: "json",
+                    data: { contextKey: $("#txtfindUser").val() },
+                    success: function (data) {
+                        objData = {};
+                        response($.map(data, function (item) {
+                            return { label: item.UserName, value: item.UserName, id: item.UserId};
+                        }));
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error");
+                    }
+                });
+            },
+            select: function (event, ui) {
+                hdfUserId.val('0');
+                objData = {};
+                objData = ui.item;
+                hdfUserId.val(ui.item.id);
+            }
+        })
+
+        txtfindUser.change(function () {
+            //console.log('Text has been changed');
+            var objStatus= jQuery.isEmptyObject(objData);
+            //console.log('Obj Status: '+objStatus);
+            if (objStatus == false)
+            {
+                if (txtfindUser.val() != objData.value && hdfUserId.val() != objData.id)
+                {
+                    hdfUserId.val('0')
+                    txtfindUser.val('');
+                    objData = {};
+                }
+                else {
+                    objData = {};
+                    getUserInfo(hdfUserId.val());
+                }
+            }
+            else if (objStatus == true) {
+                //console.log('inside else');
+                hdfUserId.val('0')
+                txtfindUser.val('');
+                objData = {};
+                bindDataToTable(objData, tblUserInfo);
+            }
+        })
+
+        function getUserInfo(id) {
+            $.ajax({
+                    url: '@Url.Action("GetUserInfo", "Common")',
+                    dataType: "json",
+                    data: { id: id},
+                    success: function (data) {
+                        //console.log('User Info');
+                        //console.log(data);
+                        bindDataToTable(data, tblUserInfo);
+                        fnPopulatingMenuItem(data);
+                    },
+                    error: function (xhr, status, error) {
+                        alert(error);
+                    }
+                });
+        }
+
+        function bindDataToTable(data,id) {
+            if (id == tblUserInfo)
+            {
+                if (!$.isEmptyObject(data))
+                {
+                    var tr1 = '<tr class="alert-info"><td><b>First Name:</b></td><td>' + data.FirstName + '</td><td><b>Last Name:</b></td><td>' + data.LastName + '</td><td><b>User Name:</b></td><td>' + data.UserName + '</td></tr>'
+                    var tr2 = '<tr class="alert-info"><td><b>Email:</b></td><td>' + data.Email + '</td><td><b>Is Active:</b></td><td>' + data.IsActive.toString() + '</td><td><b>Org Id:</b></td><td>' + data.OrgId + '</td></tr>'
+                    var trHead ='<tr><td colspan="6" class="alert-info"><b>User Info</b></tr>'
+                    tblUserInfo.empty();
+                    tblUserInfo.append(tr1);
+                    tblUserInfo.append(tr2);
+                }
+                else {
+                    tblUserInfo.empty();
+                    var tr ="<tr><td class='alert alert-success' colspan='6'>No User Found</td></tr>"
+                }
+            }
+            
+        }
+
+        function fnPopulatingMenuItem(data) {
+            var userId = data.UserId;
+            fnIsValidUser(data.UserId, data.UserName).done(function (data) {
+                if (data == true) {
+                    fnHasUserMenuItem(userId).done(function (data) {
+                        if (data == true) {
+                            console.log("User has got menu items");
+                        }
+                        else {
+                            console.log("User does not have any menu item");
+                            $.ajax({
+                                dataType: 'json',
+                                url: '/Common/GetAllMenuItem',
+                                success: function (result) {
+                                    console.log("All Menu Items");
+                                    console.log(result);
+                                    tblMenuData.empty();
+                                    $.each(result, function (index,item) {
+                                        console.log(item);
+                                       
+                                        var trModule = "<tr><td colspan='2' class='alert alert-warning text-center'><b>" + item.ModuleName + "</b></td></tr>";
+                                        
+                                        tblMenuData.append(trModule);
+                                        //console.log(item.Menus);
+                                        $.each(item.Menus, function (idx, itm) {
+                                            
+                                            var td1 = '<td>' + itm.MenuName + '</td>';
+                                            //tr.append(td1);
+                                            
+                                            //if(itm.Submenus.length == 0)
+                                            //var trMenu = '<tr><td>' + itm.MenuName + '</td><td>Submenu items</td></tr>';
+                                            //
+                                            //console.log('Submenu');
+                                            //console.log(itm.SubMenus);
+                                            var checkboxes = "";
+                                            $.each(itm.SubMenus, function (ix,im) {
+                                                checkboxes += "<span class='btn btn-warning' style='margin-bottom:2px'><input type='checkbox' value='" + im.SubMenuName + "' id='" + im.SubmenuId + "'> " + im.SubMenuName+"</input></span>&nbsp;"
+                                            })
+                                            var td2 = '<td>' + checkboxes + '</td>';
+                                            var trMenu = '<tr>' + td1 + td2 + '</tr>';
+                                            tblMenuData.append(trMenu);
+                                        })
+                                        if (item.Menus.length == 0) {
+                                            var trMenu = '<tr><td colspan="2" class="text-center">No Items Found.</td></tr>';
+                                            tblMenuData.append(trMenu);
+                                        }
+                                        
+                                    })
+                                },
+                                error: function (err) {
+                                    console.log(err);
+                                }
+                            })
+                        }
+                    })
+                }
+            })
+        }
+        
+        function fnIsValidUser(id,user)
+        {
+            return $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                url: '/Common/isValidUser',
+                dataType: "json",
+                data: { id: id, username: user },
+                success: function (data) {
+                    //console.log('isValidUser'+ data);
+                },
+                error: function (xhr, status, error) {
+                    alert(error);
+                }
+            });
+        }
+
+        function fnHasUserMenuItem(id)
+        {
+            return $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                url: '/Common/GetUsersMenuItem',
+                data: { id: id },
+                success: function (result) {
+                    console.log(result);
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            })
+        }
+
+
+
+    </script>    
+}

@@ -1,0 +1,353 @@
+﻿@model IEnumerable<HMSBO.ViewModels.VmBranch>
+
+@{
+    ViewBag.Title = "List of Branch";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-6"><h2>List of Branch</h2></div>
+            <div class="col-md-6">
+                <button id="btnAddBranch" class="btn btn-success btn-sm float-right" title="Create New"><i class="fa fa-edit"></i> Create New Branch</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" style="overflow-y:scroll;height:580px">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr class="btn-info">
+                            <th>Id</th>
+                            <th>
+                                Organization
+                            </th>
+                            <th>
+                                Branch Name
+                            </th>
+                            <th>
+                                Branch Id
+                            </th>
+                            <th>
+                                Short Name
+                            </th>
+                            <th>
+                                Address
+                            </th>
+                            <th>
+                                Contact Number
+                            </th>
+                            <th>
+                                Entry User
+                            </th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td>
+                                @item.BranchId
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.OrgName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BranchName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BranchCode)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ShortName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Address)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ContactNumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EntryUser)
+                            </td>
+                            <td class="text-center">
+                                <a href='#' class='data-edit btn btn-circle btn-success btn-sm' data-edit-item="@item.BranchId"><i class='fas fa-pen' title="Edit"></i></a>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<div class="row">
+        <div class="col-md-8">
+
+        </div>
+    </div>*@
+
+<div class="modal fade" id="modalBranch">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content ">
+            <div class="modal-header  btn-success">
+                <h4 class="modal-title" id="modalHeading">Create New Branch</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <span class="hide error Org">Please select an Organization.</span>
+            </div>
+            <form id="frmDept" autocomplete="off">
+                <input type="hidden" id="hdfBranchId" value="0" />
+                @Html.AntiForgeryToken()
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="txtBranchName"><b>Branch Name</b></label>
+                            <input type="text" class="form-control" id="txtBranchName"  data-val-required="Branch Name is required"/>
+                            <span class="text-danger">*</span>
+                            <div>
+                                <span class="error hide BranchName"></span>
+                            </div>
+                            
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="txtBranchId"><b>Branch Id</b></label>
+                            <input type="text" class="form-control" id="txtBranchId"  data-val-required="Branch Id is required" data-val-minLenght="Minimum length is 6" />
+                            <span class="text-danger">*</span>
+                            <span class="error hide BranchId"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="txtShortName"><b>Short Name</b></label>
+                            <input type="text" class="form-control" id="txtShortName" data-val-required="Short Name is required" />
+                            <span class="text-danger">*</span>
+                            <span class="error hide ShortName"></span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="txtAddress"><b>Address</b></label>
+                            <textarea type="text" class="form-control" id="txtAddress" cols="50" rows="1" data-val-required="Address is required"></textarea>
+                            <span class="text-danger">*</span>
+                            <span class="error hide Address"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="txtPhone"><b>Phone Number</b></label>
+                            <input type="text" class="form-control" id="txtPhone"  data-val-required="Phone number is required" data-val-type="Phone should be numeric"/>
+                            <span class="text-danger">*</span>
+                            <span class="error hide Phone"></span>
+                        </div>
+                    </div>
+                    @*<div class="form-row">
+                        <div class="form-group col-md-6">
+
+                        </div>
+                        <div class="form-group col-md-6">
+                            
+                        </div>
+                    </div>*@
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" id="btnSubmit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        var hdfBranchId = $("#hdfBranchId");
+        var txtBranchName = $("#txtBranchName");
+        var txtBranchId = $("#txtBranchId");
+        var txtAddress = $("#txtAddress");
+        var txtPhone = $("#txtPhone");
+        var txtShortName = $("#txtShortName");
+
+        $("#btnAddBranch").click(function (e) {
+            e.preventDefault();
+            OpenModal();
+        })
+        //btnAddBranch
+
+        $("#btnSubmit").click(function (e) {
+            e.preventDefault();
+            if (validateForm())
+            {
+                var BranchId = $.trim(hdfBranchId.val()) == '' ? '0' : hdfBranchId.val();
+
+                var data = JSON.stringify({
+                    BranchId: BranchId,
+                    BranchCode: $.trim(txtBranchId.val()),
+                    BranchName: $.trim(txtBranchName.val()),
+                    ShortName: $.trim(txtShortName.val()),
+                    Address: $.trim(txtAddress.val()),
+                    ContactNumber: $.trim(txtPhone.val()),
+                    OrgId:'@User.OrgId'
+                })
+                $.when(postReqWithToken(dataType.applicationJson, dataType.json, 'POST', '/Organization/SaveBranch', data, getToken())).then(function (res) {
+                    if (res == true)
+                    {
+                        alert(execuStatus.successSave)
+                        location.reload();
+                    }
+                    else {
+                        alert(execuStatus.fail);
+                    }
+                }).fail(function (err) {
+                    console.log(err);
+                })
+
+            }
+        })
+
+        function validateForm() {
+            var isValid = true;
+            if ($.trim(txtBranchName.val()) == '')
+            {
+                isValid = false;
+                $('.error.BranchName').removeClass('hide');
+                $('.error.BranchName').text(txtBranchName.attr('data-val-required'));
+            }
+            else {
+                $('.error.BranchName').addClass('hide');
+                $('.error.BranchName').text('');
+            }
+            if ($.trim(txtBranchId.val()) == '') {
+                isValid = false;
+                $('.error.BranchId').removeClass('hide');
+                $('.error.BranchId').text(txtBranchId.attr('data-val-required'));
+            }
+            else {
+                $('.error.BranchId').addClass('hide');
+                $('.error.BranchId').text('');
+            }
+            if ($.trim(txtBranchId.val()) != '') { 
+                if ($.trim(txtBranchId.val()).length <6 ) {
+                    isValid = false;
+                    $('.error.BranchId').removeClass('hide');
+                    $('.error.BranchId').text(txtBranchId.attr('data-val-minLenght'));
+                }
+                else {
+                    $('.error.BranchId').addClass('hide');
+                    $('.error.BranchId').text('');
+                }
+            }
+            if ($.trim(txtAddress.val()) == '') {
+                isValid = false;
+                $('.error.Address').removeClass('hide');
+                $('.error.Address').text(txtAddress.attr('data-val-required'));
+            }
+            else {
+                $('.error.Address').addClass('hide');
+                $('.error.Address').text('');
+            }
+
+            if ($.trim(txtShortName.val()) == '') {
+                isValid = false;
+                $('.error.ShortName').removeClass('hide');
+                $('.error.ShortName').text(txtShortName.attr('data-val-required'));
+            }
+            else {
+                $('.error.ShortName').addClass('hide');
+                $('.error.ShortName').text('');
+            }
+
+            if ($.trim(txtPhone.val()) =='') {
+                isValid = false;
+                $('.error.Phone').removeClass('hide');
+                $('.error.Phone').text(txtPhone.attr('data-val-required'));
+            }
+            else {
+                $('.error.Phone').addClass('hide');
+                $('.error.Phone').text('');
+            }
+
+            
+            //data-val-type
+            if ($.trim(txtPhone.val()) != '')
+            {
+                if (isNaN($.trim(txtPhone.val()))) {
+                    isValid = false;
+                    $('.error.Phone').removeClass('hide');
+                    $('.error.Phone').text(txtPhone.attr('data-val-type'));
+                }
+                else {
+                    $('.error.Phone').addClass('hide');
+                    $('.error.Phone').text('');
+                }
+            }
+
+            var BranchId = $.trim(hdfBranchId.val()) == '' ? '0' : hdfBranchId.val();
+            console.log("Branch " + BranchId);
+            console.log("Branch Name " + txtBranchName.val());
+            if (parseInt(BranchId) > 0)
+            {
+                //IsBranchNameExist
+                if (ajaxBooleanChecker(JSON.stringify({ BranchId: BranchId, BranchName: txtBranchName.val() }), "/Common/IsBranchNameExist",getToken()) == false) {
+                    isValid = false;
+                    //alert("The Branch name is already exist");
+                    $('.error.BranchName').removeClass('hide');
+                    $('.error.BranchName').text('The Branch name is already exist');
+                }
+            }
+
+            return isValid;
+        }
+
+        $(document).on('click', 'a.data-edit', function (e) {
+            e.preventDefault();
+            var BranchId = $(this).parent().parents('tr').find('td:eq(0)').html();
+            $.when(getReqWithData('json', 'GET', '/Organization/GetBranchById', { Id: BranchId })).then(function (res) {
+                //console.log(res);
+                if (res != null)
+                {
+                    //alert('Fooo');
+                    populateModalWithReqData(res);
+                }
+                else {
+                    alert("Empty");
+                }
+            }).fail(function (err) {
+                console.log(err);
+            })
+        })
+
+        function populateModalWithReqData(data) {
+            OpenModal();
+            hdfBranchId.val(data.BranchId);
+            txtBranchName.val(data.BranchName);
+            txtBranchId.val(data.BranchCode);
+            txtAddress.val(data.Address);
+            txtPhone.val(data.ContactNumber);
+            txtShortName.val(data.ShortName);
+            txtShortName.attr('readonly', 'readonly');
+            fnModalHeadChange('Update Branch');
+        }
+
+        function OpenModal() {
+            clearCtrl();
+            //$("#modalHeading").empty();
+            fnModalHeadChange('Create New Branch');
+            $(".error").addClass('hide');
+            $("#modalBranch").modal();
+        }
+
+        function clearCtrl() {
+            hdfBranchId.val('0');
+            txtBranchName.val('');
+            txtBranchId.val('');
+            txtAddress.val('');
+            txtPhone.val('');
+            txtShortName.val('');
+            txtShortName.removeAttr('readonly', 'readonly');
+            //readonly="readonly"
+        }
+
+    </script>
+}
+
+

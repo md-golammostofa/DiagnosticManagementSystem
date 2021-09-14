@@ -1,0 +1,536 @@
+﻿@model IEnumerable<HMSBO.Models.Organization>
+@{
+    ViewBag.Title = "List of Organization";
+    ViewBag.BgColor = "#fff";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-12">
+        <h4 class="text-center">List of Organization</h4>
+        <hr />
+    </div>
+    <div class="col-md-6">
+        <input type="text" name="searchBy" id="searchBy" value="" class="form-control form-control-sm" placeholder="Search by anything" />
+    </div>
+    <div class="col-md-6">
+        <button class="btn btn-sm btn-primary float-right" type="button" id="btnOrgModal" title="Create Organization" onclick="OpenModal()"><i class="fas fa-plus"></i> Create Organization </button>
+        <br />
+        <br />
+    </div>
+    @*style="overflow-y:scroll;height:650px"*@
+    <div class="col-md-12">
+        <table class="table table-bordered table-sm table-responsive-lg table-hover" id="tblOrganizations">
+            @if (Model.Count() > 0)
+            {
+                <thead>
+                    <tr class="btn-info">
+                        <th>Org Id</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Email</th>
+                        <th>Mobile Number</th>
+                        <th class="hide">Phone Number</th>
+                        <th class="hide">Fax</th>
+                        <th>Active Org</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            @{string status = item.IsActive ? "Yes" : "No";}
+                            <td align="center">@item.OrgId</td>
+                            <td>@item.Name</td>
+                            <td>@item.Address</td>
+                            <td>@item.Email</td>
+                            <td>@item.MobileNumber</td>
+                            <td class="hide">@item.Telephone</td>
+                            <td class="hide">@item.Fax</td>
+                            <td align="center">@status</td>
+                            <td class="text-center">
+                                <a href="#" class="data-org-edit btn btn-circle btn-success btn-sm" data-edit-item="@item.OrgId" onclick="OpenModal()">
+                                    <i class="fas fa-pen"></i>
+                                </a>
+                                |
+                                <a href="#" class="data-org-delete btn btn-circle btn-danger btn-sm" data-delete-item="@item.OrgId">
+                                    <i class="fas fa-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            }
+            else
+            {
+
+                <tr class="btn-warning">
+                    <td class="text-center">
+                        No Rows Found...
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="modal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header btn-success">
+                <h4 class="modal-title" id="saveModalTitle">Add New Organization</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="frmOrg">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" value="0" id="hdfOrgId" />
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label class="control-label font-weight-bold col-md-12" for="txtOrgName">Organization Name:</label>
+                            <div class="col-md-12 input-group">
+                                <input type="text" name="Organization" class="form-control" id="txtOrgName" placeholder="Enter Organization Name " autocomplete="off">
+                                <span class="text-danger">*</span>
+                            </div>
+                            <div class="col-md-12">
+                                <span class="hide error orgName">Organization name is required.</span>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="control-label font-weight-bold col-md-12" for="txtAddress">Address:</label>
+                            <div class="col-md-12 input-group">
+                                <textarea type="text" maxlength="100" wrap="soft" name="address" class="form-control" id="txtAddress" placeholder="Enter Organization Address" rows="1"></textarea>
+                                <span class="text-danger">*</span>
+                            </div>
+                            <div class="col-md-12">
+                                <span class="hide error address">Address is required.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label class="control-label font-weight-bold col-md-12" for="txtTelephone">Telephone Number:</label>
+                            <div class="col-md-12 input-group">
+                                <input type="number" name="telephone" maxlength="11" class="form-control" id="txtTelephone" aria-describedby="" placeholder="Enter Telephone Number">
+                            </div>
+                            <div class="col-md-12">
+                                <span class="hide error telephone">Telephone number is required.</span>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="control-label font-weight-bold col-md-12" for="txtMobileNumber">Mobile Number:</label>
+                            <div class="col-md-12 input-group">
+                                <input type="number" name="mobileNumber" maxlength="11" class="form-control" id="txtMobileNumber" aria-describedby="" placeholder="Enter Mobile Number">
+                                <span class="text-danger">*</span>
+                            </div>
+                            <div class="col-md-12">
+                                <span class="hide error mobile">Mobile number is required.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label class="control-label font-weight-bold col-md-12" for="txtFax">Fax:</label>
+                            <div class="col-md-12 input-group">
+                                <input type="number" name="fax" class="form-control" id="txtFax" placeholder="Enter Fax Number">
+                            </div>
+                            <div class="col-md-12">
+                                <span class="hide error fax">Fax number is required.</span>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="control-label font-weight-bold col-md-12" for="txtEmail">Email:</label>
+                            <div class="col-md-12 input-group">
+                                <input type="email" name="email" class="form-control" id="txtEmail" placeholder="Enter Email Number" autocomplete="off">
+                            </div>
+                            <div class="col-md-12">
+                                <span class="hide error email">Email is required.</span>
+                                <span class="hide error emailInvalid">Invalid Email.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <div class="col-md-12">
+                                <div class="form-control">
+                                    <input type="checkbox" name="isactive" class="" id="chkIsactive" checked="checked" /> &nbsp; Is Active ?
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label class="control-label font-weight-bold col-md-12">Organization logo</label>
+                            <div class="col-md-12">
+                                <input type="file" name="OrgLogo" class="form-control" id="OrgLogo" />
+                            </div>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label class="control-label font-weight-bold col-md-12" style="visibility:hidden">Org Logo</label>
+                            <div class="col-md-12">
+                                <img src="#" alt="Org Logo" title="Org Logo" id="imgOrg" width="120" height="120" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label class="control-label font-weight-bold col-md-12">Report logo</label>
+                            <div class="col-md-12">
+                                <input type="file" name="ReportLogo" class="form-control" id="ReportLogo" />
+                            </div>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label class="control-label font-weight-bold col-md-12" style="visibility:hidden">Report Logo</label>
+                            <div class="col-md-12">
+                                <img src="#" alt="Report Logo" title="Report Logo" id="imgReport" width="450" height="150" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" id="btnSaveOrg" class="btn btn-primary"><i class="fas fa-save"></i> Save </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalDelete">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header btn-warning">
+                <h4 class="modal-title">Delete Organization</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <form id="frmDelete">
+                <div class="modal-body ">
+                    <input type="hidden" value="" id="hdfRowIndex" />
+                    <span id="deltxt"></span>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" id="btnDelSubmit" class="btn btn-danger">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+
+        var hdfOrgId = $("#hdfOrgId");
+        var txtOrgName = $("#txtOrgName");
+        var txtAddress = $("#txtAddress");
+        var txtTelephone = $("#txtTelephone");
+        var txtMobileNumber = $("#txtMobileNumber");
+        var txtFax = $("#txtFax");
+        var txtEmail = $("#txtEmail");
+        var chkIsactive = $("#chkIsactive");
+        var btnSaveOrg = $("#btnSaveOrg");
+        var saveModalTitle = $("#saveModalTitle");
+        var hdfRowIndex = $("#hdfRowIndex");
+
+        function OpenModal() {
+            $(".error").addClass('hide');
+            $("#modal").modal();
+            chkIsactive.prop("checked", false);
+            clearControl();
+            btnSaveOrg.text('Save');
+            saveModalTitle.text('Add New Organization');
+            $("#imgOrg").attr("src", "/Images/no_image.png");
+            $("#imgReport").attr("src", "/Images/no_image.png");
+        }
+
+        $("#searchBy").on("keyup", function () {
+            fnSearchByAnything(this, "tblOrganizations");
+        });
+
+        $(document).on('click', 'a.data-org-edit', function (e) {
+            e.preventDefault();
+
+            var id = $(this).parent().parents('tr').find('td:eq(0)').html();
+            var name = $(this).parent().parents('tr').find('td:eq(1)').html();
+            var address = $(this).parent().parents('tr').find('td:eq(2)').html();
+            var email = $(this).parent().parents('tr').find('td:eq(3)').html();
+            var mobileNumber = $(this).parent().parents('tr').find('td:eq(4)').html();
+            var telePhone = $(this).parent().parents('tr').find('td:eq(5)').html();
+            var fax = $(this).parent().parents('tr').find('td:eq(6)').html();
+            var isActive = $(this).parent().parents('tr').find('td:eq(7)').html();
+
+            OpenModal();
+            hdfOrgId.val(id);
+            txtOrgName.val(name);
+            txtAddress.val(address);
+            txtEmail.val(email);
+            txtMobileNumber.val(mobileNumber);
+            txtTelephone.val(telePhone);
+            txtFax.val(fax);
+
+            var data = JSON.stringify({ orgId: id });
+            $.when(postReqWithToken(dataType.applicationJson, dataType.json, 'POST', '/Common/GetImageBase64String', data, getToken())).then(function (res,status) {
+                //console.log(res);
+                //console.log(status);
+                if (res.orgLogo == "") {
+                    $("#imgOrg").attr("src","/Images/no_image.png");
+                } else {
+                    $("#imgOrg").attr("src", res.orgLogo);
+                }
+                if (res.reportLogo == "") {
+                    $("#imgReport").attr("src", "/Images/no_image.png");
+                } else {
+                    $("#imgReport").attr("src", res.reportLogo);
+                }
+            }).fail(function (err) {
+                console.log(err);
+            })
+
+            if (isActive.toLowerCase() == 'yes') {
+                chkIsactive.prop("checked", true);
+                console.log(chkIsactive);
+            }
+            else {
+                chkIsactive.prop("checked", false);
+            }
+            btnSaveOrg.text('Update');
+            saveModalTitle.text('Edit Organization');
+        })
+
+        $("#btnSaveOrg").click(function (e) {
+            e.preventDefault();
+
+            var orgLog = $('#OrgLogo').prop('files')[0];
+            var reportLog = $('#ReportLogo').prop('files')[0];
+            console.log(orgLog);
+            console.log(reportLog);
+            //console.log();
+            if (ValidateOrgFrm() == true) {
+                //var orgId = hdfOrgId.val() == '' ? '0' : hdfOrgId.val();
+                //var isChecked = chkIsactive.is(":checked");
+                //var data = {
+                //    orgId: orgId,
+                //    orgName: txtOrgName.val(),
+                //    address: txtAddress.val(),
+                //    telePhone: txtTelephone.val(),
+                //    mobileNumber: txtMobileNumber.val(),
+                //    fax: txtFax.val(),
+                //    email: txtEmail.val(),
+                //    isActive: isChecked,
+                //    OrgImage: orgLog,
+                //    ReportImage: reportLog
+                //};
+                //console.log('New Data');
+                //console.log(data);
+
+                var orgId = hdfOrgId.val() == '' ? '0' : hdfOrgId.val();
+                var isChecked = chkIsactive.is(":checked");
+                var formData = new FormData();
+                formData.append("OrgId", orgId);
+                formData.append("OrgName", txtOrgName.val());
+                formData.append("Address", txtAddress.val());
+                formData.append("Telephone", txtTelephone.val());
+                formData.append("MobileNumber", txtMobileNumber.val());
+                formData.append("Fax", txtFax.val());
+                formData.append("Email", txtEmail.val());
+                formData.append("IsActive", isChecked);
+                formData.append("OrgImage", orgLog);
+                formData.append("ReportImage", reportLog);
+                // Display the values
+                //console.log("Form Values");
+                //for (var value of formData.values()) {
+                //    console.log(value);
+                //}
+
+                $.when(SaveData(formData)).then(function (res) {
+                    console.log(res);
+                }).fail(function (err) {
+                    console.log(err);
+                })
+            }
+
+        })
+
+        function ValidateOrgFrm() {
+            var isValid = true;
+
+            if ($.trim(txtOrgName.val()) == '') {
+                $(".error.orgName").removeClass('hide');
+                isValid = false;
+            }
+            else {
+                $(".error.orgName").addClass('hide');
+            }
+
+            if ($.trim(txtAddress.val()) == '') {
+                $(".error.address").removeClass('hide');
+                isValid = false;
+            }
+            else {
+                $(".error.address").addClass('hide');
+            }
+
+            if ($.trim(txtMobileNumber.val()) == '') {
+                $(".error.mobile").removeClass('hide');
+                isValid = false;
+            }
+            else {
+                $(".error.mobile").addClass('hide');
+            }
+
+            if ($.trim(txtEmail.val()) == '') {
+                $(".error.email").removeClass('hide');
+                isValid = false;
+            }
+            else {
+                $(".error.email").addClass('hide');
+            }
+            if ($.trim(txtEmail.val()) != '') {
+                if (txtEmail.val().indexOf('.') == -1 || txtEmail.val().indexOf('@@') == -1) {
+                    $(".error.emailInvalid").removeClass('hide');
+                    isValid = false;
+                }
+                else {
+                    $(".error.emailInvalid").addClass('hide');
+                }
+            }
+            return isValid;
+        }
+
+        function SaveData(data) {
+            return $.ajax({
+                //contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                method: 'POST',
+                url: '/Admin/SaveOrg',
+                data: data,
+                processData: false,
+                contentType: false,
+                headers: getToken(),
+                success: function (result) {
+                    if (result == true) {
+                        clearControl();
+                        alert(execuStatus.successSave);
+                        $("#modal").hide();
+                        location.reload();
+                    }
+                    else {
+                        alert(execuStatus.fail)
+                    }
+                },
+                error: function (result) {
+                    console.log(result);
+                }
+            });
+        }
+
+        function clearControl() {
+            hdfOrgId.val('0');
+            txtOrgName.val('');
+            txtAddress.val('');
+            txtTelephone.val('');
+            txtMobileNumber.val('');
+            txtFax.val('');
+            txtEmail.val('');
+            hdfRowIndex.val('')
+        }
+
+        $(document).on('click', 'a.data-org-delete', function (e) {
+            e.preventDefault();
+            hdfRowIndex.val('');
+            tableRowIndex = $(this).parent().parents('tr').index() + 1;
+            var dialog = 'Are you sure you want to delete <b>' + $(this).parent().parents('tr').find('td:eq(1)').html() + '</b> ?';
+            hdfOrgId.val($(this).parent().parents('tr').find('td:eq(0)').html());
+            hdfRowIndex.val(tableRowIndex);
+            $("#modalDelete").modal();
+            $("#deltxt").text('');
+            $("#deltxt").append(dialog);
+            console.log(tableRowIndex);
+            //GetAllMenuItem();
+        })
+
+        $("#btnDelSubmit").click(function (e) {
+            e.preventDefault();
+            var data = JSON.stringify({
+                id: hdfOrgId.val()
+            })
+
+            $.when(DeleteData(data, hdfRowIndex.val())).then(function (res) {
+                console.log(res);
+            }).fail(function (err) {
+                console.log(err);
+            })
+        })
+
+        function DeleteData(data, rowIndex) {
+            return $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                method: 'POST',
+                url: '/Admin/DeleteOrg',
+                data: data,
+                headers: getToken(),
+                success: function (result) {
+                    if (result == true) {
+                        clearControl();
+                        alert(execuStatus.successDelete);
+                        $("#deltxt").text('');
+                        $("tr").eq(rowIndex).css("background-color", "#ff6347").fadeOut(800,
+                            function () {
+                                $("tr").eq(rowIndex).remove();
+                            });
+                        $("#modalDelete").hide();
+                        modalBackdropRemove();
+
+                    } else {
+                        console.log(execuStatus.fail);
+                    }
+                },
+                error: function (result) {
+                    console.log(result);
+                }
+            })
+        }
+
+        $('#modal').on('hidden.bs.modal', function (e) {
+            clearControl();
+        })
+
+        $('#modalDelete').on('hidden.bs.modal', function (e) {
+            clearControl();
+        })
+
+        $("#OrgLogo").change(function () {
+            readImg(this);
+        })
+        $("#ReportLogo").change(function () {
+            readImg(this);
+        })
+
+        function readImg(file) {
+            console.log(file.id);
+            if (file.files && file.files[0] && file.files[0].name != '') {
+                var reader = new FileReader();
+                //console.log("Img File");
+                reader.onload = function (e) {
+                    //console.log(e.target.result);
+                    if (file.id == "OrgLogo") {
+                        $("#imgOrg").attr("src", e.target.result);
+                    }
+                    else if (file.id == "ReportLogo") {
+                        $("#imgReport").attr("src", e.target.result);
+                    }
+
+                }
+                reader.readAsDataURL(file.files[0]);
+            }
+            else {
+                if (file.id == "OrgLogo") {
+                    $("#imgOrg").attr("src", "/Images/no_image.png");
+                }
+                else if (file.id == "ReportLogo") {
+                    $("#imgReport").attr("src", "/Images/no_image.png");
+                }
+            }
+        }
+
+    </script>
+}

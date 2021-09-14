@@ -1,0 +1,355 @@
+﻿@model IEnumerable<HMSBO.ViewModels.VmSubmenu>
+
+@{
+    ViewBag.Title = "List of Submenu";
+    ViewBag.BgColor = "#fff";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <input type="hidden" value="0" id="hdfSubmenuId" />
+    <div class="col-md-12">
+        <h2 style="display:inline-block">Submenu List</h2>
+        <button class="btn btn-primary float-right" type="button" id="btnAddSubmenu" title="Add New Submenu" onclick="OpenModal()">Add New Submenu</button>
+    </div>
+    <div class="col-md-12" style="overflow-y:scroll;height:650px">
+        <table class="table table-bordered table-hover table-responsive">
+            <thead>
+                <tr class="btn-info">
+                    <th>Submenu Id</th>
+                    <th>Submenu Name</th>
+                    <th>Controller Name</th>
+                    <th>Action Name</th>
+                    <th class="hide">MainMenuId</th>
+                    <th>Mainmenu Name</th>
+                    <th class="hide">Module Id</th>
+                    <th>Module Name</th>
+                    <th>Entry User</th>
+                    <th class="hide">IsShow</th>
+                    <th>Entry Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>@item.SubMenuId</td>
+                    <td>@item.SubMenuName</td>
+                    <td>@item.ControllerName</td>
+                    <td>@item.ActionName</td>
+                    <td class="hide">@item.MainMenuId</td>
+                    <td>@item.MainMenuName</td>
+                    <td class="hide">@item.ModuleId</td>
+                    <td>@item.ModuleName</td>
+                    <td>@item.EntryUser</td>
+                    <td class="hide">@item.IsShow</td>
+                    <td>@Html.DisplayFor(m => item.EntryDate)</td>
+                    <td>
+                        <a href="#" class="data-edit btn btn-circle btn-success" data-edit-item="@item.SubMenuId">
+                            <i class="fas fa-pen"></i>
+                        </a>
+                        |
+                        <a href="#" class="data-delete btn btn-circle btn-danger" data-delete-item="@item.SubMenuId">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    
+</div>
+
+<div class="modal fade" id="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header btn-warning">
+                <h4 class="modal-title" id="modalHeading">Add New Submenu</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <form id="frmSubmenu">
+                @Html.AntiForgeryToken()
+                <div class="modal-body">
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-list"></span></span>
+                        <input type="text" name="submenuname" class="form-control" id="txtsubMenuName" aria-describedby="" placeholder="Enter Submenu Name ">
+                    </div>
+                    <span class="hide error submenuName">Submenu name is required.</span>
+                    <br />
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-link"></span></span>
+                        <input type="text" name="controllername" class="form-control" id="txtcontrollername" aria-describedby="" placeholder="Enter Controller Name ">
+                    </div>
+                    <span class="hide error controllername">Controller name is required.</span>
+                    <br />
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-link"></span></span>
+                        <input type="text" name="actionname" class="form-control" id="txtActionName" aria-describedby="" placeholder="Enter action Name ">
+                    </div>
+                    <span class="hide error actionname">Action name is required.</span>
+                    <br />
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-apple"></span></span>
+                        <select class="form-control" name="mainmenuname" id="ddlMainMenu">
+                            <option value="-1">Select Mainmenu</option>
+                        </select>
+                    </div>
+                    <span class="hide error mainmenu">Mainmenu is required.</span>
+                    <br />
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-eye-open"></span></span>
+                        <span class="form-control"><input type="checkbox" id="chkIsShow" /> Is Viewable?</span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" id="btnSubmit" class="btn btn-primary" >Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalDelete">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header btn-warning">
+                <h4 class="modal-title">Delete A Submenu</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <form id="frmDelete">
+                <div class="modal-body ">
+                    <input type="hidden" value="" id="hdfRowIndex" />
+                    <span id="deltxt"></span>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" id="btnDelSubmit" class="btn btn-danger" data-dismiss="modal" data-target="#modalDelete">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script type="text/javascript">
+        var ddlMainMenu = $("#ddlMainMenu");
+        var txtsubMenuName = $("#txtsubMenuName");
+        var txtcontrollername = $("#txtcontrollername");
+        var txtActionName = $("#txtActionName");
+        var hdfSubmenuId = $("#hdfSubmenuId");
+        var hdfRowIndex = $("#hdfRowIndex");
+        var tableRowIndex = -1;
+        var chkIsShow = $("#chkIsShow");
+
+        $(document).ready(function () {
+            //loadDdlMainMenu();
+            LoadDropDown('/Common/GetMainMenuList', 'POST', ddlMainMenu);
+        })
+
+        function validateForm() {
+            var isValid = true;
+            if ($.trim(txtsubMenuName.val()) == '') {
+                $(".error.submenuName").removeClass('hide');
+                isValid = false;
+            }
+            else {
+                $(".error.submenuName").addClass('hide');
+            }
+
+            if ($.trim(txtcontrollername.val()) == '') {
+                $(".error.controllername").removeClass('hide');
+                isValid = false;
+            }
+            else {
+                $(".error.controllername").addClass('hide');
+            }
+
+            if ($.trim(txtActionName.val()) == '') {
+                $(".error.actionname").removeClass('hide');
+                isValid = false;
+            }
+            else {
+                $(".error.actionname").addClass('hide');
+            }
+
+            if (parseInt(ddlMainMenu.val()) < 1) {
+                $(".error.mainmenu").removeClass('hide');
+                isValid = false;
+            }
+            else {
+                $(".error.mainmenu").addClass('hide');
+            }
+
+            return isValid;
+        }
+
+        function OpenModal() {
+            $(".error").addClass('hide');
+            $("#modal").modal();
+            clearControl();
+            $("#btnSubmit").text("Save");
+            $("#modalHeading").text("Add New Submenu");
+        }
+
+        function loadDdlMainMenu() {
+            //if ($("#ddlMainMenu > option").length > 1) return;
+            $.ajax({
+                dataType: 'json',
+                type: 'POST',
+                url: '/Common/GetMainMenuList',
+                success: function (result) {
+                    console.log(result);
+                    $.each(result, function (index, item) {
+                        var option = "<option value='" + item.MMId + "'>" + item.MenuName + "</option>";
+                        ddlMainMenu.append(option);
+                    })
+                },
+                error: function (result) {
+                    console.log(result);
+                }
+            })
+        }
+
+        $("#btnSubmit").click(function (e) {
+            e.preventDefault();
+            console.log(ddlMainMenu.val());
+            if (validateForm() == false) return;
+            var subId = hdfSubmenuId.val() == '' ? '0' : hdfSubmenuId.val()
+
+            var frmdata = {
+                subMenuId: subId,
+                subMenuName: txtsubMenuName.val(),
+                controllerName: txtcontrollername.val(),
+                actionName: txtActionName.val(),
+                mainMenuId: ddlMainMenu.val(),
+                isShow: chkIsShow.is(":checked")
+            }
+            var data = JSON.stringify(frmdata);
+            //console.log(data);
+            $.when(SaveData(data)).then(function (res) {
+                console.log(res);
+            }).fail(function (err) {
+                console.log(err);
+            })
+        })
+
+        function SaveData(data) {
+            return $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                method: 'POST',
+                url: '/Admin/SaveSubmenu',
+                data: data,
+                headers:getToken(),
+                success: function (result) {
+                    if (result == true) {
+                        clearControl();
+                        $("#modal").hide();
+                        alert(execuStatus.successSave);
+                        location.reload();
+                    }
+                    else {
+                        alert(execuStatus.fail);
+                    }
+                },
+                error: function (result) {
+                    console.log(result);
+                }
+            })
+        }
+
+        function clearControl() {
+            hdfSubmenuId.val('0')
+            txtActionName.val('');
+            txtcontrollername.val('');
+            ddlMainMenu.val('-1');
+            txtsubMenuName.val('');
+            chkIsShow.prop("checked", false);
+        }
+
+        $(document).on('click', 'a.data-edit', function (e) {
+            e.preventDefault();
+            OpenModal();
+            hdfSubmenuId.val($(this).parent().parents('tr').find('td:eq(0)').html());
+            txtsubMenuName.val($(this).parent().parents('tr').find('td:eq(1)').html());
+            txtcontrollername.val($(this).parent().parents('tr').find('td:eq(2)').html());
+            txtActionName.val($(this).parent().parents('tr').find('td:eq(3)').html());
+            ddlMainMenu.val($(this).parent().parents('tr').find('td:eq(4)').html());
+            //console.log("BooleanValue" + $(this).parent().parents('tr').find('td:eq(9)').html());
+            if ($(this).parent().parents('tr').find('td:eq(9)').html() == "True")
+            {
+                chkIsShow.prop("checked",true)
+            }
+            
+
+            $("#btnSubmit").text("Update");
+            $("#modalHeading").text("Edit Submenu");
+        })
+
+        $(document).on('click', 'a.data-delete', function (e) {
+            e.preventDefault();
+            hdfRowIndex.val('');
+            tableRowIndex = $(this).parent().parents('tr').index() + 1;
+            var dialog = 'Are you sure you want to delete <b>' + $(this).parent().parents('tr').find('td:eq(1)').html() + '</b> ?';
+            hdfSubmenuId.val($(this).parent().parents('tr').find('td:eq(0)').html());
+            hdfRowIndex.val(tableRowIndex);
+            $("#modalDelete").modal();
+            $("#deltxt").text('');
+            $("#deltxt").append(dialog);
+            console.log(tableRowIndex);
+        })
+
+        $("#btnDelSubmit").click(function (e) {
+            e.preventDefault();
+
+            var data = JSON.stringify({
+                id: hdfSubmenuId.val()
+            })
+
+            $.when(DeleteData(data, hdfRowIndex.val())).then(function (res) {
+                console.log(res);
+            }).fail(function (err) {
+                console.log(err);
+            })
+        })
+
+        function DeleteData(data, rowIndex) {
+            return $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                method: 'POST',
+                url: '/Admin/DeleteSubmenu',
+                headers:getToken(),
+                data: data,
+                success: function (result) {
+                    if (result == true) {
+                        clearControl();
+                        $("#deltxt").text('');
+                        $("tr").eq(rowIndex).css("background-color", "#ff6347").fadeOut(800,
+                            function () {
+                                $("tr").eq(rowIndex).remove();
+                            });
+                        alert(execuStatus.successSave);
+                        
+                    } else {
+                        console.log(result);
+                        alert(execuStatus.fail);
+                    }
+                },
+                error: function (result) {
+                    console.log(result);
+                }
+            })
+        }
+
+        $('#modal').on('hidden.bs.modal', function (e) {
+            clearControl();
+        })
+        $('#modalDelete').on('hidden.bs.modal', function (e) {
+            clearControl();
+        })
+    </script>
+}
+

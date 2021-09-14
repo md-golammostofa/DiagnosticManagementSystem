@@ -1,0 +1,618 @@
+﻿@model IEnumerable<HMSBO.ViewModels.VmInvestigation>
+
+
+@{
+    ViewBag.Title = "List of Investigation";
+}
+<style>
+    #ui-id-1 {
+        z-index: 9999;
+    }
+</style>
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h5>List of Investigation</h5>
+                <hr />
+            </div>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form id="frmLstInvestigation">
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label class="control-label col-md-12 font-weight-bold" for="txtInvestigationName">Investigation Name</label>
+                                    <div class="col-md-12">
+                                        <input type="text" name="InvestigationName" id="txtInvestigationName" class="form-control form-control-sm search-control" placeholder="Search By Investigation" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label class="control-label col-md-12 font-weight-bold" for="txtFee">Fee</label>
+                                    <div class="col-md-12">
+                                        <input type="number" name="Fee" id="txtFees" class="form-control form-control-sm search-control" placeholder="Search By Fee" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label class="control-label col-md-12 font-weight-bold" style="visibility:hidden">Row Count:</label>
+                                    <div class="col-md-12">
+                                        <h3><label id="tbl-row-count">0</label><span style="font-size:x-small">Row(s)</span></h3>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label class="control-label col-md-12 font-weight-bold" style="visibility:hidden">Add Investigation</label>
+                                    <div class="col-md-12">
+                                        <button class="btn btn-primary btn-sm float-right" id="btnAddNew"><i class="fa fa-plus"></i> Create New </button>
+                                    </div>
+                                </div>
+                            </div>
+                            @*<div class="form-row">
+                                    <div class="form-group col-md-4"></div>
+                                    <div class="form-group col-md-4"></div>
+                                    <div class="form-group col-md-4"></div>
+                                </div>*@
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <table class="table table-bordered table-responsive-lg table-sm" id="tblInvestigation">
+            <thead>
+                <tr class="btn-info text-center">
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Fee)
+                    </th>
+                    <th>@Html.DisplayNameFor(model => model.RefFee)</th>
+                    <th>
+                        Organization
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EntryUser)
+                    </th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count() > 0)
+                {
+
+                    foreach (var item in Model)
+                    {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td align="right">
+                        @Html.DisplayFor(modelItem => item.Fee)
+                    </td>
+                    <td align="right">
+                    @Html.DisplayFor(modelItem => item.RefFee)
+                    </td>
+                    <td align="center">
+                        @Html.DisplayFor(modelItem => item.OrgName)
+                    </td>
+                    <td align="center">
+                        @Html.DisplayFor(modelItem => item.EntryUser)
+                    </td>
+
+                    <td class="text-center">
+                        <a href='#' class='data-edit btn btn-circle btn-success btn-sm' data-edit-item='@item.Id'><i class='fas fa-pen' title="Edit"></i></a>
+                    </td>
+                </tr>
+                    }
+
+                }
+                else
+                {
+                    <tr class="text-center empty-row">
+                        <td colspan="5">No Data Found</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="modalAddInvestigation">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add Investigations</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="frmInvestigation">
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <div class="col-md-12">
+                                <input type="text" name="InvestigationName" style="width:70%" class="form-control form-control-sm" placeholder="Enter Your Investigation Name" id="txtInvestigationNameChart" data-val-duplicate="The item is already added into your list" />
+                            </div>
+                            <div class="col-md-12">
+                                <span class="error hide add duplicate"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <div class="col-md-12">
+                                <table class="table table-bordered table-sm table-responsive-lg table-striped" id="tblInvestigationChart">
+                                    <thead class="btn-success">
+                                        <tr>
+                                            <th class="hide">Id</th>
+                                            <th width="15%">SL No</th>
+                                            <th>Investigation Name</th>
+                                            <th>Fee</th>
+                                            <th>Ref. Fee</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                            <div class="col-md-12">
+                                <span class="error hide addFee"></span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-warning" id="btnClear"><i class="fas fa-trash"></i> Clear </button>
+                <button type="button" class="btn btn-sm btn-danger" id="btnClose"><i>X</i> Close </button>
+                <button type="submit" class="btn btn-sm btn-primary" id="btnSave"><i class="fas fa-save"></i> Save </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalInv">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content ">
+            <div class="modal-header  btn-success">
+                <h4 class="modal-title" id="modalHeading">Create New Investigation</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <form id="frmInv" autocomplete="off">
+                <input type="hidden" id="hdfInvId" value="0" />
+                <input type="hidden" id="hdfChartId" value="0" />
+                @Html.AntiForgeryToken()
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label class="control-label col-md-10 font-weight-bold" for="">Investigation Name:</label>
+                            <div class="col-md-10 input-group">
+                                <input type="text" id="Name" name="Name" class="form-control form-control-sm" readonly="readonly" disabled="disabled" />
+                                <span class="text-danger">*</span>
+                            </div>
+                            <span class="error hide NameReq">Investigation Name is required..</span>
+                            <span class="error hide DupName">Investigation Name is not found..</span>
+                            <span class="error hide chartId">Chart id is missing. Please reload the table.</span>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="control-label col-md-10 font-weight-bold" for="">Fee:</label>
+                            <div class="col-md-10 input-group">
+                                <input type="number" id="Fee" name="Fee" class="form-control form-control-sm" />
+                                <span class="text-danger">*</span>
+                            </div>
+                            <span class="error hide FeeReq">Fee is required..</span>
+                            <span class="error hide FeeValZero">Fee can not be zero..</span>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="control-label col-md-10 font-weight-bold" for="">Ref. Fee:</label>
+                            <div class="col-md-10 input-group">
+                                <input type="number" id="refFee" name="refFee" class="form-control form-control-sm" />
+                                <span class="text-danger">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4"></div>
+                    </div>
+                    <div class="form-row"></div>
+                    <div class="form-row"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" id="btnSubmit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+
+        var txtInvestigation = $("#Name");
+        var txtFee = $("#Fee");
+        var hdfInvId = $("#hdfInvId");
+        var hdfChartId = $("#hdfChartId");
+        var txtrefFee = $("#refFee");
+
+        // Search Control //
+        var txtInvestigationName = $("#txtInvestigationName");
+        var txtFees = $("#txtFees");
+        //---------------//
+
+        // ------------//
+        var txtInvestigationNameChart = $("#txtInvestigationNameChart");
+        //-------------//
+
+        $(document).ready(function () {
+            tableRowCount();
+        });
+
+        function tableRowCount() {
+            var rowCount = $("#tblInvestigation tbody tr").length;
+            if (rowCount == 1) {
+                if (!($("#tblInvestigation tbody tr:first-child").hasClass("empty-row"))) {
+                    $("#tbl-row-count").text(rowCount);
+                }
+                else {
+                    $("#tbl-row-count").text('0');
+                }
+            }
+            else {
+                $("#tbl-row-count").text(rowCount);
+            }
+        }
+
+        $(document).on('keyup', '.search-control', function () {
+            loadDataTable();
+        })
+
+        function loadDataTable() {
+            var value1 = txtInvestigationName.val().trim() == '' ? '' : txtInvestigationName.val().trim();
+            var value2 = TryParseFloat(txtFees.val().trim(), 0) == 0 ? 0 : txtFees.val().trim();
+
+            var data = { InvestigationName: value1, Fees: value2 };
+            console.log(data);
+
+            $.when(getReqWithData(dataType.json, 'GET', '/Diagnostic/GetInvestigationList', data)).then(function (resData, status) {
+                console.log(resData);
+                reBindtableAfterAjaxCalling(resData);
+
+                var count = resData.length == 0 ? 0 : resData.length;
+                console.log(count);
+                $("#tbl-row-count").text(count);
+            }).fail(function (err) {
+                console.log(err);
+            })
+        }
+
+        function reBindtableAfterAjaxCalling(dataObj) {
+            $("#tblInvestigation tbody tr").empty();
+
+            if (dataObj.length == 0)
+            {
+                var td1 = '<td colspan="5">No Data Found</td>'
+                var tr = '<tr class="text-center empty-row">' + td1 + '</tr>'
+                $("#tblInvestigation tbody").append(tr);
+            } else {
+                $.each(dataObj, function (index,item) {
+                    var td1 = '<td>' + item.Name + '</td>';
+                    var td2 = '<td align="right">' + item.Fee + '</td>';
+                    var td3 = '<td align="right">' + item.RefFee + '</td>';
+                    var td4 = '<td align="center">' + item.OrgName + '</td>';
+                    var td5 = '<td align="center">' + item.EntryUser + '</td>';
+                    var td6 = "<td class='text-center'><a href='#' class='data-edit btn btn-circle btn-success btn-sm' data-edit-item='" + item.Id + "'><i class='fas fa-pen' title='Edit'></i></a></td>";
+                    var tr = '<tr>' + td1 + td2 + td3 + td4 + td5 + td6 + '</tr>';
+                    $("#tblInvestigation tbody").append(tr);
+                })
+            }
+
+        }
+
+        function OpenModal() {
+            clrCtrl();
+            $(".error").addClass("hide");
+            $("#modalHeading").text('Create New Investigation');
+            $("#btnSubmit").text('Save');
+            $("#modalInv").modal();
+        }
+
+        $("#btnAddNew").click(function (e) {
+            e.preventDefault();
+            OpenEntryModal();
+        })
+
+        function OpenEntryModal()
+        {
+            txtInvestigationNameChart.val("");
+            $("#modalAddInvestigation").modal("show");
+            $(".error").addClass("hide");
+            //$("#tblInvestigationChart tbody").empty();
+        }
+
+        $("#btnSubmit").click(function (e) {
+            e.preventDefault();
+            if (validation()) {
+                var id = hdfInvId.val() == "" ? "0" : hdfInvId.val();
+                var data = { Id: id, Name: txtInvestigation.val(), Fee: txtFee.val(), ChartId: hdfChartId.val(), RefFee: txtrefFee.val() };
+                data = JSON.stringify(data);
+                //console.log(data);
+
+                $.when(postReqWithToken(dataType.applicationJson, dataType.json, 'POST', '/Diagnostic/SaveInvestigation', data, getToken())).then(function (res, status) {
+                    if (res) {
+                        clrCtrl();
+                        alert(execuStatus.successSave);
+                        $("#modalInv").modal("toggle");
+                        loadDataTable();
+                    }
+                    else {
+                        alert(execuStatus.fail);
+                    }
+                    //alert(res);
+                }).fail(function (err) {
+                    alert(execuStatus.fail);
+                })
+            }
+        })
+
+        function validation() {
+            var isValid = true;
+            $(".error").addClass('hide');
+
+            if (txtInvestigation.val().trim() == '')
+            {
+                isValid = false;
+                $(".error.NameReq").removeClass("hide");
+            }
+            else {
+                var id = hdfChartId.val() == "" ? "0" : hdfChartId.val();
+                if (ajaxBooleanChecker(JSON.stringify({ChartId: id}), '/Common/IsInvestigationExist',getToken()) == false) {
+                    isValid = false;
+                    $(".error.DupName").removeClass("hide");
+                }
+            }
+            if (TryParseFloat(txtFee.val().trim(),0) == 0) {
+                isValid = false;
+                $(".error.FeeReq").removeClass("hide");
+            }
+
+            if (hdfChartId.val() == "" || TryParseInt(hdfChartId.val(), 0) <= 0) {
+                //chartId
+                isValid = false;
+                $(".error.chartId").removeClass("hide");
+            }
+
+            return isValid;
+        }
+
+        $(document).on("click", "a.data-edit", function (e) {
+            e.preventDefault();
+            var id = $(this).attr('data-edit-item');
+            //var val = hdfInvId.val() == '' ? '0' : parseInt(hdfInvId.val()).toString();
+            $.when(getReqWithData(dataType.json, 'GET', '/Diagnostic/GetInvestigationById', { id: id })).then(function (res, status) {
+                //console.log(res);
+                //console.log(status);
+                if (res != null) {
+                    OpenModal();
+                    fnModalHeadChange("Update Investigation")
+                    hdfInvId.val(res.Id);
+                    hdfChartId.val(res.ChartId);
+                    txtInvestigation.val(res.Name);
+                    txtFee.val(res.Fee);
+                    txtrefFee.val(res.RefFee)
+                }
+            }).fail(function (err) {
+                console.log(err);
+            })
+        })
+
+        function clrCtrl() {
+            txtInvestigation.val('');
+            txtFee.val('');
+            hdfInvId.val('0')
+            hdfChartId.val('0');
+            txtrefFee.val('');
+        }
+
+        // AutoComplete Feature Implementation //
+        var objData = {};
+        txtInvestigationNameChart.autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: '@Url.Action("GetInvestigationChart", "Common")',
+                    type:'POST',
+                    dataType: "json",
+                    data: { contextKey: txtInvestigationNameChart.val() },
+                    headers:getToken(),
+                    success: function (data) {
+                        $(".error.add").addClass("hide");
+                        objData = {};
+                        response($.map(data, function (item) {
+                            return { label: item.Name, value: item.Name,id:item.Id};
+                        }));
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error");
+                    }
+                });
+            },
+            select: function (event, ui) {
+                objData = {};
+                objData = ui.item;
+                dataObjPassingForBind(objData);
+                console.log(objData);
+                ui.item.value = "";
+                ui.item.id = "";
+            },
+            messages: {
+                noResults: "failure"
+            },
+            minLength: 0
+        }).focus(function () {
+            $(this).autocomplete("search")
+            });
+
+        function dataObjPassingForBind(dataObj) {
+            if (!($.isEmptyObject(dataObj))) {
+                var isExist = false;
+                if ($("#tblInvestigationChart tbody tr").length == 0) {
+
+                    if (ajaxBooleanChecker(JSON.stringify({ ChartId: dataObj.id }),'/Common/IsInvestigationChartIdExistInList',getToken()) == false ) {
+                        tblDataBinding(dataObj);
+                    }
+                    else {
+                        $(".error.add.duplicate").removeClass("hide");
+                        $(".error.add.duplicate").text(dataObj.value + " is already exist into your system list");
+                    }
+                    
+                }
+
+                else {
+                    $.each($("#tblInvestigationChart tbody tr"), function (index,item) {
+                        var id = $(this).find("td:eq(0)").html();
+                        var name = $(this).find("td:eq(2)").html();
+                        if (id == objData.id || name == objData.value)
+                        {
+                            isExist = true;
+                            return;
+                        }
+                    })
+                    if (!isExist)
+                    {
+                        //tblDataBinding(dataObj);
+                        //txtInvestigationNameChart.val('');
+                        if (ajaxBooleanChecker(JSON.stringify({ ChartId: dataObj.id }), '/Common/IsInvestigationChartIdExistInList', getToken()) == false) {
+                            tblDataBinding(dataObj);
+                        }
+                        else {
+                            $(".error.add.duplicate").removeClass("hide");
+                            $(".error.add.duplicate").text(dataObj.value + " is already exist into your system list");
+                        }
+                    }
+                    else {
+                        $(".error.add.duplicate").removeClass("hide");
+                        $(".error.add.duplicate").text(dataObj.value + " is already added into your list");
+                    }
+                }
+            }
+        }
+
+        function tblDataBinding(dataObj) {
+            var totalRow = $("#tblInvestigationChart tbody tr").length + 1;
+            var td1 = "<td class='text-center' width='10%'>" + totalRow + "</td>";
+            var td2 = "<td class='hide'>" + dataObj.id + "</td>";
+            var td3 = "<td>" + dataObj.value + "</td>";
+            var td4 = "<td width='15%'><input type='number' name='fee' class='form-control form-control-sm data-fee-control'  value='0'/></td>";
+            var td5 = "<td width='15%'><input type='number' name='reffee' class='form-control form-control-sm data-reffee-control'  value='0'/></td>";
+            var td6 = "<td class='text-center' width='10%'><a href='#' class='data-fee-del btn btn-circle btn-danger btn-sm'><i class='fas fa-trash' title='Remove'></i></a></td>";
+            var tr = "<tr>" + td1 + td2 + td3 + td4 + td5 + td6 + "</tr>";
+            $("#tblInvestigationChart tbody").append(tr);
+        }
+
+        $(document).on("click", "a.data-fee-del", function (e) {
+            e.preventDefault();
+            var index = $(this).parent().parents('tr').index();
+            fnRemoveARowFromTbody("#tblInvestigationChart", index);
+            fnFixTheTbodyRowSerial("#tblInvestigationChart", index);
+        })
+
+        $("#btnClear").click(function (e) {
+            e.preventDefault();
+            $("#tblInvestigationChart tbody tr").empty();
+            txtInvestigationNameChart.val('');
+        })
+
+        $("#btnClose").click(function (e) {
+            e.preventDefault();
+            $("#modalAddInvestigation").modal("toggle");
+            $("#tblInvestigationChart tbody tr").empty();
+            txtInvestigationNameChart.val('');
+        })
+
+        $("#btnSave").click(function (e) {
+            e.preventDefault();
+            $(".error.addFee").addClass("hide");
+            if (validateListOfInvestigation() == true) {
+                var data = [];
+                data.length = 0;
+                $.each($("#tblInvestigationChart tbody tr"), function (index, item) {
+                    var textBox = $(this).find("td:eq(3)").children("input[type='number']");
+                    var textBox2 = $(this).find("td:eq(4)").children("input[type='number']");
+
+                    var id = parseInt($(this).find("td:eq(1)").html());
+                    var name = $(this).find("td:eq(2)").html();
+                    var fee = parseFloat(textBox.val());
+                    var reffee = parseFloat(textBox2.val());
+
+                    data.push({ ChartId: id, Name: name, Fee: fee, RefFee: reffee });
+                })
+                //console.log(data);
+
+                if (data.length > 0)
+                {
+                    data = JSON.stringify(data);
+                    console.log(data);
+                    //var token = getToken();
+                    //
+                    //return console.log(data);
+                    $.when(postReqWithToken(dataType.applicationJson, dataType.json, 'POST', '/Diagnostic/SaveInvestigationFromChart',data, getToken())).then(function (res, status)
+                    {
+                        console.log(res);
+                        console.log(status);
+                        if (res == true)
+                        {
+                            alert(execuStatus.successSave);
+                            loadDataTable();
+                            $("#modalAddInvestigation").modal("toggle");
+                            $("#tblInvestigationChart tbody tr").empty();
+                            txtInvestigationNameChart.val('');
+                        }
+                        else {
+                            alert(execuStatus.fail);
+                        }
+                    }).fail(function (error) {
+                        console.log(error);
+                    })
+                }
+            } else {
+                $(".error.addFee").removeClass("hide");
+                $(".error.addFee").text('Fee cannot be 0 or less than zero');
+            }
+        })
+
+        $(document).on("keyup", ".data-fee-control", function (e) {
+            if ($(this).val() == "") {
+                $(this).addClass("errorBack");
+            }
+            else {
+                if (TryParseFloat($(this).val(), 0) <= 0)
+                {
+                    $(this).addClass("errorBack");
+                }
+                else {
+                    $(this).removeClass("errorBack");
+                }
+            }
+        })
+
+        function validateListOfInvestigation() {
+            var isValid = true;
+            if ($("#tblInvestigationChart tbody tr").length > 0)
+            {
+                $.each($("#tblInvestigationChart tbody tr"), function (index,item) {
+                    //
+                    var itemTextBox = $(this).find("td:eq(3)").children("input[type='number']");
+                    var val = itemTextBox.val();
+                    if (TryParseFloat(val,0) <= 0)
+                    {
+                        isValid = false;
+                        itemTextBox.addClass("errorBack");
+                    }
+                })
+            }
+            else {
+                isValid = false;
+            }
+            return isValid;
+        }
+
+    </script>
+}
+

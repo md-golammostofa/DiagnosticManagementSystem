@@ -1,0 +1,433 @@
+﻿
+@{
+    ViewBag.Title = "User Authorization";
+    ViewBag.BgColor = "#fff";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <div class="alert alert-success">
+            <i class="fas fa-users-cog"></i><b> User Authorization</b>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6 margin-bottom-5px">
+        <div class="input-group">
+            <!--Find User Autocomplete-->
+            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+            <input type="text" name="findUser" class="form-control" id="txtfindUser" placeholder="Enter User Name">
+            <input type="hidden" id="hdfUserId" value="0" />
+            <!--Find User Autocomplete End-->
+        </div>
+    </div>
+    <div class="col-md-6 ">
+        <input type="submit" name="save" value=" Save" class="btn btn-success float-right" id="btnSave" />
+    </div>
+</div>
+<br />
+<div class="row">
+    @Html.AntiForgeryToken()
+    <div class="col-md-12 alert alert-info hide" id="tblUserInfo">
+        @* User Info Container *@
+    </div>
+    <br />
+    <div class="col-md-12" style="overflow-y:scroll;max-height:440px">
+        <table class="table table-hover table-responsive" id="tblMenuData" style="width:100%"></table>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        var txtfindUser = $("#txtfindUser");
+        var hdfUserId = $("#hdfUserId");
+        var tblUserInfo = $("#tblUserInfo");
+        var objData = {};
+        var tblMenuData = $("#tblMenuData")
+        var btnSave = $("#btnSave");
+
+        // Autocomplete for user
+        txtfindUser.autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: '@Url.Action("GetUserList", "Common")',
+                    dataType: "json",
+                    data: { contextKey: $("#txtfindUser").val() },
+                    success: function (data) {
+                        objData = {};
+                        response($.map(data, function (item) {
+                            return { label: item.UserName, value: item.UserName, id: item.UserId};
+                        }));
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error");
+                    }
+                });
+            },
+            select: function (event, ui) {
+                hdfUserId.val('0');
+                objData = {};
+                objData = ui.item;
+                hdfUserId.val(ui.item.id);
+            }
+        })
+
+
+        txtfindUser.change(function () {
+            ////console.log('Text has been changed');
+            var objStatus= jQuery.isEmptyObject(objData);
+            ////console.log('Obj Status: '+objStatus);
+            if (objStatus == false)
+            {
+                if (txtfindUser.val() != objData.value && hdfUserId.val() != objData.id)
+                {
+                    hdfUserId.val('0')
+                    txtfindUser.val('');
+                    objData = {};
+                }
+                else {
+                    objData = {};
+                    getUserInfo(hdfUserId.val());
+                }
+            }
+            else if (objStatus == true) {
+                ////console.log('inside else');
+                tblUserInfo.addClass('hide');
+                hdfUserId.val('0')
+                txtfindUser.val('');
+                objData = {};
+                tblMenuData.empty();
+                bindDataToTable(objData, tblUserInfo);
+            }
+        })
+
+        function getUserInfo(id) {
+            $.ajax({
+                    url: '@Url.Action("GetUserInfo", "Common")',
+                    dataType: "json",
+                    data: { id: id},
+                    success: function (data) {
+                        ////console.log('User Info');
+                        ////console.log(data[0]);
+                        var userData = data[0];
+                        ////console.log('User Data');
+                        ////console.log(userData.UserId);
+                        bindDataToTable(userData, tblUserInfo);
+                        fnLoadingMenuItem(userData);
+                    },
+                    error: function (xhr, status, error) {
+                        alert(error);
+                    }
+                });
+        }
+
+        function bindDataToTable(data,id) {
+            if (id == tblUserInfo)
+            {
+                if (!$.isEmptyObject(data))
+                {
+                    var status = (data.IsActive == true) ? 'Active' : 'Inactive';
+                    //data.IsActive.toString()
+                    //var tr1 = '<tr class="alert-info"><td><b>First Name:</b></td><td>' + data.FirstName + '</td><td><b>Last Name:</b></td><td>' + data.LastName + '</td><td><b>User Name:</b></td><td>' + data.UserName + '</td></tr>'
+                    //var tr2 = '<tr class="alert-info"><td><b>Email:</b></td><td>' + data.Email + '</td><td><b>Status:</b></td><td>' + status + '</td><td><b>Org Name:</b></td><td>' + data.OrgName + '</td></tr>'
+                    //var trHead ='<tr><td colspan="6" class="alert-info"><b>User Info</b></tr>'
+                    //tblUserInfo.empty();
+                    //tblUserInfo.append(tr1);
+                    //tblUserInfo.append(tr2);
+
+                    //var div1 = '<div class="col-md-12"><div class="col-md-12 d-inline-block"><div class="col-md-4">First Name:</div><div class="col-md-8">' + data.FirstName + '</div></div>' + '<div class="col-md-4"><div class="col-md-4">Last Name:</div><div class="col-md-8">' + data.LastName + '</div></div>' + '<div class="col-md-4"><div class="col-md-4">User Name:</div><div class="col-md-8">' + data.UserName + '</div></div></div>';
+                    //var div2 = '<div class="col-md-12"><div class="col-md-4  d-inline-block"><div class="col-md-4">Email:</div><div class="col-md-8">' + data.Email + '</div></div>' + '<div class="col-md-4"><div class="col-md-4">Status:</div><div class="col-md-8">' + status + '</div></div>' + '<div class="col-md-4"><div class="col-md-4">Org Name:</div><div class="col-md-8">' + data.OrgName + '</div></div></div>';
+                    var div1 = '<div class="row"><div class="col-md-4"><b>First Name: </b><label>' + data.FirstName + '</label></div><div class="col-md-4"><b>Last Name: </b><label>' + data.LastName + '</label></div><div class="col-md-4"><b>User Name: </b><label>' + data.UserName + '</label></div></div>';
+                    var div2 = '<div class="row"><div class="col-md-4"><b>Email: </b><label>' + data.Email + '</label></div><div class="col-md-4"><b>Status: </b><label>' + status + '</label></div><div class="col-md-4"><b>Org Name: </b><label>' + data.OrgName + '</label></div></div>';
+                    tblUserInfo.empty();
+                    tblUserInfo.removeClass('hide');
+                    tblUserInfo.append(div1);
+                    tblUserInfo.append(div2);
+                }
+                else {
+                    tblUserInfo.empty();
+                    var tr ="<tr><td class='alert alert-success' colspan='6'>No User Found</td></tr>"
+                }
+            }
+
+        }
+
+        function fnLoadingMenuItem(data) {
+            var userId = data.UserId;
+
+            fnIsValidUser(data.UserId, data.UserName).done(function (data) {
+                if (data == true) {
+                    getReqWithData('json', 'get', '/Common/GetAllMenuItemForUserByOrg', { id: hdfUserId.val() }).done(function (result) {
+                        ////console.log('fnLoadingMenuItem');
+                        ////console.log(result);
+                        tblMenuData.empty();
+                        $.each(result, function (index, item) {
+                            //console.log('Menu Item');
+                            //console.log(item);
+                                var trModule = "<tr><td colspan='8' class='alert alert-warning text-center'><b>" + item.ModuleName + "</b></td></tr>";
+                                tblMenuData.append(trModule);
+                                ////console.log(item.Menus);
+                                $.each(item.Menus, function (idx, itm) {
+                                    ////console.log('Submenu');
+                                    ////console.log(itm.SubMenus);
+                                    var tr = "";
+                                    
+                                    $.each(itm.SubMenus, function (ix, im) {
+
+                                        var td1 = "<td data-mainmenu-id='" + itm.MenuId + "' class='text-center' style='vertical-align: middle'>" + itm.MenuName + "</td>";
+                                        var td2 = "<td class='alert alert-info " + (im.HasUser ? 'alert-danger' : '') + "'><input type='checkbox' name='" + im.SubMenuName + "' id='" + im.SubmenuId + "' data-val-for='submenu' " + (im.HasUser ? 'checked="checked"' : '') + "/> " + " " + im.SubMenuName + "</td>";
+                                        var td3 = "<td><input type='checkbox' data-control-for='action' data-action-for='" + im.SubmenuId + "' id='add" + im.SubmenuId + "' " + (im.Add ? 'checked="checked"' : '') + "> Add</input></td>";
+                                        var td4 = "<td><input type='checkbox' data-control-for='action' data-action-for='" + im.SubmenuId + "' id='edit" + im.SubmenuId + "' " + (im.Edit ? 'checked="checked"' : '') + "> Edit</input></td>";
+                                        var td5 = "<td><input type='checkbox' data-control-for='action' data-action-for='" + im.SubmenuId + "' id='deleteSubmenu" + im.SubmenuId + "' " + (im.Delete ? 'checked="checked"' : '') + "> Delete</input></td>";
+                                        var td6 = "<td><input type='checkbox' data-control-for='action' data-action-for='" + im.SubmenuId + "' id='approvalSubmenu" + im.SubmenuId + "' " + (im.Approval ? 'checked="checked"' : '') + "> Approval</input></td>";
+                                        var td7 = "<td><input type='checkbox' data-control-for='action' data-action-for='" + im.SubmenuId + "' id='reportSubmenu" + im.SubmenuId + "' " + (im.Report ? 'checked="checked"' : '') + "> Report</input></td>";
+                                        var isAll = false;
+                                        if (im.Add && im.Edit && im.Delete && im.Approval && im.Report) {
+                                            isAll = true;
+                                        }
+                                        var isAllactive = isAll ? 'checked="checked"' : '';
+                                        var td8 = "<td><input type='checkbox' data-action-for='" + im.SubmenuId + "' id='allSubmenu" + im.SubmenuId + "' " + isAllactive + "> All</input></td>";
+
+                                        var td9 = '<td style="display:none" data-ModuleName="' + item.ModuleName + '">' + item.ModuleId + '</td>';
+                                        var td10 = '<td style="display:none" data-MenuName="' + itm.MenuName + '">' + itm.MenuId + '</td>';
+                                        var td11 = '<td style="display:none" data-SubmenuName="' + im.SubMenuName + '">' + im.SubmenuId + '</td>';
+                                        tr += "<tr data-item-name='menurow'>" + td1 + td2 + td8 + td3 + td4 + td5 + td6 + td7 + td9 + td10 + td11 + "</tr>";
+                                    })
+                                    if (itm.SubMenus.length == 0) {
+                                        var td1 = "<td data-mainmenu-id='" + itm.MenuId + "' class='text-center' style='vertical-align: middle'>" + itm.MenuName + "</td>";
+                                        var td2 = "<td colspan='10'>No Submenus Found.</td>";
+                                        tr = "<tr data-item-name='menurow'>"+  td1 + td2 +"</tr>";
+                                    }
+                                    tblMenuData.append(tr);
+                                })
+                                if (item.Menus.length == 0) {
+                                    var trMenu = '<tr><td colspan="2" class="text-center">No Menus Found.</td></tr>';
+                                    tblMenuData.append(trMenu);
+                                }
+
+                            })
+                                fixit(tblMenuData);
+                    })
+                }
+            })
+        }
+
+        // Absoulate //
+        function fnPopulatingMenuItem(data) {
+            var userId = data.UserId;
+            fnIsValidUser(data.UserId, data.UserName).done(function (data) {
+                if (data == true) {
+                    fnHasUserMenuItem(userId).done(function (data) {
+                        if (data == true) {
+                            //console.log("User has got menu items");
+                        }
+                        else {
+                            //console.log("User does not have any menu item");
+                            $.ajax({
+                                dataType: 'json',
+                                url: '/Common/GetAllMenuItem',
+                                success: function (result) {
+                                    ////console.log("All Menu Items");
+                                    ////console.log(result);
+                                    tblMenuData.empty();
+                                    $.each(result, function (index,item) {
+                                        ////console.log(item);
+                                        var trModule = "<tr><td colspan='8' class='alert alert-warning text-center'><b>" + item.ModuleName + "</b></td></tr>";
+
+                                        tblMenuData.append(trModule);
+                                        ////console.log(item.Menus);
+                                        $.each(item.Menus, function (idx, itm) {
+                                            ////console.log('Submenu');
+                                            ////console.log(itm.SubMenus);
+                                            var checkboxes = "";
+                                            var submenuLength = 0;
+                                            var tr = "";
+                                            $.each(itm.SubMenus, function (ix,im) {
+                                                submenuLength += 1;
+                                                var td1 = "<td data-mainmenu-id='" + itm.MenuId + "' class='text-center'>" + itm.MenuName + "</td>";
+                                                var td2 = "<td class='form-control'><input type='checkbox' name='" + im.SubMenuName + "' id='" + im.SubmenuId+"' data-val-for='submenu'></input> " + im.SubMenuName + "</td>";
+                                                var td3 = "<td><input type='checkbox' data-action-for='" + im.SubmenuId+"' id='add" + im.SubmenuId + "'> Add</input></td>";
+                                                var td4 = "<td><input type='checkbox' data-action-for='" + im.SubmenuId +"' id='edit" + im.SubmenuId + "'> Edit</input></td>";
+                                                var td5 = "<td><input type='checkbox' data-action-for='" + im.SubmenuId +"' id='deleteSubmenu" + im.SubmenuId + "'> Delete</input></td>";
+                                                var td6 = "<td><input type='checkbox' data-action-for='" + im.SubmenuId +"' id='approvalSubmenu" + im.SubmenuId + "'> Approval</input></td>";
+                                                var td7 = "<td><input type='checkbox' data-action-for='" + im.SubmenuId +"' id='reportSubmenu" + im.SubmenuId + "'> Report</input></td>";
+                                                var td8 = "<td><input type='checkbox' data-action-for='" + im.SubmenuId + "' id='allSubmenu" + im.SubmenuId + "'> All</input></td>";
+
+                                                var td9 = '<td style="display:none" data-ModuleName="' + item.ModuleName+'">' + item.ModuleId + '</td>';
+                                                var td10 = '<td style="display:none" data-MenuName="'+itm.MenuName+'">' + itm.MenuId + '</td>';
+                                                var td11 = '<td style="display:none" data-SubmenuName="' + im.SubMenuName + '">' + im.SubmenuId + '</td>';
+                                                tr += "<tr data-item-name='menurow'>" + td1 + td2 + td8+td3 +td4+td5+td6+td7+td9+td10+td11+"</tr>";
+                                                ////console.log(itm.MenuName);
+                                            })
+                                            //var td1 = '<td>' + itm.MenuName + '</td>';
+                                            //var td2 = '<td>' + checkboxes + '</td>';
+                                            tblMenuData.append(tr);
+                                        })
+                                        if (item.Menus.length == 0) {
+                                            var trMenu = '<tr><td colspan="2" class="text-center">No Items Found.</td></tr>';
+                                            tblMenuData.append(trMenu);
+                                        }
+                                    })
+                                    fixit(tblMenuData);
+                                },
+                                error: function (err) {
+                                    //console.log(err);
+                                }
+                            })
+                        }
+                    })
+                }
+            })
+        }
+
+        function fixit(selector) {
+            selector.each(function () {
+                var values = $(this).find("tr>td:first-of-type")
+                var run = 1
+                for (var i = values.length - 1; i > -1; i--) {
+                    if (values.eq(i).text() === values.eq(i - 1).text()) {
+                        values.eq(i).remove()
+                        run++
+                    } else {
+                        values.eq(i).attr("rowspan", run)
+                        run = 1
+                    }
+                }
+            })
+        }
+
+        $(document).on('click', "input[type='checkbox'][data-val-for='submenu']", function (e) {
+            var i = $(this).is(':checked')
+            if (i == true)
+            {
+                $(this).parent().addClass('alert-danger');
+            }
+            else {
+                $(this).parent().removeClass('alert-danger');
+            }
+        })
+
+        $(document).on('click', 'input[type="checkbox"][data-control-for="action"]', function (e) {
+            //if ($(this).is(":checked")) {
+                var tr = $(this).parent().parents('tr');
+                var tdLength = $(this).parent().parents('tr').children('td').length;
+                var isReport = (tr.find('td').eq(tdLength - 4).children('input[type="checkbox"]').is(":checked")) == true ? true : false;
+                var isApproval = (tr.find('td').eq(tdLength - 5).children('input[type="checkbox"]').is(":checked")) == true ? true : false;
+                var isDelete = (tr.find('td').eq(tdLength - 6).children('input[type="checkbox"]').is(":checked")) == true ? true : false;
+                var isEdit = (tr.find('td').eq(tdLength - 7).children('input[type="checkbox"]').is(":checked")) == true ? true : false;
+                var isAdd = (tr.find('td').eq(tdLength - 8).children('input[type="checkbox"]').is(":checked")) == true ? true : false;
+
+                if (isReport && isApproval && isDelete && isEdit && isAdd) {
+                    tr.find('td').eq(tdLength - 9).children('input[type="checkbox"][id^="allSubmenu"]').prop("checked", true);
+                    //alert('data-control-for 1');
+                }
+                else {
+                    tr.find('td').eq(tdLength - 9).children('input[type="checkbox"][id^="allSubmenu"]').prop("checked", false);
+                    //alert('data-control-for 2');
+                }
+            //}
+        })
+
+        $(document).on("click","input[type='checkbox'][id^='allSubmenu']",function (e) {
+            var id = $(this).attr('data-action-for');
+            if ($(this).is(":checked")) {
+                ////console.log("All is checked");
+                $("input[type='checkbox'][data-action-for='" + id + "']").prop("checked", true);
+            }
+            else {
+                ////console.log("All is UnChecked");
+                $("input[type='checkbox'][data-action-for='" + id + "']").prop("checked", false);
+            }
+        })
+
+        function fnIsValidUser(id,user)
+        {
+            return $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                url: '/Common/isValidUser',
+                dataType: "json",
+                data: { id: id, username: user },
+                success: function (data) {
+                    //console.log('isValidUser'+ data);
+                },
+                error: function (xhr, status, error) {
+                    alert(error);
+                }
+            });
+        }
+
+        // Absoulate //
+        function fnHasUserMenuItem(id)
+        {
+            return $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                url: '/Common/IsUserMainItemExist',
+                data: { id: id },
+                success: function (result) {
+                    //console.log('IsUserMainItemExist: '+result);
+                },
+                error: function (err) {
+                    //console.log(err);
+                }
+            })
+        }
+
+        btnSave.click(function (e) {
+            e.preventDefault();
+            //data-item-name='menurow'
+            //var tr = $('#tblMenuData tr[data-item-name="menurow"]').length;
+            var dataAry = [];
+            dataAry.length = 0;
+            tblMenuData.each(function () {
+                //console.log('Inside Loop');
+                var trs = $(this).find('tr[data-item-name="menurow"]');
+                ////console.log(trs);
+                $.each(trs, function (index, item) {
+                    var tdLength = $(item).children('td').length;
+                    if (($(item).find('td').eq(tdLength - 10).children('input[type="checkbox"]').is(":checked")) == true) {
+                        var subMenuId = $(item).find('td').eq(tdLength - 1).html();
+                        var mainmenuId = $(item).find('td').eq(tdLength - 2).html();
+                        var moduleId = $(item).find('td').eq(tdLength - 3).html();
+                        var isReport = ($(item).find('td').eq(tdLength - 4).children('input[type="checkbox"]').is(":checked")) == true ? true : false;
+                        var isApproval = ($(item).find('td').eq(tdLength - 5).children('input[type="checkbox"]').is(":checked")) == true ? true : false;
+                        var isDelete = ($(item).find('td').eq(tdLength - 6).children('input[type="checkbox"]').is(":checked")) == true ? true : false;
+                        var isEdit = ($(item).find('td').eq(tdLength - 7).children('input[type="checkbox"]').is(":checked")) == true ? true : false;
+                        var isAdd = ($(item).find('td').eq(tdLength - 8).children('input[type="checkbox"]').is(":checked")) == true ? true : false;
+                        //console.log(isReport);
+                        dataAry.push({
+                            moduleId: moduleId,
+                            menuId: mainmenuId,
+                            subMenuId: subMenuId,
+                            isAdd: isAdd,
+                            isEdit: isEdit,
+                            isDelete: isDelete,
+                            isApproval: isApproval,
+                            isReport: isReport
+                        })
+                    }
+
+                })
+                ////console.log(dataAry);
+            })
+
+            var data = JSON.stringify({ userId: hdfUserId.val(), authorizeData: dataAry });
+            ////console.log('User Menu');
+            ////console.log(data);
+            ////console.log('User Id');
+            ////console.log(hdfUserId.val());
+            $.when(postReqWithToken('application/json; charset=utf-8', 'json', 'post', '/Admin/SaveUserMenu', data,getToken())).then(function (res) {
+                if (res == true) {
+                    alert(execuStatus.successSave)
+                }
+                else {
+                    alert(execuStatus.fail)
+                }
+            }).fail(function (err) {
+                //console.log(err);
+            })
+        })
+
+    </script>
+}

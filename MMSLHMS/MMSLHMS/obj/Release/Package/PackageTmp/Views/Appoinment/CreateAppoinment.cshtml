@@ -1,0 +1,176 @@
+﻿
+@{
+    ViewBag.Title = "CreateAppoinment";
+}
+
+<div class="row">
+    <div class="col-md-12 text-center">
+        <div class="card card-gray shadow">
+            <div class="card-header">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-4 text-left">
+                            <a href="/Appoinment/GetAppoinmentList" class="btn btn-sm btn-outline-primary" title="Back To List"><i class="fas fa-arrow-alt-circle-left"></i></a>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <h4><b>Create New Appoinment</b></h4>
+                        </div>
+                        <div class="col-md-4 hide">
+                            <button class="btn btn-outline-danger btn-sm float-lg-right" id="btnReset" title="RESET UI"><i class="fas fa-sync-alt"></i> </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card shadow">
+            <div class="card-header">
+                @Html.AntiForgeryToken()
+                <div class="row text-sm">
+                    <div class="col-md-3">
+                        <label for="ddlDoctorName" class="control-label font-weight-bold">Doctor Name</label>
+                        @Html.DropDownList("ddlDoctorName", (IEnumerable<SelectListItem>)ViewBag.ddlDoctorName, "--Select Doctor--", new { @class = "form-control form-control-sm select2 search-control" })
+                        <span class="error hide require-doctorName font-weight-bold">Specialist is required !</span>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group col-md-12">
+                            <label for="txtPatientName" class="control-label font-weight-bold">Patient Name</label>
+                            <input type="text" name="Patient" value="" id="txtPatientName" class="form-control form-control-sm search-control" />
+                            <span class="error hide require-patientName font-weight-bold">Patient is required !</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group col-md-12">
+                            <label for="txtPatientAddress" class="control-label font-weight-bold">Address</label>
+                            <input type="text" name="Address" value="" id="txtPatientAddress" class="form-control form-control-sm search-control" />
+                            <span class="error hide require-Address font-weight-bold">Address is required !</span>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group col-md-12">
+                            <label for="txtPatientMobile" class="control-label font-weight-bold">Patient Mobile</label>
+                            <input type="text" name="mobile" value="" id="txtPatientMobile" class="form-control form-control-sm search-control" />
+                            <span class="error hide require-Mobile font-weight-bold">Mobile is required !</span>
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                        <div class="form-group col-md-12">
+                            <label for="txtPatientAge" class="control-label font-weight-bold">Age</label>
+                            <input type="text" name="mobile" value="" id="txtPatientAge" class="form-control form-control-sm search-control" />
+                            <span class="error hide require-Mobile font-weight-bold">Age is required !</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row text-sm">
+                    <div class="col-md-3">
+                        <div class="form-group col-md-12">
+                            <label for="txtShifTime" class="control-label font-weight-bold">Shift</label>
+                            <select id="txtShifTime" name="docType" class="form-control form-control-sm">
+                                <option value="">--Selecet One--</option>
+                                <option value="Morning">Morning</option>
+                                <option value="Evening">Evening</option>
+                                <option value="AllDay">AllDay</option>
+                            </select>
+                            <span class="error hide require-shiftTime font-weight-bold">Hospital is required !</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group col-md-12">
+                            <label for="txtStatestatus" class="control-label font-weight-bold">State Status</label>
+                            <select id="txtStatestatus" name="status" class="form-control form-control-sm">
+                                <option value="">--Selecet One--</option>
+                                <option value="New Patient">New Patient</option>
+                                <option value="Report">Report</option>
+                                <option value="Follow Up">Follow Up</option>
+                                <option value="Conseling">Conseling</option>
+                            </select>
+                            <span class="error hide require-StateSatus font-weight-bold">Status is required !</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group col-md-12">
+                            <label for="dptAppoinmentDate" class="control-label font-weight-bold">Appoinment Date</label>
+                            <input type="date" name="appoinDate" value="" id="dptAppoinmentDate" class="form-control form-control-sm search-control" />
+                            <span class="error hide require-Address font-weight-bold">Date is required !</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 text-right">
+                        <label for="" class="control-label font-weight-bold" style="visibility:hidden"> Adddddddddddddddddddddd</label>
+                        <div class="clearfix">
+                            <button type="submit" class="btn btn-sm btn-success float-lg-right mr-1" id="btnSubmit" title="Make Appoinment"><i class="fas fa-plus"></i> Save Appoinment</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+     </div>
+ </div>
+@section Scripts{
+    <script type="text/javascript">
+        var ddlDoctorName = $("#ddlDoctorName");
+        var txtPatientName = $("#txtPatientName");
+        var txtPatientAddress = $("#txtPatientAddress");
+        var txtPatientMobile = $("#txtPatientMobile");
+        var txtShifTime = $("#txtShifTime");
+        var txtStatestatus = $("#txtStatestatus");
+        var dptAppoinmentDate = $("#dptAppoinmentDate");
+        var txtPatientAge = $("#txtPatientAge");
+
+
+        function validateInput() {
+            $('.error').addClass('hide');
+            var isValid = true;
+            if ($.trim(ddlDoctorName.val()) == "") {
+                $(".require-doctorName").removeClass("hide");
+                isValid = false;
+            }
+            if ($.trim(txtPatientName.val()) == "") {
+                $(".require-patientName").removeClass("hide");
+                isValid = false;
+            }
+            return isValid;
+        }
+
+
+        $("#btnSubmit").click(function (e) {
+            e.preventDefault();
+            $('.error').addClass('hide');
+            if (validateInput() == true) {
+                    var appoinment = {
+                        DoctorName: ddlDoctorName.val(),
+                        PatientName: txtPatientName.val(),
+                        PatientAddress: txtPatientAddress.val(),
+                        PatientMobile: txtPatientMobile.val(),
+                        SateStatus: txtStatestatus.val(),
+                        Shift: txtShifTime.val(),
+                        AppoinmentDate: dptAppoinmentDate.val(),
+                        Age: txtPatientAge.val(),
+
+                    }
+                    var data = JSON.stringify({ model: appoinment });
+                    //return console.log(data);
+                    $.when(postReqWithToken(dataType.applicationJson, dataType.json, 'POST', '/Appoinment/SaveAppoinment', data, getToken())).then(function (res, status) {
+                        if (res == true) {
+                            alert(execuStatus.successSave);
+
+                                setTimeout(function () {
+                                    redirectPage('@Url.Action("GetAppoinmentList")');
+                                }, 1000);
+                            }
+                            else {
+                            alert(execuStatus.fail);
+                            }
+                    }).fail(function (err) {
+                        alert(execuStatus.fail);
+                    })
+                }
+        });
+
+        function redirectPage(page) {
+            window.location.replace(page);
+        }
+    </script>
+    }

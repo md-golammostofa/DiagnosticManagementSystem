@@ -1,0 +1,48 @@
+E:\Yeasin_WorkStation\MMSLHMS\HMSBO\obj\Debug\HMSBO.csproj.CoreCompileInputs.cache
+E:\Yeasin_WorkStation\MMSLHMS\HMSBO\bin\Debug\HMSBO.dll
+E:\Yeasin_WorkStation\MMSLHMS\HMSBO\bin\Debug\HMSBO.pdb
+E:\Yeasin_WorkStation\MMSLHMS\HMSBO\obj\Debug\HMSBO.dll
+E:\Yeasin_WorkStation\MMSLHMS\HMSBO\obj\Debug\HMSBO.pdb
+E:\Yeasin_WorkStation\MMSLHMS\HMSBO\obj\Debug\HMSBO.csprojAssemblyReference.cache
+E:\Yeasin_WorkStation\Sources\MMSLHMS\HMSBO\bin\Debug\HMSBO.dll
+E:\Yeasin_WorkStation\Sources\MMSLHMS\HMSBO\bin\Debug\HMSBO.pdb
+E:\Yeasin_WorkStation\Sources\MMSLHMS\HMSBO\obj\Debug\HMSBO.csprojAssemblyReference.cache
+E:\Yeasin_WorkStation\Sources\MMSLHMS\HMSBO\obj\Debug\HMSBO.csproj.CoreCompileInputs.cache
+E:\Yeasin_WorkStation\Sources\MMSLHMS\HMSBO\obj\Debug\HMSBO.dll
+E:\Yeasin_WorkStation\Sources\MMSLHMS\HMSBO\obj\Debug\HMSBO.pdb
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\HMSBO\bin\Debug\HMSBO.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\HMSBO\bin\Debug\HMSBO.pdb
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\HMSBO\obj\Debug\HMSBO.csproj.CoreCompileInputs.cache
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\HMSBO\obj\Debug\HMSBO.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\HMSBO\obj\Debug\HMSBO.pdb
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\HMSBO\obj\Debug\HMSBO.csprojAssemblyReference.cache
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\HMSBO\bin\Debug\HMSBO.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\HMSBO\bin\Debug\HMSBO.pdb
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\HMSBO\obj\Debug\HMSBO.csprojAssemblyReference.cache
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\HMSBO\obj\Debug\HMSBO.csproj.CoreCompileInputs.cache
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\HMSBO\obj\Debug\HMSBO.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\HMSBO\obj\Debug\HMSBO.pdb
+E:\Yeasin_WorkStation\Works\Diagnostic Management System_19-Oct-2019\MMSLHMS\HMSBO\bin\Debug\HMSBO.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System_19-Oct-2019\MMSLHMS\HMSBO\bin\Debug\HMSBO.pdb
+E:\Yeasin_WorkStation\Works\Diagnostic Management System_19-Oct-2019\MMSLHMS\HMSBO\obj\Debug\HMSBO.csprojAssemblyReference.cache
+E:\Yeasin_WorkStation\Works\Diagnostic Management System_19-Oct-2019\MMSLHMS\HMSBO\obj\Debug\HMSBO.csproj.CoreCompileInputs.cache
+E:\Yeasin_WorkStation\Works\Diagnostic Management System_19-Oct-2019\MMSLHMS\HMSBO\obj\Debug\HMSBO.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System_19-Oct-2019\MMSLHMS\HMSBO\obj\Debug\HMSBO.pdb
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\HMSBO\bin\Debug\HMSBO.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\HMSBO\bin\Debug\HMSBO.pdb
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\HMSBO\obj\Debug\HMSBO.csprojAssemblyReference.cache
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\HMSBO\obj\Debug\HMSBO.csproj.CoreCompileInputs.cache
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\HMSBO\obj\Debug\HMSBO.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\HMSBO\obj\Debug\HMSBO.pdb
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\HMSBO\bin\Debug\HMSBO.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\HMSBO\bin\Debug\HMSBO.pdb
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\HMSBO\obj\Debug\HMSBO.csprojAssemblyReference.cache
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\HMSBO\obj\Debug\HMSBO.csproj.CoreCompileInputs.cache
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\HMSBO\obj\Debug\HMSBO.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\HMSBO\obj\Debug\HMSBO.pdb
+E:\GITHUBALLPROJECT\DiagnosticManagementSystem\MMSLHMS\HMSBO\bin\Debug\HMSBO.dll
+E:\GITHUBALLPROJECT\DiagnosticManagementSystem\MMSLHMS\HMSBO\bin\Debug\HMSBO.pdb
+E:\GITHUBALLPROJECT\DiagnosticManagementSystem\MMSLHMS\HMSBO\obj\Debug\HMSBO.csprojAssemblyReference.cache
+E:\GITHUBALLPROJECT\DiagnosticManagementSystem\MMSLHMS\HMSBO\obj\Debug\HMSBO.csproj.CoreCompileInputs.cache
+E:\GITHUBALLPROJECT\DiagnosticManagementSystem\MMSLHMS\HMSBO\obj\Debug\HMSBO.dll
+E:\GITHUBALLPROJECT\DiagnosticManagementSystem\MMSLHMS\HMSBO\obj\Debug\HMSBO.pdb

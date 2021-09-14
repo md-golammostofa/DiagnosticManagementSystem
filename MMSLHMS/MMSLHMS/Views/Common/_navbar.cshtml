@@ -1,0 +1,79 @@
+﻿@model IEnumerable<HMSBO.ViewModels.VmMenu>
+@{
+    int count = 1;
+    string count2 = "item-1";
+    string action = string.Empty;
+    string controller = string.Empty;
+    if (User.OrgName == "PlayOn24 Limited")
+    {
+        action = "Index";
+        controller = "Admin";
+    }
+    else
+    {
+        action = "Index";
+        controller = "User";
+    }
+}
+
+
+
+<!-- Sidebar -->
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+        <div class="sidebar-brand-icon">
+            @*<i class="fas fa-hospital" title="@User.OrgName"></i>*@
+            <img src="@User.OrgLogo" alt="@User.OrgName" width="70" height="60" style="border-radius:50%"/>
+        </div>
+        @*<div class="sidebar-brand-text mx-3">@User.OrgName</div>*@
+    </a>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item active">
+        <a class="nav-link" href="@Url.Action(action,controller)">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+        </a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    @foreach (var item in Model)
+    {
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#@count2" aria-expanded="true" aria-controls="@count2">
+                <i class="fas fa-fw fa-angle-double-right"></i>
+                <span>@item.MenuName</span>
+            </a>
+            <div id="@count2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    @foreach (var s in item.SubMenus)
+                    {
+                        @*@Url.Action(s.ActionName, s.ControllerName)*@
+                        <a class="collapse-item navLink" href="@Url.Action(s.ActionName, s.ControllerName)" data-url="/@s.ControllerName/@s.ActionName">@s.SubMenuName</a>
+                    }
+
+                </div>
+            </div>
+
+        </li>
+
+
+        count = count + 1;
+        count2 = "item-" + count;
+    }
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+
+</ul>
+<!-- End of Sidebar -->

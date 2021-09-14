@@ -1,0 +1,173 @@
+﻿@model HMSBO.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Log In";
+    Layout = null;
+
+}
+<!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <title>Diagnostic Management System</title>
+        <!-- Meta tag Keywords -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="keywords" content="Utilizer Login Form template Responsive, Login form web template, Flat Pricing tables, Flat Drop downs Sign up Web Templates, Flat Web Templates, Login sign up Responsive web template, SmartPhone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+
+        <script>
+            addEventListener("load", function () {
+                setTimeout(hideURLbar, 0);
+            }, false);
+
+            function hideURLbar() {
+                window.scrollTo(0, 1);
+            }
+
+        </script>
+        <!-- //Meta tag Keywords -->
+        <!-- Custom-Files -->
+        <!-- Bootstrap-Core-CSS -->
+        <link rel="stylesheet" href="~/Content/css/dasloginstyle.css" type="text/css" media="all" />
+        <!-- Style-CSS -->
+        <!-- font-awesome-icons -->
+        <link href="~/Content/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        <!-- //font-awesome-icons -->
+        <!-- /Fonts -->
+        <link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700" rel="stylesheet">
+        <!-- //Fonts -->
+    </head>
+
+    <body>
+        <!-- main -->
+        <div>
+            <div class="main-top-intro">
+                <div class="bg-layer">
+                    <!-- header -->
+                    <div class="wrapper">
+                        <header>
+                            <div class="header-w3layouts">
+                                <h1>
+                                    <a class="navbar-brand logo" href="index.html">
+                                        Diagnostic Management System
+                                    </a>
+                                </h1>
+                            </div>
+                            <div class="nav_w3pvt"  style="visibility:hidden">
+                                <nav>
+                                    <label for="drop" class="toggle mt-lg-0 mt-2"><span class="fa fa-bars" aria-hidden="true"></span></label>
+                                    <input type="checkbox" id="drop" />
+                                    <ul class="menu">
+                                        <li class="active"><a href="#">Home</a></li>
+                                        <li class=""><a href="#">About</a></li>
+                                        <li class=""><a href="#">Services</a></li>
+                                        <li class="p-0">
+                                            <!-- First Tier Drop Down -->
+                                            <label for="drop-2" class="toggle">Pages <span class="fa fa-angle-down" aria-hidden="true"></span> </label>
+                                            <a href="#">Pages <span class="fa fa-angle-down" aria-hidden="true"></span></a>
+                                            <input type="checkbox" id="drop-2" />
+                                            <ul class="inner-dropdown">
+                                                <li><a href="#">Error Page</a></li>
+                                                <li><a href="#">About Us</a></li>
+                                                <li><a href="#">Contact Us</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Portfolio</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="buttons mt-lg-0 mt-3 ml-auto" style="visibility:hidden">
+                                <div class="form-w3layouts-grid">
+                                    <form action="#" method="post" class="newsletter">
+                                        <input class="search" type="search" placeholder="" required="">
+                                        <button class="form-control btn" value=""><span class="fa fa-search"></span></button>
+                                        <div class="clear"></div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+
+
+                        </header>
+                        <!-- //header -->
+
+                        <div class="content-inner-info">
+                            <h2>WelCome !!!</h2>
+                            <div class="content-w3layouts-main">
+                                <div class="form-w3ls-left-info">
+                                    @using (Html.BeginForm())
+                                    {
+                                        
+                                    <form action="#" method="post">
+                                        @Html.Partial("_token")
+                                        @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @placeholder = "User Name", @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+
+                                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @placeholder = "Password", @class = "form-control" } })
+
+                                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                        @*<div class="links">
+            <p><a href="#">Forgot Password?</a></p>
+        </div>*@
+                                        <div class="bottom">
+                                            <button class="btn" type="submit">Log In</button>
+                                            <button class="btn reg" type="reset">Reset</button>
+                                        </div>
+                                    </form>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- copyright -->
+                    <div class="copy-w3layouts-inf">
+                        <p>
+                            Copyright &copy; PlayOn24 2019
+                        </p>
+                        @*<ul class="list-unstyled w3layouts-icons">
+                            <li>
+                                <a href="#" class="face-b">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="twit">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="dribble">
+                                    <i class="fab fa-dribbble"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="vk">
+                                    <i class="fab fa-vk"></i>
+                                </a>
+                            </li>
+                        </ul>*@
+                        <div class="clear"></div>
+                    </div>
+                    <!-- //copyright -->
+                </div>
+            </div>
+        </div>
+        <!-- //main -->
+        <script src="~/Content/vendor/jquery/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(document).keypress(function (e) {
+                if (e.which == '13') {
+                    $("form").submit();
+                }
+            })
+
+        </script>
+    </body>
+    
+</html>
+
+

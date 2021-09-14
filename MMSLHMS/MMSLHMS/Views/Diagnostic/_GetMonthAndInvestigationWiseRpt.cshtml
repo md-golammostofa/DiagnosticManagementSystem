@@ -1,0 +1,49 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@*@model IEnumerable<HMSBO.ViewModels.vmMonthAndInvestigationReport>*@
+@model IPagedList<HMSBO.ViewModels.vmMonthAndInvestigationReport>
+@{
+    Layout = null;
+    int count = 0;
+}
+
+<div class="col-md-12">
+    <table class="table table-sm table-bordered table-responsive-lg table-hover" id="tblMonthAndInvesRpt">
+        <thead class="btn-info btn-sm">
+            <tr>
+                <th class="hide">Id</th>
+                <th>SL No</th>
+                <th>Month And Year</th>
+                <th>Investigation Name</th>
+                <th>Total  Qty</th>
+                <th>Total Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Count() > 0)
+            {
+                foreach (var item in Model)
+                {
+                    count = count + 1;
+                    <tr>
+                        <td class="hide">@item.InvestigationId</td>
+                        <td class="text-center">@count</td>
+                        <td>@item.MonthAndYear</td>
+                        <td>@item.InvestigationName</td>
+                        <td class="text-center">@item.TotalQty</td>
+                        <td align="right">@item.TotalAmount</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                count = 0;
+                <tr class="text-danger text-center empty-row">
+                    <td colspan="5">No Data Found</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @Html.PagedListPager(Model, page => Url.Action("", new { page }), new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded })
+</div>
+

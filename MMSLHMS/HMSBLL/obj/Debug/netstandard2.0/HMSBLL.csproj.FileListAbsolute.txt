@@ -1,0 +1,81 @@
+E:\Yeasin_WorkStation\MMSLHMS\HMSBLL\bin\Debug\netstandard2.0\HMSBLL.deps.json
+E:\Yeasin_WorkStation\MMSLHMS\HMSBLL\bin\Debug\netstandard2.0\HMSBLL.dll
+E:\Yeasin_WorkStation\MMSLHMS\HMSBLL\bin\Debug\netstandard2.0\HMSBLL.pdb
+E:\Yeasin_WorkStation\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.csprojAssemblyReference.cache
+E:\Yeasin_WorkStation\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.csproj.CoreCompileInputs.cache
+E:\Yeasin_WorkStation\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.AssemblyInfoInputs.cache
+E:\Yeasin_WorkStation\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.AssemblyInfo.cs
+E:\Yeasin_WorkStation\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.dll
+E:\Yeasin_WorkStation\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.pdb
+E:\Yeasin_WorkStation\Sources\MMSLHMS\HMSBLL\bin\Debug\netstandard2.0\HMSBLL.deps.json
+E:\Yeasin_WorkStation\Sources\MMSLHMS\HMSBLL\bin\Debug\netstandard2.0\HMSBLL.dll
+E:\Yeasin_WorkStation\Sources\MMSLHMS\HMSBLL\bin\Debug\netstandard2.0\HMSBLL.pdb
+E:\Yeasin_WorkStation\Sources\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.csprojAssemblyReference.cache
+E:\Yeasin_WorkStation\Sources\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.csproj.CoreCompileInputs.cache
+E:\Yeasin_WorkStation\Sources\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.AssemblyInfoInputs.cache
+E:\Yeasin_WorkStation\Sources\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.AssemblyInfo.cs
+E:\Yeasin_WorkStation\Sources\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.dll
+E:\Yeasin_WorkStation\Sources\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.pdb
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\HMSBLL\bin\Debug\netstandard2.0\HMSBLL.deps.json
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\HMSBLL\bin\Debug\netstandard2.0\HMSBLL.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\HMSBLL\bin\Debug\netstandard2.0\HMSBLL.pdb
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.csprojAssemblyReference.cache
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.csproj.CoreCompileInputs.cache
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.AssemblyInfoInputs.cache
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.AssemblyInfo.cs
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.pdb
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\HMSBLL\bin\Debug\netstandard2.0\HMSBLL.deps.json
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\HMSBLL\bin\Debug\netstandard2.0\HMSBLL.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\HMSBLL\bin\Debug\netstandard2.0\HMSBLL.pdb
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.csprojAssemblyReference.cache
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.csproj.CoreCompileInputs.cache
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.AssemblyInfoInputs.cache
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.AssemblyInfo.cs
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.pdb
+E:\Yeasin_WorkStation\Works\Diagnostic Management System_19-Oct-2019\MMSLHMS\HMSBLL\bin\Debug\netstandard2.0\HMSBLL.deps.json
+E:\Yeasin_WorkStation\Works\Diagnostic Management System_19-Oct-2019\MMSLHMS\HMSBLL\bin\Debug\netstandard2.0\HMSBLL.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System_19-Oct-2019\MMSLHMS\HMSBLL\bin\Debug\netstandard2.0\HMSBLL.pdb
+E:\Yeasin_WorkStation\Works\Diagnostic Management System_19-Oct-2019\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.csprojAssemblyReference.cache
+E:\Yeasin_WorkStation\Works\Diagnostic Management System_19-Oct-2019\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.csproj.CoreCompileInputs.cache
+E:\Yeasin_WorkStation\Works\Diagnostic Management System_19-Oct-2019\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.AssemblyInfoInputs.cache
+E:\Yeasin_WorkStation\Works\Diagnostic Management System_19-Oct-2019\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.AssemblyInfo.cs
+E:\Yeasin_WorkStation\Works\Diagnostic Management System_19-Oct-2019\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System_19-Oct-2019\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.pdb
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\HMSBLL\bin\Debug\netstandard2.0\HMSBLL.deps.json
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\HMSBLL\bin\Debug\netstandard2.0\HMSBLL.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\HMSBLL\bin\Debug\netstandard2.0\HMSBLL.pdb
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.csprojAssemblyReference.cache
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.csproj.CoreCompileInputs.cache
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.AssemblyInfoInputs.cache
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.AssemblyInfo.cs
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.pdb
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\HMSBLL\bin\Debug\netstandard2.0\HMSBLL.deps.json
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\HMSBLL\bin\Debug\netstandard2.0\HMSBLL.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\HMSBLL\bin\Debug\netstandard2.0\HMSBLL.pdb
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.csprojAssemblyReference.cache
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.csproj.CoreCompileInputs.cache
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.AssemblyInfoInputs.cache
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.AssemblyInfo.cs
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.pdb
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\HMSBLL\bin\Debug\netstandard2.0\HMSBLL.deps.json
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\HMSBLL\bin\Debug\netstandard2.0\HMSBLL.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\HMSBLL\bin\Debug\netstandard2.0\HMSBLL.pdb
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.csprojAssemblyReference.cache
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.csproj.CoreCompileInputs.cache
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.AssemblyInfoInputs.cache
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.AssemblyInfo.cs
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.pdb
+E:\GITHUBALLPROJECT\DiagnosticManagementSystem\MMSLHMS\HMSBLL\bin\Debug\netstandard2.0\HMSBLL.deps.json
+E:\GITHUBALLPROJECT\DiagnosticManagementSystem\MMSLHMS\HMSBLL\bin\Debug\netstandard2.0\HMSBLL.dll
+E:\GITHUBALLPROJECT\DiagnosticManagementSystem\MMSLHMS\HMSBLL\bin\Debug\netstandard2.0\HMSBLL.pdb
+E:\GITHUBALLPROJECT\DiagnosticManagementSystem\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.csprojAssemblyReference.cache
+E:\GITHUBALLPROJECT\DiagnosticManagementSystem\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.csproj.CoreCompileInputs.cache
+E:\GITHUBALLPROJECT\DiagnosticManagementSystem\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.AssemblyInfoInputs.cache
+E:\GITHUBALLPROJECT\DiagnosticManagementSystem\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.AssemblyInfo.cs
+E:\GITHUBALLPROJECT\DiagnosticManagementSystem\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.dll
+E:\GITHUBALLPROJECT\DiagnosticManagementSystem\MMSLHMS\HMSBLL\obj\Debug\netstandard2.0\HMSBLL.pdb

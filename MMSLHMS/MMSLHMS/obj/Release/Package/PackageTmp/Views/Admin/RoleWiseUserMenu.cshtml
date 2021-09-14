@@ -1,0 +1,248 @@
+﻿
+@{
+    ViewBag.Title = "Role Wise User Menu";
+    ViewBag.BgColor = "#fff";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <div class="alert alert-success">
+            <i class="fas fa-users-cog"></i><b> Role Wise User Authorization</b>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="input-group">
+                    <!--Role Dropdown-->
+                    <select class="form-control" name="Role" id="ddlRole" style="width:80px">
+                        <option value="-1">Select Role</option>
+                    </select>
+                    <!--Role Dropdown End-->
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <!--Org Dropdown-->
+                    <select class="form-control" name="Org" id="ddlOrg" style="width:80px">
+
+                    </select>
+                    <!--Org Dropdown End-->
+                </div>
+                <div class="input-group">
+                    
+                </div>
+            </div>
+            <div class="col-md-4">
+                <input type="submit" name="save" value=" Save" class="btn btn-success float-right" id="btnSave" />
+            </div>
+        </div>
+        
+    </div>
+</div>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        @Html.AntiForgeryToken()
+        <table class="table" id="tblUserInfo"></table>
+        <div class="col-md-12" style="overflow-y:scroll;max-height:460px">
+            <table class="table table-hover table-responsive" id="tblMenuData"></table>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        var txtfindUser = $("#txtfindUser");
+        var hdfUserId = $("#hdfUserId");
+        var tblMenuData = $("#tblMenuData")
+        var btnSave = $("#btnSave");
+        var ddlRole = $("#ddlRole");
+        var ddlOrg = $("#ddlOrg");
+
+        $(document).ready(function () {
+            LoadDropDown('/Common/GetRoleList', 'POST', ddlRole);
+            LoadDropDown('/Common/GetOrgList', 'POST', ddlOrg);
+            ddlOrg.val('@User.OrgId');
+        })
+
+        ddlRole.change(function () {
+            if (parseInt(ddlRole.val()) > 0) {
+                //alert('Selected')
+                fnLoadingMenuItem(ddlRole.val());
+            }
+            else {
+                tblMenuData.empty();
+            }
+        })
+        ddlOrg.change(function () {
+            if (parseInt(ddlRole.val()) > 0) {
+                //alert('Selected')
+                fnLoadingMenuItem(ddlRole.val());
+            }
+            else {
+                tblMenuData.empty();
+            }
+        })
+        
+        function fnLoadingMenuItem(data) {
+            var orgId = ddlOrg.val();
+            //, orgId: orgId
+            getReqWithData('json', 'get', '/Common/GetAllMenuItemForRoleByOrg', { roleId: data, orgId: orgId }).done(function (result) {
+                //console.log('fnLoadingMenuItem');
+                //console.log(result);
+                tblMenuData.empty();
+                $.each(result, function (index, item) {
+                    //console.log(item);
+                    var trModule = "<tr><td colspan='8' class='alert alert-warning text-center'><b>" + item.ModuleName + "</b></td></tr>";
+                    tblMenuData.append(trModule);
+                    //console.log(item.Menus);
+                    $.each(item.Menus, function (idx, itm) {
+                        //console.log('Submenu');
+                        //console.log(itm.SubMenus);
+                        var tr = "";
+                        $.each(itm.SubMenus, function (ix, im) {
+
+                            var td1 = "<td data-mainmenu-id='" + itm.MenuId + "' class='text-center'  style='vertical-align: middle'>" + itm.MenuName + "</td>";
+                            var td2 = "<td class='alert alert-info " + (im.HasRole ? 'alert-danger' : '') + "'><input type='checkbox' name='" + im.SubMenuName + "' id='" + im.SubmenuId + "' data-val-for='submenu' " + (im.HasRole ? 'checked="checked"' : '') + "/>" + im.SubMenuName + "</td>";
+
+                            var td3 = "<td><input type='checkbox' data-control-for='action' data-action-for='" + im.SubmenuId + "' id='add" + im.SubmenuId + "' " + (im.Add ? 'checked="checked"' : '') + "> Add</input></td>";
+                            var td4 = "<td><input type='checkbox' data-control-for='action' data-action-for='" + im.SubmenuId + "' id='edit" + im.SubmenuId + "' " + (im.Edit ? 'checked="checked"' : '') + "> Edit</input></td>";
+                            var td5 = "<td><input type='checkbox' data-control-for='action' data-action-for='" + im.SubmenuId + "' id='deleteSubmenu" + im.SubmenuId + "' " + (im.Delete ? 'checked="checked"' : '') + "> Delete</input></td>";
+                            var td6 = "<td><input type='checkbox' data-control-for='action' data-action-for='" + im.SubmenuId + "' id='approvalSubmenu" + im.SubmenuId + "' " + (im.Approval ? 'checked="checked"' : '') + "> Approval</input></td>";
+                            var td7 = "<td><input type='checkbox' data-control-for='action' data-action-for='" + im.SubmenuId + "' id='reportSubmenu" + im.SubmenuId + "' " + (im.Report ? 'checked="checked"' : '') + "> Report</input></td>";
+                            var isAll = false;
+                            if (im.Add && im.Edit && im.Delete && im.Approval && im.Report) {
+                                isAll = true;
+                            }
+                            var isAllactive = isAll ? 'checked="checked"' : '';
+                            var td8 = "<td><input type='checkbox' data-action-for='" + im.SubmenuId + "' id='allSubmenu" + im.SubmenuId + "' " + isAllactive + "> All</input></td>";
+
+                            var td9 = '<td style="display:none" data-ModuleName="' + item.ModuleName + '">' + item.ModuleId + '</td>';
+                            var td10 = '<td style="display:none" data-MenuName="' + itm.MenuName + '">' + itm.MenuId + '</td>';
+                            var td11 = '<td style="display:none" data-SubmenuName="' + im.SubMenuName + '">' + im.SubmenuId + '</td>';
+                            tr += "<tr data-item-name='menurow'>" + td1 + td2 + td8 + td3 + td4 + td5 + td6 + td7 + td9 + td10 + td11 + "</tr>";
+                            //console.log(itm.MenuName);
+                        })
+                        //var td1 = '<td>' + itm.MenuName + '</td>';
+                        //var td2 = '<td>' + checkboxes + '</td>';
+                        if (itm.SubMenus.length == 0) {
+                            var td1 = "<td data-mainmenu-id='" + itm.MenuId + "' class='text-center' style='vertical-align: middle'>" + itm.MenuName + "</td>";
+                            var td2 = "<td colspan='10'>No Submenus Found.</td>";
+                            tr = "<tr data-item-name='menurow' style='font-size:small'>" + td1 + td2 + "</tr>";
+                        }
+                        tblMenuData.append(tr);
+                    })
+                    if (item.Menus.length == 0) {
+                        var trMenu = '<tr><td colspan="2" class="text-center">No Items Found.</td></tr>';
+                        tblMenuData.append(trMenu);
+                    }
+                })
+                fixit(tblMenuData);
+            })
+        }
+
+        function fixit(selector) {
+            selector.each(function () {
+                var values = $(this).find("tr>td:first-of-type")
+                var run = 1
+                for (var i = values.length - 1; i > -1; i--) {
+                    if (values.eq(i).text() === values.eq(i - 1).text()) {
+                        values.eq(i).remove()
+                        run++
+                    } else {
+                        values.eq(i).attr("rowspan", run)
+                        run = 1
+                    }
+                }
+            })
+        }
+
+        $(document).on('click', "input[type='checkbox'][data-val-for='submenu']", function (e) {
+            var i = $(this).is(':checked')
+            if (i == true)
+            {
+                $(this).parent().addClass('alert-danger');
+            }
+            else {
+                $(this).parent().removeClass('alert-danger');
+            }
+        })
+
+        $(document).on('click', 'input[type="checkbox"][data-control-for="action"]', function (e) {
+            //if ($(this).is(":checked")) {
+                var tr = $(this).parent().parents('tr');
+                var tdLength = $(this).parent().parents('tr').children('td').length;
+                var isReport = (tr.find('td').eq(tdLength - 4).children('input[type="checkbox"]').is(":checked")) == true ? true : false;
+                var isApproval = (tr.find('td').eq(tdLength - 5).children('input[type="checkbox"]').is(":checked")) == true ? true : false;
+                var isDelete = (tr.find('td').eq(tdLength - 6).children('input[type="checkbox"]').is(":checked")) == true ? true : false;
+                var isEdit = (tr.find('td').eq(tdLength - 7).children('input[type="checkbox"]').is(":checked")) == true ? true : false;
+                var isAdd = (tr.find('td').eq(tdLength - 8).children('input[type="checkbox"]').is(":checked")) == true ? true : false;
+
+                if (isReport && isApproval && isDelete && isEdit && isAdd) {
+                    tr.find('td').eq(tdLength - 9).children('input[type="checkbox"][id^="allSubmenu"]').prop("checked", true);
+                    //alert('data-control-for 1');
+                }
+                else {
+                    tr.find('td').eq(tdLength - 9).children('input[type="checkbox"][id^="allSubmenu"]').prop("checked", false);
+                    //alert('data-control-for 2');
+                }
+            //}
+        })
+
+        $(document).on("click","input[type='checkbox'][id^='allSubmenu']",function (e) {
+            var id = $(this).attr('data-action-for');
+            if ($(this).is(":checked")) {
+                //console.log("All is checked");
+                $("input[type='checkbox'][data-action-for='" + id + "']").prop("checked", true);
+            }
+            else {
+                //console.log("All is UnChecked");
+                $("input[type='checkbox'][data-action-for='" + id + "']").prop("checked", false);
+            }
+        })
+
+        btnSave.click(function (e) {
+            e.preventDefault();
+            var dataAry = [];
+            dataAry.length = 0;
+            tblMenuData.each(function () {
+                console.log('Inside Loop');
+                var trs = $(this).find('tr[data-item-name="menurow"]');
+                //console.log(trs);
+                $.each(trs, function (index, item) {
+                    var tdLength = $(item).children('td').length;
+                    if (($(item).find('td').eq(tdLength - 10).children('input[type="checkbox"]').is(":checked")) == true) {
+                        var subMenuId = $(item).find('td').eq(tdLength - 1).html();
+                        var mainmenuId = $(item).find('td').eq(tdLength - 2).html();
+                        var moduleId = $(item).find('td').eq(tdLength - 3).html();
+                        var isReport = ($(item).find('td').eq(tdLength - 4).children('input[type="checkbox"]').is(":checked")) == true ? true : false;
+                        var isApproval = ($(item).find('td').eq(tdLength - 5).children('input[type="checkbox"]').is(":checked")) == true ? true : false;
+                        var isDelete = ($(item).find('td').eq(tdLength - 6).children('input[type="checkbox"]').is(":checked")) == true ? true : false;
+                        var isEdit = ($(item).find('td').eq(tdLength - 7).children('input[type="checkbox"]').is(":checked")) == true ? true : false;
+                        var isAdd = ($(item).find('td').eq(tdLength - 8).children('input[type="checkbox"]').is(":checked")) == true ? true : false;
+                        console.log(isReport);
+                        dataAry.push({
+                            moduleId: moduleId,
+                            menuId: mainmenuId,
+                            subMenuId: subMenuId,
+                            isAdd: isAdd,
+                            isEdit: isEdit,
+                            isDelete: isDelete,
+                            isApproval: isApproval,
+                            isReport: isReport
+                        })
+                    }
+                   
+                })
+                console.log(dataAry);
+            })
+
+            var data = JSON.stringify({ roleId: ddlRole.val(),orgId:ddlOrg.val() ,authorizeData: dataAry });
+            console.log(data);
+            $.when(postReqWithToken('application/json; charset=utf-8', 'json', 'post', '/Admin/SaveRoleMenu', data,getToken())).then(function (res) {
+                console.log(res);
+                alert(res);
+            }).fail(function (err) {
+                console.log(err);
+            })
+        })
+
+    </script>    
+}

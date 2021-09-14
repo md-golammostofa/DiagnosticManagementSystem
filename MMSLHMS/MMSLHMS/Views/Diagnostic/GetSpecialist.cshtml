@@ -1,0 +1,225 @@
+﻿@model IEnumerable<HMSBO.ViewModels.VmSpecialist>
+@{
+    ViewBag.Title = "List Of Specialist";
+    int sl = 0;
+}
+
+<style>
+    #ui-id-1 {
+        z-index: 9999;
+    }
+</style>
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h5>List of Specialist</h5>
+            </div>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form id="frmLstInvestigation">
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label class="control-label col-md-12 font-weight-bold" for="txtSpecialist">Specialist</label>
+                                    <div class="col-md-12">
+                                        <input type="text" name="Specialist" id="searchSpecialist" class="form-control form-control-sm search-control" placeholder="Search By Specialist" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-8">
+                                    <label class="control-label col-md-12 font-weight-bold" style="visibility:hidden">Add Specialist</label>
+                                    <div class="col-md-12">
+                                        <button class="btn btn-primary btn-sm float-right" id="btnAddNew"><i class="fa fa-plus"></i> Create New </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <table class="table table-bordered table-responsive-lg table-sm" id="tblSpecialist">
+            <thead class="btn-success">
+                <tr class="btn-info text-center">
+                    <th>SL</th>
+                    <th class="hide"></th>
+                    <th>Type Of Specialist</th>
+                    <th>Remarks</th>
+                    <th class="hide">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count() > 0)
+                {
+
+                    foreach (var item in Model)
+                    {
+                        sl = sl + 1;
+                        <tr>
+                            <td class="text-center">@sl</td>
+                            <th class="hide">@item.SpId</th>
+                            <td class="text-left">@item.Specialization</td>
+                            <td>@item.Remarks</td>
+                            <td class="text-center hide">
+                                <a href='#' class='data-edit btn btn-circle btn-success btn-sm' data-edit-item='@item.SpId'><i class='fas fa-pen' title="Edit"></i></a>
+                            </td>
+                        </tr>
+                    }
+
+                }
+                else
+                {
+                    <tr class="text-center empty-row">
+                        <td colspan="5">No Data Found</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="modal fade" id="modalSpecialist">
+    <div class="modal-dialog">
+        <div class="modal-content ">
+            <div class="modal-header  btn-success">
+                <h4 class="modal-title" id="modalHeading">Create New Specialist</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <form id="frmInv" autocomplete="off">
+                <input type="hidden" id="hdfSpId" value="0" />
+                @Html.AntiForgeryToken()
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label class="control-label col-md-12 font-weight-bold" for="">Specialist<span class="text-danger">*</span></label>
+                            <div class="col-md-12 input-group">
+                                <input type="text" id="txtSpecialist" name="Specialist" class="form-control form-control-sm" />
+                            </div>
+                            <span class="error hide required-specialist">Specialist is required..</span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label class="control-label col-md-12 font-weight-bold" for="">Remarks</label>
+                            <div class="col-md-12 input-group">
+                                <input type="text" id="txtRemarks" name="remarks" class="form-control form-control-sm" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-danger" id="btnCancel" title="Cancel the process"><i></i> Cancel </button>
+                        <button type="submit" id="btnSubmit" class="btn btn-sm btn-primary"><i class="fa fa-save"></i> Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        var searchSpecialist = $("#searchSpecialist");
+        var txtRemarks = $("#txtRemarks");
+        var txtSpecialist = $("#txtSpecialist");
+        var hdfSpId = $("#hdfSpId");
+
+        $(document).on('keyup', '.search-control', function () {
+            loadDataTable();
+        })
+
+        function loadDataTable() {
+            var data = { special: searchSpecialist.val() };
+            console.log(data);
+
+            $.when(getReqWithData(dataType.json, 'GET', '/Diagnostic/GetSpecialist', data)).then(function (resData, status) {
+                console.log(resData);
+                reBindtableAfterAjaxCalling(resData);
+
+                var count = resData.length == 0 ? 0 : resData.length;
+                console.log(count);
+                $("#tbl-row-count").text(count);
+            }).fail(function (err) {
+                console.log(err);
+            })
+        }
+
+        function reBindtableAfterAjaxCalling(dataObj) {
+            $("#tblSpecialist tbody tr").empty();
+
+            if (dataObj.length == 0) {
+                var td1 = '<td colspan="5">No Data Found</td>'
+                var tr = '<tr class="text-center empty-row">' + td1 + '</tr>'
+                $("#tblSpecialist tbody").append(tr);
+            } else {
+                $.each(dataObj, function (index, item) {
+                    var td1 = '<td align="center">' + (index+1) + '</td>';
+                    var td2 = '<td align="right" class="hide">' + item.SpId + '</td>';
+                    var td3 = '<td>' + item.Specialization + '</td>';
+                    var td4 = '<td align="center">' + item.Remarks + '</td>';
+                    var td5 = "<td class='text-center hide'><a href='#' class='data-edit btn btn-circle btn-success btn-sm' data-edit-item='" + item.SpId + "'><i class='fas fa-pen' title='Edit'></i></a></td>";
+                    var tr = '<tr>' + td1 + td2 + td3 + td4 + td5 + '</tr>';
+                    $("#tblSpecialist tbody").append(tr);
+                })
+            }
+
+        }
+
+        function OpenModal() {
+            clrCtrl();
+            $(".error").addClass("hide");
+            $("#modalHeading").text('Create New Specialist');
+            $("#btnSubmit").text('Save');
+            $("#modalSpecialist").modal();
+        }
+
+        $("#btnAddNew").click(function (e) {
+            e.preventDefault();
+            OpenModal();
+        })
+        function clrCtrl() {
+            txtSpecialist.val('');
+            txtRemarks.val('');
+            hdfSpId.val('0')
+        }
+
+        function validation() {
+            var isValid = true;
+            $(".error").addClass('hide');
+
+            if (txtSpecialist.val().trim() == '') {
+                isValid = false;
+                $(".required-specialist").removeClass("hide");
+            }
+            return isValid;
+        }
+        $("#btnSubmit").click(function (e) {
+            e.preventDefault();
+            if (validation()) {
+                var id = hdfSpId.val() == "" ? "0" : hdfSpId.val();
+                var data = { SpId: id, Specialization: txtSpecialist.val(), Remarks: txtRemarks.val() };
+                data = JSON.stringify(data);
+                //return console.log(data);
+
+                $.when(postReqWithToken(dataType.applicationJson, dataType.json, 'POST', '/Diagnostic/SaveSpecialist', data, getToken())).then(function (res, status) {
+                    if (res) {
+                        clrCtrl();
+                        alert(execuStatus.successSave);
+                        $("#modalSpecialist").modal("toggle");
+                        loadDataTable();
+                    }
+                    else {
+                        alert(execuStatus.fail);
+                    }
+                    //alert(res);
+                }).fail(function (err) {
+                    alert(execuStatus.fail);
+                })
+            }
+        })
+        $("#btnCancel").click(function (e) {
+            e.preventDefault();
+            $("#modalSpecialist").modal("toggle");
+        })
+    </script>
+    }

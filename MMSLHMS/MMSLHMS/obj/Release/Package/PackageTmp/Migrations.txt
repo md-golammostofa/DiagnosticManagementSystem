@@ -1,0 +1,11 @@
+
+To clear - cls
+
+Enable-Migrations -ConfigurationTypeName MMSLHMS.Migrations.Configuration
+
+Add-Migration '' -ConfigurationTypeName MMSLHMS.Migrations.Configuration
+
+Update-database -ConfigurationTypeName MMSLHMS.Migrations.Configuration
+
+--- Scripts
+Update-database -script -ConfigurationTypeName MMSLHMS.Migrations.Configuration

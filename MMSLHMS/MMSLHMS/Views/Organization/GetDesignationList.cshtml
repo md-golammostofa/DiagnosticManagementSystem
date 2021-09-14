@@ -1,0 +1,283 @@
+﻿
+@{
+    ViewBag.Title = "List of Designation";
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-6"><h2>List of Designation</h2></div>
+            <div class="col-md-6">
+                <button id="btnAddDesig" class="btn btn-success btn-sm float-right">Add New Designation</button>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="text" id="txtDesig" onkeyup="triggeringSearch()" class="form-control" placeholder="Search By Designation" style="width:350px"/>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <br />
+            <div class="col-md-12" style="overflow-y:scroll;height:580px">
+                <table class="table table-bordered" id="tblDesig">
+                    <thead class="btn-info">
+                        <tr>
+                            <th class="hide">DesigId</th>
+                            <th>Designation</th>
+                            <th>Short Name</th>
+                            <th>Organization Name</th>
+                            <th class="hide">Org Id</th>
+                            <th>Entry User</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalDesig">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header btn-success">
+                <h4 class="modal-title" id="modalHeading">Add New Designation</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <form id="frmDept" autocomplete="off">
+                <input type="hidden" id="hdfDesigId" value="0" />
+                @Html.AntiForgeryToken()
+                <div class="modal-body">
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-link"></span></span>
+                        <input type="text" name="Designation" class="form-control" id="txtDesignation" aria-describedby="" placeholder="Enter Designation">
+                    </div>
+                    <span class="hide error Designation">Designation is required.</span>
+                    <span class="hide error text-length">Designation lenght must be at least 5 character.</span>
+                    <br />
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-link"></span></span>
+                        <input type="text" name="shortName" class="form-control" id="txtShortName" aria-describedby="" placeholder="Enter Short Name">
+                    </div>
+                    <span class="hide error ShortName">Short Name is required.</span>
+                    <span class="hide error text-length-short">Short Name lenght cannot be greater than 10.</span>
+                    <div>
+                        <span class="hide error uniqueness">Duplicate Designation/ShortName Detected.</span>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" id="btnSubmit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+
+        var txtDesig = $("#txtDesig");
+        var txtDesignation = $("#txtDesignation");
+        var hdfDesigId = $("#hdfDesigId");
+        var txtShortName = $("#txtShortName");
+
+        function OpenModal() {
+            $("#modalDesig").modal();
+            fnModalHeadChange('Add New Designation');
+            $(".error").addClass("hide");
+            ClearCtrl();
+        }
+
+        $("#btnAddDesig").click(function (e) {
+            e.preventDefault();
+            OpenModal();
+            fnModalHeadChange('Add New Designation');
+        })
+
+        function ClearCtrl() {
+            hdfDesigId.val('0');
+            txtDesig.val('');
+            txtDesignation.val('');  
+            txtShortName.val('');
+        }
+
+        $(document).on('click', 'a.data-edit', function (e) {
+            e.preventDefault();
+            OpenModal();
+            fnModalHeadChange('Update Designation');
+            var desigId = $(this).parent().parents('tr').find('td:eq(0)').html();
+            var desigName = $(this).parent().parents('tr').find('td:eq(1)').html();
+            var shortName = $(this).parent().parents('tr').find('td:eq(2)').html();
+            hdfDesigId.val(desigId);
+            txtDesignation.val(desigName);
+            txtShortName.val(shortName);
+            
+        })
+
+        txtDesig.autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: '@Url.Action("GetDesignationByNames", "Common")',
+                    type:'POST',
+                    dataType: "json",
+                    data: { OrgId: '@User.OrgId', contextKey: txtDesig.val() },
+                    headers:getToken(),
+                    success: function (data) {
+                        //objData = {};
+                        response($.map(data, function (item) {
+                            return { label: item.Name, value: item.Name, id: item.Name};
+                        }));
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error");
+                    }
+                });
+            },
+            select: function (event, ui) {
+                txtDesig.trigger('change');
+                //hdfUserId.val('0');
+                //objData = {};
+                //objData = ui.item;
+                //hdfUserId.val(ui.item.id);
+            }
+        })
+
+        $("#btnSubmit").click(function (e) {
+            e.preventDefault();
+
+            if (validateForm())
+            {
+                var desigId = $.trim(hdfDesigId.val()) == '' ? '0' : $.trim(hdfDesigId.val());
+                var data = { DesigId: desigId, DesignationName: txtDesignation.val(), ShortName: txtShortName.val() };
+                data = JSON.stringify(data);
+
+                $.when(postReqWithToken(dataType.applicationJson, dataType.json, "POST", "/Organization/SaveNewDesignation", data, getToken())).then(function (res) {
+                    if (res == true) {
+                        alert(execuStatus.successSave);
+                        //console.log("I'm Save");
+                        ClearCtrl();
+                        $("#modalDesig").modal('toggle');
+                        txtDesig.val('');
+                        fnGetData();
+                    }
+                    else {
+                        alert(execuStatus.fail);
+                        //console.log("I'm fail");
+                    }
+
+                }).fail(function (err) {
+                    //console.log(err);
+                })
+            }
+        })
+
+        txtDesig.change(function () {
+            fnGetData();
+        })
+
+        $(document).ready(function () {
+            fnGetData();
+        })
+
+        function fnGetData() {
+            var data = { OrgId: @User.OrgId, DesigName: $.trim(txtDesig.val()) };
+            $.when(getReqWithData("json", "GET", "/Organization/GetDesignationList", data)).then(function (res) {
+                //console.log(res);
+                fnLoadTable(res);
+            }).fail(function (err) {
+                console.log(err);
+            });
+        }
+
+        
+        function triggeringSearch()
+        {
+            if ($.trim(txtDesig.val()).length == 0)
+            {
+                fnGetData();
+            }
+        }
+
+        function fnLoadTable(dataObj) {
+            $("#tblDesig tbody tr").remove();
+            if (dataObj != null) {
+                var tr = "";
+                $.each(dataObj, function (index, item) {
+                    tr += "<tr>" + "<td class='hide'>" + item.DesigId + "</td>" + "<td>" + item.Name + "</td>" + "<td>" + item.ShortName + "</td>" + "</td>" + "<td class='hide'>" + item.OrgId + "</td>" + "<td class=>" + item.OrgName + "</td>" + "<td >" + item.EntryUser + "</td>" + "<td class='text-center'><a href='#' class='data-edit btn btn-circle btn-success btn-sm'><i class='fas fa-pen'></i></a></td>" + "</tr>";
+                })
+                if (dataObj.length == 0) {
+                   
+                    tr = "<tr class='text-center'><td colspan='5'> No Rows Returned..</td></tr>";
+                }
+                $("#tblDesig tbody").append(tr);
+            }
+            else {
+                $("#tblDesig tbody tr").remove();
+                var tr = "<tr class='text-center'><td colspan='5'> No Rows Returned..</td></tr>";
+                $("#tblDesig tbody").append(tr);
+            }
+        }
+
+        function validateForm() {
+            $(".error").addClass("hide");
+            var isValid = true;
+            if ($.trim(txtDesignation.val()) == "") {
+                $(".error.Designation").removeClass("hide");
+                isValid = false;
+            }
+            else {
+                $(".error.Designation").addClass("hide");
+            }
+            if ($.trim(txtDesignation.val()) != "") {
+                if ($.trim(txtDesignation.val()).length < 5) {
+                    $(".error.text-length").removeClass("hide");
+                    isValid = false;
+                }
+                else {
+                    $(".error.text-length").addClass("hide");
+                }
+            }
+
+            if ($.trim(txtShortName.val()) == "") {
+                $(".error.ShortName").removeClass("hide");
+                isValid = false;
+            }
+            else {
+                $(".error.ShortName").addClass("hide");
+            }
+            if ($.trim(txtShortName.val()) != "") {
+                if ($.trim(txtShortName.val()).length > 10) {
+                    $(".error.text-length-short").removeClass("hide");
+                    isValid = false;
+                }
+                else {
+                    $(".error.text-length-short").addClass("hide");
+                }
+            }
+
+            if (isValid == true) {
+                var desigId = $.trim(hdfDesigId.val()) == '' ? '0' : $.trim(hdfDesigId.val());
+                var data = JSON.stringify({ desigId: desigId , Designation: txtDesignation.val(), ShortName: txtShortName.val() });
+                isValid = ajaxBooleanChecker(data, "/Common/IsDesignationAndShortUnique", getToken());
+                if (!isValid) {
+                    $(".error.uniqueness").removeClass("hide");
+                }
+                else {
+                    $(".error.uniqueness").addClass("hide");
+                }
+            }
+
+            return isValid;
+        }
+
+    </script>
+}
+

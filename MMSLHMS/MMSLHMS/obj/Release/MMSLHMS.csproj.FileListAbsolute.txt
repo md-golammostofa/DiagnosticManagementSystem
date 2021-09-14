@@ -1,0 +1,976 @@
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\MMSLHMS.dll.config
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\MMSLHMS.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\MMSLHMS.pdb
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\csc.exe
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\csc.exe.config
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\csc.rsp
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\csi.exe
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\csi.exe.config
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\csi.rsp
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.Managed.Core.targets
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.AppContext.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Collections.Immutable.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Console.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.IO.Compression.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.IO.FileSystem.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.IO.Pipes.AccessControl.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.IO.Pipes.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Reflection.Metadata.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Security.AccessControl.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Security.Claims.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Security.Principal.Windows.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.ValueTuple.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Xml.XmlDocument.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Xml.XPath.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\vbc.exe
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\vbc.exe.config
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\vbc.rsp
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\VBCSCompiler.exe
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\VBCSCompiler.exe.config
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Microsoft.Win32.Primitives.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\netstandard.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.AppContext.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Collections.Concurrent.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Collections.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Collections.NonGeneric.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Collections.Specialized.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.ComponentModel.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.ComponentModel.EventBasedAsync.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.ComponentModel.Primitives.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.ComponentModel.TypeConverter.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Console.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Data.Common.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Diagnostics.Contracts.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Diagnostics.Debug.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Diagnostics.FileVersionInfo.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Diagnostics.Process.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Diagnostics.StackTrace.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Diagnostics.TextWriterTraceListener.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Diagnostics.Tools.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Diagnostics.TraceSource.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Diagnostics.Tracing.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Drawing.Primitives.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Dynamic.Runtime.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Globalization.Calendars.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Globalization.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Globalization.Extensions.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.IO.Compression.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.IO.Compression.ZipFile.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.IO.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.IO.FileSystem.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.IO.FileSystem.DriveInfo.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.IO.FileSystem.Primitives.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.IO.FileSystem.Watcher.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.IO.IsolatedStorage.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.IO.MemoryMappedFiles.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.IO.Pipes.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.IO.UnmanagedMemoryStream.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Linq.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Linq.Expressions.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Linq.Parallel.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Linq.Queryable.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Net.Http.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Net.NameResolution.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Net.NetworkInformation.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Net.Ping.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Net.Primitives.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Net.Requests.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Net.Security.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Net.Sockets.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Net.WebHeaderCollection.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Net.WebSockets.Client.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Net.WebSockets.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.ObjectModel.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Reflection.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Reflection.Extensions.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Reflection.Primitives.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Resources.Reader.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Resources.ResourceManager.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Resources.Writer.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Runtime.CompilerServices.VisualC.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Runtime.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Runtime.Extensions.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Runtime.Handles.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Runtime.InteropServices.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Runtime.InteropServices.RuntimeInformation.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Runtime.Numerics.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Runtime.Serialization.Formatters.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Runtime.Serialization.Json.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Runtime.Serialization.Primitives.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Runtime.Serialization.Xml.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Security.Claims.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Security.Cryptography.Algorithms.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Security.Cryptography.Csp.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Security.Cryptography.Encoding.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Security.Cryptography.Primitives.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Security.Cryptography.X509Certificates.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Security.Principal.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Security.SecureString.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Text.Encoding.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Text.Encoding.Extensions.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Text.RegularExpressions.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Threading.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Threading.Overlapped.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Threading.Tasks.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Threading.Tasks.Parallel.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Threading.Thread.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Threading.ThreadPool.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Threading.Timer.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.ValueTuple.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Xml.ReaderWriter.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Xml.XDocument.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Xml.XmlDocument.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Xml.XmlSerializer.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Xml.XPath.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Xml.XPath.XDocument.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Antlr3.Runtime.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\EntityFramework.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\EntityFramework.SqlServer.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\HMSBLL.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\HMSBO.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Microsoft.ReportViewer.Common.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Microsoft.ReportViewer.DataVisualization.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Microsoft.ReportViewer.ProcessingObjectModel.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Microsoft.ReportViewer.WebForms.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Microsoft.Web.Infrastructure.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Newtonsoft.Json.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Helpers.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Mvc.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Optimization.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Razor.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Webpages.Deployment.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Webpages.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Webpages.Razor.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\WebGrease.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\HMSBLL.pdb
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\HMSBO.pdb
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Antlr3.Runtime.pdb
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\EntityFramework.xml
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\EntityFramework.SqlServer.xml
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Newtonsoft.Json.xml
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Optimization.xml
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Razor.xml
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Webpages.xml
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Webpages.Deployment.xml
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Webpages.Razor.xml
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Helpers.xml
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Mvc.xml
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.csprojAssemblyReference.cache
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\obj\Release\RdlCompile.cache
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\obj\Release\RdlCompile.compiled
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.csproj.CoreCompileInputs.cache
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.csproj.CopyComplete
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.dll
+E:\Yeasin_WorkStation\Works\Diagnostic Management System\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.pdb
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\MMSLHMS.dll.config
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\MMSLHMS.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\MMSLHMS.pdb
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\csc.exe
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\csc.exe.config
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\csc.rsp
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\csi.exe
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\csi.exe.config
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\csi.rsp
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.CodeAnalysis.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.CSharp.Core.targets
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.Managed.Core.targets
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.VisualBasic.Core.targets
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.AppContext.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Collections.Immutable.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Console.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Diagnostics.StackTrace.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.IO.Compression.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.IO.FileSystem.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.IO.FileSystem.Primitives.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.IO.Pipes.AccessControl.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.IO.Pipes.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Reflection.Metadata.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Security.AccessControl.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Security.Claims.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Security.Cryptography.Encoding.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Security.Cryptography.Primitives.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Security.Principal.Windows.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Text.Encoding.CodePages.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.ValueTuple.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Xml.ReaderWriter.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Xml.XmlDocument.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Xml.XPath.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Xml.XPath.XDocument.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\vbc.exe
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\vbc.exe.config
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\vbc.rsp
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\VBCSCompiler.exe
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\VBCSCompiler.exe.config
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Microsoft.Win32.Primitives.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\netstandard.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.AppContext.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Collections.Concurrent.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Collections.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Collections.NonGeneric.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Collections.Specialized.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.ComponentModel.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.ComponentModel.EventBasedAsync.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.ComponentModel.Primitives.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.ComponentModel.TypeConverter.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Console.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Data.Common.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Diagnostics.Contracts.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Diagnostics.Debug.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Diagnostics.FileVersionInfo.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Diagnostics.Process.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Diagnostics.StackTrace.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Diagnostics.TextWriterTraceListener.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Diagnostics.Tools.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Diagnostics.TraceSource.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Diagnostics.Tracing.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Drawing.Primitives.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Dynamic.Runtime.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Globalization.Calendars.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Globalization.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Globalization.Extensions.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.IO.Compression.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.IO.Compression.ZipFile.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.IO.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.IO.FileSystem.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.IO.FileSystem.DriveInfo.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.IO.FileSystem.Primitives.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.IO.FileSystem.Watcher.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.IO.IsolatedStorage.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.IO.MemoryMappedFiles.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.IO.Pipes.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.IO.UnmanagedMemoryStream.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Linq.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Linq.Expressions.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Linq.Parallel.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Linq.Queryable.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Net.Http.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Net.NameResolution.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Net.NetworkInformation.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Net.Ping.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Net.Primitives.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Net.Requests.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Net.Security.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Net.Sockets.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Net.WebHeaderCollection.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Net.WebSockets.Client.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Net.WebSockets.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.ObjectModel.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Reflection.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Reflection.Extensions.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Reflection.Primitives.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Resources.Reader.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Resources.ResourceManager.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Resources.Writer.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Runtime.CompilerServices.VisualC.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Runtime.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Runtime.Extensions.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Runtime.Handles.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Runtime.InteropServices.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Runtime.InteropServices.RuntimeInformation.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Runtime.Numerics.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Runtime.Serialization.Formatters.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Runtime.Serialization.Json.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Runtime.Serialization.Primitives.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Runtime.Serialization.Xml.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Security.Claims.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Security.Cryptography.Algorithms.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Security.Cryptography.Csp.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Security.Cryptography.Encoding.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Security.Cryptography.Primitives.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Security.Cryptography.X509Certificates.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Security.Principal.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Security.SecureString.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Text.Encoding.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Text.Encoding.Extensions.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Text.RegularExpressions.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Threading.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Threading.Overlapped.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Threading.Tasks.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Threading.Tasks.Parallel.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Threading.Thread.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Threading.ThreadPool.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Threading.Timer.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.ValueTuple.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Xml.ReaderWriter.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Xml.XDocument.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Xml.XmlDocument.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Xml.XmlSerializer.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Xml.XPath.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Xml.XPath.XDocument.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Antlr3.Runtime.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\EntityFramework.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\EntityFramework.SqlServer.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\HMSBLL.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\HMSBO.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Microsoft.ReportViewer.Common.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Microsoft.ReportViewer.DataVisualization.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Microsoft.ReportViewer.ProcessingObjectModel.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Microsoft.ReportViewer.WebForms.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Microsoft.Web.Infrastructure.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Newtonsoft.Json.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Helpers.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Mvc.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Optimization.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Razor.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Webpages.Deployment.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Webpages.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Webpages.Razor.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\WebGrease.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\HMSBLL.pdb
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\HMSBO.pdb
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Antlr3.Runtime.pdb
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\EntityFramework.xml
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\EntityFramework.SqlServer.xml
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Newtonsoft.Json.xml
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Optimization.xml
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Razor.xml
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Webpages.xml
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Webpages.Deployment.xml
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Webpages.Razor.xml
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Helpers.xml
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Mvc.xml
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.csprojAssemblyReference.cache
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\obj\Release\RdlCompile.cache
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\obj\Release\RdlCompile.compiled
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.csproj.CoreCompileInputs.cache
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.csproj.CopyComplete
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.dll
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.pdb
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Reports\Report1.rdlc
+F:\Diagnostic Management System\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Reports\rptDiagnosticBill.rdlc
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\Reports\Report1.rdlc
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\Reports\rptDiagnosticBill.rdlc
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\Reports\OldrptDiagnosticBill.rdlc
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\MMSLHMS.dll.config
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\MMSLHMS.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\MMSLHMS.pdb
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\csc.exe
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\csc.exe.config
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\csc.rsp
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\csi.exe
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\csi.exe.config
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\csi.rsp
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.CodeAnalysis.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.CSharp.Core.targets
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.Managed.Core.targets
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.VisualBasic.Core.targets
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.AppContext.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.Collections.Immutable.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.Console.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.Diagnostics.StackTrace.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.IO.Compression.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.IO.FileSystem.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.IO.FileSystem.Primitives.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.IO.Pipes.AccessControl.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.IO.Pipes.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.Reflection.Metadata.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.Security.AccessControl.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.Security.Claims.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.Security.Cryptography.Encoding.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.Security.Cryptography.Primitives.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.Security.Principal.Windows.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.Text.Encoding.CodePages.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.ValueTuple.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.Xml.ReaderWriter.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.Xml.XmlDocument.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.Xml.XPath.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.Xml.XPath.XDocument.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\vbc.exe
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\vbc.exe.config
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\vbc.rsp
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\VBCSCompiler.exe
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\VBCSCompiler.exe.config
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\Microsoft.Win32.Primitives.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\netstandard.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.AppContext.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Collections.Concurrent.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Collections.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Collections.NonGeneric.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Collections.Specialized.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.ComponentModel.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.ComponentModel.EventBasedAsync.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.ComponentModel.Primitives.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.ComponentModel.TypeConverter.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Console.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Data.Common.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Diagnostics.Contracts.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Diagnostics.Debug.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Diagnostics.FileVersionInfo.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Diagnostics.Process.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Diagnostics.StackTrace.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Diagnostics.TextWriterTraceListener.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Diagnostics.Tools.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Diagnostics.TraceSource.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Diagnostics.Tracing.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Drawing.Primitives.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Dynamic.Runtime.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Globalization.Calendars.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Globalization.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Globalization.Extensions.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.IO.Compression.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.IO.Compression.ZipFile.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.IO.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.IO.FileSystem.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.IO.FileSystem.DriveInfo.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.IO.FileSystem.Primitives.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.IO.FileSystem.Watcher.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.IO.IsolatedStorage.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.IO.MemoryMappedFiles.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.IO.Pipes.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.IO.UnmanagedMemoryStream.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Linq.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Linq.Expressions.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Linq.Parallel.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Linq.Queryable.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Net.Http.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Net.NameResolution.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Net.NetworkInformation.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Net.Ping.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Net.Primitives.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Net.Requests.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Net.Security.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Net.Sockets.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Net.WebHeaderCollection.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Net.WebSockets.Client.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Net.WebSockets.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.ObjectModel.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Reflection.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Reflection.Extensions.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Reflection.Primitives.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Resources.Reader.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Resources.ResourceManager.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Resources.Writer.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Runtime.CompilerServices.VisualC.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Runtime.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Runtime.Extensions.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Runtime.Handles.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Runtime.InteropServices.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Runtime.InteropServices.RuntimeInformation.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Runtime.Numerics.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Runtime.Serialization.Formatters.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Runtime.Serialization.Json.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Runtime.Serialization.Primitives.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Runtime.Serialization.Xml.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Security.Claims.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Security.Cryptography.Algorithms.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Security.Cryptography.Csp.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Security.Cryptography.Encoding.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Security.Cryptography.Primitives.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Security.Cryptography.X509Certificates.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Security.Principal.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Security.SecureString.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Text.Encoding.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Text.Encoding.Extensions.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Text.RegularExpressions.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Threading.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Threading.Overlapped.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Threading.Tasks.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Threading.Tasks.Parallel.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Threading.Thread.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Threading.ThreadPool.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Threading.Timer.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.ValueTuple.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Xml.ReaderWriter.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Xml.XDocument.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Xml.XmlDocument.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Xml.XmlSerializer.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Xml.XPath.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Xml.XPath.XDocument.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\Antlr3.Runtime.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\EntityFramework.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\EntityFramework.SqlServer.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\HMSBLL.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\HMSBO.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\Microsoft.ReportViewer.Common.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\Microsoft.ReportViewer.DataVisualization.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\Microsoft.ReportViewer.ProcessingObjectModel.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\Microsoft.ReportViewer.WebForms.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\Microsoft.Web.Infrastructure.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\Newtonsoft.Json.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Web.Helpers.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Web.Mvc.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Web.Optimization.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Web.Razor.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Web.Webpages.Deployment.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Web.Webpages.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Web.Webpages.Razor.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\WebGrease.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\HMSBLL.pdb
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\HMSBO.pdb
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\Antlr3.Runtime.pdb
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\EntityFramework.xml
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\EntityFramework.SqlServer.xml
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\Newtonsoft.Json.xml
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Web.Optimization.xml
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Web.Razor.xml
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Web.Webpages.xml
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Web.Webpages.Deployment.xml
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Web.Webpages.Razor.xml
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Web.Helpers.xml
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Web.Mvc.xml
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.csprojAssemblyReference.cache
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.Migrations.DMSDb30Nov2019.resources
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.csproj.GenerateResource.cache
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\obj\Release\RdlCompile.cache
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\obj\Release\RdlCompile.compiled
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.csproj.CoreCompileInputs.cache
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.csproj.CopyComplete
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.dll
+F:\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.pdb
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\Reports\Report1.rdlc
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\Reports\rptDiagnosticBill.rdlc
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\Reports\OldrptDiagnosticBill.rdlc
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\MMSLHMS.dll.config
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\MMSLHMS.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\MMSLHMS.pdb
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\csc.exe
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\csc.exe.config
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\csc.rsp
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\csi.exe
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\csi.exe.config
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\csi.rsp
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.CodeAnalysis.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.CSharp.Core.targets
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.Managed.Core.targets
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.VisualBasic.Core.targets
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.AppContext.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.Collections.Immutable.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.Console.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.Diagnostics.StackTrace.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.IO.Compression.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.IO.FileSystem.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.IO.FileSystem.Primitives.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.IO.Pipes.AccessControl.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.IO.Pipes.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.Reflection.Metadata.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.Security.AccessControl.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.Security.Claims.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.Security.Cryptography.Encoding.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.Security.Cryptography.Primitives.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.Security.Principal.Windows.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.Text.Encoding.CodePages.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.ValueTuple.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.Xml.ReaderWriter.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.Xml.XmlDocument.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.Xml.XPath.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\System.Xml.XPath.XDocument.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\vbc.exe
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\vbc.exe.config
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\vbc.rsp
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\VBCSCompiler.exe
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\roslyn\VBCSCompiler.exe.config
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\Microsoft.Win32.Primitives.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\netstandard.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.AppContext.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Collections.Concurrent.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Collections.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Collections.NonGeneric.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Collections.Specialized.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.ComponentModel.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.ComponentModel.EventBasedAsync.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.ComponentModel.Primitives.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.ComponentModel.TypeConverter.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Console.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Data.Common.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Diagnostics.Contracts.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Diagnostics.Debug.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Diagnostics.FileVersionInfo.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Diagnostics.Process.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Diagnostics.StackTrace.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Diagnostics.TextWriterTraceListener.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Diagnostics.Tools.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Diagnostics.TraceSource.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Diagnostics.Tracing.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Drawing.Primitives.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Dynamic.Runtime.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Globalization.Calendars.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Globalization.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Globalization.Extensions.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.IO.Compression.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.IO.Compression.ZipFile.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.IO.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.IO.FileSystem.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.IO.FileSystem.DriveInfo.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.IO.FileSystem.Primitives.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.IO.FileSystem.Watcher.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.IO.IsolatedStorage.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.IO.MemoryMappedFiles.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.IO.Pipes.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.IO.UnmanagedMemoryStream.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Linq.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Linq.Expressions.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Linq.Parallel.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Linq.Queryable.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Net.Http.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Net.NameResolution.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Net.NetworkInformation.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Net.Ping.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Net.Primitives.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Net.Requests.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Net.Security.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Net.Sockets.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Net.WebHeaderCollection.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Net.WebSockets.Client.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Net.WebSockets.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.ObjectModel.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Reflection.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Reflection.Extensions.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Reflection.Primitives.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Resources.Reader.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Resources.ResourceManager.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Resources.Writer.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Runtime.CompilerServices.VisualC.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Runtime.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Runtime.Extensions.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Runtime.Handles.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Runtime.InteropServices.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Runtime.InteropServices.RuntimeInformation.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Runtime.Numerics.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Runtime.Serialization.Formatters.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Runtime.Serialization.Json.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Runtime.Serialization.Primitives.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Runtime.Serialization.Xml.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Security.Claims.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Security.Cryptography.Algorithms.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Security.Cryptography.Csp.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Security.Cryptography.Encoding.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Security.Cryptography.Primitives.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Security.Cryptography.X509Certificates.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Security.Principal.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Security.SecureString.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Text.Encoding.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Text.Encoding.Extensions.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Text.RegularExpressions.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Threading.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Threading.Overlapped.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Threading.Tasks.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Threading.Tasks.Parallel.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Threading.Thread.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Threading.ThreadPool.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Threading.Timer.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.ValueTuple.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Xml.ReaderWriter.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Xml.XDocument.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Xml.XmlDocument.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Xml.XmlSerializer.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Xml.XPath.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Xml.XPath.XDocument.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\Antlr3.Runtime.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\EntityFramework.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\EntityFramework.SqlServer.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\HMSBLL.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\HMSBO.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\Microsoft.ReportViewer.Common.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\Microsoft.ReportViewer.DataVisualization.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\Microsoft.ReportViewer.ProcessingObjectModel.DLL
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\Microsoft.ReportViewer.WebForms.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\Microsoft.ReportViewer.WinForms.DLL
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\Microsoft.SqlServer.Types.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\Microsoft.Web.Infrastructure.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\Newtonsoft.Json.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\PagedList.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\PagedList.Mvc.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Web.Helpers.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Web.Mvc.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Web.Optimization.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Web.Razor.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Web.Webpages.Deployment.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Web.Webpages.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Web.Webpages.Razor.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\WebGrease.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\HMSBLL.pdb
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\HMSBO.pdb
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\Antlr3.Runtime.pdb
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\EntityFramework.xml
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\EntityFramework.SqlServer.xml
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\Newtonsoft.Json.xml
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\PagedList.xml
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\PagedList.Mvc.xml
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Web.Optimization.xml
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Web.Razor.xml
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Web.Webpages.xml
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Web.Webpages.Deployment.xml
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Web.Webpages.Razor.xml
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Web.Helpers.xml
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\System.Web.Mvc.xml
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.csprojAssemblyReference.cache
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.Migrations.DbReset09Dec2019.resources
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.csproj.GenerateResource.cache
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\obj\Release\RdlCompile.cache
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\obj\Release\RdlCompile.compiled
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.csproj.CoreCompileInputs.cache
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.csproj.CopyComplete
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.dll
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.pdb
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\Reports\rptInvoiceInformation.rdlc
+F:\Yeasin_WorkStation\DMS_And_SMS\Diagnostic Management System_30-Nov-2019_SS\MMSLHMS\MMSLHMS\bin\Reports\rptMonthWiseInvestigation.rdlc
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Reports\Report1.rdlc
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Reports\rptDiagnosticBill.rdlc
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Reports\OldrptDiagnosticBill.rdlc
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Reports\rptInvoiceInformation.rdlc
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Reports\rptMonthWiseInvestigation.rdlc
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\MMSLHMS.dll.config
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\MMSLHMS.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\MMSLHMS.pdb
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\csc.exe
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\csc.exe.config
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\csc.rsp
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\csi.exe
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\csi.exe.config
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\csi.rsp
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.Managed.Core.targets
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.AppContext.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Collections.Immutable.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Console.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.IO.Compression.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.IO.FileSystem.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.IO.Pipes.AccessControl.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.IO.Pipes.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Reflection.Metadata.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Security.AccessControl.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Security.Claims.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Security.Principal.Windows.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.ValueTuple.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Xml.XmlDocument.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Xml.XPath.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\vbc.exe
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\vbc.exe.config
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\vbc.rsp
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\VBCSCompiler.exe
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\roslyn\VBCSCompiler.exe.config
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Microsoft.Win32.Primitives.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\netstandard.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.AppContext.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Collections.Concurrent.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Collections.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Collections.NonGeneric.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Collections.Specialized.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.ComponentModel.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.ComponentModel.EventBasedAsync.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.ComponentModel.Primitives.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.ComponentModel.TypeConverter.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Console.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Data.Common.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Diagnostics.Contracts.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Diagnostics.Debug.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Diagnostics.FileVersionInfo.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Diagnostics.Process.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Diagnostics.StackTrace.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Diagnostics.TextWriterTraceListener.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Diagnostics.Tools.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Diagnostics.TraceSource.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Diagnostics.Tracing.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Drawing.Primitives.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Dynamic.Runtime.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Globalization.Calendars.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Globalization.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Globalization.Extensions.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.IO.Compression.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.IO.Compression.ZipFile.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.IO.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.IO.FileSystem.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.IO.FileSystem.DriveInfo.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.IO.FileSystem.Primitives.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.IO.FileSystem.Watcher.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.IO.IsolatedStorage.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.IO.MemoryMappedFiles.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.IO.Pipes.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.IO.UnmanagedMemoryStream.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Linq.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Linq.Expressions.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Linq.Parallel.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Linq.Queryable.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Net.Http.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Net.NameResolution.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Net.NetworkInformation.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Net.Ping.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Net.Primitives.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Net.Requests.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Net.Security.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Net.Sockets.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Net.WebHeaderCollection.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Net.WebSockets.Client.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Net.WebSockets.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.ObjectModel.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Reflection.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Reflection.Extensions.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Reflection.Primitives.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Resources.Reader.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Resources.ResourceManager.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Resources.Writer.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Runtime.CompilerServices.VisualC.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Runtime.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Runtime.Extensions.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Runtime.Handles.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Runtime.InteropServices.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Runtime.InteropServices.RuntimeInformation.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Runtime.Numerics.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Runtime.Serialization.Formatters.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Runtime.Serialization.Json.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Runtime.Serialization.Primitives.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Runtime.Serialization.Xml.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Security.Claims.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Security.Cryptography.Algorithms.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Security.Cryptography.Csp.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Security.Cryptography.Encoding.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Security.Cryptography.Primitives.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Security.Cryptography.X509Certificates.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Security.Principal.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Security.SecureString.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Text.Encoding.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Text.Encoding.Extensions.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Text.RegularExpressions.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Threading.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Threading.Overlapped.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Threading.Tasks.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Threading.Tasks.Parallel.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Threading.Thread.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Threading.ThreadPool.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Threading.Timer.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.ValueTuple.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Xml.ReaderWriter.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Xml.XDocument.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Xml.XmlDocument.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Xml.XmlSerializer.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Xml.XPath.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Xml.XPath.XDocument.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Antlr3.Runtime.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\EntityFramework.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\EntityFramework.SqlServer.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\HMSBLL.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\HMSBO.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Microsoft.ReportViewer.Common.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Microsoft.ReportViewer.DataVisualization.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Microsoft.ReportViewer.ProcessingObjectModel.DLL
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Microsoft.ReportViewer.WebForms.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Microsoft.ReportViewer.WinForms.DLL
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Microsoft.SqlServer.Types.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Microsoft.Web.Infrastructure.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Newtonsoft.Json.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\PagedList.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\PagedList.Mvc.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Helpers.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Mvc.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Optimization.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Razor.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Webpages.Deployment.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Webpages.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Webpages.Razor.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\WebGrease.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\HMSBLL.pdb
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\HMSBO.pdb
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Antlr3.Runtime.pdb
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\EntityFramework.xml
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\EntityFramework.SqlServer.xml
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Newtonsoft.Json.xml
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\PagedList.xml
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\PagedList.Mvc.xml
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Optimization.xml
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Razor.xml
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Webpages.xml
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Webpages.Deployment.xml
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Webpages.Razor.xml
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Helpers.xml
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\System.Web.Mvc.xml
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.csprojAssemblyReference.cache
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.Migrations.DbReset09Dec2019.resources
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.csproj.GenerateResource.cache
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\obj\Release\RdlCompile.cache
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\obj\Release\RdlCompile.compiled
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.csproj.CoreCompileInputs.cache
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.csproj.CopyComplete
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.dll
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.pdb
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.Migrations.MMSLHMS_DMS_LastAll.resources
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\bin\Reports\rptAppoinmentReport.rdlc
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.Migrations.RefFeeaddInvestigation.resources
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.Migrations.RefFeeaddDNS.resources
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.Migrations.tblSpecialists.resources
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.Migrations.tblSpecialistsOrgAdd.resources
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.Migrations.tblOtherProfession.resources
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.Migrations.tblTimesAdd.resources
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.Migrations.tblDoctorsDoctorDetails.resources
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.Migrations.tblPatientAdd.resources
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.Migrations.tblAppoinment.resources
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.Migrations.tblAppoinmentUpdate.resources
+E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\MMSLHMS\obj\Release\MMSLHMS.Migrations.tblAppoinmentAge.resources

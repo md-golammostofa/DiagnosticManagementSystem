@@ -1,0 +1,49 @@
+﻿@model IEnumerable<HMSBO.ViewModels.VmDoctorDetails>
+@{ 
+    Layout = null;
+    int sl = 0;
+}
+<div class="col-md-12 text-sm" style="overflow-y:scroll">
+    <table class="table table-bordered table-sm table-striped" id="tblPartsUsed">
+        <thead class="btn-info">
+            <tr class="text-center">
+                <th style="vertical-align:middle">#SL</th>
+                <th class="hide"></th>
+                <th style="vertical-align:middle">Dr. Name</th>
+                <th style="vertical-align:middle">Mobile No</th>
+                <th style="vertical-align:middle">Degree</th>
+                <th style="vertical-align:middle">Specialist</th>
+                <th style="vertical-align:middle">Day</th>
+                <th style="vertical-align:middle">Shift</th>
+                <th style="vertical-align:middle">Start Time</th>
+                <th style="vertical-align:middle">End Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                sl = sl + 1;
+                <tr>
+                    <td class="text-center">@sl</td>
+                    <td class="hide">@item.TDId</td>
+                    <td>@item.DocName</td>
+                    <td>@item.DocMobile</td>
+                    <td>@item.DocDegree</td>
+                    <td>@item.DocSpecialist</td>
+                    <td>@item.Day</td>
+                    <td>@item.DayOfTime</td>
+                    <td>@item.StartTime</td>
+                    <td>@item.EndTime</td>
+                </tr>
+            }
+            @if (Model.Count() == 0)
+            {
+                <tr class="text-center empty-row">
+                    <td colspan="9">
+                        No Rows Found
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

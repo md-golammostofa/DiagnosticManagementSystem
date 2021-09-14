@@ -1,0 +1,71 @@
+﻿@model IEnumerable<HMSBO.ViewModels.VmDoctors>
+@{ 
+    Layout = null;
+    int sl = 0;
+}
+<div class="col-md-12 text-sm" style="overflow-y:scroll">
+    <table class="table table-bordered table-sm table-striped" id="tblPartsUsed">
+        <thead class="btn-info">
+            <tr class="text-center">
+                <th style="vertical-align:middle">#SL</th>
+                <th style="vertical-align:middle">Actions</th>
+                <th class="hide"></th>
+                <th style="vertical-align:middle">Name</th>
+                <th style="vertical-align:middle">Address</th>
+                <th style="vertical-align:middle">Mobile No</th>
+                <th style="vertical-align:middle">Sex</th>
+                <th style="vertical-align:middle">DOB</th>
+                <th style="vertical-align:middle">Email</th>
+                <th style="vertical-align:middle">Hospital</th>
+                <th style="vertical-align:middle">Degree</th>
+                <th style="vertical-align:middle">D Reg</th>
+                <th style="vertical-align:middle">D Type</th>
+                <th style="vertical-align:middle">Specialist</th>
+                <th style="vertical-align:middle">General Fee</th>
+                <th style="vertical-align:middle">Report Showing Fee</th>
+                <th style="vertical-align:middle">Follow Up Fee</th>
+                <th style="vertical-align:middle">Conseling Fee</th>
+                <th style="vertical-align:middle">Remarks</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                sl = sl + 1;
+            <tr>
+                <td class="text-center">@sl</td>
+                <td class="hide">@item.DocId</td>
+                <td class="text-center">
+                    <a href='#' class='data-edit btn btn-circle btn-warning btn-sm data-details-item' data-details-item='@item.DocId'><i class='fas fa-eye' title="Details"></i></a>
+                </td>
+                <td>@item.DocName</td>
+                <td>@item.DocAddress</td>
+                <td>@item.DocMobile</td>
+                <td>@item.Sex</td>
+                <td>@item.DOB.ToString("yyyy-MM-dd")</td>
+                <td>@item.DocEmail</td>
+                <td>@item.HospitalName</td>
+                <td>@item.DocDegree</td>
+                <td>@item.DocRegNo</td>
+                <td>@item.DocType</td>
+                <td>@item.DocSpecialist</td>
+                <td>@item.GenerelFee</td>
+                <td>@item.ReportFee</td>
+                <td>@item.FollowUpFee</td>
+                <td>@item.CounselingFee</td>
+                <td>@item.Remarks</td>
+
+            </tr>
+            }
+            @if (Model.Count() == 0)
+            {
+                <tr class="text-center empty-row">
+                    <td colspan="18">
+                        No Rows Found
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

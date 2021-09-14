@@ -1,0 +1,747 @@
+﻿@model HMSBO.ViewModels.VmDiagnosticBill
+
+@{
+    ViewBag.Title = "Diagnostic Bill";
+}
+
+<div class="row">
+    <div class="col-md-12 text-center" style="background-color:#657075;color:#fff;padding:5px;border-radius:5px 5px 0px 0px">
+        <h4>Diagnostic Bill Entry</h4>
+    </div>
+
+    <div class="col-md-12">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="row">
+                <div class="col-md-8" style="background-color:#e8d3d3;padding:5px;color:#000">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.BillInfo.PatientName, "Patient Name", htmlAttributes: new { @class = "control-lebel col-md-12 font-weight-bold" })
+                                    <div class="col-md-12">
+                                        @Html.TextBoxFor(model => model.BillInfo.PatientName, htmlAttributes: new { @class = "form-control form-control-sm" })
+                                        @Html.ValidationMessageFor(model => model.BillInfo.PatientName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.BillInfo.MobileNo, "Mobile No", htmlAttributes: new { @class = "control-lebel col-md-10 font-weight-bold" })
+                                    <div class="col-md-12">
+                                        @Html.TextBoxFor(model => model.BillInfo.MobileNo, htmlAttributes: new { @class = "form-control form-control-sm", @type = "number" })
+                                        @Html.ValidationMessageFor(model => model.BillInfo.MobileNo, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.BillInfo.Address, "Address", htmlAttributes: new { @class = "control-lebel col-md-12 font-weight-bold" })
+                                    <div class="col-md-12">
+                                        @Html.TextAreaFor(model => model.BillInfo.Address, htmlAttributes: new { @class = "form-control form-control-sm", @cols = "10", @rows = "2" })
+                                        @Html.ValidationMessageFor(model => model.BillInfo.Address, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.BillInfo.Sex, "Sex", htmlAttributes: new { @class = "control-lebel col-md-10 font-weight-bold" })
+                                    <div class="col-md-12">
+                                        @Html.DropDownListFor(model => model.BillInfo.Sex,new List<SelectListItem>()
+                     {
+                         new SelectListItem {Text="Male",Value="Male"},
+                         new SelectListItem {Text="Female",Value="Female"},
+                         new SelectListItem {Text="Common",Value="Common"}
+                     }, "Select Sex", new { @class = "form-control form-control-sm" })
+                                        @Html.ValidationMessageFor(model => model.BillInfo.Sex, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.BillInfo.Year, "Age", htmlAttributes: new { @class = "control-lebel col-md-12 font-weight-bold" })
+                                    <div class="col-md-12">
+                                        <div class="input-group">
+                                            @Html.TextBoxFor(model => model.BillInfo.Year, htmlAttributes: new { @class = "form-control form-control-sm", @type = "number", @placeholder = "Years", @style = "width:25%", value = "0" })<div class="form-control form-control-sm text-center" style="width:10%">Y</div>
+                                            @Html.TextBoxFor(model => model.BillInfo.Months, htmlAttributes: new { @class = "form-control form-control-sm", @type = "number", @style = "width:25%", @placeholder = "Months" })<div class="form-control form-control-sm text-center" style="width:10%">M</div>
+                                            @Html.TextBoxFor(model => model.BillInfo.Days, htmlAttributes: new { @class = "form-control form-control-sm", @type = "number", @style = "width:21%", @placeholder = "Days" })<div class="form-control form-control-sm text-center" style="width:9%">D</div>
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.BillInfo.Year, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.BillInfo.ReferrerId, "Ref by", htmlAttributes: new { @class = "control-lebel col-md-10 font-weight-bold" })
+                                    <div class="col-md-12">
+                                        @Html.HiddenFor(model => model.BillInfo.ReferrerId)
+                                        @Html.TextBoxFor(model => model.BillInfo.ReferrerName, htmlAttributes: new { @class = "form-control form-control-sm" })
+                                        @Html.ValidationMessageFor(model => model.BillInfo.ReferrerName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.BillInfo.PaymentMode, "Payment Mode", htmlAttributes: new { @class = "control-lebel col-md-12 font-weight-bold" })
+                                    <div class="col-md-12">
+                                        @Html.DropDownListFor(model => model.BillInfo.PaymentMode,new List<SelectListItem>()
+                         {
+                             new SelectListItem {Text="Cash",Value="Cash"},
+                         }, "Select Payment Type", new { @class = "form-control form-control-sm" })
+                                        @Html.ValidationMessageFor(model => model.BillInfo.PaymentMode, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class="control-lebel col-md-12 font-weight-bold" for="txtInvestigation">Investigation Name:</label>
+                                    <div class="col-md-12">
+                                        <input type="hidden" id="invesId" value="0" />
+                                        <div class="input-group">
+                                            <input type="text" id="txtInvestigation" class="form-control form-control-sm" />
+                                            @*<a class="btn btn-primary btn-sm" href="#">+</a>*@
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <div class="col-md-12">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12" style="font-size:small">
+                                    <div class="col-md-12">
+                                        @Html.ValidationMessageFor(model => model.BillDetails, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-12" style="font-size:small">
+                                    <table class="table table-bordered table-striped" id="billDetails" style="background-color:#fff;color:#000;font-weight:bold">
+                                        <thead class="btn-success" style="color:#fff">
+                                            <tr>
+                                                <th width="10%">SL No</th>
+                                                <th width="60%">Investigation Name</th>
+                                                <th width="20%">Fee</th>
+                                                <th width="10%">Remove</th>
+                                                <th class="hide">RefFee</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @*<tr>
+                                                    <td width="10%">1</td>
+                                                    <td class="hide"><input type="hidden" name="BillDetails.InvestigationId" value="2" /></td>
+                                                    <td width="60%"><input type="text" name="BillDetails.InvestigationName" class="hide" value="Test1" />Test1</td>
+                                                    <td width="20%"><input type="number" name="BillDetails.Fee" class="hide" value="100" />100</td>
+                                                    <td width="10%">
+                                                        <a href="#" class="btn btn-primary btn-sm">-</a>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td class="hide"><input type="hidden" name="BillDetails.InvestigationId" value="2" /></td>
+                                                    <td><input type="text" name="BillDetails.InvestigationName" class="hide" value="Test2" />Test2 </td>
+                                                    <td><input type="number" name="BillDetails.Fee" class="hide" value="200" />200</td>
+                                                    <td >
+                                                        <a href="#" class="btn btn-primary btn-sm">-</a>
+                                                    </td>
+                                                </tr>*@
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" style="background-color:#d9e6b7;padding:5px;color:#000;border:1px solid #e2e1e1">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.BillInfo.InvestigationQty, "Item Qty:", htmlAttributes: new { @class = "control-lebel col-md-12 font-weight-bold" })
+                                    <div class="col-md-12">
+                                        <div class="input-group">
+                                            @Html.TextBoxFor(model => model.BillInfo.InvestigationQty, htmlAttributes: new { @class = "form-control form-control-sm", @type = "number" })&nbsp;<text>(Qty.)</text>
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.BillInfo.InvestigationQty, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.BillInfo.SubTotal, "Sub Total:", htmlAttributes: new { @class = "control-lebel col-md-12 font-weight-bold" })
+                                    <div class="col-md-12">
+                                        <div class="input-group">
+                                            @Html.TextBoxFor(model => model.BillInfo.SubTotal, htmlAttributes: new { @class = "form-control form-control-sm", @type = "number", @value = "0" })&nbsp;<text>(Tk.)</text>
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.BillInfo.SubTotal, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.BillInfo.DiscountAmount, "Discount Amt:", htmlAttributes: new { @class = "control-lebel col-md-12 font-weight-bold" })
+                                    <div class="col-md-12">
+                                        <div class="input-group">
+                                            @Html.TextBoxFor(model => model.BillInfo.DiscountAmount, htmlAttributes: new { @class = "form-control form-control-sm", @type = "number" })&nbsp;<text>(TK.)</text>
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.BillInfo.DiscountAmount, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.BillInfo.DiscountPercent, "Discount %:", htmlAttributes: new { @class = "control-lebel col-md-12 font-weight-bold" })
+                                    <div class="col-md-12">
+                                        <div class="input-group">
+                                            @Html.TextBoxFor(model => model.BillInfo.DiscountPercent, htmlAttributes: new { @class = "form-control form-control-sm", @type = "number", @value = "0" })&nbsp;<text>(%.)</text>
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.BillInfo.DiscountPercent, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.BillInfo.NetAmount, "Net Amount:", htmlAttributes: new { @class = "control-lebel col-md-12 font-weight-bold" })
+                                    <div class="col-md-12">
+                                        <div class="input-group">
+                                            @Html.TextBoxFor(model => model.BillInfo.NetAmount, htmlAttributes: new { @class = "form-control form-control-sm", @type = "number" })&nbsp;<text>(TK.)</text>
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.BillInfo.NetAmount, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    @Html.LabelFor(model => model.BillInfo.ReceivedAmount, "Receive Amt:", htmlAttributes: new { @class = "control-lebel col-md-12 font-weight-bold" })
+                                    <div class="col-md-12">
+                                        <div class="input-group">
+                                            @Html.TextBoxFor(model => model.BillInfo.ReceivedAmount, htmlAttributes: new { @class = "form-control form-control-sm recv-amt", @type = "number", @value = "0" })&nbsp;<text>(TK.)</text>
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.BillInfo.ReceivedAmount, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6 hide">
+                                    @Html.LabelFor(model => model.BillInfo.CardAmount, "Card Amount:", htmlAttributes: new { @class = "control-lebel col-md-12 font-weight-bold" })
+                                    <div class="col-md-12">
+                                        <div class="input-group">
+                                            @Html.TextBoxFor(model => model.BillInfo.CashAmount, htmlAttributes: new { @class = "form-control form-control-sm", @type = "number" })&nbsp;<text>(TK.)</text>
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.BillInfo.CashAmount, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class="control-lebel col-md-12 font-weight-bold"> Return Amount:</label>
+                                    <div class="col-md-12">
+                                        <div class="input-group">
+                                            <label id="rtnAmount">0</label> &nbsp;<text>(Tk.)</text>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <div class="col-md-12">
+                                        <div class="input-group">
+                                            <button class="btn btn-success" id="btnSubmit"><i class="fa fa-save"></i>&nbsp; Save&nbsp;</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+@section Scripts
+{
+    <script type="text/javascript">
+
+        var txtPatientName = $("#BillInfo_PatientName");
+        var txtMobileNo = $("#BillInfo_MobileNo");
+        var txtAddress = $("#BillInfo_Address");
+        var ddlSex = $("#BillInfo_Sex")
+        var txtYear = $("#BillInfo_Year");
+        var txtMonth = $("#BillInfo_Months");
+        var txtDay = $("#BillInfo_Days");
+        var hdfReferrerId = $("#BillInfo_ReferrerId");
+        var txtReferrerName = $("#BillInfo_ReferrerName");
+        var ddlPaymentMode = $("#BillInfo_PaymentMode");
+        var txtItemQty = $("#BillInfo_InvestigationQty");
+        var txtSubTotal = $("#BillInfo_SubTotal");
+        var txtDiscountAmount = $("#BillInfo_DiscountAmount");
+        var txtDiscountPercent = $("#BillInfo_DiscountPercent");
+        var txtNetAmount = $("#BillInfo_NetAmount");
+        var txtReceivedAmount = $("#BillInfo_ReceivedAmount");
+        var txtInvestigation = $("#txtInvestigation");
+        var hdfInvesId = $("#invesId");
+        var lblReturnAmt = $("#rtnAmount");
+
+
+        $(document).ready(function () {
+            $("#BillInfo_InvestigationQty").prop("disabled", true);
+            $("#BillInfo_SubTotal").prop("disabled", true);
+            $("#BillInfo_NetAmount").prop("disabled", true);
+            $("#BillInfo_InvestigationQty").val('0');
+            $("#BillInfo_SubTotal").val('0');
+            $("#BillInfo_NetAmount").val('0');
+            $("#BillInfo_DiscountAmount").val('0');
+            $("#BillInfo_DiscountPercent").val('0');
+            $("#BillInfo_ReceivedAmount").val('0');
+            $("#BillInfo_CashAmount").val('0');
+            $("#BillInfo_CardAmount").val('0');
+            $("#BillInfo_Year").val('0');
+            $("#BillInfo_Months").val('0');
+            $("#BillInfo_Days").val('0');
+            ddlPaymentMode.val('Cash')
+        })
+
+        function vaidateForm() {
+            var isValid = true;
+
+            //--PatientName---//
+            if (txtPatientName.val().trim() == '') {
+                isValid = false;
+                $("span[data-valmsg-for='BillInfo.PatientName']").text($("input[name='BillInfo.PatientName']").attr('data-val-required'));
+            }
+            else {
+                if ($.trim(txtPatientName.val()).length > 100) {
+                    isValid = false;
+                    $("span[data-valmsg-for='BillInfo.PatientName']").text($("input[name='BillInfo.PatientName']").attr('data-val-length'));
+                }
+                else {
+                    $("span[data-valmsg-for='BillInfo.PatientName']").text('');
+                }
+            }
+
+            //---Mobile No---//
+            if (txtMobileNo.val().trim() == '') {
+                isValid = false;
+                $("span[data-valmsg-for='BillInfo.MobileNo']").text($("input[name='BillInfo.MobileNo']").attr('data-val-required'));
+            }
+            else {
+                if ($.trim(txtMobileNo.val()).length > 50) {
+                    isValid = false;
+                    $("span[data-valmsg-for='BillInfo.MobileNo']").text($("input[name='BillInfo.MobileNo']").attr('data-val-length'));
+                }
+                else {
+                    $("span[data-valmsg-for='BillInfo.MobileNo']").text('');
+                }
+            }
+
+            //---Address No---//
+
+
+            if ($.trim(txtAddress.val()).length > 150) {
+                isValid = false;
+                $("span[data-valmsg-for='BillInfo.Address']").text($("textarea[name='BillInfo.Address']").attr('data-val-length'));
+            }
+            else {
+                $("span[data-valmsg-for='BillInfo.Address']").text('');
+            }
+
+            if (ddlSex.val() == '') {
+                isValid = false;
+                $("span[data-valmsg-for='BillInfo.Sex']").text($("select[name='BillInfo.Sex']").attr('data-val-required'));
+            }
+            else {
+                $("span[data-valmsg-for='BillInfo.Sex']").text('');
+            }
+
+            //------ year,month,day--------//
+
+            if (txtYear.val().trim() == '') {
+                isValid = false;
+                $("span[data-valmsg-for='BillInfo.Year']").text($("input[name='BillInfo.Year']").attr('data-val-required'));
+            }
+            if (txtYear.val().trim() == '0' && txtMonth.val().trim() == '0' && txtDay.val().trim() == '0') {
+                isValid = false;
+                $("span[data-valmsg-for='BillInfo.Year']").text($("input[name='BillInfo.Year']").attr('data-val-required'));
+            }
+            else if (txtYear.val().trim() == '0') {
+                //isValid = false;
+                if (txtMonth.val().trim() != '0' && txtDay.val().trim() != '0') {
+                    if (parseFloat(txtMonth.val().trim()) > 12) {
+                        isValid = false;
+                        $("span[data-valmsg-for='BillInfo.Year']").text('Year <=150 | Month <=12 | Days <=31');
+                    }
+                    else if (parseFloat(txtDay.val().trim()) > 31) {
+                        isValid = false;
+                        $("span[data-valmsg-for='BillInfo.Year']").text('Year <=150 | Month <=12 | Days <=31');
+                    }
+                }
+            }
+            else if (txtYear.val().trim() != '0') {
+                //isValid = false;
+                if (parseFloat(txtYear.val().trim()) > 150) {
+                    isValid = false;
+                    $("span[data-valmsg-for='BillInfo.Year']").text('Year <=150 | Month <=12 | Days <=31');
+                }
+                else if (parseFloat(txtMonth.val().trim()) > 12) {
+                    isValid = false;
+                    $("span[data-valmsg-for='BillInfo.Year']").text('Year <=150 | Month <=12 | Days <=31');
+                }
+                else if (parseFloat(txtDay.val().trim()) > 31) {
+                    isValid = false;
+                    $("span[data-valmsg-for='BillInfo.Year']").text('Year <=150 | Month <=12 | Days <=31');
+                }
+                else {
+                    $("span[data-valmsg-for='BillInfo.Year']").text('');
+                }
+            }
+            else {
+                $("span[data-valmsg-for='BillInfo.Year']").text('');
+            }
+
+            //----- Ref By-----//
+
+            if (txtReferrerName.val().trim() != '') {
+                var hdr = hdfReferrerId.val().trim() == '' ? '0' : hdfReferrerId.val().trim();
+                if (parseInt(hdr) == 0) {
+                    isValid = false;
+                    $("span[data-valmsg-for='BillInfo.ReferrerName']").text('Referrer is unknown');
+                }
+                else {
+                    $("span[data-valmsg-for='BillInfo.ReferrerName']").text('');
+                }
+            }
+            else {
+                $("span[data-valmsg-for='BillInfo.ReferrerName']").text('');
+            }
+
+            //-----Payment Mode-----//
+            if (ddlPaymentMode.val() == '') {
+                isValid = false;
+                $("span[data-valmsg-for='BillInfo.PaymentMode']").text($("select[name='BillInfo.PaymentMode']").attr('data-val-required'));
+            }
+            else {
+                $("span[data-valmsg-for='BillInfo.PaymentMode']").text();
+            }
+
+            if ($("#billDetails tbody tr").length == 0) {
+                isValid = false;
+                $("span[data-valmsg-for='BillDetails']").text('No Bill Details Found..!!!');
+            }
+            else {
+                $("span[data-valmsg-for='BillDetails']").text('');
+            }
+
+            //.input-border-error
+            if (ddlPaymentMode.val() == 'Cash') {
+                if (txtReceivedAmount.val() == '0') {
+                    isValid = false;
+                    $(".recv-amt").addClass("input-border-error");
+                }
+                else {
+                    $(".recv-amt").removeClass("input-border-error");
+                }
+            }
+            return isValid;
+        }
+
+        $("#btnSubmit").on('click', function (e) {
+            e.preventDefault();
+            if (vaidateForm())
+            {
+                $("#btnSubmit").prop("disabled", true);
+                var dueAmount = (parseFloat(txtNetAmount.val()) <= parseFloat(txtReceivedAmount.val())) ? 0 : (parseFloat(txtNetAmount.val()) - parseFloat(txtReceivedAmount.val()));
+                var status = dueAmount == 0 ? "Paid" : "Due";
+
+                var refId = (hdfReferrerId.val() == null || hdfReferrerId.val() == "") ? "0" : hdfReferrerId.val();
+                //alert(dueAmount);
+                //return;
+                var BillInfo = { PatientName: txtPatientName.val(), MobileNo: txtMobileNo.val(), Address: txtAddress.val(), Sex: ddlSex.val(), Year: txtYear.val(), Months: txtMonth.val(), Days: txtDay.val(), ReferrerId: refId, PaymentMode: ddlPaymentMode.val(), ReceivedAmount: txtReceivedAmount.val(), NetAmount: txtNetAmount.val(), SubTotal: txtSubTotal.val(), DiscountAmount: txtDiscountAmount.val(), DiscountPercent: txtDiscountPercent.val(), DueAmount: dueAmount, Status: status, InvestigationQty:txtItemQty.val() }
+
+                var BillDetails = [];
+                BillDetails.length = 0;
+                $.each($('#billDetails tbody tr'), function (index,item) {
+                    var id = $(this).find('td:eq(1)').children('input[type="hidden"]').val();
+                    //console.log(id);
+                    var name = $(this).find('td:eq(2)').html();
+                    var fee = $(this).find('td:eq(3)').html();
+                    var refFee = $(this).find('td:eq(4)').html();
+                    var detail = { InvestigationId: id, InvestigationName: name, Fee: fee, RefFee: refFee };
+                    BillDetails.push(detail);
+                })
+
+                //var model = JSON.stringify({ BillInfo: BillInfo, BillInfo: BillInfo });
+                var model = JSON.stringify({ model: { BillInfo: BillInfo, BillDetails: BillDetails } })
+                //return console.log(model);
+
+                $.when(postReqWithToken(dataType.applicationJson, dataType.json, 'POST', '/Diagnostic/SaveDiagnosticBill', model, getToken())).then(function (res, status) {
+
+                    if (res.isSuccess)
+                    {
+                        clearCtrl();
+                        var pdfWindow = window.open("", "_blank")
+                        pdfWindow.document.write("<iframe width='100%' height='100%' src='" + encodeURI(res.file) + "'></iframe>");
+                        download(res.file, res.fileName, "application/pdf");
+                        $("#btnSubmit").prop("disabled", false);
+                    }
+                    else {
+                        alert("Somthing went wrong...");
+                        $("#btnSubmit").prop("disabled", false);
+                    }
+
+                }).fail(function (err) {
+                    console.log(err);
+                })
+
+            }
+        })
+
+        function clearCtrl() {
+            txtPatientName.val('');
+            txtMobileNo.val('');
+            txtAddress.val('');
+            ddlSex.val('');
+            txtYear.val('0');
+            txtMonth.val('0');
+            txtDay.val('0');
+            txtReferrerName.val('');
+            hdfReferrerId.val('0');
+            ddlPaymentMode.val('Cash');
+            hdfInvesId.val('');
+            txtInvestigation.val('');
+            txtItemQty.val('0');
+            txtSubTotal.val('0');
+            txtDiscountAmount.val('0');
+            txtDiscountPercent.val('0');
+            txtNetAmount.val('0');
+            txtReceivedAmount.val('0');
+            lblReturnAmt.text('0');
+            $('#billDetails tbody tr').remove();
+            //span[data-valmsg-for
+            $("span[data-valmsg-for]").text('');
+        }
+
+        var objData = {};
+
+        //txtInvestigation.on('focus', function myfunction() {
+
+        //})
+        //------Auto Complete-----//
+        txtInvestigation.autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: '@Url.Action("GetInvestigationNameByOrg", "Common")',
+                    type:'POST',
+                    dataType: "json",
+                    data: { OrgId: '@User.OrgId', contextKey: txtInvestigation.val() },
+                    headers:getToken(),
+                    success: function (data) {
+                        //console.log("Fire");
+                        $("span[data-valmsg-for='BillDetails']").text('');
+                        objData = {};
+                        response($.map(data, function (item) {
+                            return { label: item.Name, value: item.Name, fee: item.Fee, id: item.Id, reffee: item.RefFee };
+                        }));
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error");
+                        console.log();
+                    }
+                });
+            },
+            select: function (event, ui) {
+                objData = {};
+                objData = ui.item;
+                dataObjPassingforBind(objData);
+                //console.log(objData);
+                ui.item.value = "";
+                ui.item.id = "";
+            },
+            messages: {
+                noResults: "failure"
+            },
+            minLength: 0
+        }).focus(function () {
+            $(this).autocomplete("search")
+            });
+
+        // Auto-Complete for referrer name //
+        txtReferrerName.autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: '@Url.Action("GetReferrerName", "Common")',
+                    type:'POST',
+                    dataType: "json",
+                    data: { OrgId: '@User.OrgId', contextKey: txtReferrerName.val() },
+                    headers:getToken(),
+                    success: function (data) {
+                        hdfReferrerId.val('0')
+                        //console.log("Fire");
+                        response($.map(data, function (item) {
+                            return { label: item.Name, value: item.Name,id:item.Id};
+                        }));
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error");
+                    }
+                });
+            },
+            select: function (event, ui) {
+                //console.log(ui.item);
+                hdfReferrerId.val(ui.item.id)
+            },
+            messages: {
+                noResults: "failure"
+            },
+            minLength: 0
+        }).focus(function () {
+            $(this).autocomplete("search")
+            });
+
+        function dataObjPassingforBind(obj) {
+            if (!($.isEmptyObject(obj))) {
+                bindBillDetails(obj)
+            }
+        }
+
+        function bindBillDetails(obj) {
+            $("span[data-valmsg-for='BillDetails']").text('');
+            if ($("#billDetails tbody tr").length == 0)
+            {
+                tblDataBinding(obj);
+            }
+            else {
+                var isExist = false;
+                var count = 0;
+                $.each($("#billDetails tbody tr td:nth-child(2) input[type='hidden']"), function (index, item) {
+                    if (obj.id == item.value) {
+                        isExist = true;
+                        return false;
+                    }
+                    //console.log(item);
+                    //console.log(item.value);
+                })
+                if (!isExist) {
+                    tblDataBinding(obj);
+                    txtDiscountAmount.trigger("keyup");
+                }
+                else {
+                    $("span[data-valmsg-for='BillDetails']").text('Investigation already exist in the queue..!!!');
+                }
+            }
+        }
+
+        function tblDataBinding(obj) {
+            var tbody = $("#billDetails tbody");
+            var rowCount = $("#billDetails tbody tr").length;
+            var td1 = '<td width="10%" style="text-align:center">' + (rowCount+1)+'</td>';
+            var td2 = '<td class="hide"><input type="hidden" name="BillDetails.InvestigationId" value="' + obj.id + '" /></td>';
+            var td3 = '<td width="60%">' + obj.value + '</td>';
+            var td4 = '<td width="20%" style="text-align:right">' + obj.fee + '</td>';
+            var td5 = '<td width="20%" style="text-align:right" class="hide">' + obj.reffee + '</td>';
+            var td6 = '<td width="10%" style="text-align:center"><a href="#" class="btn btn-danger btn-sm data-del" data-inv-val="' + obj.id + '"><i class="fa fa-trash"></i></a></td>'
+            var tr = '<tr>' + td1 + td2 + td3 + td4 + td5 + td6 + '</tr>';
+            tbody.append(tr);
+            txtItemQty.val($("#billDetails tbody tr").length);
+            var total = fnCalculateSubTotal();
+            txtSubTotal.val(total);
+            txtNetAmount.val(total);
+        }
+
+        function fnCalculateSubTotal() {
+            //console.log('CalculateSubTotal');
+            var subTotal = 0;
+            $.each($("#billDetails tbody tr td:nth-child(4)"), function (index, item) {
+                subTotal += parseFloat(item.innerText);
+                //console.log(item);
+            })
+            //console.log('SubTotal');
+            //console.log(subTotal);
+            return subTotal;
+        }
+
+        $(document).on('click', 'a.data-del', function (e) {
+            e.preventDefault();
+            $("span[data-valmsg-for='BillDetails']").text('');
+            var ind = $(this).parent().parents('tbody tr').index(); //+ 1;
+            var fee = $(this).parent().parents('tbody tr').find('td:eq(3)').html();
+            $("#billDetails tbody tr").eq(ind).css("background-color", "#ff6347").fadeOut(800,
+                function () {
+                    $("#billDetails tbody tr").eq(ind).remove();
+                });
+            txtItemQty.val($("#billDetails tbody tr").length - 1);
+            var subTotal= fnCalculateSubTotal() - (parseFloat(fee));
+
+            txtSubTotal.val(subTotal);
+            txtNetAmount.val(subTotal);
+
+            if ($("#billDetails tbody tr").length == 1)
+            {
+                txtDiscountAmount.val('0');
+                txtDiscountPercent.val('0');
+            }
+            else {
+
+                txtDiscountAmount.trigger("keyup");
+            }
+            fnFixTheTbodyRowSerial("#billDetails", ind);
+            //console.log($("#billDetails tbody tr").length);
+        })
+
+        // Rebinding the table after delete a row..
+        function fnRebindtblAfterRowDel(index) {
+            if (($("#billDetails tbody tr").length - 1) != 0)
+            {
+
+            }
+        }
+
+        txtDiscountAmount.on('keyup', function () {
+            txtDiscountPercent.val('0')
+            txtNetAmount.val(txtSubTotal.val());
+            if (TryParseFloat(txtSubTotal.val(), 0) > 0)
+            {
+                if (txtDiscountAmount.val() > 0) {
+                    var netAmountAfterDisAmt = parseFloat(txtSubTotal.val()) - parseFloat(txtDiscountAmount.val())
+                    //txtNetAmount.val(netAmountAfterDisAmt);
+
+                    var disPercent = (parseFloat(txtDiscountAmount.val()) / parseFloat(txtSubTotal.val())) * 100;
+                    disPercent = disPercent.toFixed(2);
+                    txtDiscountPercent.val(disPercent)
+                    var caldis = 1-(disPercent / 100);
+                    var net = Math.round((parseFloat(txtSubTotal.val()) * caldis));
+                    txtNetAmount.val(net);
+                }
+            }
+            else {
+                txtDiscountAmount.val('0');
+            }
+
+        })
+
+        txtDiscountPercent.on('keyup', function () {
+
+            txtDiscountAmount.val('0')
+            txtNetAmount.val(txtSubTotal.val());
+            console.log(txtNetAmount.val());
+            if (TryParseFloat(txtSubTotal.val(), 0) > 0) {
+                if (txtDiscountPercent.val() > 0) {
+                    console.log("Dis Per" + txtDiscountPercent.val());
+                    var percentage = 1-(parseFloat(txtDiscountPercent.val()) / 100);
+                    console.log("New Dis"+parseFloat(txtDiscountPercent.val()));
+                    var totalNetAmount = Math.round(parseFloat(txtSubTotal.val()) * percentage);
+                    console.log(totalNetAmount);
+                    txtNetAmount.val(totalNetAmount);
+                    var disAmount = Math.round(parseFloat(txtSubTotal.val()) - parseFloat(totalNetAmount))
+                    txtDiscountAmount.val(disAmount)
+                }
+            }
+            else
+            {
+                txtDiscountPercent.val('0');
+            }
+
+        })
+
+        txtReceivedAmount.on('keyup', function () {
+            lblReturnAmt.text('0')
+            if (TryParseFloat(txtNetAmount.val(), 0) > 0 && TryParseFloat(txtReceivedAmount.val(), 0) > 0)
+            {
+                var rtnAmt = parseFloat(txtReceivedAmount.val()) - parseFloat(txtNetAmount.val());
+                lblReturnAmt.text(rtnAmt)
+            }
+        })
+
+    </script>
+}

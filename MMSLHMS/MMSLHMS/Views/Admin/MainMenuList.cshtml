@@ -1,0 +1,314 @@
+﻿@model IEnumerable<HMSBO.ViewModels.VmMainMenu>
+
+@{
+    ViewBag.Title = "List of Main Menu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.BgColor = "#fff";
+    
+}
+
+<div class="row">
+    <input type="hidden" value="0" id="hdfMainMenuId" />
+    <div class="col-md-12">
+        <h2 class="pull-left" style="display:inline-block">List of Main Menu</h2>
+        <button class="btn btn-primary float-right" type="button" id="btnAddMainMenu" title="Add New MainMenu" onclick="openModal()">Add New MainMenu</button>
+    </div>
+    <div class="col-md-12" style="overflow-y:scroll;height:650px">
+        <table class="table table-bordered table-hover table-responsive dataTable">
+            <thead class="btn-info">
+                <tr>
+                    <th>Main Menu Id</th>
+                    <th>Main Menu Name</th>
+                    <th class="hide">Module Id</th>
+                    <th>Module Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.MMId</td>
+                        <td>@item.MenuName</td>
+                        <td class="hide">@item.ModuleId</td>
+                        <td>@item.ModuleName</td>
+                        <td>
+                            <a href="#" class="data-edit btn btn-circle btn-success" data-edit-item="@item.MMId">
+                                <i class="fas fa-pen"></i>
+                            </a>
+                            |
+                            <a href="#" class="data-delete btn btn-circle btn-danger" data-delete-item="@item.MMId">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    
+</div>
+<div class="modal fade" id="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header btn-primary">
+                <h4 class="modal-title">Add New Main Menu</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <form id="frmMainMenu">
+                @Html.AntiForgeryToken()
+                <div class="modal-body">
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-list"></span></span>
+                        <input type="text" name="MainMenuName" class="form-control" id="txtMainMenuName" aria-describedby="" placeholder="Enter Main Menu ">
+                    </div>
+                    <span class="hide error mainMenuName">Main Menu is required.</span>
+                    <br />
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-apple"></span></span>
+                        <select class="form-control" name="ModuleName" id="ddlModuleName">
+                            <option value="-1" >Select Module Name</option>
+                        </select>
+                    </div>
+                    <span class="hide error ModuleName">Please select a module.</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" id="btnSubmit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalDelete">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header btn-warning">
+                <h4 class="modal-title">Delete A Menu</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <form id="frmDelete">
+                <div class="modal-body ">
+                    <input type="hidden" value="" id="hdfRowIndex" />
+                    <span id="deltxt"></span>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success" data-dismiss="modal" data-target="#modalDelete">Cancel</button>
+                    <button type="submit" id="btnDelSubmit" class="btn btn-danger" data-dismiss="modal" data-target="#modalDelete">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            loadDdlModuleName();
+        })
+        var txtMainMenuName = $("#txtMainMenuName");
+        var ddlModuleName = $("#ddlModuleName");
+        var hdfMainMenuId = $("#hdfMainMenuId");
+        var hdfRowIndex = $("#hdfRowIndex");
+        var tableRowIndex = -1;
+
+        function openModal() {
+            $("#btnSubmit").text('Save');
+            $("h4.modal-title").text('Add New Main Menu');
+            hdfMainMenuId.val('0')
+            txtMainMenuName.val('');
+            $("#modal").modal();
+            ddlModuleName.val('-1')
+            console.log($("#ddlModuleName > option").length);
+        }
+
+        $("#btnSubmit").click(function (e) {
+            e.preventDefault();
+            console.log('Submit button')
+            if (validateForm() == true)
+            {
+                var mainmenuName = txtMainMenuName.val();
+                var moduleId = ddlModuleName.val();
+                var mmId = hdfMainMenuId.val() == '' ? '0' : hdfMainMenuId.val();
+
+                var data = JSON.stringify({
+                    mmId: mmId,
+                    menuName: mainmenuName,
+                    moduleId: moduleId
+                })
+                console.log(data);
+               
+                $.when(SaveData(data)).then(function (response) {
+                    console.log(response);
+                }).fail(function (err) {
+                    console.log(err);
+                });
+            }
+        })
+
+        function SaveData(data)
+        {
+            return $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                method: 'POST',
+                url: '/Admin/SaveMainMenu',
+                data: data,
+                headers:getToken(),
+                success: function (result)
+                {
+                    if (result == true) {
+                        clearControl();
+                        alert(execuStatus.successSave);
+                        $("#modal").hide();
+                        location.reload();
+                    }
+                    else {
+                        alert(execuStatus.fail);
+                    }
+                },
+                error: function (result)
+                {
+                    console.log(result);
+                }
+            })
+        }
+
+        function validateForm()
+        {
+            var isValid = true;
+            if ($.trim(txtMainMenuName.val()) == '') {
+                $(".error.mainMenuName").removeClass('hide');
+                isValid = false;
+            }
+            else
+            {
+                $(".error.mainMenuName").addClass('hide');
+            }
+            //console.log('ddl Val ' + ddlModuleName.val());
+            if (parseInt(ddlModuleName.val()) < 1 ) {
+                $(".error.ModuleName").removeClass('hide');
+                isValid = false;
+            }
+            else {
+                $(".error.ModuleName").addClass('hide');
+            }
+
+            return isValid;
+        }
+
+        function loadDdlModuleName()
+        {
+            if ($("#ddlModuleName > option").length > 1) return;
+            $.ajax({
+                dataType: 'json',
+                type: 'POST',
+                url: '/Common/GetModuleList',
+                success: function (result) {
+                    $.each(result, function (index,item) {
+                        var option = "<option value='" + item.value + "'>" + item.text+ "</option>";
+                        $("#ddlModuleName").append(option);
+                    })
+                    console.log(result);
+                },
+                error: function (result) {
+                    console.log("Something is went worng..!!!");
+                    console.log(result);
+                }
+            })
+        }
+
+        $(document).on('click', 'a.data-edit', function (e) {
+            e.preventDefault();
+            var mmId = $(this).attr('data-edit-item');
+            var menuName = $.trim($(this).parent().parents('tr').find('td:eq(1)').html());
+            var moduleId = $(this).parent().parents('tr').find('td:eq(2)').html();
+            //console.log($(this).attr('data-edit-item'));
+            //console.log(mmId + ' ' + menuName + ' ' + moduleId);
+            
+            openModal();
+            txtMainMenuName.val(menuName);
+            ddlModuleName.val(moduleId);
+            hdfMainMenuId.val(mmId);
+            $("#btnSubmit").text('Update');
+            $("h4.modal-title").text('Edit Main Menu');
+
+            //console.log(txtMainMenuName.val() + ' ' + ddlModuleName.val() + ' ' + hdfMainMenuId.val());
+        })
+
+        $(document).on('click', 'a.data-delete', function (e) {
+            e.preventDefault();
+            hdfRowIndex.val('')
+            var mmId = $(this).attr('data-delete-item');
+            var menuName = $.trim($(this).parent().parents('tr').find('td:eq(1)').html());
+            hdfMainMenuId.val(mmId)
+            tableRowIndex = $(this).parent().parents('tr').index()+1;
+            hdfRowIndex.val(tableRowIndex);
+            $("#deltxt").text('');
+            $("#deltxt").append('Are you sure you want to delete <b>' + menuName+'</b>');
+            $("#modalDelete").modal();
+            console.log('Row Index ' + tableRowIndex);
+
+            
+        })
+
+        $("#btnDelSubmit").click(function (e) {
+            e.preventDefault();
+            if (hdfMainMenuId.val() != '' && hdfMainMenuId.val() != '0') {
+                var data = JSON.stringify({
+                    id: hdfMainMenuId.val()
+                });
+                $.when(deleteData(data, hdfRowIndex.val())).then(function (response) {
+                    console.log(response);
+                }).fail(function (err) {
+                    console.log(err);
+                })
+            }
+            else {
+                console.log('MMId is 0 or empty');
+            }
+        })
+
+        function deleteData(data,rowIndex) {
+            return $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                method: 'POST',
+                url: '/Admin/DeleteMainMenu',
+                headers:getToken(),
+                data: data,
+                success: function (result) {
+                    if (result == true) {
+                        alert(execuStatus.successSave);
+                        $("#deltxt").text('');
+                        $("tr").eq(rowIndex).css("background-color", "#ff6347").fadeOut(800,
+                            function () {
+                                $("tr").eq(rowIndex).remove();
+                            });
+                        clearControl();
+                    } else {
+                        alert(execuStatus.fail);
+                    }
+                },
+                error: function (result) {
+                    console.log(result);
+                }    
+            })
+        }
+
+        function clearControl() {
+          txtMainMenuName.val('');
+          ddlModuleName.val('-1');
+          hdfMainMenuId.val('0');
+          hdfRowIndex.val('');
+        }
+
+        $('#modal').on('hidden.bs.modal', function (e) {
+            clearControl();
+        })
+        $('#modalDelete').on('hidden.bs.modal', function (e) {
+            clearControl();
+        })
+
+    </script>
+}
+

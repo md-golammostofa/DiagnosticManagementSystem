@@ -1,0 +1,986 @@
+﻿@model HMSBO.ViewModels.vmCreateDoctorProfile
+@using System.IO;
+
+@{
+    ViewBag.Title = "Create Doctor Profile";
+    ViewBag.BgColor = "#fff";
+    var imgSrc = "";
+    if (Model != null)
+    {
+        if (Model.PhotoUrl != null && Model.PhotoUrl != "")
+        {
+            if (File.Exists(Model.PhotoUrl))
+            {
+                FileStream fs = new FileStream(Model.PhotoUrl, FileMode.Open, FileAccess.Read);
+
+                BinaryReader br = new BinaryReader(fs);
+
+                Byte[] bytes = br.ReadBytes((Int32)fs.Length);
+
+                br.Close();
+                string extension = Path.GetExtension(Model.PhotoUrl);
+
+                var base64 = Convert.ToBase64String(bytes);
+                imgSrc = String.Format("data:image/{0};base64,{1}", extension, base64);
+            }
+        }
+        if (Model.Id > 0)
+        {
+            ViewBag.Title = "Update Doctor Profile";
+        }
+    }
+    string isNewData = "true";
+    string strInPatientChargeType = "";
+    //string strInPatientChargeValue = "";
+    string strOutPatientChargeType = "";
+    //string strOutPatientChargeValue = "";
+    if (Model != null)
+    {
+        isNewData = "false";
+        strInPatientChargeType = string.IsNullOrEmpty(Model.InPatientChargeType) ? "": Model.InPatientChargeType;
+        //strInPatientChargeValue = string.IsNullOrEmpty(Model.InPatientChargeValue.ToString())?"": Model.InPatientChargeValue.ToString();
+        strOutPatientChargeType = string.IsNullOrEmpty(Model.OutPatientChargeType)? "":Model.OutPatientChargeType;
+        //strOutPatientChargeValue = string.IsNullOrEmpty(Model.OutPatientChargeValue.ToString())?"": Model.OutPatientChargeValue.ToString();
+    }
+}
+
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-4">
+                @*<a href="/Doctors/AllDoctorProfileList" title="Back To List" class="btn btn-success btn-sm float-left">Back To List</a>*@
+                <a href="/Doctors/AllDoctorProfileList" title="Back To List" class="btn btn-success btn-sm float-left"><i class="fa fa-arrow-left"></i>  Back To List</a>
+            </div>
+            <div class="col-md-4">
+                <h2>@ViewBag.Title</h2>
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-primary btn-sm float-right" type="button" id="saveProfile" title="Save Profile">
+                  <i class="fa fa-save"></i>  Save Profile
+                </button>
+            </div>
+        </div>
+
+    </div>
+    <hr />
+    <br />
+    <div class="col-md-12" style="overflow-y:scroll;height:650px">
+        <form class="scroller-div" id="form" enctype="multipart/form-data" method="post">
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.Id)
+            <div class="control-panel-default col-md-12">
+                <p class="alert alert-danger col-md-12" style="border-radius:0px 0px 5px 5px">Personal Information:</p>
+                
+                <div class="form-inline col-md-12 margin-bottom-10">
+                    <div class="form-group col-md-6">
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.FirstName, "First Name:", new { @class = "font-weight-bold d-md-block" })
+                            <div class="input-group">
+                                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+                                <span class="text-danger">*</span>
+                            </div>
+                            @Html.ValidationMessageFor(m => m.FirstName, null, new { @class = "error" })
+                            <br />
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6 ">
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.LastName, "Last Name:", new { @class = "font-weight-bold d-md-block" })
+                            <div class="input-group">
+                                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+                                <span class="text-danger">*</span>
+                            </div>
+                            @Html.ValidationMessageFor(m => m.LastName, null, new { @class = "error" })
+                            <br />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-inline col-md-12 margin-bottom-10">
+                    <div class="form-group col-md-6">
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.Prefix, "Prefix:", new { @class = "font-weight-bold d-md-block" })
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                                @Html.DropDownListFor(m=> m.Prefix,new List<SelectListItem>() {
+                                new SelectListItem(){Text="Dr." ,Value="Dr."}
+                            }, "Select Prefix",new {@class="form-control" })
+                                <span class="text-danger">*</span>
+                            </div>
+                            @Html.ValidationMessageFor(m => m.Prefix, null, new { @class = "error" })
+                            <br />
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.AliasName, "Alias Name:", new { @class = "font-weight-bold d-md-block" })
+                            <div class="input-group">
+                                @Html.TextBoxFor(m => m.AliasName, new { @class = "form-control" })
+                            </div>
+                            @*@Html.ValidationMessageFor(m => m.AliasName, null, new { @class = "error" })*@
+                            <br />
+                        </div>
+                    </div>
+                </div>
+                @* Father's Name , Mother's Name, Spous Name *@
+                <div class="form-inline col-md-12 margin-bottom-10">
+                    <div class="form-group col-md-6">
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.FatherName, string.Format(@"Father's Name:"), new { @class = "font-weight-bold d-md-block" })
+                            <div class="input-group">
+                                @Html.TextBoxFor(m => m.FatherName, new { @class = "form-control" })
+                                <span class="text-danger">*</span>
+                            </div>
+                            @Html.ValidationMessageFor(m => m.FatherName, null, new { @class = "error" })
+                            <br />
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.MotherName, string.Format(@"Mather's Name:"), new { @class = "font-weight-bold d-md-block" })
+                            <div class="input-group">
+                                @Html.TextBoxFor(m => m.MotherName, new { @class = "form-control" })
+                                <span class="text-danger">*</span>
+                            </div>
+                            @Html.ValidationMessageFor(m => m.MotherName, null, new { @class = "error" })
+                            <br />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-inline col-md-12 margin-bottom-10">
+                    <div class="form-group col-md-6 ">
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.SpouseName, string.Format(@"Spouse Name:"), new { @class = "font-weight-bold d-md-block" })
+                            <div class="input-group">
+                                @Html.TextBoxFor(m => m.SpouseName, new { @class = "form-control" })
+                            </div>
+                            @Html.ValidationMessageFor(m => m.SpouseName, null, new { @class = "error" })
+                            <br />
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.Gender, string.Format(@"Gender:"), new { @class = "font-weight-bold d-md-block" })
+                            <div class="input-group">
+                                @Html.DropDownListFor(m=> m.Gender,new List<SelectListItem>() {
+                                new SelectListItem(){Text="Male" ,Value="Male"},
+                                new SelectListItem(){Text="Female" ,Value="Female"}
+                            }, "Select Gender",new {@class="form-control" })
+                                <span class="text-danger">*</span>
+                            </div>
+                            @Html.ValidationMessageFor(m => m.Gender, null, new { @class = "error" })
+                            <br />
+                        </div>
+                    </div>
+                </div>
+                @* ------------------------------- *@
+                <div class="form-inline col-md-12 margin-bottom-10">
+                    <div class="form-group col-md-6">
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.ParmanentAddress, "Permanent Address", new { @class = "font-weight-bold d-md-block" })
+                            <div class="input-group">
+                                @Html.TextAreaFor(m => m.ParmanentAddress, new { @class = "form-control", rows = 2, cols = 50 })
+                                <span class="text-danger">*</span>
+                            </div>
+                            @Html.ValidationMessageFor(m => m.ParmanentAddress, null, new { @class = "error" })
+                            <br />
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.PresentAddress, "Present Address", new { @class = "font-weight-bold d-md-block" })
+                            <div class="input-group">
+                                @Html.TextAreaFor(m => m.PresentAddress, new { @class = "form-control", rows = 2, cols = 50 })
+                                <span class="text-danger">*</span>
+                            </div>
+                            @Html.ValidationMessageFor(m => m.PresentAddress, null, new { @class = "error" })
+                            <br />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-inline col-md-12 margin-bottom-10">
+                    <div class="form-group col-md-6">
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.ContactNumber, string.Format(@"Contact Number:"), new { @class = "font-weight-bold d-md-block" })
+                            <div class="input-group">
+                                @Html.TextBoxFor(m => m.ContactNumber, new { @class = "form-control" })
+                                <span class="text-danger">*</span>
+                            </div>
+                            @Html.ValidationMessageFor(m => m.ContactNumber, null, new { @class = "error" })
+                            <br />
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.PhoneNumber, string.Format(@"Contact Number (Home):"), new { @class = "font-weight-bold d-md-block" })
+                            <div class="input-group">
+                                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+                                <span class="text-danger">*</span>
+                            </div>
+                            @Html.ValidationMessageFor(m => m.PhoneNumber, null, new { @class = "error" })
+                            <br />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-inline col-md-12 margin-bottom-10">
+                    <div class="form-group col-md-6">
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.City, string.Format(@"City:"), new { @class = "font-weight-bold d-md-block" })
+                            <div class="input-group">
+                                @Html.DropDownListFor(m=> m.City, new List<SelectListItem>() {
+                                new SelectListItem(){Text="Dhaka" ,Value="Dhaka"},
+                                new SelectListItem(){Text="B-Baria" ,Value="B-Baria"}
+                            }, "Select City",new {@class="form-control" })
+                                <span class="text-danger">*</span>
+                            </div>
+                            @Html.ValidationMessageFor(m => m.City, null, new { @class = "error" })
+                            <br />
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.DateOfBirth, string.Format(@"Date of Birth:"), new { @class = "font-weight-bold d-md-block" })
+                            <div class="input-group">
+                                @Html.TextBoxFor(m => m.DateOfBirth, "{0:yyyy-MM-dd}", new { @class = "form-control", @type = "date" })
+                                <span class="text-danger">*</span>
+                            </div>
+                            @Html.ValidationMessageFor(m => m.DateOfBirth, null, new { @class = "error" })
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="control-panel-default col-md-12">
+                <p class="alert alert-danger col-md-12" style="border-radius:0px 0px 5px 5px">Educational Qualification & Experiences :</p>
+                <div class="form-inline col-md-12 margin-bottom-10">
+                    <div class="form-group col-md-6">
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.Degrees, "Degrees", new { @class = "font-weight-bold d-md-block" })
+                            <div class="input-group">
+                                @Html.TextAreaFor(m => m.Degrees, new { @class = "form-control", rows = 2, cols = 50 })
+                                <span class="text-danger">*</span>
+                            </div>
+                            @Html.ValidationMessageFor(m => m.Degrees, null, new { @class = "error" })
+                            <br />
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.Experiences, "Experiences", new { @class = "font-weight-bold d-md-block" })
+                            <div class="input-group">
+                                @Html.TextAreaFor(m => m.Experiences, new { @class = "form-control", rows = 2, cols = 50 })
+                                <span class="text-danger">*</span>
+                            </div>
+                            @Html.ValidationMessageFor(m => m.Experiences, null, new { @class = "error" })
+                            <br />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-inline col-md-12 margin-bottom-10">
+                    <div class="form-group col-md-6">
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.CurrentJobLocation, "Current Job Location:", new { @class = "font-weight-bold d-md-block" })
+                            <div class="input-group">
+                                @Html.TextAreaFor(m => m.CurrentJobLocation, new { @class = "form-control", rows = 1, cols = 50 })
+                                <span class="text-danger">*</span>
+                            </div>
+                            @Html.ValidationMessageFor(m => m.CurrentJobLocation, null, new { @class = "error" })
+                            <br />
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.YearsOfExperience, "Years of Experience:", new { @class = "font-weight-bold d-md-block" })
+                            <div class="input-group">
+                                @Html.TextBoxFor(m => m.YearsOfExperience, new { @class = "form-control", @type = "number" })
+                                <span class="text-danger">*</span>
+                            </div>
+                            @Html.ValidationMessageFor(m => m.YearsOfExperience, null, new { @class = "error" })
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="control-panel-default col-md-12">
+                <p class="alert alert-danger col-md-12" style="border-radius:0px 0px 5px 5px">About Him/Her Self:</p>
+                <div class="form-inline col-md-12 margin-bottom-10">
+                    <div class="form-group col-md-12">
+                        @Html.LabelFor(m => m.About, "About:", new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-hdd"></i></span>
+                                @Html.TextAreaFor(m => m.About, new { @class = "form-control", @cols = "200", @rows = "3" })
+                                <span class="text-danger">*</span>
+                            </div>
+                            @Html.ValidationMessageFor(m => m.About, null, new { @class = "error" })
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="control-panel-default col-md-12">
+                <p class="alert alert-danger col-md-12" style="border-radius:0px 0px 5px 5px">Photo:</p>
+                <div class="form-inline col-md-12 margin-bottom-10">
+                    <div class="form-group col-md-12">
+                        <div class="col-md-8">
+                            @Html.LabelFor(m => m.Photo, "Photo:", new { @class = "font-weight-bold d-md-block" })
+                            <div class="input-group">
+                                <input type="file" name="Photo" id="Photo" class="form-control" />
+                                <span class="text-danger">*</span>
+                            </div>
+                            <br />
+                        </div>
+                        <div class="col-md-4">
+                            <div style="border:5px solid dashed #808080 !important;">
+                                <img id="ImageUpload" name="ImageUpload" src="@imgSrc" width="150" height="150" alt="Browse Doctor Image" />
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="control-panel-default col-md-12">
+                <p class="alert alert-danger col-md-12" style="border-radius:0px 0px 5px 5px">Department,Speciality &amp; Activity</p>
+                <div class="form-inline col-md-12 margin-bottom-10">
+                    <div class="form-group col-md-6">
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.DepartmentId, "Department:", new { @class = "font-weight-bold d-md-block" })
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-th-large"></i></span>
+                                @Html.DropDownList("DepartmentId", (IEnumerable<SelectListItem>)ViewBag.DepartmentList, "Select Department", new { @class = "form-control" })
+                                <span class="text-danger">*</span>
+                            </div>
+
+                            @Html.ValidationMessageFor(m => m.DepartmentId, null, new { @class = "error" })<br />
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        @Html.LabelFor(m => m.IsActive, "Is Active Doctor:", new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            <div class="input-group">
+                                @Html.CheckBoxFor(m => m.IsActive, new { @class = "customCheckBox" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-inline col-md-12 margin-bottom-10">
+                    <div class="form-group col-md-6">
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.DesignationId, "Designation:", new { @class = "font-weight-bold d-md-block" })
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-th-large"></i></span>
+                                @Html.DropDownList("DesignationId", (IEnumerable<SelectListItem>)ViewBag.DesignationList, "Select Department", new { @class = "form-control" })
+                                <span class="text-danger">*</span>
+                            </div>
+
+                            @Html.ValidationMessageFor(m => m.DesignationId, null, new { @class = "error" })<br />
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.SpecializationTypeId, "Specialization Type:", new { @class = "font-weight-bold d-md-block" })
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-th-large"></i></span>
+                                @Html.DropDownList("SpecializationTypeId", (IEnumerable<SelectListItem>)ViewBag.SpecializationList, "Select Specialization Type", new { @class = "form-control" })
+                                <span class="text-danger">*</span>
+                            </div>
+
+                            @Html.ValidationMessageFor(m => m.SpecializationTypeId, null, new { @class = "error" })<br />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-inline col-md-12 margin-bottom-10">
+                    <div class="form-group col-md-6">
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.BranchId, "Branch Name:", new { @class = "font-weight-bold d-md-block" })
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-th-large"></i></span>
+                                @Html.DropDownList("BranchId", (IEnumerable<SelectListItem>)ViewBag.BrancheList, "Select Branch Type", new { @class = "form-control" })
+                                <span class="text-danger">*</span>
+                            </div>
+
+                            @Html.ValidationMessageFor(m => m.BranchId, null, new { @class = "error" })<br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="control-panel-default col-md-12">
+                <p class="alert alert-danger col-md-12" style="border-radius:0px 0px 5px 5px">License No &amp; Charges </p>
+                <div class="form-inline col-md-12 margin-bottom-10">
+                    <div class="form-group col-md-6">
+                        <div class="col-md-12">
+                            @Html.LabelFor(m => m.LicenseNo, "License No:", new { @class = "font-weight-bold d-md-block" })
+                            <div class="input-group">
+                                @Html.TextBoxFor(m => m.LicenseNo, new { @class = "form-control" })
+                                <span class="text-danger">*</span>
+                            </div>
+                            @Html.ValidationMessageFor(m => m.LicenseNo, null, new { @class = "error" })
+                            <br />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-inline col-md-12 margin-bottom-10">
+                    <div class="form-group col-md-6">
+                        <div class="col-md-12">
+                            <label class="font-weight-bold d-md-block">InPatient Charges: <i class="text-danger">*</i></label>
+                            <div class="input-group">
+                                <input type="radio" name="InPatientChargeType" id="InPatientByFixed" value="Fixed" data-val-required="In Patient Charge is required" />Fixed
+                                &nbsp;&nbsp;
+                                <input type="radio" name="InPatientChargeType" id="InPatientByPercent" value="By %" data-val-required="In Patient Charge is required" />By %
+                            </div>
+                            @Html.ValidationMessageFor(m => m.InPatientChargeType, null, new { @class = "error" })
+                            <br />
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <div class="col-md-12">
+                            <label class="font-weight-bold d-md-block" for="InPatientChargeValue">InPatient Consulting Charges:</label>
+                            <div class="input-group">
+                                @Html.TextBoxFor(m => m.InPatientChargeValue, new { @class = "form-control", @type = "number", onkeyup = "CheckNumber(this.value,this.id)" })
+                                <span class="text-danger">*</span>
+                            </div>
+                            @Html.ValidationMessageFor(m => m.InPatientChargeValue, null, new { @class = "error" })
+                            <br />
+                        </div>
+                    </div>
+                </div>
+                <div class="form-inline col-md-12 margin-bottom-10">
+                    <div class="form-group col-md-6">
+                        <div class="col-md-12">
+                            <label class="font-weight-bold d-md-block">OutPatient Charges: <i class="text-danger">*</i></label>
+                            <div class="input-group">
+                                <input type="radio" name="OutPatientChargeType" id="OutPatientByFixed" value="Fixed" data-val-required="Out Patient Charge is required" />Fixed
+                                &nbsp;&nbsp;
+                                <input type="radio" name="OutPatientChargeType" id="OutPatientByPercent" value="By %" data-val-required="Out Patient Charge is required" />By %
+                            </div>
+                            @Html.ValidationMessageFor(m => m.OutPatientChargeType, null, new { @class = "error" })
+                            <br />
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <div class="col-md-12">
+                            <label class="font-weight-bold d-md-block" for="OutPatientChargeValue">OutPatient Consulting Charges:</label>
+                            <div class="input-group">
+                                @Html.TextBoxFor(m => m.OutPatientChargeValue, new { @class = "form-control", @type = "number", onkeyup = "CheckNumber(this.value,this.id)" })
+                                <span class="text-danger">*</span>
+                            </div>
+                            @Html.ValidationMessageFor(m => m.OutPatientChargeValue, null, new { @class = "error" })
+                            <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+
+        //----- Form Controls -----//
+        var hdfId = $("#Id");
+        var ddlPrefix = $("#Prefix");
+        var txtFirstName = $("#FirstName");
+        var txtLastName = $("#LastName");
+        var txtFatherName = $("#FatherName");
+        var txtMotherName = $("#MotherName");
+        var txtSpouseName = $("#SpouseName");
+        var txtParmanentAddress = $("#ParmanentAddress");
+        var txtPresentAddress = $("#PresentAddress");
+        var txtContactNumber = $("#ContactNumber");
+        var txtPhoneNumber = $("#PhoneNumber");
+        var ddlGender = $("#Gender");
+        var ddlCity = $("#City");
+        var txtDateOfBirth = $("#DateOfBirth");
+        var txtDegrees = $("#Degrees");
+        var txtExperiences = $("#Experiences");
+        var txtCurrentJobLocation = $("#CurrentJobLocation");
+        var txtYearsOfExperience = $("#YearsOfExperience");
+        var txtAbout = $("#About");
+        var filePhoto = $("#Photo");
+        var ddlDepartment = $("#DepartmentId");
+        var chkIsActive = $("#IsActive");
+        var ddlDesignation = $("#DesignationId");
+        var ddlSpecializationType = $("#SpecializationTypeId");
+
+        var txtLicenseNo = $("#LicenseNo");
+
+        var ddlBranch = $("#BranchId");
+
+        var rbInPatientChargeType = $("input[name='InPatientChargeType'][type='radio']");
+        var txtInPatientChargeValue = $("#InPatientChargeValue");
+        //OutPatientChargeType
+        var rbInPatientChargeType = $("input[name='OutPatientChargeType'][type='radio']");
+        var txtOutPatientChargeValue = $("#OutPatientChargeValue");
+
+        function CheckNumber(value,id) {
+           
+            $("#"+id).val(TryParseFloat(value, ''));
+        }
+
+        $(document).ready(function () {
+           
+            var inPatientChagerType = '@strInPatientChargeType';
+            var outPatientChagerType = '@strInPatientChargeType';
+
+            
+            if (inPatientChagerType != '')
+            {
+                if (inPatientChagerType == "Fixed") {
+                    $("#InPatientByFixed").attr("checked", true);
+                }
+                else if (inPatientChagerType == "By %") {
+                    $("#InPatientByPercent").attr("checked", true);
+                }
+            }
+            if (outPatientChagerType != '')
+            {
+                if (outPatientChagerType == "Fixed") {
+                    $("#OutPatientByFixed").attr("checked", true);
+                }
+                else if (outPatientChagerType == "By %") {
+                    $("#OutPatientByPercent").attr("checked", true);
+                }
+            }
+        })
+
+        //-----------------------------//
+
+        $("#saveProfile").on('click', function (e) {
+
+            e.preventDefault();
+
+            var files = $("#Photo").get(0).files;
+            var isChecked = chkIsActive.is(":checked");
+            var hdval= hdfId.val() == '' ? '0' : hdfId.val();
+            if (validateForm())
+            {
+                var formData = new FormData();
+                formData.append("Id", hdval);
+                formData.append("prefix", ddlPrefix.val());
+                formData.append("firstName", txtFirstName.val());
+                formData.append("lastName", txtLastName.val());
+                formData.append("fatherName", txtFatherName.val());
+                formData.append("motherName", txtMotherName.val());
+                formData.append("spouseName", txtSpouseName.val());
+                formData.append("parmanentAddress", txtParmanentAddress.val());
+                formData.append("presentAddress", txtPresentAddress.val());
+                formData.append("contactNumber", txtContactNumber.val());
+                formData.append("PhoneNumber", txtPhoneNumber.val());
+                formData.append("gender", ddlGender.val());
+                formData.append("city", ddlCity.val());
+                formData.append("dateOfBirth", txtDateOfBirth.val());
+                formData.append("degrees", txtDegrees.val());
+                formData.append("experiences", txtExperiences.val());
+                formData.append("currentJobLocation", txtCurrentJobLocation.val());
+                formData.append("yearsOfExperience", txtYearsOfExperience.val());
+                formData.append("about", txtAbout.val());
+                formData.append("photo", files[0]);
+                formData.append("departmentId", ddlDepartment.val());
+                formData.append("isActive", isChecked);
+                formData.append("designationId", ddlDesignation.val());
+                formData.append("specializationTypeId", ddlSpecializationType.val());
+
+                formData.append("LicenseNo", txtLicenseNo.val());
+                var Inchargetype = $("input[name='InPatientChargeType'][type='radio']:checked").val();
+                formData.append("InPatientChargeType", Inchargetype );
+                formData.append("InPatientChargeValue", txtInPatientChargeValue.val());
+
+                var Outchargetype = $("input[name='OutPatientChargeType'][type='radio']:checked").val();
+                formData.append("OutPatientChargeType", Outchargetype );
+                formData.append("OutPatientChargeValue", txtOutPatientChargeValue.val());
+                formData.append("BranchId", ddlBranch.val());
+                console.log(Inchargetype);
+                console.log(Outchargetype);
+
+                //console.log(formData);
+                //fnSaveWhen(ajaxPost(formData));
+                $.when(ajaxPost(formData)).then(function (res) {
+                    if (res == true) {
+                        alert(execuStatus.successSave);
+                        window.location.replace('/Doctors/AllDoctorProfileList');
+                    }
+                    else {
+                        alert(execuStatus.fail);
+                    }
+                }).fail(function (err) {
+                    console.log(err);
+                    alert("Save Request Fail");
+                })
+            }
+        })
+
+        function validateForm() {
+            var isValid = true;
+            if (ddlPrefix.val() == '')
+            {
+                $(".field-validation-valid[data-valmsg-for='Prefix']").text($("#Prefix").attr('data-val-required'));
+                ddlPrefix.focus();
+                isValid = false;
+            }
+            else {
+                $(".field-validation-valid[data-valmsg-for='Prefix']").text('');
+            }
+            if (txtFirstName.val() == '') {
+                $(".field-validation-valid[data-valmsg-for='FirstName']").text($("#FirstName").attr('data-val-required'));
+                isValid = false;
+                txtFirstName.focus();
+            }
+            else if (txtFirstName.val().length > parseInt($("#FirstName").attr("[data-val-length-max]")) ) {
+                $(".field-validation-valid[data-valmsg-for='FirstName']").text($("#FirstName").attr("[data-val-length]"));
+                isValid = false;
+                txtFirstName.focus();
+            }
+            else {
+                $(".field-validation-valid[data-valmsg-for='FirstName']").text('');
+            }
+            if (txtLastName.val() == '') {
+                $(".field-validation-valid[data-valmsg-for='LastName']").text($("#LastName").attr('data-val-required'));
+                isValid = false;
+                txtLastName.focus();
+            }
+            else if (txtLastName.val().length > parseInt($("#LastName").attr("[data-val-length-max]"))) {
+                $(".field-validation-valid[data-valmsg-for='LastName']").text($("#LastName").attr("[data-val-length]"));
+                isValid = false;
+                txtLastName.focus();
+            }
+            else {
+                $(".field-validation-valid[data-valmsg-for='LastName']").text('');
+            }
+            if (txtFatherName.val() == '') {
+                $(".field-validation-valid[data-valmsg-for='FatherName']").text($("#FatherName").attr('data-val-required'));
+                isValid = false;
+                txtFatherName.focus();
+            }
+            else if (txtFatherName.val().length > parseInt($("#FatherName").attr("[data-val-length-max]"))) {
+                $(".field-validation-valid[data-valmsg-for='FatherName']").text($("#FatherName").attr("[data-val-length]"));
+                isValid = false;
+                txtFatherName.focus();
+            }
+            else {
+                $(".field-validation-valid[data-valmsg-for='FatherName']").text('');
+            }
+            if (txtMotherName.val() == '') {
+                $(".field-validation-valid[data-valmsg-for='MotherName']").text($("#MotherName").attr('data-val-required'));
+                isValid = false;
+                txtMotherName.focus();
+            }
+            else if (txtMotherName.val().length > parseInt($("#MotherName").attr("[data-val-length-max]"))) {
+                $(".field-validation-valid[data-valmsg-for='MotherName']").text($("#MotherName").attr("[data-val-length]"));
+                isValid = false;
+                txtMotherName.focus();
+            }
+            else {
+                $(".field-validation-valid[data-valmsg-for='MotherName']").text('');
+            }
+            if (txtParmanentAddress.val() == '') {
+                $(".field-validation-valid[data-valmsg-for='ParmanentAddress']").text($("#ParmanentAddress").attr('data-val-required'));
+                isValid = false;
+                txtParmanentAddress.focus();
+            }
+            else if (txtParmanentAddress.val().length > parseInt($("#ParmanentAddress").attr("[data-val-length-max]"))) {
+                $(".field-validation-valid[data-valmsg-for='ParmanentAddress']").text($("#ParmanentAddress").attr("[data-val-length]"));
+                isValid = false;
+                txtParmanentAddress.focus();
+            }
+            else {
+                $(".field-validation-valid[data-valmsg-for='ParmanentAddress']").text('');
+            }
+            if (txtPresentAddress.val() == '') {
+                $(".field-validation-valid[data-valmsg-for='PresentAddress']").text($("#PresentAddress").attr('data-val-required'));
+                isValid = false;
+                txtPresentAddress.focus();
+            }
+            else if (txtParmanentAddress.val().length > parseInt($("#PresentAddress").attr("[data-val-length-max]"))) {
+                $(".field-validation-valid[data-valmsg-for='PresentAddress']").text($("#PresentAddress").attr("[data-val-length]"));
+                isValid = false;
+                txtParmanentAddress.focus();
+            }
+            else {
+                $(".field-validation-valid[data-valmsg-for='PresentAddress']").text('');
+            }
+            if (txtContactNumber.val() == '') {
+                $(".field-validation-valid[data-valmsg-for='ContactNumber']").text($("#ContactNumber").attr('data-val-required'));
+                isValid = false;
+                txtContactNumber.focus();
+            }
+            else if (txtContactNumber.val().length > parseInt($("#ContactNumber").attr("[data-val-length-max]"))) {
+                $(".field-validation-valid[data-valmsg-for='ContactNumber']").text($("#ContactNumber").attr("[data-val-length]"));
+                isValid = false;
+                txtContactNumber.focus();
+            }
+            if (txtPhoneNumber.val() == '') {
+                $(".field-validation-valid[data-valmsg-for='PhoneNumber']").text($("#PhoneNumber").attr('data-val-required'));
+                isValid = false;
+                txtPhoneNumber.focus();
+            }
+            if (txtDateOfBirth.val() == "")
+            {
+                $(".field-validation-valid[data-valmsg-for='DateOfBirth']").text($("#DateOfBirth").attr('data-val-required'));
+                isValid = false;
+                txtDateOfBirth.focus();
+            } else {
+                $(".field-validation-valid[data-valmsg-for='DateOfBirth']").text('');
+            }
+
+            if (txtPhoneNumber.val().length > parseInt($("#PhoneNumber").attr("[data-val-length-max]"))) {
+                $(".field-validation-valid[data-valmsg-for='PhoneNumber']").text($("#PhoneNumber").attr("[data-val-length]"));
+                isValid = false;
+                txtPhoneNumber.focus();
+            }
+            else {
+                $(".field-validation-valid[data-valmsg-for='PhoneNumber']").text('');
+            }
+            
+            if (ddlGender.val() == '') {
+                $(".field-validation-valid[data-valmsg-for='Gender']").text($("#Gender").attr('data-val-required'));
+                isValid = false;
+                ddlGender.focus();
+            }
+            else {
+                $(".field-validation-valid[data-valmsg-for='Gender']").text('');
+            }
+            if (ddlCity.val() == '') {
+                $(".field-validation-valid[data-valmsg-for='City']").text($("#City").attr('data-val-required'));
+                isValid = false;
+            }
+            else {
+                $(".field-validation-valid[data-valmsg-for='City']").text('');
+            }
+            if (txtDateOfBirth.val() == '') {
+                $(".field-validation-valid[data-valmsg-for='DateOfBirth']").text($("#DateOfBirth").attr('data-val-required'));
+                isValid = false;
+                txtDateOfBirth.focus();
+            }
+            else {
+                $(".field-validation-valid[data-valmsg-for='DateOfBirth']").text('');
+            }
+            if (txtDegrees.val() == '') {
+                $(".field-validation-valid[data-valmsg-for='Degrees']").text($("#Degrees").attr('data-val-required'));
+                isValid = false;
+                txtDegrees.focus();
+            }
+            else if (txtDegrees.val().length > parseInt($("#Degrees").attr("[data-val-length-max]"))) {
+                $(".field-validation-valid[data-valmsg-for='Degrees']").text($("#Degrees").attr("[data-val-length]"));
+                isValid = false;
+                txtDegrees.focus();
+            }
+            else {
+                $(".field-validation-valid[data-valmsg-for='Degrees']").text('');
+            }
+            if (txtExperiences.val() == '') {
+                $(".field-validation-valid[data-valmsg-for='Experiences']").text($("#Experiences").attr('data-val-required'));
+                isValid = false;
+            }
+            else if (txtExperiences.val().length > parseInt($("#Experiences").attr("[data-val-length-max]"))) {
+                $(".field-validation-valid[data-valmsg-for='Experiences']").text($("#Experiences").attr("[data-val-length]"));
+                isValid = false;
+                txtExperiences.focus();
+            }
+            else {
+                $(".field-validation-valid[data-valmsg-for='Experiences']").text('');
+            }
+            if (txtCurrentJobLocation.val() == '') {
+                $(".field-validation-valid[data-valmsg-for='CurrentJobLocation']").text($("#CurrentJobLocation").attr('data-val-required'));
+                isValid = false;
+                txtCurrentJobLocation.focus();
+            }
+            else if (txtCurrentJobLocation.val().length > parseInt($("#CurrentJobLocation").attr("[data-val-length-max]"))) {
+                $(".field-validation-valid[data-valmsg-for='CurrentJobLocation']").text($("#CurrentJobLocation").attr("[data-val-length]"));
+                isValid = false;
+                txtCurrentJobLocation.focus();
+            }
+            else {
+                $(".field-validation-valid[data-valmsg-for='CurrentJobLocation']").text('');
+            }
+            if (txtYearsOfExperience.val() == '') {
+                $(".field-validation-valid[data-valmsg-for='YearsOfExperience']").text($("#YearsOfExperience").attr('data-val-required'));
+                isValid = false;
+                txtYearsOfExperience.focus();
+            }
+            else if (txtYearsOfExperience.val().length > parseInt($("#YearsOfExperience").attr("[data-val-length-max]"))) {
+                $(".field-validation-valid[data-valmsg-for='YearsOfExperience']").text($("#YearsOfExperience").attr("[data-val-length]"));
+                isValid = false;
+                txtYearsOfExperience.focus();
+            }
+            else {
+                $(".field-validation-valid[data-valmsg-for='YearsOfExperience']").text('');
+            }
+            if (txtAbout.val() == '') {
+                $(".field-validation-valid[data-valmsg-for='About']").text($("#About").attr('data-val-required'));
+                isValid = false;
+                txtAbout.focus();
+            }
+            else if (txtAbout.val().length > parseInt($("#About").attr("[data-val-length-max]"))) {
+                $(".field-validation-valid[data-valmsg-for='About']").text($("#About").attr("[data-val-length]"));
+                isValid = false;
+                txtAbout.focus();
+            }
+            else {
+                $(".field-validation-valid[data-valmsg-for='About']").text('');
+            }
+            if (ddlDepartment.val() == '') {
+                $(".field-validation-valid[data-valmsg-for='DepartmentId']").text($("#DepartmentId").attr('data-val-required'));
+                isValid = false;
+                ddlDepartment.focus();
+            }
+            else {
+                $(".field-validation-valid[data-valmsg-for='DepartmentId']").text('');
+            }
+            if (ddlDesignation.val() == '') {
+                $(".field-validation-valid[data-valmsg-for='DesignationId']").text($("#DesignationId").attr('data-val-required'));
+                isValid = false;
+                ddlDesignation.focus();
+            }
+            else {
+                $(".field-validation-valid[data-valmsg-for='DesignationId']").text('');
+            }
+            if (ddlSpecializationType.val() == '') {
+                $(".field-validation-valid[data-valmsg-for='SpecializationTypeId']").text($("#SpecializationTypeId").attr('data-val-required'));
+                isValid = false;
+                ddlSpecializationType.focus();
+            }
+            else {
+                $(".field-validation-valid[data-valmsg-for='SpecializationTypeId']").text('');
+            }
+            if (ddlBranch.val() == '') {
+                $(".field-validation-valid[data-valmsg-for='BranchId']").text($("#BranchId").attr('data-val-required'));
+                isValid = false;
+                ddlDepartment.focus();
+            }
+            else {
+                $(".field-validation-valid[data-valmsg-for='BranchId']").text('');
+            }
+            if ($("input[name='InPatientChargeType'][type='radio']:checked").val() == undefined)
+            {
+                $(".field-validation-valid[data-valmsg-for='InPatientChargeType']").text($("input[name='InPatientChargeType'][type='radio']").attr('data-val-required'));
+                isValid = false;
+                $("input[name='InPatientChargeType'][type='radio']").focus();
+            }
+            else {
+                $(".field-validation-valid[data-valmsg-for='InPatientChargeType']").text('');
+            }
+            if ($("input[name='OutPatientChargeType'][type='radio']:checked").val() == undefined) {
+                $(".field-validation-valid[data-valmsg-for='OutPatientChargeType']").text($("input[name='OutPatientChargeType'][type='radio']").attr('data-val-required'));
+                isValid = false;
+                $("input[name='OutPatientChargeType'][type='radio']").focus();
+            }
+            else {
+                $(".field-validation-valid[data-valmsg-for='OutPatientChargeType']").text('');
+            }
+
+            if ($.trim(txtInPatientChargeValue.val())=='') {
+                $(".field-validation-valid[data-valmsg-for='InPatientChargeValue']").text('In Patient Charge value is required.');
+                isValid = false;
+                txtInPatientChargeValue.focus();
+            }
+            else {
+                $(".field-validation-valid[data-valmsg-for='InPatientChargeValue']").text('');
+            }
+
+            if ($.trim(txtInPatientChargeValue.val()) != '') {
+                if (parseInt($.trim(txtInPatientChargeValue.val())) <= 0)
+                {
+                    $(".field-validation-valid[data-valmsg-for='OutPatientChargeType']").text('In Patient Charge value cannot be zero or less than zero.');
+                    isValid = false;
+                    txtInPatientChargeValue.focus();
+                }
+                else {
+                    $(".field-validation-valid[data-valmsg-for='OutPatientChargeType']").text('');
+                }
+            }
+
+
+            if ($.trim(txtOutPatientChargeValue.val()) == '') {
+                $(".field-validation-valid[data-valmsg-for='OutPatientChargeValue']").text('Out Patient Charge value is required.');
+                isValid = false;
+                txtOutPatientChargeValue.focus();
+            }
+            else {
+                $(".field-validation-valid[data-valmsg-for='OutPatientChargeValue']").text('');
+            }
+
+            if ($.trim(txtOutPatientChargeValue.val()) != '') {
+                if (parseInt($.trim(txtOutPatientChargeValue.val())) <= 0) {
+                    $(".field-validation-valid[data-valmsg-for='OutPatientChargeValue']").text('Out Patient Charge value cannot be zero or less than zero.');
+                    isValid = false;
+                    txtOutPatientChargeValue.focus();
+                }
+                else {
+                    $(".field-validation-valid[data-valmsg-for='OutPatientChargeValue']").text('');
+                }
+            }
+
+            if ($.trim(txtLicenseNo.val()) == '')
+            {
+                $(".field-validation-valid[data-valmsg-for='LicenseNo']").text('Licence no is required.');
+                isValid = false;
+                txtLicenseNo.focus();
+            }
+            else {
+                $(".field-validation-valid[data-valmsg-for='LicenseNo']").text('');
+            }
+
+            if (isValid)
+            {
+                var id = hdfId.val() == "" ? "0" : hdfId.val();
+                var data = ajaxBooleanChecker(JSON.stringify({ LicenseNo: txtLicenseNo.val(), doctorId: id }), '/Common/IsDoctorLicenseUnique', getToken());
+                if (data == false) {
+                    isValid = false;
+                    $(".field-validation-valid[data-valmsg-for='LicenseNo']").text('Duplicate Licence no detected.');
+                    isValid = false;
+                    txtLicenseNo.focus();
+                }
+            }
+
+            return isValid;
+        }
+
+        function ajaxPost(formValues)
+        {
+            var headers = {};
+            headers['__RequestVerificationToken'] = $('input[name=__RequestVerificationToken]').val();
+            var ajaxConfig = {
+                //contentType: "application/json; charset=utf-8",
+                type: "post",
+                url: "@Url.Content("/Doctors/SaveDoctorProfile")",
+                dataType: "json",
+                headers: headers,
+                processData: false,
+                contentType: false,
+                data: formValues,
+                success: function (result) {
+                    console.log(result);
+                },
+                error: function (xhr, status, error) {
+                    console.log(error);
+                }
+            };
+            if ($("#form").attr("enctype") == "multipart/form-data") {
+                ajaxConfig["cache"] = false;
+                ajaxConfig["contentType"] = false;
+                ajaxConfig["processData"] = false;
+            }
+           return $.ajax(ajaxConfig);
+        }
+
+        $("#Photo").change(function () {
+            readImg(this);
+        })
+
+        function readImg(file) {
+            if (file.files && file.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $("#ImageUpload").attr("src", e.target.result);
+                }
+                reader.readAsDataURL(file.files[0]);
+            }
+            else {
+                $("#ImageUpload").removeAttr("src");
+            }
+        }
+
+    </script>
+}
+

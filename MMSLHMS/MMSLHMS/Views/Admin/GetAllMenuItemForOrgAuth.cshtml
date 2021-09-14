@@ -1,0 +1,143 @@
+﻿@model IEnumerable<HMSBO.ViewModels.VmModule>
+@{
+    ViewBag.Title = "Organization Authorization";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h4>Organization Authentication</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 margin-bottom-5px">
+                <label for="ddlOrg"><b>Organization Name: </b></label>
+                <select class="form-control" id="ddlOrg">
+                    <option value="-1">Select One</option>
+                </select>
+            </div>
+            <div class="col-md-8 margin-bottom-5px">
+                <button class="btn btn-success float-right" id="btnSubmit"> &nbsp;<i class="fa fa-save"></i> Save&nbsp;&nbsp;</button>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="col-md-12" style="overflow-y:scroll;height:560px">
+        @Html.AntiForgeryToken()
+        <div class="row">
+            @if (Model.Count() > 0)
+            {
+                foreach (var item in Model)
+                {
+                    <div class="col-md-12 alert alert-info">
+                        <center><b>@item.ModuleName</b></center>
+                    </div>
+                    if (item.Menus.Count() > 0)
+                    {
+                        foreach (var m in item.Menus)
+                        {
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-3"><center><b>@m.MenuName</b></center></div>
+                                    @if (m.SubMenus.Count() > 0)
+                                    {
+                                        <div class="col-md-9">
+                                            <div class="row">
+                                                @foreach (var s in m.SubMenus)
+                                                {
+                                                    <div class="col-md-3 margin-bottom-5px" style="word-wrap:break-word">
+                                                        <div class="form-control form-control-sm btn-success form-inline" style="font-size:xx-small">
+
+                                                            <input type="checkbox" id="@s.SubmenuId" name="submenuItem" data-sub-id="@s.SubmenuId" data-mm-id="@m.MenuId" data-mod-id="@item.ModuleId"/><label><b>@s.SubMenuName</b></label>
+
+
+                                                        </div>
+                                                    </div>
+                                                }
+                                            </div>
+                                            <br />
+                                        </div>
+
+                                    }
+                                    else
+                                    {
+                                        <div class="col-md-9 alert alert-warning"><center><b>No Submenus found For @m.MenuName ..!!!</b></center></div>
+                                    }
+                                </div>
+                            </div>
+
+                        }
+                    }
+                    else
+                    {
+                        <div class="col-md-12 alert alert-danger">
+                            <center><b>No Menus Found For @item.ModuleName ..</b></center>
+                        </div>
+                    }
+                }
+            }
+            else
+            {
+                <div class="col-md-12 alert alert-info">
+                    <center><b>No Rows Found.</b></center>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts{
+    <script type="text/javascript">
+        var ddlOrg = $("#ddlOrg");
+        $(document).ready(function () {
+            LoadDropDown('/Common/GetOrgList', 'POST', ddlOrg)
+        })
+
+        ddlOrg.change(function () {
+            $("input[type='checkbox'][name='submenuItem']").prop("checked", false);
+            $.when(postReqWithToken(dataType.applicationJson, dataType.json, 'POST', '/Admin/GetOrgWiseMenuItem', JSON.stringify({ OrgId: ddlOrg.val() }), getToken()).then(function (data, status) {
+                //console.log(data[0].SubmenuId);
+                //console.log(status);
+                $("input[type='checkbox'][name='submenuItem']").prop("checked", false);
+                $.each(data, function (index, item) {
+                    $("input[type='checkbox'][name='submenuItem'][data-sub-id='" + item.SubmenuId + "']").prop("checked", true);
+                })
+
+            }).fail(function (err) {
+                console.log(err);
+            }));
+        })
+
+
+        var menuData = [];
+
+        $("#btnSubmit").click(function (e) {
+            e.preventDefault();
+            var allCheckboxItem = $("input[type='checkbox'][name='submenuItem']");
+            menuData.length = 0;
+            $.each(allCheckboxItem, function (index, item) {
+                if ($("input[type='checkbox'][name='submenuItem'][data-sub-id='" + item.getAttribute("data-sub-id") + "']").is(":checked")) {
+                    menuData.push({ submenuId: item.getAttribute("data-sub-id"), mainmenuId: item.getAttribute("data-mm-id"), moduleId: item.getAttribute("data-mod-id") })
+                }
+            })
+
+            var data = { orgId: ddlOrg.val(), authMenus: menuData }
+            data = JSON.stringify(data);
+            console.log(data);
+
+            $.when(postReqWithToken(dataType.applicationJson, dataType.json, 'POST', '/Admin/SaveOrgAuthorization', data, getToken())).then(function (res,status) {
+                console.log(status);
+                console.log(res);
+                if (status = "success") {
+                    alert(execuStatus.successSave)
+                }
+            }).fail(function (err) {
+                console.log(err);
+            })
+        })
+    </script>
+}
+

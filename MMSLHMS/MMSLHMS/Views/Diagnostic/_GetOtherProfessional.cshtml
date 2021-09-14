@@ -1,0 +1,42 @@
+﻿@model IEnumerable<HMSBO.ViewModels.VmOtherProfessional>
+@{ 
+    Layout = null;
+    int sl = 0;
+}
+
+<div class="col-md-12 text-sm">
+    <table class="table table-bordered table-sm table-striped" id="tblPartsUsed">
+        <thead class="btn-info">
+            <tr class="text-center">
+                <th>#SL</th>
+                <th class="hide"></th>
+                <th>Other Profession</th>
+                <th>Remarks</th>
+                <th class="hide">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var oth in Model)
+            {
+                sl = sl + 1;
+                <tr>
+                    <td class="text-center">@sl</td>
+                    <td class="hide">@oth.OPId</td>
+                    <td>@oth.Profession</td>
+                    <td>@oth.Remarks</td>
+                    <td class="hide">
+                        <a href="#" class="btn btn-outline-warning btn-sm data-edit-model" title="Edit" data-edit-model="@oth.OPId"><i class="fas fa-pencil-alt"></i> </a>
+                    </td>
+                </tr>
+            }
+            @if (Model.Count() == 0)
+            {
+                <tr class="text-center empty-row">
+                    <td colspan="6">
+                        No Rows Found
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

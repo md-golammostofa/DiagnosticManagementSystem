@@ -1,0 +1,74 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model IPagedList<HMSBO.ViewModels.vmDianosticBillDueAdjustment>
+
+@{
+    Layout = null;
+    int count = 0;
+}
+
+<div class="col-md-12 dvDateRangeWiseBillInfo">
+    <table class="table table-sm table-bordered table-responsive-lg table-hover" id="tblDateRangeWiseBillInfo">
+        <thead class="btn-info btn-sm">
+            <tr>
+                <th class="hide">Id</th>
+                <th>SL No</th>
+                <th>Invoice No</th>
+                <th>Patient Name</th>
+                <th>Mobile No</th>
+                <th>Ref. By</th>
+                <th>Total Test</th>
+                <th>Sub Total</th>
+                <th>Discount</th>
+                <th>Net Amount</th>
+                <th class="hide">Received Amount</th>
+                <th>Ref. Fee</th>
+                <th>Due Amount</th>
+                <th>Bill Date</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Count() > 0)
+            {
+                foreach (var item in Model)
+                {
+                    count = count + 1;
+                    string date = string.Format("{0:dd-MMM-yyyy}", Convert.ToDateTime(item.EntryDate.ToString()));
+                    <tr>
+                        <td class="hide">@item.Id</td>
+                        <td class="text-center">@count</td>
+                        <td>@item.InvoiceNo</td>
+                        <td>@item.PatientName</td>
+                        <td>@item.MobileNo</td>
+                        <td>@item.RefName</td>
+                        <td>@item.InvestigationQty</td>
+                        <td>@item.SubTotal</td>
+                        <td>@item.DiscountAmount</td>
+                        <td align="right">@item.NetAmount</td>
+                        <td align="right" class="hide">@item.ReceiveAmount</td>
+                        <td align="right">@item.TotalRefFee</td>
+                        <td align="right">@item.DueAmount</td>
+                        <td>@date</td>
+                        <td class="text-center">@item.Status</td>
+                        <td style="width:12%" class="text-center">
+                            <a href="#" data-edit-item="@item.Id" class="btn btn-circle btn-success btn-sm data-DateRange-item" title="View Details"><i class="fa fa-eye"></i></a>
+                            <a href="#" data-del-item="@item.Id" class="btn btn-circle btn-danger btn-sm data-DateRange-drop hide" title="Drop Invoice"><i class="fa fa-trash"></i></a>
+                            <a href="#" data-print-item="@item.Id" class="btn btn-circle btn-primary btn-sm data-DateRange-print" title="Print Preview"><i class="fa fa-print"></i></a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                count = 0;
+                <tr class="text-danger text-center empty-row">
+                    <td colspan="13">No Data Found</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @Html.PagedListPager(Model, page => Url.Action("", new { page } ), new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded })
+</div>
+

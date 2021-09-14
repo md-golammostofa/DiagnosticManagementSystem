@@ -1,0 +1,135 @@
+﻿
+@{
+    ViewBag.Title = "Doctors List";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h5>Doctor List</h5>
+            </div>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form id="frmLstInvestigation">
+                            <div class="form-row">
+                                <div class="col-md-2">
+                                    <div class="form-group col-md-12">
+                                        <label for="txtDoctorName" class="control-label font-weight-bold">Doctor Name</label>
+                                        <input type="text" name="doctorName" value="" id="txtDoctorName" placeholder="Search By Doctor" class="form-control form-control-sm search-control" />
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group col-md-12">
+                                        <label for="txtMobileNo" class="control-label font-weight-bold">Mobile</label>
+                                        <input type="text" name="mobile" value="" id="txtMobileNo" placeholder="Search By Mobile" class="form-control form-control-sm search-control" />
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="ddlSpecialist" class="control-label font-weight-bold">Specialist</label>
+                                    @Html.DropDownList("ddlSpecialist", (IEnumerable<SelectListItem>)ViewBag.ddlSpecialist, "--Select Specialist--", new { @class = "form-control form-control-sm select2 search-control" })
+                                    <span class="error hide require-specialist font-weight-bold">Specialist is required !</span>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group col-md-12">
+                                        <label for="txtSearchSex" class="control-label font-weight-bold">Sex</label>
+                                        <select id="txtSearchSex" name="docType" class="form-control form-control-sm search-control">
+                                            <option value="">--Selecet One--</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label class="control-label col-md-12 font-weight-bold" style="visibility:hidden">Add Specialist</label>
+                                    <div class="col-md-12">
+                                        <a href="/Appoinment/CreateDoctor" class="btn btn-outline-primary btn-sm float-lg-right" id="btnAddNew"><i class="fa fa-plus"></i> Create Doctor Profile</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 text-sm" id="dataContainer">
+        @{Html.RenderAction("GetDoctorList", new { flag = "view" });}
+    </div>
+</div>
+
+<div class="modal fade" id="modalDocTimesDetails" role="dialog" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header alert-secondary" style="height:60px">
+                @Html.AntiForgeryToken()
+                <input type="hidden" id="hdfDocId" />
+                <h4 id="modalHeading" class="modal-title">Times Details</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body" id="dataContainer2">
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+<script type="text/javascript">
+
+    var txtDoctorName = $("#txtDoctorName");
+    var txtMobileNo = $("#txtMobileNo");
+    var ddlSpecialist = $("#ddlSpecialist");
+    var txtSearchSex = $("#txtSearchSex");
+
+    ddlSpecialist.change(function () {
+        LoadDataTable();
+    })
+    txtSearchSex.change(function () {
+        LoadDataTable();
+    })
+
+    txtDoctorName.keyup(function () {
+        LoadDataTable();
+    })
+
+    txtMobileNo.keyup(function () {
+        LoadDataTable();
+    })
+
+    function LoadDataTable() {
+        var data = { flag: "search", doctorName: txtDoctorName.val(), specialist: ddlSpecialist.val(), mobile: txtMobileNo.val(), sex: txtSearchSex.val() };
+
+        //return console.log(data);
+        $.when(getReqWithData('html', 'GET', '/Appoinment/GetDoctorList', data)).then(function (res, status) {
+            console.log(status);
+            if (status === "success") {
+                $("#dataContainer").fadeOut('500', function () {
+                    $("#dataContainer").empty();
+                    $("#dataContainer").append(res).fadeIn('500');
+                });
+            }
+        }).fail(function (error) {
+            console.log(error);
+        });
+    }
+
+    $(document).on('click', 'a.data-details-item', function (e) {
+        e.preventDefault();
+        var id = $(this).attr("data-details-item");
+        var data = {docId:id };
+
+       // return console.log(data);
+        $.when(getReqWithData('html', 'GET', '/Appoinment/DoctorTimeDetails', data)).then(function (res, status) {
+            console.log(status);
+            if (status === "success") {
+                $("#dataContainer2").empty();
+                $("#dataContainer2").append(res).fadeIn('500');
+                $("#modalDocTimesDetails").modal("show");
+            }
+        }).fail(function (error) {
+            console.log(error);
+        });
+    })
+    </script>    
+}

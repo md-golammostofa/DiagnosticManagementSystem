@@ -1,0 +1,310 @@
+﻿@model IEnumerable<HMSBO.Models.Module>
+
+@{
+    ViewBag.Title = "List of Modules";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.BgColor = "#fff";
+}
+
+<div class="row">
+    <input type="hidden" value="0" id="hdfModuleId" />
+    <div class="col-md-12">
+        <h2 style="display:inline-block" class="float-left">Module List</h2>
+        <button class="btn btn-primary float-right" type="button" id="btnAddModule" title="Add New Module" onclick="OpenModal()">
+            Add New Module
+        </button>
+    </div>
+    <div class="col-md-12" style="overflow-y:scroll;height:650px">
+        <table class="table table-bordered table-hover table-responsive" id="modulesData">
+            <thead>
+                <tr class="btn-info">
+                    <th>Module Id</th>
+                    <th>Module Name</th>
+                    <th>Entry User</th>
+                    <th>Entry Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="hide">@item.IconName</td>
+                        <td class="hide">@item.IconColor</td>
+                        <td>@item.MId</td>
+
+                        <td>@item.ModuleName</td>
+
+                        <td>@item.EntryUser</td>
+
+                        <td>@Html.DisplayFor(m => item.EntryDate)</td>
+
+                        <td>
+                            <a href="#" class="data-edit btn btn-success btn-circle">
+                                <i class="fas fa-pen"></i>
+                            </a> | 
+                            <a href="#" class="data-delete btn btn-danger btn-circle">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="modal" role="dialog" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header btn-primary">
+                <h4 class="modal-title">Add New Module</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <form id="formModule">
+                <div class="modal-body">
+                    @Html.AntiForgeryToken()
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-apple"></span></span>
+                        <input type="text" name="ModuleName" class="form-control" id="txtModuleName" aria-describedby="" placeholder="Enter Module Name">
+                    </div>
+                    <span class="hide error modulename">Module name is required.</span>
+                    <br />
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-picture"></span></span>
+                        <input type="text" name="IconName" class="form-control" id="txtIconName" aria-describedby="" placeholder="Enter Icon Name">
+                    </div>
+                    <span class="hide error iconname">Icon name is required.</span>
+                    <br />
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-pencil"></span></span>
+                        <input type="text" name="IconColor" class="form-control" id="txtIconColor" aria-describedby="" placeholder="Enter Icon Color">
+                    </div>
+                    <span class="hide error iconcolor">Icon color is required.</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" id="btnSubmit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="deleteModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header btn-warning">
+                <h5 class="modal-title">Delete Module</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <form>
+                <input type="hidden" value="" id="hdfRowIndex" />
+                <div class="modal-body">
+                    <span class="delete-text"></span>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" id="btnDeleteYes" class="btn btn-danger" data-dismiss="modal" data-target="#deleteModal">Yes</button>
+                    &nbsp;&nbsp;&nbsp;
+                    <button type="button" id="btnDeleteNo" class="btn btn-success" data-dismiss="modal" data-target="#deleteModal">No</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+
+        var tableRowIndex = -1;
+        function OpenModal() {
+            $(".modal-title").text('Add New Module');
+            clearInput();
+            $("#btnSubmit").text("Save");
+            $("#modal").modal();
+            $(".error").addClass("hide")
+        }
+
+        function clearInput() {
+            $("#txtModuleName").val('');
+            $("#txtIconName").val('');
+            $("#txtIconColor").val('');
+            $("#hdfModuleId").val('');
+        }
+
+        $("#btnSubmit").click(function (e) {
+            e.preventDefault();
+            //console.log("Button is clicked");
+            if (isFormValid() == true) {
+                // Work Area ..
+                var moduleName = $("#txtModuleName").val();
+                var iconName = $("#txtIconName").val();
+                var iconColor = $("#txtIconColor").val();
+                var moduleId = $.trim($("#hdfModuleId").val()) == ''? '0': $("#hdfModuleId").val();
+
+                console.log(moduleName);
+
+                var data = JSON.stringify({
+                    moduleId: moduleId,
+                    moduleName: moduleName,
+                    iconName: iconName,
+                    iconColor: iconColor
+                });
+
+                //console.log(moduleId);
+                $.when(saveData(data)).then(function (respose) {
+                    console.log(respose);
+                }).fail(function (err) {
+                    console.log(err);
+                })
+            }
+        })
+
+        $(document).on("click", "#modulesData .data-edit", function (e) {
+            e.preventDefault();
+            var iconName = $(this).parent().parents('tr').find('td:eq(0)').html();
+            var iconColor = $(this).parent().parents('tr').find('td:eq(1)').html();
+            var moduleId = $(this).parent().parents('tr').find('td:eq(2)').html();
+            var moduleName = $(this).parent().parents('tr').find('td:eq(3)').html();
+            console.log(iconName + ' ' + iconColor + ' ' + moduleId + ' ' + moduleName);
+
+            OpenModal(); // open the modal dialog form
+            $(".modal-title").text('Update Module');
+            $("#btnSubmit").text("Update");
+            
+            $("#txtModuleName").val(moduleName);
+            $("#txtIconName").val(iconName);
+            $("#txtIconColor").val(iconColor);
+            $("#hdfModuleId").val(moduleId);
+        })
+        /* ----Start Client Side Validation----- */
+        function isFormValid() {
+            var isValid = true;
+            if ($.trim($('#txtModuleName').val()) == "") {
+                $(".error.modulename").removeClass("hide");
+                isValid = false;
+            }
+            else {
+                $(".error.modulename").addClass("hide")
+            }
+            if ($.trim($('#txtIconName').val()) == "") {
+                $(".error.iconname").removeClass("hide");
+                isValid = false;
+            }
+            else {
+                $(".error.iconname").addClass("hide")
+            }
+            if ($.trim($('#txtIconColor').val()) == "") {
+                $(".error.iconcolor").removeClass("hide");
+                isValid = false;
+            }
+            else {
+                $(".error.iconcolor").addClass("hide")
+            }
+            return isValid;
+        }
+        /* ----End Client Side Validation----- */
+
+        function saveData(data) {
+            return $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                type: 'POST',
+                url: '/Admin/SaveModule',
+                headers:getToken(),
+                data: data,
+                success: function (result) {
+                    console.log(result);
+                    if (result == true) {
+                        clearInput();
+                        alert(execuStatus.successSave);
+                        $("#modal").hide();
+                        location.reload();
+                    }
+                },
+                error: function (result) {
+                    alert("Something is went worng..!!!");
+                    console.log("error");
+                    console.log(result);
+                }
+            });
+        }
+
+        /*-------- Start.Delete Part ------*/
+        $(document).on("click", "#modulesData .data-delete", function (e) {
+            e.preventDefault();
+            //$("#deleteModal").modal();
+            var moduleName = $(this).parent().parents('tr').find('td:eq(3)').html();
+            var moduleId = $(this).parent().parents('tr').find('td:eq(2)').html();
+            $("#hdfModuleId").val(moduleId)
+            $(".delete-text").text('');
+            $(".delete-text").append('Are you sure you want to delete <b>' + moduleName + '<b/> module ?')
+            tableRowIndex = $(this).parent().parents('tr').index()+1;
+
+            $("#hdfRowIndex").val(tableRowIndex);
+            console.log($("#hdfRowIndex").val());
+            $("#deleteModal").modal();
+        })
+
+        $("#btnDeleteYes").click(function (e) {
+            e.preventDefault();
+            if ($.trim($("#hdfModuleId").val()) != '' || $("#hdfModuleId").val() != '0')
+            {
+                var deletedata = JSON.stringify({
+                    id: $("#hdfModuleId").val()
+                });
+                console.log(deletedata);
+
+                $.when(DeleteModule(deletedata, $("#hdfRowIndex").val())).then(function (respose) {
+                    console.log(respose);
+                }).fail(function (err) {
+                    console.log(err);
+                })
+            }
+        })
+
+        function DeleteModule(data,rowIndex)
+        {
+            return $.ajax({
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                type: 'POST',
+                url: '/Admin/DeleteModule',
+                headers: getToken(),
+                data: data,
+                success: function (result) {
+                    if (result == true) {
+                        alert(execuStatus.successDelete);
+                        $(".delete-text").text('');
+                        $("tr").eq(rowIndex).css("background-color", "#ff6347").fadeOut(800,
+                            function () {
+                                $("tr").eq(rowIndex).remove();
+                            });
+                        clearInput();
+                    }
+                    else {
+                        alert(execuStatus.fail);
+                    }
+                },
+                error: function (result) {
+                    alert("Something is went worng..!!!");
+                    console.log("error");
+                    console.log(result);
+                }
+            })
+        }
+
+        /*-------- End.Delete Part ------*/
+
+
+        // Modal Hide Event //
+        $('#modal').on('hidden.bs.modal', function (e) {
+            clearInput();
+        })
+        $('#deleteModal').on('hidden.bs.modal', function (e) {
+            clearInput();
+        })
+    </script>
+}
+
+
+

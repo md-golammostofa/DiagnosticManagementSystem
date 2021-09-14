@@ -1,0 +1,108 @@
+﻿
+@{
+    ViewBag.Title = "Doctor Schedule List";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h5><b>Doctor Schedule List</b></h5>
+            </div>
+            <hr />
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form id="frmLstInvestigation">
+                            <div class="form-row">
+                                <div class="col-md-2">
+                                    <label for="ddlDoctorName" class="control-label font-weight-bold">Doctor Name</label>
+                                    @Html.DropDownList("ddlDoctorName", (IEnumerable<SelectListItem>)ViewBag.ddlDoctorName, "--Select Doctor--", new { @class = "form-control form-control-sm select2 search-control" })
+                                    <span class="error hide require-specialist font-weight-bold">Specialist is required !</span>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="ddlSpecialist" class="control-label font-weight-bold">Specialist</label>
+                                    @Html.DropDownList("ddlSpecialist", (IEnumerable<SelectListItem>)ViewBag.ddlSpecialist, "--Select Specialist--", new { @class = "form-control form-control-sm select2 search-control" })
+                                    <span class="error hide require-specialist font-weight-bold">Specialist is required !</span>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group col-md-12">
+                                        <label for="txtDays" class="control-label font-weight-bold ">Days</label>
+                                        <select id="txtDays" name="docType" class="form-control form-control-sm search-control">
+                                            <option value="">--Selecet One--</option>
+                                            <option value="Saturday">Saturday</option>
+                                            <option value="Sunday">Sunday</option>
+                                            <option value="Monday">Monday</option>
+                                            <option value="Tuesday">Tuesday</option>
+                                            <option value="Wednesday">Wednesday</option>
+                                            <option value="Thursday">Thursday</option>
+                                            <option value="Friday">Friday</option>
+                                        </select>
+                                        <span class="error hide require-daysTime font-weight-bold">Hospital is required !</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group col-md-12">
+                                        <label for="txtShifTime" class="control-label font-weight-bold">Shift</label>
+                                        <select id="txtShifTime" name="docType" class="form-control form-control-sm search-control">
+                                            <option value="">--Selecet One--</option>
+                                            <option value="Morning">Morning</option>
+                                            <option value="Evening">Evening</option>
+                                            <option value="AllDay">AllDay</option>
+                                        </select>
+                                        <span class="error hide require-shiftTime font-weight-bold">Hospital is required !</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 text-sm" id="dataContainer">
+        @{Html.RenderAction("DoctorScheduleList", new { flag = "view" });}
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript">
+        var ddlDoctorName = $("#ddlDoctorName");
+        var ddlSpecialist = $("#ddlSpecialist");
+        var txtDays = $("#txtDays");
+        var txtShifTime = $("#txtShifTime");
+
+        //$(document).on('keyup', '.search-control', function () {
+        //    LoadDataTable();
+        //})
+        ddlDoctorName.change(function () {
+            LoadDataTable();
+        })
+        ddlSpecialist.change(function () {
+            LoadDataTable();
+        })
+        txtDays.change(function () {
+            LoadDataTable();
+        })
+        txtShifTime.change(function () {
+            LoadDataTable();
+        })
+
+        function LoadDataTable() {
+            var data = { flag: "search", name: ddlDoctorName.val(), specialist: ddlSpecialist.val(), days: txtDays.val(), shift: txtShifTime.val() };
+
+            //return console.log(data);
+            $.when(getReqWithData('html', 'GET', '/Appoinment/DoctorScheduleList', data)).then(function (res, status) {
+                console.log(status);
+                if (status === "success") {
+                    $("#dataContainer").fadeOut('500', function () {
+                        $("#dataContainer").empty();
+                        $("#dataContainer").append(res).fadeIn('500');
+                    });
+                }
+            }).fail(function (error) {
+                console.log(error);
+            });
+        }
+
+    </script>
+    }

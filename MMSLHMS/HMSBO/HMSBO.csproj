@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A11D682D-DA24-46B3-BCC3-C6480A7CB091}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HMSBO</RootNamespace>
+    <AssemblyName>HMSBO</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\ActionLog.cs" />
+    <Compile Include="Models\Appoinment.cs" />
+    <Compile Include="Models\BillInfo.cs" />
+    <Compile Include="Models\Branch.cs" />
+    <Compile Include="Models\CustomPrincipalSerializeModel.cs" />
+    <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\Designation.cs" />
+    <Compile Include="Models\Doctor.cs" />
+    <Compile Include="Models\DoctorProfile.cs" />
+    <Compile Include="Models\DoctorDetails.cs" />
+    <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\Investigation.cs" />
+    <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\MainMenu.cs" />
+    <Compile Include="Models\Module.cs" />
+    <Compile Include="Models\Organization.cs" />
+    <Compile Include="Models\OrgAuthorization.cs" />
+    <Compile Include="Models\InvestigationReferrer.cs" />
+    <Compile Include="Models\OtherProfessional.cs" />
+    <Compile Include="Models\Patient.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\RoleWiseUserMenu.cs" />
+    <Compile Include="Models\Specialist.cs" />
+    <Compile Include="Models\SpecializationType.cs" />
+    <Compile Include="Models\Submenu.cs" />
+    <Compile Include="Models\InvestigationChart.cs" />
+    <Compile Include="Models\Times.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserAuthorization.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReportModels\CommonReport.cs" />
+    <Compile Include="ReportModels\DateRageWiseBillInfo.cs" />
+    <Compile Include="ReportModels\InvoiceBill.cs" />
+    <Compile Include="ReportModels\MonthWiseInvestigationReport.cs" />
+    <Compile Include="ReportModels\ReportHead.cs" />
+    <Compile Include="ViewModels\VmAppoinment.cs" />
+    <Compile Include="ViewModels\VmDiagnosisBillInfo.cs" />
+    <Compile Include="ViewModels\VmDoctorDetails.cs" />
+    <Compile Include="ViewModels\VmDoctors.cs" />
+    <Compile Include="ViewModels\VmInvestigation.cs" />
+    <Compile Include="ViewModels\VmInvestigationReferrar.cs" />
+    <Compile Include="ViewModels\VmOrgAuth.cs" />
+    <Compile Include="ViewModels\Common.cs" />
+    <Compile Include="ViewModels\VmBranch.cs" />
+    <Compile Include="ViewModels\vmChangePassword.cs" />
+    <Compile Include="ViewModels\vmCreateDoctorProfile.cs" />
+    <Compile Include="ViewModels\VmDepartment.cs" />
+    <Compile Include="ViewModels\VmDesignation.cs" />
+    <Compile Include="ViewModels\vmDoctorList.cs" />
+    <Compile Include="ViewModels\VmEmployee.cs" />
+    <Compile Include="ViewModels\VmMainMenu.cs" />
+    <Compile Include="ViewModels\VmMenu.cs" />
+    <Compile Include="ViewModels\vmModule.cs" />
+    <Compile Include="ViewModels\VmOrganization.cs" />
+    <Compile Include="ViewModels\VmOtherProfessional.cs" />
+    <Compile Include="ViewModels\VmPatient.cs" />
+    <Compile Include="ViewModels\VmRoleWiseUserMenu.cs" />
+    <Compile Include="ViewModels\VmSetUserMenu.cs" />
+    <Compile Include="ViewModels\VmSpecialist.cs" />
+    <Compile Include="ViewModels\VmSpecialization.cs" />
+    <Compile Include="ViewModels\VmSubmenu.cs" />
+    <Compile Include="ViewModels\VmTimes.cs" />
+    <Compile Include="ViewModels\vmUser.cs" />
+    <Compile Include="ViewModels\VmUserMenu.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

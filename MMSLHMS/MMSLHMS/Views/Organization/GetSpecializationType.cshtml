@@ -1,0 +1,283 @@
+﻿
+@{
+    ViewBag.Title = "List of Specialization Type";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-6"><h2>List of Specialization Type</h2></div>
+            <div class="col-md-6">
+                <button id="btnAddType" class="btn btn-success btn-sm float-right" onclick="OpenModal()">Add New Specialization Type</button>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <input type="text" id="txtType" onkeyup="triggeringSearch()" style="width:350px" class="form-control" placeholder="Search By Specialization Type" />
+            </div>
+            <br />
+            <br />
+            <div class="col-md-12" style="overflow-y:scroll;height:580px">
+                @Html.AntiForgeryToken()
+                <table class="table table-bordered" id="tblType">
+                    <thead>
+                        <tr class="btn-info">
+                            <th class="hide">
+                                TypeId
+                            </th>
+                            <th>Type Name</th>
+                            <th>Organization</th>
+                            <th>Entry User</th>
+                            <th class="hide">OrgId</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalSpecialType">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header btn-success">
+                <h4 class="modal-title" id="modalHeading">Add New Type</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <form id="frmDept" autocomplete="off">
+                <input type="hidden" id="hdfTypeId" value="0" />
+                @Html.AntiForgeryToken()
+                <div class="modal-body">
+                    @*<div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-globe"></span></span>
+                        <select class="form-control" name="Org" id="ddlFormOrg">
+                            <option value="-1">Select Organization</option>
+                        </select>
+                    </div>
+                    <span class="hide error Org">Please select an Organization.</span>
+                    <br />*@
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-link"></span></span>
+                        <input type="text" name="SpecialType" class="form-control" id="txtSpecialType" aria-describedby="" placeholder="Enter Specialization Type Name ">
+                    </div>
+                    <span class="hide error TypeName">Type name is required.</span>
+                    <span class="hide error text-length">Type name lenght must be at least 5 character.</span>
+                    <div>
+                        <span class="hide error uniqueness">Type Name Must Be Unique.</span>
+                    </div>
+                    @*<br />
+                    <div class="input-group">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-link"></span></span>
+                        <input type="text" name="shortName" class="form-control" id="txtShortName" aria-describedby="" placeholder="Enter Short Name ">
+                    </div>
+                    <span class="hide error ShortName">Short name is required.</span>
+                    <div>
+                        <span class="hide error uniqueness">Department Name and Short Name Must Be Unique.</span>
+                    </div>*@
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="submit" id="btnSubmit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+
+    <script type="text/javascript">
+        var txtType = $("#txtType");
+        var txtSpecialType = $("#txtSpecialType");
+        var ddlFormOrg = $("#ddlFormOrg");
+        var hdfTypeId = $("#hdfTypeId");
+
+        $(document).ready(function () {
+            fnGetData();
+            LoadDropDown('/Common/GetOrgList', 'POST', ddlFormOrg);
+        })
+
+        function triggeringSearch() {
+            txtType.val($.trim(txtType.val()));
+            if ($.trim(txtType.val()).length == 0)
+            {
+                txtType.trigger('change');
+            }
+        }
+
+        
+
+        txtType.autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: '@Url.Action("GetSpecializationItems", "Common")',
+                    type:'POST',
+                    dataType: "json",
+                    data: { OrgId:'@User.OrgId',contextKey: txtType.val() },
+                    headers:getToken(),
+                    success: function (data) {
+                        //objData = {};
+                        response($.map(data, function (item) {
+                            return { label: item.TypeName, value: item.TypeName, id: item.TypeName};
+                        }));
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error");
+                    }
+                });
+            },
+            select: function (event, ui) {
+                txtType.trigger('change');
+                //hdfUserId.val('0');
+                //objData = {};
+                //objData = ui.item;
+                //hdfUserId.val(ui.item.id);
+            }
+        })
+
+        txtType.change(function () {
+            fnGetData();
+        })
+
+        function OpenModal() {
+            $("#modalSpecialType").modal();
+            txtSpecialType.val('');
+            ddlFormOrg.val('-1');
+            clearCtrl();
+            $(".error").addClass("hide");
+            fnModalHeadChange('Add New Specialization');
+        }
+
+        $(document).on('click', 'a.data-edit', function (e) {
+            e.preventDefault();
+            OpenModal();
+            fnModalHeadChange('Update Specialization');
+            var id = $(this).parent().parents('tr').find('td:eq(0)').html();
+            var typeName = $(this).parent().parents('tr').find('td:eq(1)').html();
+            //var org = $(this).parent().parents('tr').find('td:eq(4)').html();
+
+            //ddlFormOrg.val(org);
+            txtSpecialType.val(typeName);
+            hdfTypeId.val(id);
+        })
+
+
+        function fnGetData() {
+            $("#tblType tbody tr").remove();
+            var OrgId =parseInt('@User.OrgId');
+            var type = $.trim(txtType.val()) == '' ? '' : $.trim(txtType.val());
+            $.when(getReqWithData("json", "GET", "/Organization/GetSpecializationType", { OrgId: OrgId , SpecType: type })).then(function (res) {
+                console.log(res);
+                fnLoadTable(res);
+            }).fail(function (err) {
+                console.log(err);
+            });
+        }
+
+        function fnLoadTable(dataObj) {
+            if (dataObj != null) {
+                var tr = "";
+                $.each(dataObj, function (index, item) {
+                    tr += "<tr>" + "<td class='hide'>" + item.Id + "</td>" + "<td>" + item.TypeName + "</td>" + "</td>" + "<td>" + item.Name + "</td>" + "<td class='text-center'>" + item.EntryUser + "</td>" + "<td class='hide'>" + item.OrgId + "</td>" + "<td class='text-center'><a href='#' class='data-edit btn btn-circle btn-success btn-sm'><i class='fas fa-pen'></i></a></td>" + "</tr>";
+                })
+                if (dataObj.length == 0) {
+                    tr = "<tr class='text-center'><td colspan='4'> No Rows Returned..</td></tr>";
+                }
+                $("#tblType tbody").append(tr);
+            }
+            else {
+                $("#tblType tbody tr").remove();
+                var tr = "<tr class='text-center'><td colspan='4'> No Rows Returned..</td></tr>";
+                $("#tblType tbody").append(tr);
+            }
+        }
+
+        function clearCtrl() {
+            txtSpecialType.val('');
+            ddlFormOrg.val('-1');
+            hdfTypeId.val('0');
+        }
+
+        $("#btnSubmit").click(function (e) {
+            e.preventDefault();
+            if (validateForm())
+            {
+                var id = $.trim(hdfTypeId.val()) == '' ? '0' : $.trim(hdfTypeId.val());
+                //var data = {Id: id,OrgId: ddlFormOrg.val(), TypeName: txtSpecialType.val() };
+                var data = { Id: id, OrgId:'@User.OrgId', TypeName: txtSpecialType.val() };
+                data = JSON.stringify(data);
+
+                $.when(postReqWithToken(dataType.applicationJson, dataType.json, "POST", "/Organization/SaveSpecializationType", data, getToken())).then(function (res) {
+                    if (res == true) {
+                        alert(execuStatus.successSave);
+                        //console.log("I'm Save");
+                        clearCtrl();
+                        $("#modalSpecialType").modal('toggle');
+                        txtType.val('');
+                        fnGetData();
+                        
+                        //var dropdownVal = ddlFormOrg.val();
+                        //ddlOrg.val('-1');
+                        //ddlOrg.trigger("change");
+                    }
+                    else {
+                        alert(execuStatus.fail);
+                        //console.log("I'm fail");
+                    }
+
+                }).fail(function (err) {
+                    //console.log(err);
+                })
+            }
+        })
+
+        function validateForm() {
+            var isValid = true;
+            $(".error").addClass("hide");
+            if ($.trim(txtSpecialType.val()) == "") {
+                $(".error.TypeName").removeClass("hide");
+                isValid = false;
+            }
+            else {
+                $(".error.TypeName").addClass("hide");
+            }
+            if ($.trim(txtSpecialType.val()) != "") {
+                if ($.trim(txtSpecialType.val()).length < 5) {
+                    $(".error.text-length").removeClass("hide");
+                    isValid = false;
+                }
+                else {
+                    $(".error.text-length").addClass("hide");
+                }
+            }
+            if (ddlFormOrg.val() <= 0) {
+                $(".error.Org").removeClass("hide");
+                isValid = false;
+            }
+            else {
+                $(".error.Org").addClass("hide");
+            }
+            if (isValid == true)
+            {
+                var data = JSON.stringify({ TypeName: $.trim(txtSpecialType.val()), OrgId: '@User.OrgId', Id: hdfTypeId.val() });
+                isValid = ajaxBooleanChecker(data, "/Common/IsUniqueSpecializationTypeByOrg", getToken());
+                if (!isValid) {
+                    $(".error.uniqueness").removeClass("hide");
+                }
+                else {
+                    $(".error.uniqueness").addClass("hide");
+                }
+            }
+
+            return isValid;
+        }
+
+    </script>
+}
+
+

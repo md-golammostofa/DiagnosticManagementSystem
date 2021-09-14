@@ -1,0 +1,341 @@
+﻿@model IEnumerable<HMSBO.ViewModels.VmInvestigationReferrar>
+
+@{
+    ViewBag.Title = "List of Referrar";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h5>List of Referrer</h5>
+                <hr />
+            </div>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form id="frmReferrer">
+                            <div class="form-row">
+                                <div class="form-group col-md-3">
+                                    <label class="control-label col-md-12 font-weight-bold">Name</label>
+                                    <div class="col-md-12">
+                                        <input type="text" name="ReferrerName" id="txtReferrerName" class="form-control form-control-sm search-control" placeholder="Search By Name" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label class="control-label col-md-12 font-weight-bold">Address</label>
+                                    <div class="col-md-12">
+                                        <input type="text" name="ReferrerAddress" id="txtReferrerAddress" class="form-control form-control-sm search-control" placeholder="Search By Address" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label class="control-label col-md-12 font-weight-bold">Mobile No</label>
+                                    <div class="col-md-12">
+                                        <input type="text" name="ReferrerMobile" id="txtReferrerMobile" class="form-control form-control-sm search-control" placeholder="Search By Mobile No" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-1">
+                                    <label class="control-label col-md-12 font-weight-bold" style="visibility:hidden">Row</label>
+                                    <div class="col-md-12">
+                                        <h3><label id="tbl-row-count">0</label><span style="font-size:x-small">Row(s)</span></h3>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label class="control-label col-md-12 font-weight-bold" style="visibility:hidden">Create New</label>
+                                    <div class="col-md-12">
+                                        <button class="btn btn-primary btn-sm float-right" onclick="OpenModal()" id="btnAddNew"><i class="fa fa-plus"></i> Add Referrer</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <table class="table table-sm table-bordered table-responsive-lg" id="tblReferrer">
+            <thead>
+                <tr class="btn-info">
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Address)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PhoneNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.OrgName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EntryUser)
+                    </th>
+                    <th>
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count() > 0)
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Address)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PhoneNumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.OrgName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EntryUser)
+                            </td>
+
+                            <td>
+                                <a href='#' class='data-edit btn btn-circle btn-success btn-sm' data-edit-item="@item.Id"><i class='fas fa-pen' title="Edit"></i></a>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr class="text-center"><td colspan="6">No Rows returned...</td></tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="modalRef">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content ">
+            <div class="modal-header  btn-success">
+                <h4 class="modal-title" id="modalHeading">Create New Referrar</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <form id="frmInv" autocomplete="off">
+                <input type="hidden" id="hdfRefId" value="0" />
+                @Html.AntiForgeryToken()
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label class="control-label col-md-10 font-weight-bold" for="">Referrer Name:</label>
+                            <div class="col-md-10 input-group">
+                                <input type="text" id="Name" name="Name" class="form-control form-control-sm" />
+                                <span class="text-danger">*</span>
+                            </div>
+                            <span class="error hide Name">Referrer Name is required..</span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="control-label col-md-10 font-weight-bold" for="">Address:</label>
+                            <div class="col-md-10 input-group">
+                                <textarea cols="10" rows="5" id="Address" name="Address" class="form-control form-control-sm"></textarea>
+                                <span class="text-danger">*</span>
+                            </div>
+                            <span class="error hide Address">Address is required..</span>
+                        </div>
+                        <div class="form-group col-md-4"></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label class="control-label col-md-10 font-weight-bold" for="">Phone:</label>
+                            <div class="col-md-10 input-group">
+                                <input type="number" id="Phone" name="Phone" class="form-control form-control-sm" />
+                                <span class="text-danger">*</span>
+                            </div>
+                            <span class="error hide Phone">Phone no is required..</span>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" id="btnSubmit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        var txtName = $("#Name");
+        var txtAddress = $("#Address");
+        var txtPhone = $("#Phone");
+        var hdfRefId = $("#hdfRefId");
+        var txtReferrerName = $("#txtReferrerName");
+        var txtReferrerAddress = $("#txtReferrerAddress");
+        var txtReferrerMobile = $("#txtReferrerMobile");
+
+        $(document).ready(function () {
+            tableRowCount();
+        })
+
+        function OpenModal() {
+            clearCtrl();
+            $("#modalRef").modal();
+            $("#modalHeading").text("Create New Referer");
+            $("#btnSubmit").text("Save");
+            $(".error").addClass(".hide");
+        }
+
+        $("#btnAddNew").click(function (e) {
+            e.preventDefault();
+        })
+
+        $(document).on('keyup', '.search-control', function () {
+            var refName = txtReferrerName.val().trim() != '' ? txtReferrerName.val().trim() : '';
+            var refAddress = txtReferrerAddress.val().trim() != '' ? txtReferrerAddress.val().trim() : '';
+            var refMobile = txtReferrerMobile.val().trim() != '' ? txtReferrerMobile.val().trim() : '';
+            var data = { ReferrerName: refName, ReferrerAddress: refAddress, ReferrerMobile: refMobile };
+            $.when(getReqWithData(dataType.json, 'GET', '/Diagnostic/GetReferrerList', data)).then(function (resData,status) {
+                //console.log(resData);
+                reBindtableAfterAjaxCalling(resData);
+                var count = resData.length == 0 ? 0 : resData.length;
+                console.log(count);
+                $("#tbl-row-count").text(count);
+            }).fail(function (err) {
+                console.log(err);
+            })
+        })
+
+        function reBindtableAfterAjaxCalling(dataObj) {
+            $("#tblReferrer tbody tr").empty();
+
+            if (dataObj.length == 0) {
+                var td1 = '<td colspan="6">No Data Found</td>'
+                var tr = '<tr class="text-center empty-row">' + td1 + '</tr>'
+                $("#tblReferrer tbody").append(tr);
+            } else {
+                $.each(dataObj, function (index, item) {
+                    var td1 = '<td>' + item.Name + '</td>';
+                    var td2 = '<td>' + item.Address + '</td>';
+                    var td3 = '<td>' + item.PhoneNumber + '</td>';
+                    var td4 = '<td>' + item.OrgName + '</td>';
+                    var td5 = '<td>' + item.EntryUser+ '</td>';
+                    var td6 = "<td><a href='#' class='data-edit btn btn-circle btn-success btn-sm' data-edit-item='" + item.Id +"'><i class='fas fa-pen' title='Edit'></i></a></td>";
+                    var tr = '<tr>' + td1 + td2 + td3 + td4 + td5 + td6+'</tr>';
+                    $("#tblReferrer tbody").append(tr);
+                })
+            }
+
+        }
+
+
+        function tableRowCount() {
+            var rowCount = $("#tblReferrer tbody tr").length;
+            if (rowCount == 1) {
+                if (!($("#tblReferrer tbody tr:first-child").hasClass("empty-row"))) {
+                    $("#tbl-row-count").text(rowCount);
+                }
+                else {
+                    $("#tbl-row-count").text('0');
+                }
+            }
+            else {
+                $("#tbl-row-count").text(rowCount);
+            }
+        }
+
+        $(document).on('click',"a.data-edit", function (e) {
+            e.preventDefault();
+            var id = $(this).attr('data-edit-item');
+            $.when(getReqWithData(dataType.json, 'GET', '/Diagnostic/GetReferrerById', { id: id })).then(function (res, status) {
+                //console.log(res);
+                //console.log(status);
+                if (res != null) {
+                    OpenModal();
+                    fnModalHeadChange("Update Referrer")
+                    hdfRefId.val(res.Id);
+                    txtName.val(res.Name);
+                    txtPhone.val(res.PhoneNumber);
+                    txtAddress.val(res.Address);
+                }
+            }).fail(function (err) {
+                console.log(err);
+            })
+        })
+
+        function clearCtrl() {
+            txtName.val('');
+            txtAddress.val('');
+            txtPhone.val('');
+            hdfRefId.val('0');
+        }
+
+        $(document).on('click', 'a.data-edit', function (e) {
+            e.preventDefault();
+            var id = $(this).attr('data-edit-item');
+            $.when(getReqWithData(dataType.json, 'GET', '/Diagnostic/GetReferrerById', { Id: id })).then(function (res,status) {
+                console.log(res);
+                console.log(status);
+            }).fail(function (err) {
+                console.log(err);
+
+            })
+        })
+
+        $("#btnSubmit").on("click", function (e) {
+            e.preventDefault();
+            if (validataForm())
+            {
+                var id = hdfRefId.val() == '' ? '0' : hdfRefId.val();
+                var data = { Id: id, Name: txtName.val(), Address: txtAddress.val(), PhoneNumber: txtPhone.val() };
+                data = JSON.stringify(data);
+
+                $.when(postReqWithToken(dataType.applicationJson, dataType.json, 'POST', '/Diagnostic/SaveReferrer', data, getToken())).then(function (res,status) {
+                    console.log(res);
+                    console.log(status);
+                    if (res == true)
+                    {
+                        alert(execuStatus.successSave);
+                        location.reload();
+                    }
+                    else {
+                        alert(execuStatus.fail);
+                    }
+                }).fail(function (err) {
+                    console.log(err);
+                })
+            }
+        })
+
+        function validataForm() {
+            var isValid = true;
+
+            if ($.trim(txtName.val()) == '')
+            {
+                isValid = false;
+                $(".error.Name").removeClass("hide");
+            }
+            else {
+                $(".error.Name").addClass("hide");
+            }
+            if ($.trim(txtAddress.val()) == '') {
+                isValid = false;
+                $(".error.Address").removeClass("hide");
+            }
+            else {
+                $(".error.Address").addClass("hide");
+            }
+
+            if ($.trim(txtPhone.val()) == '') {
+                isValid = false;
+                $(".error.Phone").removeClass("hide");
+            }
+            else {
+                $(".error.Phone").addClass("hide");
+            }
+            return isValid;
+        }
+
+    </script>
+}

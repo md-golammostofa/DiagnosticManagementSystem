@@ -1,0 +1,878 @@
+﻿
+@{
+    ViewBag.Title = "Diagnostic Report Panel";
+}
+
+<div class="row">
+    <div class="col-md-12 text-center">
+        <h4>Diagnostic Report Panel</h4>
+        <hr />
+    </div>
+
+    <div class="col-md-12">
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active" id="nav-DateRangeWiseBillInfo" data-toggle="tab" href="#DateRangeWiseBillInfo" role="tab" aria-controls="DateRangeWiseBillInfo" aria-selected="true">Date Range Wise Bill Info</a>
+                <a class="nav-item nav-link" id="nav-MonthAndInvestigationType" data-toggle="tab" href="#MonthAndInvestigationType" role="tab" aria-controls="MonthAndInvestigationType" aria-selected="false">Month & Investigation Type</a>
+                <a class="nav-item nav-link" id="nav-ReferrerWiseReport" data-toggle="tab" href="#ReferrerWiseReport" role="tab" aria-controls="ReferrerWiseReport" aria-selected="false">Referrer Wise  Bill Info</a>
+            </div>
+        </nav>
+    </div>
+    <div class="col-md-12">
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="DateRangeWiseBillInfo" role="tabpanel" aria-labelledby="nav-DateRangeWiseBillInfo">
+                @*Tab 1*@
+                <br />
+                <div class="row">
+                    <div class="col-md-12">
+                        <form id="#DateRangeWise">
+                            <div class="form-row">
+                                <div class="form-group col-md-3">
+                                    <label class="control-label col-md-12 font-weight-bold" for="txtInvoiceNoFortab1">Invoice No</label>
+                                    <div class="col-md-12">
+                                        <input type="text" class="form-control form-control-sm tab1-txt-control" id="txtInvoiceNoFortab1" placeholder="Search By Invoice" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label class="control-label col-md-12 font-weight-bold" for="txtPatientFortab1">Patient Name</label>
+                                    <div class="col-md-12">
+                                        <input type="text" class="form-control form-control-sm tab1-txt-control" id="txtPatientFortab1" placeholder="Search By Patient Name" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label class="control-label col-md-12 font-weight-bold" for="txtPhoneFortab1">Phone No</label>
+                                    <div class="col-md-12">
+                                        <input type="text" class="form-control form-control-sm tab1-txt-control" id="txtPhoneFortab1" placeholder="Search By Phone" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label class="control-label col-md-12 font-weight-bold" for="ddlBillTypetab1">Bill Status</label>
+                                    <div class="col-md-12">
+                                        <select id="ddlBillTypetab1" class="form-control form-control-sm tab1-control tab1-chng-control">
+                                            <option value="">Select Bill Status</option>
+                                            <option value="Paid">Paid</option>
+                                            <option value="Due">Due</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-3">
+                                    <label class="control-label col-md-12 font-weight-bold" for="dtpFromDateFortab1">From Date</label>
+                                    <div class="col-md-12">
+                                        <input type="date" class="form-control form-control-sm tab1-control tab1-chng-control" id="dtpFromDateFortab1" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label class="control-label col-md-12 font-weight-bold" for="dtpToDateFortab1">To Date</label>
+                                    <div class="col-md-12">
+                                        <input type="date" class="form-control form-control-sm tab1-control tab1-chng-control" id="dtpToDateFortab1" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label class="control-label col-md-12 font-weight-bold" for="ddlRefBytab1">Ref. By</label>
+                                    <div class="col-md-12">
+                                        <select id="ddlRefBytab1" class="form-control form-control-sm tab1-control tab1-chng-control">
+                                            <option value="">Select Ref. By</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label class="control-label col-md-12 font-weight-bold" style="visibility:hidden">Generate Report:</label>
+                                    <div class="input-group">
+                                        <div class="col-md-4">
+                                            <h3><label id="tab1-row-count">0</label><span style="font-size:x-small">Row(s)</span></h3>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <button type="button" class="btn btn-primary btn-sm tab1-report" style="font-size:smaller" id="btnReportTab1"><i class="fas fa-download fa-sm"></i> Report </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-12" id="data-container-dataRangeBillInfo">
+                        @{ Html.RenderAction("GetDateRageWiseBillInfo", "Diagnostic"); }
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="MonthAndInvestigationType" role="tabpanel" aria-labelledby="nav-MonthAndInvestigationType">
+                @*Tab 2*@
+                <br />
+                <div class="row">
+                    <div class="col-md-12">
+                        <form id="frmMonthAndInvestigation">
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label class="control-label col-md-12 font-weight-bold" for="dtpMonthTab2">
+                                        Select any date of a month:
+                                    </label>
+                                    <div class="col-md-12">
+                                        <input type="date" id="dtpMonthTab2" class="form-control form-control-sm tab2-chng-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label class="control-label col-md-12 font-weight-bold" for="ddlInvesTypeTab2">
+                                        Investiongation Type:
+                                    </label>
+                                    <div class="col-md-12">
+                                        <select id="ddlInvesTypeTab2" class="form-control form-control-sm tab2-chng-control">
+                                            <option value="">Select One</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="rowCountTab2" class="control-label col-md-12 font-weight-bold" style="visibility:hidden">Total Row(s)</label>
+                                    <div class="col-md-12">
+                                        <h3><label id="tab2-row-count">0</label><span style="font-size:x-small">Row(s)</span></h3>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label class="control-label col-md-12 font-weight-bold" style="visibility:hidden">Generate Report:</label>
+                                    <div class="col-md-12">
+                                        <button type="button" class="btn btn-primary btn-sm tab2-report" style="font-size:smaller" id="btnReportTab2"><i class="fas fa-download fa-sm"></i> Generate Report</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-12" id="data-container-dataMonthYearAndInv">
+                        @{ Html.RenderAction("GetMonthAndInvestigationWiseRpt", "Diagnostic"); }
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="ReferrerWiseReport" role="tabpanel" aria-labelledby="nav-ReferrerWiseReport">
+                @*Tab 3*@
+                <br />
+                <div class="row">
+                    <div class="col-md-12" id="data-container-referrerWiseBillInfo">
+                        <form id="frmReferrerBillInfo">
+                            <div class="form-row">
+                                <div class="form-group col-md-3">
+                                    <label class="control-label font-weight-bold col-md-12" for="ddlReferrer">Referrer Name</label>
+                                    <div class="col-md-12">
+                                        <select id="ddlReferrer" class="form-control form-control-sm tab3-control tab3-chng-control">
+                                            <option value="">Select Referrer</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label class="control-label font-weight-bold col-md-12" for="dtpFromDateForTab3">From Date</label>
+                                    <div class="col-md-12">
+                                        <input type="date" name="dtpFromDateForTab3" id="dtpFromDateForTab3" class="form-control form-control-sm tab3-control tab3-chng-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label class="control-label font-weight-bold col-md-12" for="dtpToDateForTab3">To Date</label>
+                                    <div class="col-md-12">
+                                        <input type="date" name="dtpToDateForTab3" id="dtpToDateForTab3" class="form-control form-control-sm tab3-control tab3-chng-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="rowCountTab3" class="control-label col-md-12 font-weight-bold" style="visibility:hidden">Total Row(s)</label>
+                                    <div class="input-group">
+                                        <div class="col-md-4">
+                                            <h3><label id="tab3-row-count">0</label><span style="font-size:x-small">Row(s)</span></h3>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <button type="button" class="btn  btn-sm btn-primary tab3-report" style="font-size:smaller" id="btnReportTab3"><i class="fas fa-download fa-sm"></i> Report</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-12" id="data-container-ReferrerWiseReport">
+                        @{ Html.RenderAction("GetReferrerWiseBillInfo", "Diagnostic");}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Start Modal For Tab1 Details View-->
+<div class="modal fade" id="modalDateRangeBill">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content ">
+            <div class="modal-header  btn-success">
+                <h4 class="modal-title" id="modalHeading">Patient Details</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <form id="frmDateRangeBill" autocomplete="off">
+                @Html.AntiForgeryToken()
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <div class="input-group">
+                                <label><b>Invoice No:</b></label> &nbsp;
+                                <label id="lblInvoiceNoTab1"></label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <div class="input-group">
+                                <label><b>Patient Name:</b></label> &nbsp;
+                                <label id="lblPatientNameTab1"></label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <div class="input-group">
+                                <label><b>Mobile No:</b></label> &nbsp;
+                                <label id="lblMobileNoTab1"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <div class="input-group">
+                                <label><b>Address:</b></label> &nbsp;
+                                <label id="lblAddressTab1"></label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <div class="input-group">
+                                <label><b>Gender:</b></label> &nbsp;
+                                <label id="lblGenderTab1"></label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <div class="input-group">
+                                <label><b>Payment Mode:</b></label> &nbsp;
+                                <label id="lblPaymentModeTab1"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <div class="input-group">
+                                <label><b>Sub Total:</b></label> &nbsp;
+                                <label id="lblSubTotalTab1"></label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <div class="input-group">
+                                <label><b>Discount Amount:</b></label> &nbsp;
+                                <label id="lblDiscountAmtTab1"></label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <div class="input-group">
+                                <label><b>Net Amount:</b></label> &nbsp;
+                                <label id="lblNetAmountTab1"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <div class="input-group">
+                                <label><b>Received Amount:</b></label> &nbsp;
+                                <label id="lblPrevReceAmtTab1"></label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <div class="input-group">
+                                <label><b>Due Amount:</b></label> &nbsp;
+                                <label id="lblDueAmountTab1"></label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <div class="input-group">
+                                <label><b>Bill Date:</b></label> &nbsp;
+                                <label id="lblBillDateTab1"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <table class="table table-bordered table-responsive-lg table-sm" id="tblModalDetailsTab1">
+                                <thead class="alert-info">
+                                    <tr>
+                                        <th>SL</th>
+                                        <th>Investigation Name</th>
+                                        <th>Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!--Start Bill Details-->
+                                    <!--End Bill Details-->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" data-target="#modalDateRangeBill"><i class="fa fa-remove"></i> Close </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--End Modal For Tab1 Details View-->
+<!--Start Modal For Tab3 Details View-->
+<div class="modal fade" id="modalReferrerDetails">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content ">
+            <div class="modal-header  btn-success">
+                <h4 class="modal-title" id="modalHeading">Referrer Bill Details</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-5">
+                        <h6><label class="font-weight-bold">Ref. Name: &nbsp;</label><label id="lblRefName"></label></h6>
+                    </div>
+                    <div class="col-md-5">
+                        <h6><label class="font-weight-bold">Mobile No: &nbsp;</label><label id="lblMobileNo"></label></h6>
+                    </div>
+                </div>
+                <table id="tblReferrerBillDetails" class="table table-sm table-bordered table-responsive-lg table-striped">
+                    <thead class="btn-info">
+                        <tr>
+                            <th class="hide">Investigation Id</th>
+                            <th class="hide">Referrer Id</th>
+                            @*<th>Referrer Name</th>
+                                <th>Mobile No</th>*@
+                            <th>Investigation</th>
+                            <th>Qty</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <hr />
+                <div class="row">
+                    <div class="col-md-6"></div>
+                    <div class="col-md-2">
+                        <h6><label class="font-weight-bold">Total Qty: &nbsp;</label><label id="lblTestQty"></label></h6>
+                    </div>
+                    <div class="col-md-3">
+                        <h6><label class="font-weight-bold">Total Amount: &nbsp;</label><label id="lblTestAmount"></label></h6>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" data-target="#modalDateRangeBill"><i class="fa fa-remove"></i> Close </button>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--End Modal For Tab3 Details View-->
+<!--Invoice Delete Modal-->
+<div class="modal fade" id="modalInvoiceDel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header btn-danger">
+                <h4 class="modal-title" id="modalHeading">Delete Invoice</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                @Html.Hidden("hdfDelInvoice")
+                @Html.Hidden("hdfRowIndex")
+                <h5>Are you sure you want to delete the Invoice :<span id="invDelTxt"></span> ?</h5>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" id="btnDelInv">
+                    Yes
+                </button>
+                <button type="button" class="btn btn-success" data-dismiss="modal" data-target="#modalInvoiceDel">
+                    No
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!------------------------>
+
+@section Scripts
+{
+    <script type="text/javascript">
+
+        // Tab1 Form Control //
+        var txtInvoiceNoFortab1 = $("#txtInvoiceNoFortab1");
+        var txtPatientFortab1 = $("#txtPatientFortab1");
+        var ddlBillTypetab1 = $("#ddlBillTypetab1");
+        var dtpFromDateFortab1 = $("#dtpFromDateFortab1");
+        var dtpToDateFortab1 = $("#dtpToDateFortab1");
+        var tab1RowCount = $("#tab1-row-count");
+        var tblModalDetailsTab1 = $("#tblModalDetailsTab1");
+        var lblInvoiceNoTab1 = $("#lblInvoiceNoTab1");
+        var lblPatientNameTab1 = $("#lblPatientNameTab1");
+        var lblMobileNoTab1 = $("#lblMobileNoTab1");
+        var lblAddressTab1 = $("#lblAddressTab1");
+        var lblGenderTab1 = $("#lblGenderTab1");
+        var lblPaymentModeTab1 = $("#lblPaymentModeTab1");
+        var lblSubTotalTab1 = $("#lblSubTotalTab1");
+        var lblDiscountAmtTab1 = $("#lblDiscountAmtTab1");
+        var lblNetAmountTab1 = $("#lblNetAmountTab1");
+        var lblPrevReceAmtTab1 = $("#lblPrevReceAmtTab1");
+        var lblDueAmountTab1 = $("#lblDueAmountTab1");
+        var lblBillDateTab1 = $("#lblBillDateTab1");
+        var ddlRefBytab1 = $("#ddlRefBytab1");
+        var txtPhoneFortab1 = $("#txtPhoneFortab1");
+        //-----------------//
+
+        //------Tab 2 Form-Control//
+        var dtpMonthTab2 = $("#dtpMonthTab2");
+        var ddlInvesTypeTab2 = $("#ddlInvesTypeTab2");
+        //-----------------------//
+
+        //------Tab 3 Form-Control//
+        //var dtpMonthTab2 = $("#dtpMonthTab2");
+        var ddlReferrer = $("#ddlReferrer");
+        var dtpFromDateForTab3 = $("#dtpFromDateForTab3");
+        var dtpToDateForTab3 = $("#dtpToDateForTab3");
+        var tab3RowCount = $("#tab3-row-count");
+        var btnReportTab3 = $("#btnReportTab3");
+        //-----------------------//
+
+        $(document).ready(function () {
+            // For Tab 1
+            $("#tab1-row-count").text($("#tblDateRangeWiseBillInfo tbody tr").length);
+            LoadDropDown('/Common/GetReferrerByOrg', 'POST', ddlRefBytab1);
+
+            //For Tab 2
+            $("#tab2-row-count").text($("#tblMonthAndInvesRpt tbody tr").length);
+            LoadDropDown('/Common/GetInvestiongationByOrg', 'POST', ddlInvesTypeTab2);
+
+            // For Tab 3
+            $("#tab3-row-count").text($("#tblReferrerWiseBillInfo tbody tr").length);
+            LoadDropDown('/Common/GetReferrerByOrg', 'POST', ddlReferrer);
+        })
+
+        //---- Tab 1 : Date Range Wise Bill Info ----//
+        function OpenModalTab1() {
+            clearCtrlForTab1();
+            $("#modalDateRangeBill").modal();
+        }
+
+        $(document).on('click', '.data-DateRange-item', function (e) {
+            e.preventDefault();
+            OpenModalTab1();
+
+            var billId = $(this).parent().parents('tr').find('td:eq(0)').html();
+            var invoiceNo = $(this).parent().parents('tr').find('td:eq(2)').html();
+            var entryDate = $(this).parent().parents('tr').find('td:eq(12)').html();
+            console.log(billId);
+            console.log(invoiceNo);
+            $.when(getReqWithData(dataType.json, 'GET', '/Diagnostic/GetBillInvoiceDetails', { invoiceNo: invoiceNo, billId: billId })).then(function (res, status) {
+                console.log('Bill Info Data');
+                //console.log(res);
+                console.log(status);
+                if (res.billInfo != null) {
+                    lblInvoiceNoTab1.text(res.billInfo.InvoiceNo);
+                    lblPatientNameTab1.text(res.billInfo.PatientName);
+                    lblMobileNoTab1.text(res.billInfo.MobileNo);
+                    lblAddressTab1.text(res.billInfo.Address);
+                    lblGenderTab1.text(res.billInfo.Sex);
+                    lblPaymentModeTab1.text(res.billInfo.PaymentMode);
+                    lblSubTotalTab1.text(res.billInfo.SubTotal);
+                    lblDiscountAmtTab1.text(res.billInfo.DiscountAmount);
+                    lblNetAmountTab1.text(res.billInfo.NetAmount);
+                    lblPrevReceAmtTab1.text(res.billInfo.ReceivedAmount);
+                    lblDueAmountTab1.text(res.billInfo.DueAmount);
+
+                    var date = new Date(parseInt(res.billInfo.EntryDate.replace(/[^0-9 +]/g, '')));
+                    console.log('date ' + date);
+                    console.log('Month' + date.getMonth());
+                    var entrydate = date.getDate().toString() + "-" + getMonthName(date.getMonth(), "MM") + "-" + date.getFullYear().toString();
+                    lblBillDateTab1.text(entryDate);
+                    $("#tblModalDetailsTab1 tbody tr").remove();
+                    $.each(res.billDetailList, function (index, item) {
+                        var td1 = '<td class="text-center">' + (index + 1) + '</td>'
+                        var td2 = '<td>' + item.InvestigationName + '</td>'
+                        var td3 = '<td>' + item.Fee + '</td>'
+                        var tr = '<tr>' + td1 + td2 + td3 + '</tr>';
+                        $("#tblModalDetailsTab1 tbody").append(tr);
+                    })
+                }
+            }).fail(function (err) {
+                console.log(err);
+            })
+        })
+        // For Text Box
+        $(document).on("keyup", ".tab1-txt-control", function () {
+            ajaxCallingForTab1(1);
+        })
+
+        // For Date Time Picker Control //
+        $(document).on("change", ".tab1-chng-control", function () {
+            ajaxCallingForTab1(1);
+        })
+
+        function ajaxCallingForTab1(page) {
+
+            var page = page;
+            var invoiceTab1 = txtInvoiceNoFortab1.val().trim();
+            var patientTab1 = txtPatientFortab1.val().trim();
+            var billTypeTab1 = ddlBillTypetab1.val();
+            var fromDate = dtpFromDateFortab1.val();
+            var toDate = dtpToDateFortab1.val();
+            var phoneNo = txtPhoneFortab1.val().trim();
+            var refId = (ddlRefBytab1.val() == "" || ddlRefBytab1.val() == null) ? 0 : parseInt(ddlRefBytab1.val());
+            var objDateRangeData = { invoiceNo: invoiceTab1, billType: billTypeTab1, patientName: patientTab1, fromDate: fromDate, toDate: toDate, phoneNo: phoneNo, refById: refId, page: page };
+            console.log(objDateRangeData);
+            $.when(getReqWithData('html', 'GET', '/Diagnostic/GetDateRageWiseBillInfo', objDateRangeData)).then(function (res, status) {
+                //console.log(res);
+                console.log(status);
+                $("#data-container-dataRangeBillInfo").html(res);
+                //$("#tab1-row-count").text($("#tblDateRangeWiseBillInfo tbody tr").length);
+                fntableRowCount("tblDateRangeWiseBillInfo", "tab1-row-count")
+            }).fail(function (err) {
+                console.log(err);
+            })
+        }
+
+        function clearCtrlForTab1() {
+            // Start-Tab 1 //
+            //txtInvoiceNoFortab1.val('');
+            //txtPatientFortab1.val('');
+            //ddlBillTypetab1.val('');
+            //dtpFromDateFortab1.val('');
+            //dtpToDateFortab1.val('');
+            //tab1RowCount.text('0');
+            $("#tblModalDetailsTab1 tbody tr").remove();
+            lblInvoiceNoTab1.text('');
+            lblPatientNameTab1.text('');
+            lblMobileNoTab1.text('');
+            lblAddressTab1.text('');
+            lblGenderTab1.text('');
+            lblPaymentModeTab1.text('');
+            lblSubTotalTab1.text('');
+            lblDiscountAmtTab1.text('');
+            lblPrevReceAmtTab1.text('')
+            lblDueAmountTab1.text('');
+            lblBillDateTab1.text('');
+            // End-Tab 1 //
+        }
+        //-------------------------------------------//
+        //----- Tab 2: Month Wise Investigatin Qty ----//
+        $(document).on("change", ".tab2-chng-control", function () {
+            ajaxCallingForTab2(1);
+        })
+
+        function ajaxCallingForTab2(page) {
+
+            var objData = {};
+            var date = dtpMonthTab2.val();
+            var invsId = (ddlInvesTypeTab2.val() == null || ddlInvesTypeTab2.val() == "") ? "0" : ddlInvesTypeTab2.val();
+            objData = { date: date, investigationId: invsId, page: page };
+            $.when(getReqWithData('html', 'GET', '/Diagnostic/GetMonthAndInvestigationWiseRpt', objData)).then(function (res, status) {
+                console.log(res);
+                console.log(status);
+                $("#data-container-dataMonthYearAndInv").html(res);
+                //$("#tab2-row-count").text($("#tblMonthAndInvesRpt tbody tr").length);
+                fntableRowCount("tblMonthAndInvesRpt", "tab2-row-count")
+            }).fail(function (err) {
+                console.log(err);
+            })
+        }
+
+        //------ Tab 3: Referrer Wise Bill Info -------//
+        $(document).on("change", ".tab3-chng-control", function () {
+            ajaxCallingForTab3(1);
+        })
+
+        function ajaxCallingForTab3(page) {
+            var objData = {};
+            var refId = (ddlReferrer.val() == null || ddlReferrer.val() == "") ? 0 : parseInt(ddlReferrer.val());
+            objData = { fromDate: dtpFromDateForTab3.val(), toDate: dtpToDateForTab3.val(), refId: refId, page: page };
+            console.log(objData);
+            $.when(getReqWithData('html', 'GET', '/Diagnostic/GetReferrerWiseBillInfo', objData)).then(function (res, status) {
+                console.log(res);
+                console.log(status);
+                $("#data-container-ReferrerWiseReport").html(res);
+                //$("#tab3-row-count").text($("#tblReferrerWiseBillInfo tbody tr").length);
+                fntableRowCount("tblReferrerWiseBillInfo", "tab3-row-count");
+            }).fail(function (err) {
+                console.log(err);
+            })
+        }
+
+        //--- View Details Modal For Tab 3 ---//
+
+        function OpenModelRefDetails() {
+            $("#tblReferrerBillDetails tbody").empty();
+            $("#modalReferrerDetails").modal();
+            $("#lblRefName").text('');
+            $("#lblMobileNo").text('');
+            $("#lblTestQty").text('');
+            $("#lblTestAmount").text('');
+        }
+
+        $(document).on('click', 'a.data-Referrer-item', function (e) {
+            e.preventDefault();
+            var id = TryParseInt($(this).attr('data-view-item'), 0);
+            var data = JSON.stringify({ refId: id, fromDate: dtpFromDateForTab3.val(), toDate: dtpToDateForTab3.val() })
+            console.log(data);
+            if (id > 0) {
+                $.when(postReqWithToken(dataType.applicationJson, dataType.json, 'POST', '/Diagnostic/GetReferrerBillDetails', data, getToken())).then(function (response, status) {
+                    console.log(response);
+                    console.log(status);
+                    if (status == "success") {
+                        OpenModelRefDetails();
+                        fnBindRefDetailsData(response);
+                    }
+                }).fail(function (err) {
+                    console.log(err);
+                })
+            }
+            console.log(id);
+        })
+
+        function fnBindRefDetailsData(dataObj) {
+            console.log("Ref Details");
+            console.log(dataObj);
+            $("#lblRefName").text(dataObj[0].RefName);
+            $("#lblMobileNo").text(dataObj[0].RefPhone);
+            var totalTest = 0;
+            var totalAmount = 0;
+            $.each(dataObj, function (index, item) {
+
+                var td1 = "<td class='hide'>" + item.RefId + "</td>";
+                var td2 = "<td class='hide'>" + item.InvestId + "</td>";
+                //var td3 = "<td>" + item.RefName + "</td>";
+                //var td4 = "<td>" + item.RefPhone + "</td>";
+                var td5 = "<td>" + item.InvestName + "</td>";
+                var td6 = "<td align='center'>" + item.TotalRefData + "</td>";
+                var td7 = "<td align='right'>" + item.TotalAmount + "</td>";
+                var tr = "<tr>" + td1 + td2 + td5 + td6 + td7 + "</tr>";
+                totalTest += parseInt(item.TotalRefData);
+                totalAmount += parseFloat(item.TotalAmount);
+                $("#tblReferrerBillDetails tbody").append(tr);
+            })
+            $("#lblTestQty").text(totalTest);
+            $("#lblTestAmount").text(Math.round(totalAmount));
+        }
+
+        //-----------------------------------//
+
+        // Invoice Delete //
+        var hdfDelInvoice = $("#hdfDelInvoice");
+        var hdfRowIndex = $("#hdfRowIndex");
+        var invoiceNO = "";
+        $(document).on("click", "a.data-DateRange-drop", function (e) {
+            hdfDelInvoice.val("0");
+            hdfRowIndex.val();
+            $("#invDelTxt").text("");
+            //modalInvoiceDel
+            var delItemId = $(this).attr("data-del-item");
+            hdfDelInvoice.val(delItemId);
+            invoiceNO = $(this).parent().parents('tr').find('td:eq(2)').html();
+            var rowIndex = $(this).parent().parents('tbody tr').index();
+            hdfRowIndex.val(rowIndex);
+            $("#invDelTxt").text(invoiceNO);
+            $("#modalInvoiceDel").modal("show");
+        })
+
+        $("#btnDelInv").click(function (e) {
+            var ind = hdfRowIndex.val();
+            e.preventDefault();
+            var data = JSON.stringify({ Id: hdfDelInvoice.val(), InvoiceNo: invoiceNO });
+            console.log("Invoice Delete");
+            console.log(data);
+            $.when(postReqWithToken(dataType.applicationJson, dataType.json, 'POST', '/Diagnostic/DeleteInvoice', data, getToken())).then(function (res, status) {
+                console.log(res);
+                console.log(status);
+                if (res == true) {
+                    $("#modalInvoiceDel").modal("toggle");
+                    hdfDelInvoice.val("0");
+                    hdfRowIndex.val();
+                    $("#invDelTxt").text("");
+
+                    alert("Data has been deleted successfully");
+                    $("#tblDateRangeWiseBillInfo tbody tr").eq(ind).css("background-color", "#ff6347").fadeOut(800,
+                        function () {
+                            $("#tblDateRangeWiseBillInfo tbody tr").eq(ind).remove();
+                        });
+                    var totalRows = $("#tblDateRangeWiseBillInfo tbody tr").length - 1;
+                    $("#tab1-row-count").text(totalRows);
+                }
+            }).fail(function (e) {
+                console.log(e);
+                alert(execuStatus.fail);
+            })
+        })
+
+        //----------------//
+
+        // Report Print Preview //
+        //data-DateRange-print
+
+        $(document).on("click", "a.data-DateRange-print", function (e) {
+            e.preventDefault();
+            var id = $(this).parent().parents("tr").find("td:eq(0)").html();
+            var invoice = $(this).parent().parents("tr").find("td:eq(2)").html();
+
+            var data = JSON.stringify({ Id: id, InvoiceNo: invoice });
+
+            $.when(postReqWithToken(dataType.applicationJson, dataType.json, 'POST', '/Diagnostic/GetInvoiceReport', data, getToken())).then(function (res, status) {
+                console.log(res);
+                console.log(status);
+                if (res.isSuccess == true) {
+                    var pdfWindow = window.open("", "_blank")
+                    pdfWindow.document.write("<embed width='100%' height='100%' src='" + encodeURI(res.file) + "'></embed>");
+                    download(res.file, res.fileName, "application/pdf");
+                }
+                else {
+                    alert(execuStatus.fail);
+                }
+            }).fail(function (err) {
+                console.log(err);
+                alert(execuStatus.fail);
+            })
+        })
+        //---------------------//
+
+        // Pagination Codes //
+        // Date range wise bill info
+        $(document).on("click", "#data-container-dataRangeBillInfo .pagination li a", function (e) {
+            e.preventDefault();
+            var page = $(this).text();
+            //console.log(page);
+            var nextOrPrev = false;
+            var activeIndex = $("#data-container-dataRangeBillInfo .pagination").find("li.active").index() + 1;
+
+            if ($(this).parent().hasClass("PagedList-skipToNext") == true) {
+                var p = parseInt($("#data-container-dataRangeBillInfo .pagination").find("li.active").children("a").text()) + 1;
+                page = p;
+                nextOrPrev = true;
+            }
+            if ($(this).parent().hasClass("PagedList-skipToPrevious") == true) {
+                var p = parseInt($("#data-container-dataRangeBillInfo .pagination").find("li.active").children("a").text()) - 1;
+                page = p;
+                nextOrPrev = true;
+            }
+            $("#data-container-dataRangeBillInfo .pagination li").removeClass("active");
+            if (nextOrPrev == false) {
+                $(this).parent('li').addClass("active");
+            }
+            else {
+                $("#data-container-dataRangeBillInfo .pagination li").eq(activeIndex).addClass("active");
+            }
+            console.log("Page No");
+            console.log(page);
+            ajaxCallingForTab1(page);
+        })
+
+        // Month and Investigation Type
+        $(document).on("click", "#data-container-dataMonthYearAndInv .pagination li a", function (e) {
+            e.preventDefault();
+            var page = $(this).text();
+            var nextOrPrev = false;
+            var activeIndex = $("#data-container-dataMonthYearAndInv .pagination").find("li.active").index() + 1;
+
+            if ($(this).parent().hasClass("PagedList-skipToNext") == true) {
+                var p = parseInt($("#data-container-dataMonthYearAndInv .pagination").find("li.active").children("a").text()) + 1;
+                page = p;
+                nextOrPrev = true;
+            }
+            if ($(this).parent().hasClass("PagedList-skipToPrevious") == true) {
+                var p = parseInt($("#data-container-dataMonthYearAndInv .pagination").find("li.active").children("a").text()) - 1;
+                page = p;
+                nextOrPrev = true;
+            }
+            $("#data-container-dataMonthYearAndInv .pagination li").removeClass("active");
+            if (nextOrPrev == false) {
+                $(this).parent('li').addClass("active");
+            }
+            else {
+                $("#data-container-dataMonthYearAndInv .pagination li").eq(activeIndex).addClass("active");
+            }
+            console.log("Page No");
+            console.log(page);
+            ajaxCallingForTab2(page);
+        })
+
+        // Referrer wise bill info
+        $(document).on("click", "#data-container-ReferrerWiseReport .pagination li a", function (e) {
+            e.preventDefault();
+            var page = $(this).text();
+            var nextOrPrev = false;
+            var activeIndex = $("#data-container-ReferrerWiseReport .pagination").find("li.active").index() + 1;
+
+            if ($(this).parent().hasClass("PagedList-skipToNext") == true) {
+                var p = parseInt($("#data-container-ReferrerWiseReport .pagination").find("li.active").children("a").text()) + 1;
+                page = p;
+                nextOrPrev = true;
+            }
+            if ($(this).parent().hasClass("PagedList-skipToPrevious") == true) {
+                var p = parseInt($("#data-container-ReferrerWiseReport .pagination").find("li.active").children("a").text()) - 1;
+                page = p;
+                nextOrPrev = true;
+            }
+            $("#data-container-ReferrerWiseReport .pagination li").removeClass("active");
+            if (nextOrPrev == false) {
+                $(this).parent('li').addClass("active");
+            }
+            else {
+                $("#data-container-ReferrerWiseReport .pagination li").eq(activeIndex).addClass("active");
+            }
+            console.log("Page No");
+            console.log(page);
+            ajaxCallingForTab3(page);
+        })
+
+
+        // Generate Report //
+
+        $("#btnReportTab1").click(function (e) {
+            e.preventDefault();
+
+            var data = {
+                invoiceNo: txtInvoiceNoFortab1.val(), patientName: txtPatientFortab1.val(), mobileNo: txtPhoneFortab1.val(),
+                status: ddlBillTypetab1.val(), refId: ddlRefBytab1.val(), fromDate: dtpFromDateFortab1.val(),
+                toDate: dtpToDateFortab1.val()
+            };
+
+            data = JSON.stringify(data);
+            console.log(data);
+
+            $.when(postReqWithToken(dataType.applicationJson, dataType.json, 'POST', '/Diagnostic/GetListOfInvoiceReport', data, getToken())).then(function (res, status) {
+                console.log('Report Response');
+                console.log(res);
+                console.log(status);
+                if (res.isSuccess == true) {
+                    var pdfWindow = window.open("", "_blank")
+                    pdfWindow.document.write("<embed  width='100%' height='100%' src='" + res.file +"'></embed >");
+                    download(res.file, res.fileName, "application/pdf");
+                }
+                else {
+                    alert(execuStatus.fail);
+                }
+            }).fail(function (error) {
+                console.log(error);
+            })
+        })
+
+        $("#btnReportTab2").click(function (e) {
+            e.preventDefault();
+
+            var data = {
+                date: dtpMonthTab2.val(),
+                InvestigationId: ddlInvesTypeTab2.val()
+            };
+
+            data = JSON.stringify(data);
+            console.log(data);
+
+            $.when(postReqWithToken(dataType.applicationJson, dataType.json, 'POST', '/Diagnostic/GetMonthWiseInvestigationReport', data, getToken())).then(function (res, status) {
+                console.log('Report Response');
+                console.log(res);
+                console.log(status);
+                if (res.isSuccess == true) {
+                    var pdfWindow = window.open("", "_blank")
+                    pdfWindow.document.write("<embed  width='100%' height='100%' src='" + res.file + "'></embed >");
+                    download(res.file, res.fileName, "application/pdf");
+                }
+                else {
+                    alert(res.msg);
+                }
+            }).fail(function (error) {
+                console.log(error);
+            })
+        })
+    </script>
+}
+

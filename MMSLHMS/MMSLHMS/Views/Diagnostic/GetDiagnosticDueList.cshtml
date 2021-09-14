@@ -1,0 +1,297 @@
+﻿
+@{
+    ViewBag.Title = "Diagnostic Bill-Due Adjustment";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12">
+                <form id="searchForm">
+                    @Html.AntiForgeryToken()
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <div class="col-md-12">
+                                <h4 class="text-center">Bill Due Adjustment:</h4>
+                            </div>
+                            <hr />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label class="control-label col-md-12 font-weight-bold">Invoice:</label>
+                            <div class="col-md-12">
+                                @Html.TextBox("InvoiceNo", null, new { @class = "form-control form-control-sm", placeholder = "Search By Invoice" })
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="control-label col-md-12 font-weight-bold">Patient Name:</label>
+                            <div class="col-md-12">
+                                @Html.TextBox("PatientName", null, new { @class = "form-control form-control-sm", placeholder = "Search By Patient Name" })
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="control-label col-md-12 font-weight-bold">Mobile No:</label>
+                            <div class="col-md-12">
+                                @Html.TextBox("MobileNo", null, new { @class = "form-control form-control-sm", placeholder = "Search By Mobile No" })
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                </form>
+            </div>
+            <br />
+        </div>
+    </div>
+    <div class="col-md-12" id="data-Container">
+        @{ Html.RenderAction("GetDueList", "Diagnostic"); }@* Data Body *@
+    </div>
+</div>
+
+<div class="modal fade" id="modalDueAdj">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content ">
+            <div class="modal-header  btn-success">
+                <h4 class="modal-title" id="modalHeading">Due Adjustment</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <form id="frmDueAdj" autocomplete="off">
+                <input type="hidden" id="hdfBillInfoId" value="0" />
+                <input type="hidden" id="hdfInvoiceNo" value="" />
+                @Html.AntiForgeryToken()
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <div class="input-group">
+                                <label><b>Invoice No:</b></label> &nbsp;
+                                <label id="lblInvoiceNo"></label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <div class="input-group">
+                                <label><b>Patient Name:</b></label> &nbsp;
+                                <label id="lblPatientName"></label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <div class="input-group">
+                                <label><b>Mobile No:</b></label> &nbsp;
+                                <label id="lblMobileNo"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <div class="input-group">
+                                <label><b>Net Amount:</b></label> &nbsp;
+                                <label id="lblNetAmount"></label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <div class="input-group">
+                                <label><b>Received Amount:</b></label> &nbsp;
+                                <label id="lblPrevReceAmt"></label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <div class="input-group">
+                                <label><b>Due Amount:</b></label> &nbsp;
+                                <label id="lblDueAmount"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-5 col-md-offset-7">
+                            <div class="input-group">
+                                <label for="txtNewReceiveAmt"><b>New Receive Amount:</b></label>&nbsp;
+                                <input id="txtNewReceiveAmt" class="form-control form-control-sm" type="number" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-offset-8 col-md-4">
+                            <div class="input-group">
+                                <label><b>Return Amount:</b></label> &nbsp;
+                                <label id="lblReturnAmt">0</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <span class="hide error" id="errorTxt"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" data-target="#modalDueAdj"><i class="fa fa-remove"></i> Cancel</button>
+                    <button type="submit" id="btnSubmit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+
+        var txtInvoiceNo = $("#InvoiceNo");
+        var txtPatientName = $("#PatientName");
+        var txtMobileNo = $("#MobileNo");
+        var lblInvoiceNo = $("#lblInvoiceNo");
+        var lblPatientName = $("#lblPatientName");
+        var lblMobileNo = $("#lblMobileNo");
+        var lblNetAmount = $("#lblNetAmount");
+        var lblPrevReceAmt = $("#lblPrevReceAmt");
+        var lblDueAmount = $("#lblDueAmount");
+        var txtNewReceiveAmt = $("#txtNewReceiveAmt");
+        var lblReturnAmt = $("#lblReturnAmt");
+        var hdfBillInfoId = $("#hdfBillInfoId");
+        var hdfInvoiceNo = $("#hdfInvoiceNo");
+        var btnSubmit = $("#btnSubmit");
+        var errorTxt = $("#errorTxt");
+
+        function ajaxCalling() {
+            var invoiceNo = txtInvoiceNo.val().trim();
+            var patientName = txtPatientName.val().trim();
+            var mobileNo = txtMobileNo.val().trim();
+
+            $.when(getReqWithData('html', 'GET', '/Diagnostic/GetDueList', { invoiceNo: invoiceNo, mobileNo: mobileNo, patientName: patientName })).then(function (res,status) {
+                $("#data-Container").html(res)
+            }).fail(function (err) {
+                console.log(err);
+            })
+        }
+
+        txtInvoiceNo.on("keyup", function () {
+            ajaxCalling();
+        })
+        txtPatientName.on("keyup", function () {
+            ajaxCalling();
+        })
+        txtMobileNo.on("keyup", function () {
+            ajaxCalling();
+        })
+
+        function clearCtrl() {
+            lblInvoiceNo.text('');
+            lblPatientName.text('');
+            lblMobileNo.text('');
+            lblNetAmount.text('');
+            lblPrevReceAmt.text('');
+            lblDueAmount.text('');
+            lblReturnAmt.text('0');
+            txtNewReceiveAmt.val('0');
+            errorTxt.addClass("hide");
+            btnSubmit.prop("disabled", false);
+        }
+
+        function OpenModal() {
+            clearCtrl();
+            $("#modalDueAdj").modal();
+        }
+
+        $(document).on("click", "a.data-item", function (e) {
+            e.preventDefault();
+            OpenModal();
+
+            var parentTr = $(this).parent().parents('tr');
+            var billId = parentTr.find('td:eq(0)').html();
+            var invoice = parentTr.find('td:eq(2)').html();
+            var patient = parentTr.find('td:eq(3)').html();
+            var mobile = parentTr.find('td:eq(4)').html();
+            var netAmt = parentTr.find('td:eq(6)').html();
+            var receAmt = parentTr.find('td:eq(7)').html();
+            var dueAmt = parentTr.find('td:eq(8)').html();
+
+            hdfBillInfoId.val(billId);
+            hdfInvoiceNo.val(invoice);
+            lblInvoiceNo.text(invoice);
+            lblPatientName.text(patient);
+            lblMobileNo.text(mobile);
+            lblNetAmount.text(netAmt);
+            lblPrevReceAmt.text(receAmt);
+            lblDueAmount.text(dueAmt);
+        })
+
+        txtNewReceiveAmt.on("keyup", function () {
+            lblReturnAmt.text('0');
+            if (TryParseFloat(txtNewReceiveAmt.val(), 0) > 0)
+            {
+                var rtnAmt = parseFloat(txtNewReceiveAmt.val()) - parseFloat(lblDueAmount.text())
+                lblReturnAmt.text(rtnAmt);
+            }
+        })
+
+        function validateForm() {
+            var isValid = true;
+            errorTxt.addClass("hide");
+
+            if (TryParseInt(hdfBillInfoId.val().trim(), 0) == 0)
+            {
+                errorTxt.text('Bill Id not found. Please Refresh the page and retry.');
+                isValid = false;
+            }
+            if (hdfInvoiceNo.val().trim() == 0) {
+                errorTxt.text(' Invoice No. not found. Please Refresh the page and retry.');
+                isValid = false;
+            }
+            if (txtNewReceiveAmt.val().trim() == '' || txtNewReceiveAmt.val().trim() == '0')
+            {
+                errorTxt.text('New receive amount is required');
+                isValid = false;
+            }
+            if (TryParseFloat(lblDueAmount.text().trim(), 0) <= 0)
+            {
+                errorTxt.text('Due amount should be grater than 0');
+                isValid = false;
+            }
+            if (TryParseFloat(lblDueAmount.text().trim(), 0) != TryParseFloat(txtNewReceiveAmt.val().trim(),0)) {
+                errorTxt.text('New Receive amount should be equal to Due amount');
+                isValid = false;
+            }
+            if (!isValid)
+                errorTxt.removeClass("hide");
+            return isValid;
+        }
+
+        btnSubmit.on("click", function (e) {
+            e.preventDefault();
+            btnSubmit.prop("disabled", true);
+            if (validateForm())
+            {
+                var data = JSON.stringify({ id: parseInt(hdfBillInfoId.val()), invoiceNo: hdfInvoiceNo.val(), mobileNo: lblMobileNo.text(), receiveAmount: parseFloat(txtNewReceiveAmt.val()), dueAmount: parseFloat(lblDueAmount.text()) });
+                console.log(data);
+                $.when(postReqWithToken(dataType.applicationJson, dataType.json, 'POST', '/Diagnostic/SaveBillDueAmount', data, getToken())).then(function (res, status) {
+                    btnSubmit.prop("disabled", false);
+                    if (res.isSuccess) {
+                        alert(execuStatus.successSave);
+                        $("#modalDueAdj").modal("toggle");
+
+                        txtInvoiceNo.val('');
+                        txtPatientName.val('');
+                        txtMobileNo.val('');
+
+                        // Report 
+                        var pdfWindow = window.open("", "_blank");
+                        pdfWindow.document.write("<embed width='100%' height='100%' src='" + encodeURI(res.file) + "'></embed>");
+                        download(res.file, res.fileName, "application/pdf");
+
+                        // Loading Data
+                        ajaxCalling()
+                    }
+                    else {
+                        alert(execuStatus.fail);
+                    }
+                }).fail(function (err) {
+                    console.log(err);
+                }) 
+            }
+            else {
+                btnSubmit.prop("disabled", false);
+            }
+        })
+
+        
+    </script>    
+}

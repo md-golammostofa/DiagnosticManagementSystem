@@ -1,0 +1,212 @@
+﻿@model IEnumerable<HMSBO.ViewModels.VmEmployee>
+
+@{
+    ViewBag.Title = "List of Employees";
+}
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-6"><h2>List of Employees</h2></div>
+            <div class="col-md-6">
+                <a class="btn btn-success btn-sm float-right" href="/Organization/CreateEmployee"><i class="fa fa-plus"></i> Create New Employee</a>
+            </div>
+        </div>
+        <div class="row">
+            @*style="overflow-y:scroll;height:580px"*@
+            <div class="col-md-12">
+                <table class="table table-bordered table-hover table-responsive" style="font-size:small;width:100%">
+                    <thead>
+                        <tr class="btn-info">
+                            <th>
+                                Employee Id
+                            </th>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Designation
+                            </th>
+                            <th>
+                                Depertment
+                            </th>
+                            <th>
+                                Branch
+                            </th>
+                            <th>
+                                Email Address
+                            </th>
+                            <th>
+                                Active Status
+                            </th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.EmployeeId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.EmployeeName)
+                                </td>
+                                <td>
+
+                                    @Html.DisplayFor(modelItem => item.Designation)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DepertmentName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.BranchName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Email)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ActiveStatus)
+                                </td>
+                                <td>
+                                    <a href='@Url.Action("CreateEmployee","Organization",new {id=item.EmployeeId })' class='data-edit btn btn-circle btn-success btn-sm' ><i class='fas fa-pen' title="Edit"></i></a> |
+                                    <a href="#" class="data-detail btn-sm btn btn-circle btn-warning" data-details-item="@item.EmployeeId"><i class="fas fa-list"></i></a>
+                                </td>
+                            </tr>
+                        }
+                        @if (Model.Count() == 0)
+                        {
+                            <tr><td colspan="6" class="text-center">No Data Found...!!!</td></tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalEmpDetail">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content ">
+            <div class="modal-header  btn-success">
+                <h4 class="modal-title" id="modalHeading">Employee Details</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div> 
+            <div class="modal-body">
+                @Html.AntiForgeryToken()
+                <table class="table table-bordered table-responsive-lg emp-details">
+                    <tr>
+                        <td>First Name</td>
+                        <td class="font-weight-bold"><label class="firstName"></label></td>
+                        <td>Middle Name</td>
+                        <td class="font-weight-bold"><label class="middleName"></label></td>
+                    </tr>
+                    <tr>
+                        <td>Last Name</td>
+                        <td class="font-weight-bold"><label class="lastName"></label></td>
+                        <td>Branch Name</td>
+                        <td class="font-weight-bold"><label class="branch"></label></td>
+                    </tr>
+                    <tr>
+                        <td>Department</td>
+                        <td class="font-weight-bold"><label class="department"></label></td>
+                        <td>Designation</td>
+                        <td class="font-weight-bold"><label class="designation"></label></td>
+                    </tr>
+                    <tr>
+                        <td>Marital Status</td>
+                        <td class="font-weight-bold"><label class="maritalStatus"></label></td>
+                        <td>Gender</td>
+                        <td class="font-weight-bold"><label class="gender"></label></td>
+                    </tr>
+                    <tr>
+                        <td>Nationality</td>
+                        <td class="font-weight-bold"><label class="nationality"></label></td>
+                        <td>Parmanent Address</td>
+                        <td class="font-weight-bold">
+                            <label class="parmanentAdd"></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Present Address</td>
+                        <td class="font-weight-bold"><label class="presentAdd"></label></td>
+                        <td>Email</td>
+                        <td class="font-weight-bold"><label class="email"></label></td>
+                    </tr>
+                    <tr>
+                        <td>Mobile No.</td>
+                        <td class="font-weight-bold"><label class="mobile"></label></td>
+                        <td>Home Contact No.</td>
+                        <td class="font-weight-bold"><label class="homeContact"></label></td>
+                    </tr>
+                    <tr>
+                        <td>Date of Birth</td>
+                        <td class="font-weight-bold"><label class="dob"></label></td>
+                        <td>Is Active?</td>
+                        <td class="font-weight-bold"><label class="active"></label></td>
+                    </tr>
+                    <tr>
+                        <td>Allow to login?</td>
+                        <td class="font-weight-bold" colspan="3"><label class="allowLogin"></label></td>
+                    </tr>
+                </table>
+            </div>
+           
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+        })
+
+        $(document).on("click", "a.data-detail", function (e) {
+            e.preventDefault();
+            clearLabel()
+            $("#modalEmpDetail").modal();
+            var empId = $(this).parent().parents('tr').find('td:eq(0)').html()
+           
+            $.when(postReqWithToken(dataType.applicationJson, dataType.json, 'POST', '/Organization/GetEmployeeDetails', JSON.stringify({ id: empId }), getToken())).then(function (res) {
+                //console.log('Server Data');
+                //console.log("-----------");
+                //console.log(res);
+                $("label.firstName").text(res[0].firstName);
+                $("label.middleName").text(res[0].middleName);
+                $("label.lastName").text(res[0].lastName);
+                $(".branch").text(res[0].branch);
+                $(".department").text(res[0].department);
+                $(".designation").text(res[0].designation);
+                $(".maritalStatus").text(res[0].maritalStatus);
+                $(".gender").text(res[0].gender);
+                $(".nationality").text(res[0].nationality);
+                $(".parmanentAdd").text(res[0].parmanentAdd);
+                $(".presentAdd").text(res[0].presentAdd);
+                $(".email").text(res[0].email);
+                $(".mobile").text(res[0].mobile);
+                $(".homeContact").text(res[0].homeContact);
+                var dob = new Date(parseInt(res[0].dob.replace("/Date(", "").replace(")/", ""), 10));
+                var day = (dob.getDate().toString().length > 1 ? dob.getDate().toString() : '0' + dob.getDate().toString());
+                var dateData = day +'-'+ (getMonthName(dob.getMonth(), "MMM"))+'-'+ dob.getFullYear();
+                $(".dob").text(dateData);
+                $(".active").text((res[0].active== true ? "Active":"Inactive"));
+                $(".allowLogin").text((res[0].allowLogin == true ? "Yes" : "No"));
+
+            }).fail(function (err) {
+                console.log(err);
+            })
+        })
+
+        function clearLabel() {
+            $("table.emp-details label").text('');
+        }
+
+        $('#modalEmpDetail').on('hidden.bs.modal', function (e) {
+            //clearLabel();
+        })
+    </script>    
+}
