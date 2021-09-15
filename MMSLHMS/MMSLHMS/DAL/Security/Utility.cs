@@ -134,5 +134,12 @@ namespace MMSLHMS.DAL.Security
             get{
                 return @"C:/Z Files/PathoLogos/Report/";
             }}
+        public static string DoctorImage
+        {
+            get
+            {
+                return @"C:/Z Files/PathoLogos/Org/";
+            }
+        }
     }
 }

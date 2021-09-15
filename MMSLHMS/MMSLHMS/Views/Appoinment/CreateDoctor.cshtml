@@ -25,22 +25,22 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-7">
+    <div class="col-md-8">
         <div class="card shadow">
             <div class="card-header">
                 @Html.AntiForgeryToken()
                 <div class="row text-sm">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group col-md-12">
                             <label for="txtHospital" class="control-label font-weight-bold">Hospital</label>
                             <input type="text" name="Hospital" value="" id="txtHospital" class="form-control form-control-sm search-control" />
                             <span class="error hide require-hospital font-weight-bold">Hospital is required !</span>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group col-md-12">
                             <label for="ddlDocType" class="control-label font-weight-bold">DocType</label>
-                            <select id="ddlDocType" name="docType" class="form-control form-control-sm search-control">
+                            <select id="ddlDocType" name="docType" class="form-control form-control-sm select2">
                                 <option value="">--Selecet One--</option>
                                 <option value="Specialist">Specialist</option>
                                 <option value="Other Profession">Other Profession</option>
@@ -49,60 +49,56 @@
                             <span class="error hide require-docType font-weight-bold">Doctor is required !</span>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <label for="ddlSpecialist" class="control-label font-weight-bold">Specialist</label>
                         @Html.DropDownList("ddlSpecialist", (IEnumerable<SelectListItem>)ViewBag.ddlSpecialist, "--Select Specialist--", new { @class = "form-control form-control-sm select2" })
                         <span class="error hide require-specialist font-weight-bold">Specialist is required !</span>
                     </div>
-                </div>
-                <div class="row text-sm">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <label for="ddlOtherProfession" class="control-label font-weight-bold">Other Prof.</label>
                         @Html.DropDownList("ddlOtherProfession", (IEnumerable<SelectListItem>)ViewBag.ddlOtherProfession, "--Select Profession--", new { @class = "form-control form-control-sm select2" })
                         <span class="error hide require-otherProfession font-weight-bold">Other Profession is required !</span>
                     </div>
-                    <div class="col-md-4">
+                </div>
+                <div class="row text-sm">
+                    <div class="col-md-3">
                         <div class="form-group col-md-12">
                             <label for="txtDocName" class="control-label font-weight-bold">Doc Name</label>
                             <input type="text" name="name" value="" id="txtDocName" class="form-control form-control-sm search-control" />
                             <span class="error hide require-doctorName font-weight-bold">Doctor is required !</span>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group col-md-12">
                             <label for="txtDocRegNo" class="control-label font-weight-bold">REG No.</label>
                             <input type="text" name="name" value="" id="txtDocRegNo" class="form-control form-control-sm search-control" />
                             <span class="error hide require-regNo font-weight-bold">REG No is required !</span>
                         </div>
                     </div>
-                    
-                </div>
-                <div class="row text-sm">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group col-md-12">
                             <label for="txtDegreeName" class="control-label font-weight-bold">Doc Degree</label>
                             <input type="text" name="degree" value="" id="txtDegreeName" class="form-control form-control-sm search-control" />
                             <span class="error hide require-degreeName font-weight-bold">Degree is required !</span>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group col-md-12">
                             <label for="txtMobileNo" class="control-label font-weight-bold">Doc Mobile</label>
                             <input type="text" name="degree" value="" id="txtMobileNo" class="form-control form-control-sm search-control" />
                             <span class="error hide require-mobileNo font-weight-bold">Mobile No is required !</span>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                </div>
+                <div class="row text-sm">
+                    <div class="col-md-3">
                         <div class="form-group col-md-12">
                             <label for="txtDocAddress" class="control-label font-weight-bold">Doc Address</label>
                             <input type="text" name="degree" value="" id="txtDocAddress" class="form-control form-control-sm search-control" />
                             <span class="error hide require-docAddress font-weight-bold">Address No is required !</span>
                         </div>
                     </div>
-                    
-                </div>
-                <div class="row text-sm">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group col-md-12">
                             <label for="ddlDocSex" class="control-label font-weight-bold">Sex</label>
                             <select id="ddlDocSex" name="docsex" class="form-control form-control-sm search-control">
@@ -114,14 +110,14 @@
                             <span class="error hide require-doctorSex font-weight-bold">Sex is required !</span>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group col-md-12">
                             <label for="txtDOB" class="control-label font-weight-bold">DOB</label>
                             <input type="date" name="name" value="" id="txtDOB" class="form-control form-control-sm search-control" />
                             <span class="error hide require-regNo font-weight-bold">BirthDate No is required !</span>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group col-md-12">
                             <label for="txtEmail" class="control-label font-weight-bold">Email</label>
                             <input type="text" name="degree" value="" id="txtEmail" class="form-control form-control-sm search-control" />
@@ -130,44 +126,55 @@
                     </div>
                 </div>
                 <div class="row text-sm">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group col-md-12">
                             <label for="txtGeneralFee" class="control-label font-weight-bold">General Fee</label>
                             <input type="number" name="degree" value="" id="txtGeneralFee" class="form-control form-control-sm search-control" />
                             <span class="error hide require-generalFee font-weight-bold">General Fee is required !</span>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group col-md-12">
                             <label for="txtReportShowingFee" class="control-label font-weight-bold">Report Fee</label>
                             <input type="number" name="degree" value="" id="txtReportShowingFee" class="form-control form-control-sm search-control" />
                             <span class="error hide require-reportShowFee font-weight-bold">Report Showing Fee is required !</span>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group col-md-12">
                             <label for="txtFollowUpFee" class="control-label font-weight-bold">Follow Up Fee</label>
                             <input type="number" name="degree" value="" id="txtFollowUpFee" class="form-control form-control-sm search-control" />
                             <span class="error hide require-followUpFee font-weight-bold">Follow Up Fee is required !</span>
                         </div>
                     </div>
-                    
-                </div>
-                <div class="row text-sm">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group col-md-12">
                             <label for="txtCounselingFee" class="control-label font-weight-bold">Counseling Fee</label>
                             <input type="number" name="degree" value="" id="txtCounselingFee" class="form-control form-control-sm search-control" />
                             <span class="error hide require-counselingFee font-weight-bold">CounselingUpFee Up Fee is required !</span>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                </div>
+                <div class="row text-sm">
+                    <div class="col-md-3">
                         <div class="form-group col-md-12">
                             <label for="txtRemarks" class="control-label font-weight-bold">Remarks</label>
                             <input type="text" name="remarks" value="" id="txtRemarks" class="form-control form-control-sm search-control" />
                         </div>
                     </div>
-                    <div class="col-md-4 text-left">
+                    <div class="col-md-4">
+                        <label class="control-label font-weight-bold col-md-12">Member Image</label>
+                        <div class="col-md-12">
+                            <input type="file" name="DoctorLogo" class="form-control" id="DoctorLogo" />
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="control-label font-weight-bold col-md-12" style="visibility:hidden">Member Image</label>
+                        <div class="col-md-12">
+                            <img src="#" alt="Doctor Image" title="Doctor Image" id="imgDoc" width="120" height="120" />
+                        </div>
+                    </div>
+                    <div class="col-md-2 text-left">
                         <label for="" class="control-label font-weight-bold" style="visibility:hidden"> Add Button</label>
                         <div class="clearfix">
                             <button type="submit" class="btn btn-sm btn-primary mr-1" id="btnSubmit" title="Save">Save <i class="fas fa-paper-plane"></i></button>
@@ -177,7 +184,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-4">
         <div class="card shadow">
             <div class="card-header">
                 <div class="row text-sm">
@@ -233,7 +240,7 @@
                         <div class="card shadow">
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-12 text-sm ">
+                                    <div class="col-md-12 text-sm" style="overflow-y:scroll">
                                         <table class="table table-bordered table-sm table-striped table-responsive-lg" id="tblTimes">
                                             <thead>
                                                 <tr class="btn-info text-center">
@@ -257,6 +264,9 @@
         </div>
     </div>
 </div>
+
+
+
 @section Scripts{
     <script type="text/javascript">
         //Times Details Part
@@ -282,7 +292,12 @@
         var txtFollowUpFee = $("#txtFollowUpFee");
         var txtCounselingFee = $("#txtCounselingFee");
         var txtRemarks = $("#txtRemarks");
+        
 
+        $(document).ready(function () {
+            $("#imgDoc").attr("src", "/Images/no_image.png");
+        })
+        
         function validateInput() {
             $('.error').addClass('hide');
             var isValid = true;
@@ -416,8 +431,102 @@
 
                     doctor.doctorDetails = details;
                     var data = JSON.stringify({ model: doctor });
-                    //return console.log(data);
-                    $.when(postReqWithToken(dataType.applicationJson, dataType.json, 'POST', '/Appoinment/SaveDoctorProfile', data, getToken())).then(function (res, status) {
+                    $.when(postReqWithToken(dataType.applicationJson, dataType.json, type.post, '/Appoinment/SaveDoctorProfile', data, getToken())).then(function (res, status) {
+                        if (res > 0 && status === "success") {
+                            if (($("#DoctorLogo").prop('files')[0]) == null || ($("#DoctorLogo").prop('files')[0]) == undefined) {
+                                alert(execuStatus.successSave);
+
+                                setTimeout(function () {
+                                    redirectPage('@Url.Action("GetDoctorList")');
+                                }, 1000);
+                            }
+                            else {
+                                var file = $("#DoctorLogo").prop("files")[0];
+                                var formData = new FormData();
+                                formData.append("DoctorImage", file);
+                                formData.append("DocId", res.DocId);
+
+                                $.when(postReqWithFile(dataType.json, type.post, '/Appoinment/SaveDoctorFile', formData, getToken())).then(function (res, status) {
+
+                                    if (res === true && status == "success") {
+                                        alert(execuStatus.successSave);
+
+                                setTimeout(function () {
+                                    redirectPage('@Url.Action("GetDoctorList")');
+                                }, 1000);
+                                    }
+                                    else {
+                                        alert(execuStatus.fail);
+                                    }
+                                }).fail(function (err) {
+                                    alert(err);
+                                })
+                            }
+                        }
+                        else {
+                            alert(execuStatus.fail);
+                        }
+                    }).fail(function (err) {
+                        alert(err);
+                    })
+                }
+             
+            }
+        
+       });
+        //
+        
+        //////////////
+        //$("#btnSubmit").click(function (e) {
+        //    e.preventDefault();
+
+        //    var docImage = $('#DoctorLogo').prop('files')[0];
+        //    console.log(docImage);
+            
+
+        //    if (validateInputDoc() == true) {
+
+        //        var details = []; details.length = 0;
+        //        $.each($("#tblTimes tbody tr"), function (index, item) {
+        //            var tds = $(this).children("td");
+        //            var days = tds.eq("1").html();
+        //            var sift = tds.eq("2").html();
+        //            var sttime = tds.eq("3").html();
+        //            var edtime = tds.eq("4").html();
+        //            details.push({
+        //                Day: days,
+        //                DayOfTime: sift,
+        //                StartTime: sttime,
+        //                EndTime: edtime,
+        //            })
+        //        });
+
+        //        var formData = new FormData();
+        //        formData.append("DocName", txtDocName.val());
+        //        formData.append("DocDegree", txtDegreeName.val());
+        //        formData.append("DocRegNo", txtDocRegNo.val());
+        //        formData.append("DocAddress", txtDocAddress.val());
+        //        formData.append("DocType", ddlDocType.val());
+        //        formData.append("DocSpecialist", ddlSpecialist.val());
+        //        formData.append("DocMobile", txtMobileNo.val());
+        //        formData.append("DocEmail", txtEmail.val());
+        //        formData.append("HospitalName", txtHospital.val());
+        //        formData.append("Remarks", txtRemarks.val());
+        //        formData.append("GenerelFee", TryParseFloat(txtGeneralFee.val(), 0));
+        //        formData.append("ReportFee", TryParseFloat(txtReportShowingFee.val(), 0));
+        //        formData.append("FollowUpFee", TryParseFloat(txtFollowUpFee.val(), 0));
+        //        formData.append("CounselingFee", TryParseFloat(txtCounselingFee.val(), 0));
+        //        formData.append("OtherProfession", ddlOtherProfession.val());
+        //        formData.append("Sex", ddlDocSex.val());
+        //        formData.append("DOB", txtDOB.val());
+        //        //formData.append("doctorDetails", details);
+        //        formData.append("DoctorImage", docImage);
+        //        postForm.details.forEach(item => {
+        //            formData.append("doctorDetails", item);
+        //        });
+                
+
+                @*$.when(postReqWithToken(dataType.applicationJson, dataType.json, 'POST', '/Appoinment/SaveDoctorProfile', formData, getToken())).then(function (res, status) {
                         if (res == true) {
                             alert(execuStatus.successSave);
 
@@ -427,13 +536,70 @@
                             }
                             else {
                             alert(execuStatus.fail);
-                            }
+                        }
                     }).fail(function (err) {
                         alert(execuStatus.fail);
-                    })
+                    })*@
+                @*$.when(SaveData(formData)).then(function (res) {
+                    console.log(res);
+                }).fail(function (err) {
+                    console.log(err);
+                })
+            }
+
+        })
+        function SaveData(data) {
+            return $.ajax({
+                //contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                method: 'POST',
+                url: '/Appoinment/SaveDoctorProfile',
+                data: data,
+                processData: false,
+                contentType: false,
+                headers: getToken(),
+                success: function (result) {
+                    if (result == true) {
+                        //clrCtrl();
+                        alert(execuStatus.successSave);
+                        setTimeout(function () {
+                                    redirectPage('@Url.Action("GetDoctorList")');
+                                }, 1000);
+                    }
+                    else {
+                        alert(execuStatus.fail)
+                    }
+                },
+                error: function (result) {
+                    console.log(result);
+                }
+            });
+        }*@
+        /////////////////////
+        $("#DoctorLogo").change(function () {
+            readImg(this);
+        })
+
+        function readImg(file) {
+            console.log(file.id);
+            if (file.files && file.files[0] && file.files[0].name != '') {
+                var reader = new FileReader();
+                //console.log("Img File");
+                reader.onload = function (e) {
+                    //console.log(e.target.result);
+                    if (file.id == "DoctorLogo") {
+                        $("#imgDoc").attr("src", e.target.result);
+                    }
+
+                }
+                reader.readAsDataURL(file.files[0]);
+            }
+            else {
+                if (file.id == "DoctorLogo") {
+                    $("#imgDoc").attr("src", "/Images/no_image.png");
                 }
             }
-        });
+        }
 
         function redirectPage(page) {
             window.location.replace(page);

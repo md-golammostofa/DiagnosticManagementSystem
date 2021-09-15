@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace HMSBO.ViewModels
 {
@@ -34,6 +35,8 @@ namespace HMSBO.ViewModels
         public Nullable<DateTime> EntryDate { get; set; }
         public string UpdateBy { get; set; }
         public Nullable<DateTime> UpdateDate { get; set; }
-        public ICollection<DoctorDetails> doctorDetails { get; set; }
+        public List<DoctorDetails> doctorDetails { get; set; }
+        //
+        public HttpPostedFileBase DoctorImage { get; set; }
     }
 }

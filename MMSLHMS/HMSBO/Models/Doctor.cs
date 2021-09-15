@@ -36,5 +36,6 @@ namespace HMSBO.Models
         public string UpdateBy { get; set; }
         public Nullable<DateTime> UpdateDate { get; set; }
         public ICollection<DoctorDetails> DoctorDetails { get; set; }
+
     }
 }

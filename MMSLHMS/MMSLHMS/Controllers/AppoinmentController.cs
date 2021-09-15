@@ -2,6 +2,7 @@
 using HMSBO.ReportModels;
 using HMSBO.ViewModels;
 using Microsoft.Reporting.WebForms;
+using MMSLHMS.CustomFiles.Filters;
 using MMSLHMS.DAL;
 using MMSLHMS.DAL.Security;
 using System;
@@ -95,9 +96,13 @@ namespace MMSLHMS.Controllers
                 doctor.EntryUser = User.UserName;
                 doctor.EntryDate = DateTime.Now;
                 doctor.OrgId = User.OrgId;
+                //if (model.DoctorImage != null)
+                //{
+                //    doctor.DocImage = Utility.SaveImage(model.DoctorImage.InputStream, model.DoctorImage.FileName, Utility.DoctorImage, User.OrgId);
+                //}
 
                 List<DoctorDetails> detailslist = new List<DoctorDetails>();
-                foreach(var item in model.doctorDetails)
+                foreach (var item in model.doctorDetails)
                 {
                     DoctorDetails details = new DoctorDetails
                     {
@@ -118,6 +123,20 @@ namespace MMSLHMS.Controllers
                 }
                 doctor.DoctorDetails = detailslist;
                 db.tblDoctors.Add(doctor);
+                IsSuccess = true;
+                db.SaveChanges();
+            }
+            return Json(IsSuccess);
+        }
+        public ActionResult SaveDoctorFile(VmDoctors model)
+        {
+            bool IsSuccess = false;
+            var dt = db.tblDoctors.Where(d => d.OrgId == User.OrgId).ToList();
+            var dot = dt.LastOrDefault().DocId;
+            if (dot > 0 && model.DoctorImage != null)
+            {
+                var docctor = db.tblDoctors.Where(d => d.DocId == dot && d.OrgId == User.OrgId).FirstOrDefault();
+                docctor.DocImage = Utility.SaveImage(model.DoctorImage.InputStream, model.DoctorImage.FileName, Utility.DoctorImage, User.OrgId);
                 IsSuccess = true;
                 db.SaveChanges();
             }
@@ -176,6 +195,33 @@ namespace MMSLHMS.Controllers
                 doclist.Add(details);
             }
             return PartialView("_DoctorTimeDetails", doclist);
+        }
+        #endregion
+        #region - Base64 Image String
+        [HttpPost, ValidateJsonAntiForgeryToken]
+        public ActionResult GetImageBase64String(long docId)
+        {
+            string docImg = string.Empty;
+            try
+            {
+                if (docId > 0)
+                {
+                    var alldoctor = db.tblDoctors.Where(o => o.DocId == docId).ToList();
+                    var doctor = alldoctor.FirstOrDefault();
+                    if (doctor != null)
+                    {
+                        if (!string.IsNullOrEmpty(doctor.DocImage))
+                        {
+                            docImg = Utility.GetImage(string.Format(@"{0}", doctor.DocImage));
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return Json(new { doctorImg = docImg });
         }
         #endregion
 
