@@ -221,7 +221,7 @@ namespace MMSLHMS.Controllers
             {
 
             }
-            return Json(new { doctorImg = docImg });
+            return Json(new { doctorImg = docImg});
         }
         #endregion
 

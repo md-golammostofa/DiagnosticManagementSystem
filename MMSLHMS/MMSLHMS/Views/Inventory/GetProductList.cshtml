@@ -1,0 +1,185 @@
+﻿
+@{
+    ViewBag.Title = "GetProductList";
+}
+
+<div class="row">
+    <div class="col-md-12 text-center">
+        <div class="card card-gray shadow">
+            <div class="card-header card-gray">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-4">
+
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <h4><b>Product List</b></h4>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="btn btn-primary btn-sm float-right" id="btnAddNew"><i class="fa fa-plus"></i> Create New Product</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="card">
+        </div>
+    </div>
+    <div class="col-md-12 text-sm" id="dataContainer">
+        @{Html.RenderAction("GetProductList", new { flag = "view" });}
+    </div>
+</div>
+
+<div class="modal fade" id="modalProduct">
+    <div class="modal-dialog">
+        <div class="modal-content ">
+            <div class="modal-header  btn-success">
+                <h4 class="modal-title" id="modalHeading">Create New Product</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <form id="frmInv" autocomplete="off">
+                <input type="hidden" id="hdfProductId" value="0" />
+                @Html.AntiForgeryToken()
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label class="control-label col-md-12 font-weight-bold" for="">Category Name<span class="text-danger">*</span></label>
+                            <div class="col-md-12 input-group">
+                                @Html.DropDownList("ddlCategory", (IEnumerable<SelectListItem>)ViewBag.ddlCategory, "--Select Category--", new { @class = "form-control form-control-sm select2 search-control" })
+                            </div>
+                            <span class="error hide required-category">Category is required</span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label class="control-label col-md-12 font-weight-bold" for="">Product Name<span class="text-danger">*</span></label>
+                            <div class="col-md-12 input-group">
+                                <input type="text" id="txtProductName" name="product" class="form-control form-control-sm" />
+                            </div>
+                            <span class="error hide required-product">Product is required</span>
+                            <span class="error hide duplicate-product">This Product is Already Exits</span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label class="control-label col-md-12 font-weight-bold" for="">BarCode<span class="text-danger"></span></label>
+                            <div class="col-md-12 input-group">
+                                <input type="text" id="txtBarCode" name="product" class="form-control form-control-sm" />
+                            </div>
+                            <span class="error hide required-barCode">BarCode is required</span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label class="control-label col-md-12 font-weight-bold" for="">Remarks</label>
+                            <div class="col-md-12 input-group">
+                                <input type="text" id="txtRemarks" name="remarks" class="form-control form-control-sm" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-danger" id="btnCancel" title="Cancel the process"><i></i> Cancel </button>
+                        <button type="submit" id="btnSubmit" class="btn btn-sm btn-primary"><i class="fa fa-save"></i> Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript">
+        var hdfProductId = $("#hdfProductId");
+        var ddlCategory = $("#ddlCategory");
+        var txtProductName = $("#txtProductName");
+        var txtBarCode = $("#txtBarCode");
+        var txtRemarks = $("#txtRemarks");
+        $("#btnCancel").click(function (e) {
+            e.preventDefault();
+            $("#modalProduct").modal("toggle");
+        })
+        function LoadDataTable() {
+            var data = { flag: "search" };
+
+            console.log(data);
+            $.when(getReqWithData('html', 'GET', '/Inventory/GetProductList', data)).then(function (res, status) {
+                console.log(status);
+                if (status === "success") {
+                    $("#dataContainer").fadeOut('500', function () {
+                        $("#dataContainer").empty();
+                        $("#dataContainer").append(res).fadeIn('500');
+                    });
+                }
+            }).fail(function (error) {
+                console.log(error);
+            })
+        }
+        function OpenModal() {
+            clrCtrl();
+            $(".error").addClass("hide");
+            $("#modalHeading").text('Create New Product');
+            $("#btnSubmit").text('Save');
+            $("#modalProduct").modal();
+        }
+
+        $("#btnAddNew").click(function (e) {
+            e.preventDefault();
+            OpenModal();
+        })
+        function clrCtrl() {
+            hdfProductId.val('0');
+            ddlCategory.val('');
+            txtProductName.val('');
+            txtBarCode.val('');
+            txtRemarks.val('');
+        }
+
+        function validation() {
+            var isValid = true;
+            $(".error").addClass('hide');
+            if (ddlCategory.val().trim() == '') {
+                isValid = false;
+                $(".required-category").removeClass("hide");
+            }
+            if (txtProductName.val().trim() == '') {
+                isValid = false;
+                $(".required-product").removeClass("hide");
+            }
+            else {
+                if (ajaxBooleanChecker(JSON.stringify({ product: txtProductName.val().trim() }), '/Inventory/IsDuplicateProductName', getToken()) == true) {
+                    $(".duplicate-product").removeClass("hide");
+                    isValid = false;
+                }
+            }
+            return isValid;
+        }
+
+        $("#btnSubmit").click(function (e) {
+            e.preventDefault();
+            if (validation()) {
+                var id = hdfProductId.val() == "" ? "0" : hdfProductId.val();
+                var data = { ProductId: id, CategoryName: ddlCategory.val(), ProductName: txtProductName.val(), BarCode: txtBarCode.val(), Remarks: txtRemarks.val() };
+                data = JSON.stringify(data);
+                //return console.log(data);
+
+                $.when(postReqWithToken(dataType.applicationJson, dataType.json, 'POST', '/Inventory/SaveProduct', data, getToken())).then(function (res, status) {
+                    if (res) {
+                        clrCtrl();
+                        alert(execuStatus.successSave);
+                        $("#modalProduct").modal("toggle");
+                        LoadDataTable();
+                    }
+                    else {
+                        alert(execuStatus.fail);
+                    }
+                }).fail(function (err) {
+                    alert(execuStatus.fail);
+                })
+            }
+        })
+    </script>
+    }

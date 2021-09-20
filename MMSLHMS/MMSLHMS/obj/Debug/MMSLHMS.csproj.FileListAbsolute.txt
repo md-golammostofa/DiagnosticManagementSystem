@@ -1921,3 +1921,6 @@ E:\GITHUBALLPROJECT\DiagnosticManagementSystem\MMSLHMS\MMSLHMS\obj\Debug\MMSLHMS
 E:\GITHUBALLPROJECT\DiagnosticManagementSystem\MMSLHMS\MMSLHMS\obj\Debug\MMSLHMS.csproj.CopyComplete
 E:\GITHUBALLPROJECT\DiagnosticManagementSystem\MMSLHMS\MMSLHMS\obj\Debug\MMSLHMS.dll
 E:\GITHUBALLPROJECT\DiagnosticManagementSystem\MMSLHMS\MMSLHMS\obj\Debug\MMSLHMS.pdb
+E:\GITHUBALLPROJECT\DiagnosticManagementSystem\MMSLHMS\MMSLHMS\obj\Debug\MMSLHMS.Migrations.Category.resources
+E:\GITHUBALLPROJECT\DiagnosticManagementSystem\MMSLHMS\MMSLHMS\obj\Debug\MMSLHMS.Migrations.Product.resources
+E:\GITHUBALLPROJECT\DiagnosticManagementSystem\MMSLHMS\MMSLHMS\obj\Debug\MMSLHMS.Migrations.StockInfoDetails.resources

@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "GetProductStockList";
+}
+
+<div class="row">
+    <div class="col-md-12 text-center">
+        <div class="card card-gray shadow">
+            <div class="card-header card-gray">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-4">
+
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <h4><b>Stock Info List</b></h4>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="/Inventory/CreateProductStock" class="btn btn-primary btn-sm float-lg-right" id="btnAddNew"><i class="fa fa-plus"></i> Stock-In</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="card">
+        </div>
+    </div>
+    <div class="col-md-12 text-sm" id="dataContainer">
+        @{Html.RenderAction("GetProductStockList", new { flag = "view" });}
+    </div>
+</div>
+

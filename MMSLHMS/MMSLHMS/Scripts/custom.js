@@ -21,6 +21,9 @@ var execuStatus = {
     successDelete: 'Data has been deleted successfully',
     fail: 'Something went wrong'
 }
+function clearDropdown(eletementId) {
+    $('#' + eletementId + ' option:not(:first)').remove();
+}
 
 // Loading dropdown using ajax..
 // All the Parameters are required accept contextKey
@@ -33,15 +36,16 @@ function LoadDropDown(url, type, elementId, contextKey) {
             success: function (result) {
                 console.log(result);
                 $.each(result, function (index, item) {
+                    console.log(result);
                     var option = "<option value='" + item.value + "'>" + item.text + "</option>";
                     elementId.append(option);
-                })
-                
+                });
+
             },
             error: function (err) {
                 console.log(err);
             }
-        })
+        });
     }
     else {
         $.ajax({
@@ -52,11 +56,16 @@ function LoadDropDown(url, type, elementId, contextKey) {
             data: contextKey,
             success: function (result) {
                 console.log(result);
+                $.each(result, function (index, item) {
+                    console.log(result);
+                    var option = "<option value='" + item.value + "'>" + item.text + "</option>";
+                    elementId.append(option);
+                });
             },
             error: function (err) {
                 console.log(err);
             }
-        })
+        });
     }
 }
 

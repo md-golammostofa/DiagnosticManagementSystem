@@ -152,6 +152,7 @@
                     }
                     var data = JSON.stringify({ model: appoinment });
                     //return console.log(data);
+                    
                     $.when(postReqWithToken(dataType.applicationJson, dataType.json, 'POST', '/Appoinment/SaveAppoinment', data, getToken())).then(function (res, status) {
                         if (res == true) {
                             alert(execuStatus.successSave);

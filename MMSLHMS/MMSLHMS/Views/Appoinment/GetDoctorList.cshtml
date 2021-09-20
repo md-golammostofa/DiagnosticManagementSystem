@@ -77,27 +77,83 @@
 
 <div class="modal fade" id="modalImage">
     <div class="modal-dialog">
-        <div class="modal-content modal-sm">
+        <div class="modal-content modal-lg">
             <div class="modal-header  btn-success">
-                <h4 class="modal-title" id="modalHeading">Doctor Image</h4>
+                <h4 class="modal-title" id="modalHeading">Doctor Profile</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <form id="frmInv" autocomplete="off">
                 <input type="hidden" id="hdfDoctorId" value="0" />
                 @Html.AntiForgeryToken()
                 <div class="modal-body">
-                    <div class="form-row">
-                        <div class="form-group col-md-8 hide">
+                    <div class="row">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-4 hide">
                             <label class="control-label font-weight-bold col-md-12">Member Image</label>
                             <div class="col-md-12">
                                 <input type="file" name="MemberLogo2" class="form-control" id="MemberLogo2" />
                             </div>
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="col-md-4">
                             <label class="control-label font-weight-bold col-md-12" style="visibility:hidden">Member Image</label>
                             <div class="col-md-12">
                                 <img src="#" alt="Member Image" title="Doctor Image" id="imgMem2" width="200" height="200" />
                             </div>
+                        </div>
+                        <div class="col-md-4"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-bordered table-striped table-sm">
+                                <tr>
+                                    <th style="vertical-align:middle">Doctor Name</th>
+                                    <th style="color:darkblue;vertical-align:middle"><span class="mdDoctorName" id="mdDoctorName"></span></th>
+                                    <th style="vertical-align:middle">Doctor Address</th>
+                                    <th style="color:darkblue;vertical-align:middle"><span class="mdAddress" id="mdAddress"></span></th>
+                                </tr>
+                                <tr>
+                                    <th style="vertical-align:middle">Doctor Mobile</th>
+                                    <th style="color:darkblue;vertical-align:middle"><span class="mdMobileNo" id="mdMobileNo"></span></th>
+                                    <th style="vertical-align:middle">Sex</th>
+                                    <th style="color:darkblue;vertical-align:middle"><span class="mdSex" id="mdSex"></span></th>
+                                </tr>
+                                <tr>
+                                    <th style="vertical-align:middle">DOB</th>
+                                    <th style="color:darkblue;vertical-align:middle"><span class="mdDateofBirth" id="mdDateofBirth"></span></th>
+                                    <th style="vertical-align:middle">Email</th>
+                                    <th style="color:darkblue;vertical-align:middle"><span class="mdEmail" id="mdEmail"></span></th>
+                                </tr>
+                                <tr>
+                                    <th style="vertical-align:middle">Hospital</th>
+                                    <th style="color:darkblue;vertical-align:middle"><span class="mdHospital" id="mdHospital"></span></th>
+                                    <th style="vertical-align:middle">Degree</th>
+                                    <th style="color:darkblue;vertical-align:middle"><span class="mdDegree" id="mdDegree"></span></th>
+                                </tr>
+                                <tr>
+                                    <th style="vertical-align:middle">Reg No.</th>
+                                    <th style="color:darkblue;vertical-align:middle"><span class="mdRegNo" id="mdRegNo"></span></th>
+                                    <th style="vertical-align:middle">Doctor Type</th>
+                                    <th style="color:darkblue;vertical-align:middle"><span class="mdDocType" id="mdDocType"></span></th>
+                                </tr>
+                                <tr>
+                                    <th style="vertical-align:middle">Specialist</th>
+                                    <th style="color:darkblue;vertical-align:middle"><span class="mdSpecialist" id="mdSpecialist"></span></th>
+                                    <th style="vertical-align:middle">Remarks</th>
+                                    <th style="color:darkblue;vertical-align:middle"><span class="mdRemarks" id="mdRemarks"></span></th>
+                                </tr>
+                                <tr>
+                                    <th style="vertical-align:middle">Generel Fee</th>
+                                    <th style="color:darkblue;vertical-align:middle"><span class="mdGeneralFee" id="mdGeneralFee"></span></th>
+                                    <th style="vertical-align:middle">Report Fee</th>
+                                    <th style="color:darkblue;vertical-align:middle"><span class="mdReportFee" id="mdReportFee"></span></th>
+                                </tr>
+                                <tr>
+                                    <th style="vertical-align:middle">Follow Up Fee</th>
+                                    <th style="color:darkblue;vertical-align:middle"><span class="mdFollowUpFee" id="mdFollowUpFee"></span></th>
+                                    <th style="vertical-align:middle">Conseling Fee</th>
+                                    <th style="color:darkblue;vertical-align:middle"><span class="mdConselingFee" id="mdConselingFee"></span></th>
+                                </tr>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -112,7 +168,8 @@
     var txtMobileNo = $("#txtMobileNo");
     var ddlSpecialist = $("#ddlSpecialist");
     var txtSearchSex = $("#txtSearchSex");
-    var hdfDoctorId=$("#hdfDoctorId");
+    var hdfDoctorId = $("#hdfDoctorId");
+    //
 
     ddlSpecialist.change(function () {
         LoadDataTable();
@@ -174,9 +231,42 @@
             e.preventDefault();
 
             var id = $(this).parent().parents('tr').find('td:eq(1)').html();
+            var name = $(this).parent().parent('tr').find('td:eq(4)').html();
+            var address = $(this).parent().parent('tr').find('td:eq(5)').html();
+            var mobile = $(this).parent().parent('tr').find('td:eq(6)').html();
+            var sex = $(this).parent().parent('tr').find('td:eq(7)').html();
+            var dob = $(this).parent().parent('tr').find('td:eq(8)').html();
+            var email = $(this).parent().parent('tr').find('td:eq(9)').html();
+            var hospital = $(this).parent().parent('tr').find('td:eq(10)').html();
+            var degree = $(this).parent().parent('tr').find('td:eq(11)').html();
+            var reg = $(this).parent().parent('tr').find('td:eq(12)').html();
+            var type = $(this).parent().parent('tr').find('td:eq(13)').html();
+            var specialist = $(this).parent().parent('tr').find('td:eq(14)').html();
+            var gfee = $(this).parent().parent('tr').find('td:eq(15)').html();
+            var rfee = $(this).parent().parent('tr').find('td:eq(16)').html();
+            var ffee = $(this).parent().parent('tr').find('td:eq(17)').html();
+            var cfee = $(this).parent().parent('tr').find('td:eq(18)').html();
+            var rmk = $(this).parent().parent('tr').find('td:eq(19)').html();
 
             OpenModalImg();
             hdfDoctorId.val(id);
+            $("#mdDoctorName").text(name);
+            $("#mdAddress").text(address);
+            $("#mdMobileNo").text(mobile);
+            $("#mdSex").text(sex);
+            $("#mdDateofBirth").text(dob);
+            $("#mdEmail").text(email);
+            $("#mdHospital").text(hospital);
+            $("#mdDegree").text(degree);
+            $("#mdRegNo").text(reg);
+            $("#mdDocType").text(type);
+            $("#mdSpecialist").text(specialist);
+            $("#mdRemarks").text(rmk);
+            $("#mdGeneralFee").text(gfee);
+            $("#mdReportFee").text(rfee);
+            $("#mdFollowUpFee").text(ffee);
+            $("#mdConselingFee").text(cfee);
+
             var data = JSON.stringify({ docId: id });
             //return console.log(data);
             $.when(postReqWithToken(dataType.applicationJson, dataType.json, 'POST', '/Appoinment/GetImageBase64String', data, getToken())).then(function (res, status) {
@@ -187,6 +277,7 @@
                 } else {
                     $("#imgMem2").attr("src", res.doctorImg);
                 }
+                
             }).fail(function (err) {
                 console.log(err);
             })

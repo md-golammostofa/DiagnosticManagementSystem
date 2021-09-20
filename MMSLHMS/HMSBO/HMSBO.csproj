@@ -52,6 +52,7 @@
     <Compile Include="Models\Appoinment.cs" />
     <Compile Include="Models\BillInfo.cs" />
     <Compile Include="Models\Branch.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\CustomPrincipalSerializeModel.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Designation.cs" />
@@ -68,6 +69,9 @@
     <Compile Include="Models\InvestigationReferrer.cs" />
     <Compile Include="Models\OtherProfessional.cs" />
     <Compile Include="Models\Patient.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductStockDetails.cs" />
+    <Compile Include="Models\ProductStockInfo.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\RoleWiseUserMenu.cs" />
     <Compile Include="Models\Specialist.cs" />
@@ -83,7 +87,10 @@
     <Compile Include="ReportModels\InvoiceBill.cs" />
     <Compile Include="ReportModels\MonthWiseInvestigationReport.cs" />
     <Compile Include="ReportModels\ReportHead.cs" />
+    <Compile Include="ViewModels\VmProductStockDetails.cs" />
+    <Compile Include="ViewModels\VmProductStockInfo.cs" />
     <Compile Include="ViewModels\VmAppoinment.cs" />
+    <Compile Include="ViewModels\VmCategory.cs" />
     <Compile Include="ViewModels\VmDiagnosisBillInfo.cs" />
     <Compile Include="ViewModels\VmDoctorDetails.cs" />
     <Compile Include="ViewModels\VmDoctors.cs" />
@@ -104,6 +111,7 @@
     <Compile Include="ViewModels\VmOrganization.cs" />
     <Compile Include="ViewModels\VmOtherProfessional.cs" />
     <Compile Include="ViewModels\VmPatient.cs" />
+    <Compile Include="ViewModels\VmProduct.cs" />
     <Compile Include="ViewModels\VmRoleWiseUserMenu.cs" />
     <Compile Include="ViewModels\VmSetUserMenu.cs" />
     <Compile Include="ViewModels\VmSpecialist.cs" />

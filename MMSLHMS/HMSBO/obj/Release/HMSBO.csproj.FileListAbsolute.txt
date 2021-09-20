@@ -28,3 +28,9 @@ E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMS
 E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\HMSBO\obj\Release\HMSBO.csproj.CoreCompileInputs.cache
 E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\HMSBO\obj\Release\HMSBO.dll
 E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\HMSBO\obj\Release\HMSBO.pdb
+E:\GITHUBALLPROJECT\DiagnosticManagementSystem\MMSLHMS\HMSBO\bin\Release\HMSBO.dll
+E:\GITHUBALLPROJECT\DiagnosticManagementSystem\MMSLHMS\HMSBO\bin\Release\HMSBO.pdb
+E:\GITHUBALLPROJECT\DiagnosticManagementSystem\MMSLHMS\HMSBO\obj\Release\HMSBO.csprojAssemblyReference.cache
+E:\GITHUBALLPROJECT\DiagnosticManagementSystem\MMSLHMS\HMSBO\obj\Release\HMSBO.csproj.CoreCompileInputs.cache
+E:\GITHUBALLPROJECT\DiagnosticManagementSystem\MMSLHMS\HMSBO\obj\Release\HMSBO.dll
+E:\GITHUBALLPROJECT\DiagnosticManagementSystem\MMSLHMS\HMSBO\obj\Release\HMSBO.pdb

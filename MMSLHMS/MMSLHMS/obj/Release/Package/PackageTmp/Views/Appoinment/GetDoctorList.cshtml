@@ -74,6 +74,37 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="modalImage">
+    <div class="modal-dialog">
+        <div class="modal-content modal-sm">
+            <div class="modal-header  btn-success">
+                <h4 class="modal-title" id="modalHeading">Doctor Image</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <form id="frmInv" autocomplete="off">
+                <input type="hidden" id="hdfDoctorId" value="0" />
+                @Html.AntiForgeryToken()
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-8 hide">
+                            <label class="control-label font-weight-bold col-md-12">Member Image</label>
+                            <div class="col-md-12">
+                                <input type="file" name="MemberLogo2" class="form-control" id="MemberLogo2" />
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="control-label font-weight-bold col-md-12" style="visibility:hidden">Member Image</label>
+                            <div class="col-md-12">
+                                <img src="#" alt="Member Image" title="Doctor Image" id="imgMem2" width="200" height="200" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 @section Scripts{
 <script type="text/javascript">
 
@@ -81,6 +112,7 @@
     var txtMobileNo = $("#txtMobileNo");
     var ddlSpecialist = $("#ddlSpecialist");
     var txtSearchSex = $("#txtSearchSex");
+    var hdfDoctorId=$("#hdfDoctorId");
 
     ddlSpecialist.change(function () {
         LoadDataTable();
@@ -131,5 +163,33 @@
             console.log(error);
         });
     })
+
+    //////
+    function OpenModalImg() {
+            $(".error").addClass("hide");
+            $("#modalImage").modal();
+            $("#imgMem2").attr("src", "/Images/no_image.png");
+        }
+        $(document).on('click', 'a.data-item-view', function (e) {
+            e.preventDefault();
+
+            var id = $(this).parent().parents('tr').find('td:eq(1)').html();
+
+            OpenModalImg();
+            hdfDoctorId.val(id);
+            var data = JSON.stringify({ docId: id });
+            //return console.log(data);
+            $.when(postReqWithToken(dataType.applicationJson, dataType.json, 'POST', '/Appoinment/GetImageBase64String', data, getToken())).then(function (res, status) {
+                //console.log(res);
+                //console.log(status);
+                if (res.doctorImg == "") {
+                    $("#imgMem2").attr("src", "/Images/no_image.png");
+                } else {
+                    $("#imgMem2").attr("src", res.doctorImg);
+                }
+            }).fail(function (err) {
+                console.log(err);
+            })
+        })
     </script>    
 }

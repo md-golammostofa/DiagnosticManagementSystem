@@ -202,6 +202,24 @@ function postReqWithToken(contentType, dataType, type, url, data, token) {
     })
 }
 
+function postReqWithFile(dataType,type,url,data,token) {
+    return $.ajax({
+        dataType: dataType,
+        method: type,
+        url: url,
+        data: data,
+        processData: false,
+        contentType: false,
+        headers: token,
+        success: function (result) {
+            console.log(result);
+        },
+        error: function (result) {
+            console.log(result);
+        }
+    });
+}
+
 // when() function for save/edit
 // All the Parameters are required
 function fnSaveWhen(obj) {

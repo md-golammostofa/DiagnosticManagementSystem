@@ -60,6 +60,11 @@ namespace MMSLHMS.DAL
             modelBuilder.Entity<DoctorDetails>().ToTable("tblDoctorDetails");
             modelBuilder.Entity<Patient>().ToTable("tblPatients");
             modelBuilder.Entity<Appoinment>().ToTable("tblAppoinments");
+            //Inventory
+            modelBuilder.Entity<Category>().ToTable("tblCategory");
+            modelBuilder.Entity<Product>().ToTable("tblProduct");
+            modelBuilder.Entity<ProductStockInfo>().ToTable("tblProductStockInfo");
+            modelBuilder.Entity<ProductStockDetails>().ToTable("tblProductStockDetails");
         }
 
         public DbSet<Organization> tblOrganizations { get; set; }
@@ -91,5 +96,10 @@ namespace MMSLHMS.DAL
         public DbSet<DoctorDetails> tblDoctorDetails { get; set; }
         public DbSet<Patient> tblPatients { get; set; }
         public DbSet<Appoinment> tblAppoinments { get; set; }
+        //Inventory
+        public DbSet<Category> tblCategory { get; set; }
+        public DbSet<Product> tblProduct { get; set; }
+        public DbSet<ProductStockInfo> tblProductStockInfo { get; set; }
+        public DbSet<ProductStockDetails> tblProductStockDetails { get; set; }
     }
 }

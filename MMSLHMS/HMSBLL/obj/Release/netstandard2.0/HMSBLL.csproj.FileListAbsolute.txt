@@ -43,3 +43,12 @@ E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMS
 E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\HMSBLL\obj\Release\netstandard2.0\HMSBLL.AssemblyInfo.cs
 E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\HMSBLL\obj\Release\netstandard2.0\HMSBLL.dll
 E:\DMS\Diagnostic Management System_19-Mar-2020\Diagnostic Management System\MMSLHMS\HMSBLL\obj\Release\netstandard2.0\HMSBLL.pdb
+E:\GITHUBALLPROJECT\DiagnosticManagementSystem\MMSLHMS\HMSBLL\bin\Release\netstandard2.0\HMSBLL.deps.json
+E:\GITHUBALLPROJECT\DiagnosticManagementSystem\MMSLHMS\HMSBLL\bin\Release\netstandard2.0\HMSBLL.dll
+E:\GITHUBALLPROJECT\DiagnosticManagementSystem\MMSLHMS\HMSBLL\bin\Release\netstandard2.0\HMSBLL.pdb
+E:\GITHUBALLPROJECT\DiagnosticManagementSystem\MMSLHMS\HMSBLL\obj\Release\netstandard2.0\HMSBLL.csprojAssemblyReference.cache
+E:\GITHUBALLPROJECT\DiagnosticManagementSystem\MMSLHMS\HMSBLL\obj\Release\netstandard2.0\HMSBLL.csproj.CoreCompileInputs.cache
+E:\GITHUBALLPROJECT\DiagnosticManagementSystem\MMSLHMS\HMSBLL\obj\Release\netstandard2.0\HMSBLL.AssemblyInfoInputs.cache
+E:\GITHUBALLPROJECT\DiagnosticManagementSystem\MMSLHMS\HMSBLL\obj\Release\netstandard2.0\HMSBLL.AssemblyInfo.cs
+E:\GITHUBALLPROJECT\DiagnosticManagementSystem\MMSLHMS\HMSBLL\obj\Release\netstandard2.0\HMSBLL.dll
+E:\GITHUBALLPROJECT\DiagnosticManagementSystem\MMSLHMS\HMSBLL\obj\Release\netstandard2.0\HMSBLL.pdb

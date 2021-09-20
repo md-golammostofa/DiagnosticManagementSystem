@@ -22,16 +22,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/23/2017 13:15:20</publishTime>
     </File>
     <File Include="bin/HMSBLL.dll">
-      <publishTime>07/01/2021 13:45:48</publishTime>
+      <publishTime>09/18/2021 18:41:34</publishTime>
     </File>
     <File Include="bin/HMSBLL.pdb">
-      <publishTime>07/01/2021 13:45:48</publishTime>
+      <publishTime>09/18/2021 18:41:34</publishTime>
     </File>
     <File Include="bin/HMSBO.dll">
-      <publishTime>07/01/2021 13:45:46</publishTime>
+      <publishTime>09/18/2021 18:41:34</publishTime>
     </File>
     <File Include="bin/HMSBO.pdb">
-      <publishTime>07/01/2021 13:45:46</publishTime>
+      <publishTime>09/18/2021 18:41:34</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>05/24/2018 13:38:22</publishTime>
@@ -61,10 +61,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>02/23/2020 12:29:42</publishTime>
     </File>
     <File Include="bin/MMSLHMS.dll">
-      <publishTime>07/01/2021 13:45:59</publishTime>
+      <publishTime>09/18/2021 18:41:44</publishTime>
     </File>
     <File Include="bin/MMSLHMS.pdb">
-      <publishTime>07/01/2021 13:45:59</publishTime>
+      <publishTime>09/18/2021 18:41:44</publishTime>
     </File>
     <File Include="bin/netstandard.dll">
       <publishTime>02/23/2020 12:29:42</publishTime>
@@ -6094,7 +6094,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>05/08/2019 10:33:44</publishTime>
     </File>
     <File Include="Scripts/custom.js">
-      <publishTime>06/22/2021 18:05:12</publishTime>
+      <publishTime>09/15/2021 13:53:33</publishTime>
     </File>
     <File Include="Scripts/DataTable/dataTables.bootstrap.js">
       <publishTime>06/25/2019 10:50:30</publishTime>
@@ -6313,10 +6313,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>10/10/2019 09:57:08</publishTime>
     </File>
     <File Include="Views/Appoinment/CreateAppoinment.cshtml">
-      <publishTime>06/27/2021 15:20:16</publishTime>
+      <publishTime>09/15/2021 13:51:43</publishTime>
     </File>
     <File Include="Views/Appoinment/CreateDoctor.cshtml">
-      <publishTime>06/27/2021 14:33:50</publishTime>
+      <publishTime>09/15/2021 16:06:35</publishTime>
     </File>
     <File Include="Views/Appoinment/DoctorScheduleList.cshtml">
       <publishTime>06/26/2021 12:42:28</publishTime>
@@ -6325,7 +6325,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/30/2021 14:07:38</publishTime>
     </File>
     <File Include="Views/Appoinment/GetDoctorList.cshtml">
-      <publishTime>06/26/2021 16:00:21</publishTime>
+      <publishTime>09/15/2021 16:20:20</publishTime>
     </File>
     <File Include="Views/Appoinment/_DoctorScheduleList.cshtml">
       <publishTime>06/23/2021 18:24:38</publishTime>
@@ -6337,7 +6337,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/27/2021 16:00:57</publishTime>
     </File>
     <File Include="Views/Appoinment/_GetDoctorList.cshtml">
-      <publishTime>06/26/2021 13:14:52</publishTime>
+      <publishTime>09/15/2021 15:05:55</publishTime>
     </File>
     <File Include="Views/Common/_navbar.cshtml">
       <publishTime>12/08/2019 18:15:04</publishTime>
@@ -6442,7 +6442,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/28/2019 14:08:52</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>07/01/2021 13:46:03</publishTime>
+      <publishTime>09/18/2021 18:41:52</publishTime>
     </File>
   </ItemGroup>
 </Project>

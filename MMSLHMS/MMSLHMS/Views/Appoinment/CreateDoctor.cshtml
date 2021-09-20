@@ -323,8 +323,6 @@
         $("#btnAddToList").click(function (e) {
             e.preventDefault();
             if (validateInput() == true) {
-                //disable("#ddlServicesWarehouse");
-                //disable("#ddlBranchName");
                 var sl = $("#tblTimes tbody tr").length;
                 var td1 = "<td class='text-center text-bold'>" + (sl + 1) + "</td>"
                 var td2 = "<td class='text-center'>" + txtDays.val() + "</td>";

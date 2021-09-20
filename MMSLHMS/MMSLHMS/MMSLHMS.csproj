@@ -2059,6 +2059,7 @@
     <Compile Include="Controllers\DoctorsController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InventoryController.cs" />
     <Compile Include="Controllers\OrganizationController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="CustomFiles\Filters\ValidateJsonAntiForgeryToken.cs" />
@@ -2123,6 +2124,18 @@
     <Compile Include="Migrations\202106270853091_tblAppoinmentAge.cs" />
     <Compile Include="Migrations\202106270853091_tblAppoinmentAge.Designer.cs">
       <DependentUpon>202106270853091_tblAppoinmentAge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109200519217_Category.cs" />
+    <Compile Include="Migrations\202109200519217_Category.Designer.cs">
+      <DependentUpon>202109200519217_Category.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109200645521_Product.cs" />
+    <Compile Include="Migrations\202109200645521_Product.Designer.cs">
+      <DependentUpon>202109200645521_Product.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109201029164_StockInfo&amp;Details.cs" />
+    <Compile Include="Migrations\202109201029164_StockInfo&amp;Details.Designer.cs">
+      <DependentUpon>202109201029164_StockInfo&amp;Details.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -2206,6 +2219,13 @@
     <Content Include="Views\Appoinment\GetAppoinmentList.cshtml" />
     <Content Include="Views\Appoinment\CreateAppoinment.cshtml" />
     <Content Include="Views\Appoinment\_GetAppoinmentList.cshtml" />
+    <Content Include="Views\Inventory\GetCategoryList.cshtml" />
+    <Content Include="Views\Inventory\_GetCategoryList.cshtml" />
+    <Content Include="Views\Inventory\GetProductList.cshtml" />
+    <Content Include="Views\Inventory\_GetProductList.cshtml" />
+    <Content Include="Views\Inventory\_GetProductStockList.cshtml" />
+    <Content Include="Views\Inventory\GetProductStockList.cshtml" />
+    <Content Include="Views\Inventory\CreateProductStock.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2295,6 +2315,15 @@
     <Content Include="Reports\rptAppoinmentReport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="Migrations\202109200519217_Category.resx">
+      <DependentUpon>202109200519217_Category.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109200645521_Product.resx">
+      <DependentUpon>202109200645521_Product.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109201029164_StockInfo&amp;Details.resx">
+      <DependentUpon>202109201029164_StockInfo&amp;Details.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
