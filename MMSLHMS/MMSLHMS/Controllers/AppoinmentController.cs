@@ -26,6 +26,7 @@ namespace MMSLHMS.Controllers
             if (string.IsNullOrEmpty(flag))
             {
                 ViewBag.ddlSpecialist = db.tblSpecialists.Select(s => new SelectListItem { Text = s.Specialization, Value = s.Specialization }).ToList();
+                ViewBag.txtDoctorName = db.tblDoctors.Select(s => new SelectListItem { Text = s.DocName, Value = s.DocName }).ToList();
                 return View();
             }
             else
@@ -226,7 +227,7 @@ namespace MMSLHMS.Controllers
         #endregion
 
         #region Appoinment
-        public ActionResult GetAppoinmentList(string flag,string doctorName,string shift,string fromDate="", string toDate="")
+        public ActionResult GetAppoinmentList(string flag,string doctorName,string shift,string patientName,string patientMobile, string fromDate="", string toDate="")
         {
 
             DateTime dtimeFromDate = new DateTime();
@@ -247,7 +248,7 @@ namespace MMSLHMS.Controllers
             }
             else
             {
-                var appoinment = db.tblAppoinments.OrderBy(a => a.EntryDate).Where(a => a.OrgId == User.OrgId && (doctorName == null || doctorName.Trim() == "" || a.DoctorName.ToLower().Contains(doctorName.ToLower().Trim())) && (shift == null || shift.Trim() == "" || a.Shift.ToLower().Contains(shift.ToLower().Trim()))
+                var appoinment = db.tblAppoinments.OrderBy(a => a.EntryDate).Where(a => a.OrgId == User.OrgId && (doctorName == null || doctorName.Trim() == "" || a.DoctorName.ToLower().Contains(doctorName.ToLower().Trim())) && (patientName == null || patientName.Trim() == "" || a.PatientName.ToLower().Contains(patientName.ToLower().Trim())) && (patientMobile == null || patientMobile.Trim() == "" || a.PatientMobile.ToLower().Contains(patientMobile.ToLower().Trim())) && (shift == null || shift.Trim() == "" || a.Shift.ToLower().Contains(shift.ToLower().Trim()))
                 &&
                                (
                                     (fromDate == "" && toDate == "") ||

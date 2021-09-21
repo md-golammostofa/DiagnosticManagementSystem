@@ -140,15 +140,18 @@ namespace MMSLHMS.Controllers
         #endregion
 
         #region ProductStock
-        public ActionResult GetProductStockList(string flag)
+        public ActionResult GetProductStockList(string flag,string category,string product)
         {
             if (string.IsNullOrEmpty(flag))
             {
+                ViewBag.ddlCategory = db.tblCategory.Where(c => c.OrgId == User.OrgId).Select(c => new SelectListItem { Text = c.CategoryName, Value = c.CategoryName }).ToList();
+
+                ViewBag.ddlProductName = db.tblProduct.Where(c => c.OrgId == User.OrgId).Select(c => new SelectListItem { Text = c.ProductName, Value = c.ProductName }).ToList();
                 return View();
             }
             else
             {
-                var AllProduct = db.tblProductStockInfo.Where(i => i.OrgId == User.OrgId).ToList();
+                var AllProduct = db.tblProductStockInfo.Where(i => i.OrgId == User.OrgId && (category == "" || category == null || i.Category.Contains(category)) && (product == "" || product == null || i.ProductName.Contains(product))).ToList();
                 List<VmProductStockInfo> productList = new List<VmProductStockInfo>();
                 foreach(var item in AllProduct)
                 {
@@ -180,6 +183,92 @@ namespace MMSLHMS.Controllers
         {
             var dropDown = db.tblProduct.Where(p => p.OrgId == User.OrgId && p.CategoryName == category).Select(p => new DropDown { text = p.ProductName.ToString(), value = p.ProductName.ToString() }).ToList();
             return Json(dropDown);
+        }
+        public ActionResult SaveProductStockIn(List<VmProductStockDetails> details)
+        {
+            bool IsSuccess = true;
+            if(ModelState.IsValid && details.Count() > 0)
+            {
+                foreach(var item in details)
+                {
+                    var infoInStock = db.tblProductStockInfo.Where(i => i.OrgId == User.OrgId && i.Category == item.Category && i.ProductName == item.ProductName && i.CostPrice == item.CostPrice).FirstOrDefault();
+                    if(infoInStock != null)
+                    {
+                        infoInStock.StockInQty += item.Quantity;
+                        infoInStock.UpdateDate = DateTime.Now;
+                        infoInStock.UpdateUser = User.UserName;
+                        db.SaveChanges();
+                    }
+                    else
+                    {
+                        ProductStockInfo info = new ProductStockInfo
+                        {
+                            Category = item.Category,
+                            ProductName = item.ProductName,
+                            CostPrice = item.CostPrice,
+                            SellPrice = item.SellPrice,
+                            StockInQty = item.Quantity,
+                            StockOutQty = 0,
+                            OrgId=User.OrgId,
+                            EntryDate=DateTime.Now,
+                            EntryUser=User.UserName,
+                        };
+                        db.tblProductStockInfo.Add(info);
+                        db.SaveChanges();
+                    }
+
+                    ProductStockDetails detail = new ProductStockDetails
+                    {
+                        Category = item.Category,
+                        ProductName = item.ProductName,
+                        CostPrice = item.CostPrice,
+                        SellPrice = item.SellPrice,
+                        Quantity = item.Quantity,
+                        StockStatus = "Stock-In",
+                        Remarks = item.Remarks,
+                        OrgId=User.OrgId,
+                        EntryUser=User.UserName,
+                        EntryDate=DateTime.Now
+                    };
+                    db.tblProductStockDetails.Add(detail);
+                    db.SaveChanges();
+                    IsSuccess = true;
+                }
+            }
+            return Json(IsSuccess);
+        }
+        public ActionResult GetProductStockDetailsList(string flag, string category, string product)
+        {
+            if (string.IsNullOrEmpty(flag))
+            {
+                ViewBag.ddlCategory = db.tblCategory.Where(c => c.OrgId == User.OrgId).Select(c => new SelectListItem { Text = c.CategoryName, Value = c.CategoryName }).ToList();
+
+                ViewBag.ddlProductName = db.tblProduct.Where(c => c.OrgId == User.OrgId).Select(c => new SelectListItem { Text = c.ProductName, Value = c.ProductName }).ToList();
+                return View();
+            }
+            else
+            {
+                var allDetail = db.tblProductStockDetails.Where(d => d.OrgId == User.OrgId && (category == "" || category == null || d.Category.Contains(category)) && (product == "" || product == null || d.ProductName.Contains(product))).OrderByDescending(d=>d.EntryDate).ToList();
+                List<VmProductStockDetails> detailList = new List<VmProductStockDetails>();
+                foreach(var item in allDetail)
+                {
+                    VmProductStockDetails details = new VmProductStockDetails
+                    {
+                        PSDetailsId = item.PSDetailsId,
+                        Category = item.Category,
+                        ProductName = item.ProductName,
+                        CostPrice = item.CostPrice,
+                        SellPrice = item.SellPrice,
+                        Quantity = item.Quantity,
+                        StockStatus = item.StockStatus,
+                        Remarks=item.Remarks,
+                        EntryUser = item.EntryUser,
+                        EntryDate = item.EntryDate,
+                    };
+                    detailList.Add(details);
+                }
+                return PartialView("_GetProductStockDetailsList", detailList);
+            }
         }
         #endregion
     }

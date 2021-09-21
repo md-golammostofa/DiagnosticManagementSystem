@@ -31,35 +31,37 @@
                 @Html.AntiForgeryToken()
                 <div class="row text-sm">
                     <div class="col-md-3">
-                        <label for="ddlDoctorName" class="control-label font-weight-bold">Doctor Name</label>
-                        @Html.DropDownList("ddlDoctorName", (IEnumerable<SelectListItem>)ViewBag.ddlDoctorName, "--Select Doctor--", new { @class = "form-control form-control-sm select2 search-control" })
-                        <span class="error hide require-doctorName font-weight-bold">Specialist is required !</span>
+                        <div class="form-group col-md-12">
+                            <label for="ddlDoctorName" class="control-label font-weight-bold">Doctor Name</label>
+                            @Html.DropDownList("ddlDoctorName", (IEnumerable<SelectListItem>)ViewBag.ddlDoctorName, "--Select Doctor--", new { @class = "form-control form-control-sm select2 select2bs4 search-control" })
+                            <span class="error hide require-doctorName font-weight-bold">Specialist is required !</span>
+                        </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group col-md-12">
                             <label for="txtPatientName" class="control-label font-weight-bold">Patient Name</label>
-                            <input type="text" name="Patient" value="" id="txtPatientName" class="form-control form-control-sm search-control" />
+                            <input type="text" name="Patient" value="" id="txtPatientName" placeholder="Input Patient Name" class="form-control form-control-sm search-control" />
                             <span class="error hide require-patientName font-weight-bold">Patient is required !</span>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group col-md-12">
                             <label for="txtPatientAddress" class="control-label font-weight-bold">Address</label>
-                            <input type="text" name="Address" value="" id="txtPatientAddress" class="form-control form-control-sm search-control" />
+                            <input type="text" name="Address" value="" id="txtPatientAddress" placeholder="Input Patient Address" class="form-control form-control-sm search-control" />
                             <span class="error hide require-Address font-weight-bold">Address is required !</span>
                         </div>
                     </div>
                     <div class="col-md-2">
                         <div class="form-group col-md-12">
                             <label for="txtPatientMobile" class="control-label font-weight-bold">Patient Mobile</label>
-                            <input type="text" name="mobile" value="" id="txtPatientMobile" class="form-control form-control-sm search-control" />
+                            <input type="text" name="mobile" value="" id="txtPatientMobile" placeholder="Input Mobile No" class="form-control form-control-sm search-control" />
                             <span class="error hide require-Mobile font-weight-bold">Mobile is required !</span>
                         </div>
                     </div>
                     <div class="col-md-1">
                         <div class="form-group col-md-12">
                             <label for="txtPatientAge" class="control-label font-weight-bold">Age</label>
-                            <input type="text" name="mobile" value="" id="txtPatientAge" class="form-control form-control-sm search-control" />
+                            <input type="text" name="mobile" value="" id="txtPatientAge" placeholder="Input Age" class="form-control form-control-sm search-control" />
                             <span class="error hide require-Mobile font-weight-bold">Age is required !</span>
                         </div>
                     </div>
@@ -68,7 +70,7 @@
                     <div class="col-md-3">
                         <div class="form-group col-md-12">
                             <label for="txtShifTime" class="control-label font-weight-bold">Shift</label>
-                            <select id="txtShifTime" name="docType" class="form-control form-control-sm">
+                            <select id="txtShifTime" name="docType" class="form-control form-control-sm select2 select2bs4">
                                 <option value="">--Selecet One--</option>
                                 <option value="Morning">Morning</option>
                                 <option value="Evening">Evening</option>
@@ -80,7 +82,7 @@
                     <div class="col-md-3">
                         <div class="form-group col-md-12">
                             <label for="txtStatestatus" class="control-label font-weight-bold">State Status</label>
-                            <select id="txtStatestatus" name="status" class="form-control form-control-sm">
+                            <select id="txtStatestatus" name="status" class="form-control form-control-sm select2 select2bs4">
                                 <option value="">--Selecet One--</option>
                                 <option value="New Patient">New Patient</option>
                                 <option value="Report">Report</option>
@@ -119,7 +121,14 @@
         var dptAppoinmentDate = $("#dptAppoinmentDate");
         var txtPatientAge = $("#txtPatientAge");
 
+        $(document).ready(function () {
+            $('.select2').select2();
 
+            //Initialize Select2 Elements
+            $('.select2bs4').select2({
+                theme: 'classic'
+            });
+        })
         function validateInput() {
             $('.error').addClass('hide');
             var isValid = true;

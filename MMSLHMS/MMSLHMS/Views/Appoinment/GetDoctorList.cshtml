@@ -3,12 +3,31 @@
     ViewBag.Title = "Doctors List";
 }
 
+
+<div class="row">
+    <div class="col-md-12 text-center">
+        <div class="card card-gray shadow">
+            <div class="card-header">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-4 text-left">
+                            
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <h4><b>Doctor List</b></h4>
+                        </div>
+                        <div class="col-md-4">
+                            <a href="/Appoinment/CreateDoctor" class="btn btn-outline-primary btn-sm float-lg-right" id="btnAddNew"><i class="fa fa-plus"></i> Create Doctor Profile</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="row">
     <div class="col-md-12">
         <div class="row">
-            <div class="col-md-12 text-center">
-                <h5>Doctor List</h5>
-            </div>
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-12">
@@ -17,7 +36,7 @@
                                 <div class="col-md-2">
                                     <div class="form-group col-md-12">
                                         <label for="txtDoctorName" class="control-label font-weight-bold">Doctor Name</label>
-                                        <input type="text" name="doctorName" value="" id="txtDoctorName" placeholder="Search By Doctor" class="form-control form-control-sm search-control" />
+                                        @Html.DropDownList("txtDoctorName", (IEnumerable<SelectListItem>)ViewBag.txtDoctorName, "Search By Doctor", new { @class = "form-control form-control-sm select2 select2bs4 search-control" })
                                     </div>
                                 </div>
                                 <div class="col-md-2">
@@ -28,26 +47,21 @@
                                 </div>
                                 <div class="col-md-2">
                                     <label for="ddlSpecialist" class="control-label font-weight-bold">Specialist</label>
-                                    @Html.DropDownList("ddlSpecialist", (IEnumerable<SelectListItem>)ViewBag.ddlSpecialist, "--Select Specialist--", new { @class = "form-control form-control-sm select2 search-control" })
+                                    @Html.DropDownList("ddlSpecialist", (IEnumerable<SelectListItem>)ViewBag.ddlSpecialist, "Search By Specialist", new { @class = "form-control form-control-sm select2 select2bs4 search-control" })
                                     <span class="error hide require-specialist font-weight-bold">Specialist is required !</span>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group col-md-12">
                                         <label for="txtSearchSex" class="control-label font-weight-bold">Sex</label>
-                                        <select id="txtSearchSex" name="docType" class="form-control form-control-sm search-control">
-                                            <option value="">--Selecet One--</option>
+                                        <select id="txtSearchSex" name="docType" class="form-control form-control-sm select2 select2bs4 search-control">
+                                            <option value="">Search By Sex</option>
                                             <option value="Male">Male</option>
                                             <option value="Female">Female</option>
                                             <option value="Other">Other</option>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <label class="control-label col-md-12 font-weight-bold" style="visibility:hidden">Add Specialist</label>
-                                    <div class="col-md-12">
-                                        <a href="/Appoinment/CreateDoctor" class="btn btn-outline-primary btn-sm float-lg-right" id="btnAddNew"><i class="fa fa-plus"></i> Create Doctor Profile</a>
-                                    </div>
-                                </div>
+                                
                             </div>
                         </form>
                     </div>
@@ -170,6 +184,15 @@
     var txtSearchSex = $("#txtSearchSex");
     var hdfDoctorId = $("#hdfDoctorId");
     //
+    $(document).ready(function () {
+        //Initialize Select2 Elements
+        $('.select2').select2();
+
+        //Initialize Select2 Elements
+        $('.select2bs4').select2({
+            theme: 'classic'
+        });
+    })
 
     ddlSpecialist.change(function () {
         LoadDataTable();
@@ -178,7 +201,7 @@
         LoadDataTable();
     })
 
-    txtDoctorName.keyup(function () {
+    txtDoctorName.change(function () {
         LoadDataTable();
     })
 

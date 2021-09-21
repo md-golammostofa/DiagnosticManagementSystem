@@ -4,12 +4,29 @@
 }
 
 <div class="row">
+    <div class="col-md-12 text-center">
+        <div class="card card-gray shadow">
+            <div class="card-header">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-4 text-left">
+
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <h5><b>Doctor Schedule List</b></h5>
+                        </div>
+                        <div class="col-md-4">
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
     <div class="col-md-12">
         <div class="row">
-            <div class="col-md-12 text-center">
-                <h5><b>Doctor Schedule List</b></h5>
-            </div>
-            <hr />
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-12">
@@ -17,18 +34,18 @@
                             <div class="form-row">
                                 <div class="col-md-2">
                                     <label for="ddlDoctorName" class="control-label font-weight-bold">Doctor Name</label>
-                                    @Html.DropDownList("ddlDoctorName", (IEnumerable<SelectListItem>)ViewBag.ddlDoctorName, "--Select Doctor--", new { @class = "form-control form-control-sm select2 search-control" })
+                                    @Html.DropDownList("ddlDoctorName", (IEnumerable<SelectListItem>)ViewBag.ddlDoctorName, "--Select Doctor--", new { @class = "form-control form-control-sm select2 select2bs4 search-control" })
                                     <span class="error hide require-specialist font-weight-bold">Specialist is required !</span>
                                 </div>
                                 <div class="col-md-2">
                                     <label for="ddlSpecialist" class="control-label font-weight-bold">Specialist</label>
-                                    @Html.DropDownList("ddlSpecialist", (IEnumerable<SelectListItem>)ViewBag.ddlSpecialist, "--Select Specialist--", new { @class = "form-control form-control-sm select2 search-control" })
+                                    @Html.DropDownList("ddlSpecialist", (IEnumerable<SelectListItem>)ViewBag.ddlSpecialist, "--Select Specialist--", new { @class = "form-control form-control-sm select2 select2bs4 search-control" })
                                     <span class="error hide require-specialist font-weight-bold">Specialist is required !</span>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group col-md-12">
                                         <label for="txtDays" class="control-label font-weight-bold ">Days</label>
-                                        <select id="txtDays" name="docType" class="form-control form-control-sm search-control">
+                                        <select id="txtDays" name="docType" class="form-control form-control-sm select2 select2bs4 search-control">
                                             <option value="">--Selecet One--</option>
                                             <option value="Saturday">Saturday</option>
                                             <option value="Sunday">Sunday</option>
@@ -44,7 +61,7 @@
                                 <div class="col-md-2">
                                     <div class="form-group col-md-12">
                                         <label for="txtShifTime" class="control-label font-weight-bold">Shift</label>
-                                        <select id="txtShifTime" name="docType" class="form-control form-control-sm search-control">
+                                        <select id="txtShifTime" name="docType" class="form-control form-control-sm select2 select2bs4 search-control">
                                             <option value="">--Selecet One--</option>
                                             <option value="Morning">Morning</option>
                                             <option value="Evening">Evening</option>
@@ -71,6 +88,14 @@
         var txtDays = $("#txtDays");
         var txtShifTime = $("#txtShifTime");
 
+        $(document).ready(function () {
+            $('.select2').select2();
+
+            //Initialize Select2 Elements
+            $('.select2bs4').select2({
+                theme: 'classic'
+            });
+        })
         //$(document).on('keyup', '.search-control', function () {
         //    LoadDataTable();
         //})

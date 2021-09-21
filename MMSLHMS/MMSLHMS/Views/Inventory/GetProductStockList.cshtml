@@ -1,27 +1,44 @@
 ﻿
 @{
-    ViewBag.Title = "GetProductStockList";
+    ViewBag.Title = "Stock Info List";
 }
 
 <div class="row">
     <div class="col-md-12 text-center">
         <div class="card card-gray shadow">
-            <div class="card-header card-gray">
+            <div class="card-header">
                 <div class="col-md-12">
                     <div class="row">
-                        <div class="col-md-4">
-
+                        <div class="col-md-4 text-left">
+                            <a href="/Inventory/GetProductStockDetailsList" class="btn btn-outline-warning btn-sm float-left text-left" id="btnAddNew">Stock Details</a>
                         </div>
                         <div class="col-md-4 text-center">
                             <h4><b>Stock Info List</b></h4>
                         </div>
                         <div class="col-md-4">
-                            <a href="/Inventory/CreateProductStock" class="btn btn-primary btn-sm float-lg-right" id="btnAddNew"><i class="fa fa-plus"></i> Stock-In</a>
+                            <a href="/Inventory/CreateProductStock" class="btn btn-outline-primary btn-sm float-lg-right" id="btnAddNew"><i class="fa fa-plus"></i>  Stock-In</a>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 text-center">
+        <div class="card card-gray shadow">
+            <div class="card-header card-gray">
                 <div class="col-md-12">
-
+                    <div class="row text-left">
+                        <div class="col-md-2">
+                            <label for="ddlCategory" class="control-label font-weight-bold">Category</label>
+                            @Html.DropDownList("ddlCategory", (IEnumerable<SelectListItem>)ViewBag.ddlCategory, "Search By Category", new { @class = "form-control form-control-sm select2 select2bs4 select2-danger search-control" })
+                        </div>
+                        <div class="col-md-2">
+                            <label for="ddlProductName" class="control-label font-weight-bold">Product Name</label>
+                            @Html.DropDownList("ddlProductName", (IEnumerable<SelectListItem>)ViewBag.ddlProductName, "Search By Product", new { @class = "form-control form-control-sm select2 select2bs4 select2-danger search-control" })
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -34,4 +51,42 @@
         @{Html.RenderAction("GetProductStockList", new { flag = "view" });}
     </div>
 </div>
+@section Scripts{
+    <script type="text/javascript">
+        var ddlCategory = $("#ddlCategory");
+        var ddlProductName = $("#ddlProductName");
 
+        $(document).ready(function () {
+            //Initialize Select2 Elements
+            $('.select2').select2();
+
+            //Initialize Select2 Elements
+            $('.select2bs4').select2({
+                theme: 'classic'
+            });
+        })
+        ddlCategory.change(function () {
+            LoadDataTable();
+        })
+        ddlProductName.change(function () {
+            LoadDataTable();
+        })
+
+        function LoadDataTable() {
+            var data = { flag: "search", category: ddlCategory.val().trim(), product: ddlProductName.val().trim() };
+
+            console.log(data);
+            $.when(getReqWithData('html', 'GET', '/Inventory/GetProductStockList', data)).then(function (res, status) {
+                console.log(status);
+                if (status === "success") {
+                    $("#dataContainer").fadeOut('500', function () {
+                        $("#dataContainer").empty();
+                        $("#dataContainer").append(res).fadeIn('500');
+                    });
+                }
+            }).fail(function (error) {
+                console.log(error);
+            })
+        }
+    </script>
+    }

@@ -1,0 +1,55 @@
+﻿@model IEnumerable<HMSBO.ViewModels.VmProductStockDetails>
+@{
+    int sl = 0;
+    string badge = string.Empty;
+}
+<div class="col-md-12 text-sm" style="overflow-y:scroll">
+    <table class="table table-bordered table-sm table-striped" id="tblProductStockDetails">
+        <thead class="btn-info">
+            <tr class="text-center">
+                <th style="vertical-align:middle">#SL</th>
+                <th class="hide"></th>
+                <th style="vertical-align:middle">Category Name</th>
+                <th style="vertical-align:middle">Product Name</th>
+                <th style="vertical-align:middle">Cost Price</th>
+                <th style="vertical-align:middle">Sell Price</th>
+                <th style="vertical-align:middle">Quantity</th>
+                <th style="vertical-align:middle">StockStatus</th>
+                <th style="vertical-align:middle">Remarks</th>
+                <th style="vertical-align:middle">Entry Date</th>
+                <th style="vertical-align:middle">Entry User</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                sl = sl + 1;
+                badge = item.StockStatus == "Stock-In" ? "badge bg-success" : "badge bg-danger";
+            <tr>
+                <td class="text-center">@sl</td>
+                <td class="hide">@item.PSDetailsId</td>
+                <td>@item.Category</td>
+                <td>@item.ProductName</td>
+                <td class="text-right">@item.CostPrice.ToString("0.00")</td>
+                <td class="text-right">@item.SellPrice.ToString("0.00")</td>
+                <td class="text-center">@item.Quantity</td>
+                <td class="text-center" data-val="@item.StockStatus">
+                    <span class="@badge">@item.StockStatus</span>
+                </td>
+                <td>@item.Remarks</td>
+                <td>@item.EntryDate.Value.ToString("dd-MMM-yyyy")</td>
+                <td>@item.EntryUser</td>
+            </tr>
+            }
+            @if (Model.Count() == 0)
+            {
+                <tr class="text-center empty-row">
+                    <td colspan="9">
+                        No Rows Found
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

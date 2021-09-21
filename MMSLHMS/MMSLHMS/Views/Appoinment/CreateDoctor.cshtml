@@ -33,14 +33,14 @@
                     <div class="col-md-3">
                         <div class="form-group col-md-12">
                             <label for="txtHospital" class="control-label font-weight-bold">Hospital</label>
-                            <input type="text" name="Hospital" value="" id="txtHospital" class="form-control form-control-sm search-control" />
+                            <input type="text" name="Hospital" value="" id="txtHospital" placeholder="Input Hospital" class="form-control form-control-sm search-control" />
                             <span class="error hide require-hospital font-weight-bold">Hospital is required !</span>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group col-md-12">
                             <label for="ddlDocType" class="control-label font-weight-bold">DocType</label>
-                            <select id="ddlDocType" name="docType" class="form-control form-control-sm select2">
+                            <select id="ddlDocType" name="docType" class="form-control form-control-sm select2 select2bs4">
                                 <option value="">--Selecet One--</option>
                                 <option value="Specialist">Specialist</option>
                                 <option value="Other Profession">Other Profession</option>
@@ -51,12 +51,12 @@
                     </div>
                     <div class="col-md-3">
                         <label for="ddlSpecialist" class="control-label font-weight-bold">Specialist</label>
-                        @Html.DropDownList("ddlSpecialist", (IEnumerable<SelectListItem>)ViewBag.ddlSpecialist, "--Select Specialist--", new { @class = "form-control form-control-sm select2" })
+                        @Html.DropDownList("ddlSpecialist", (IEnumerable<SelectListItem>)ViewBag.ddlSpecialist, "--Select Specialist--", new { @class = "form-control form-control-sm select2 select2bs4" })
                         <span class="error hide require-specialist font-weight-bold">Specialist is required !</span>
                     </div>
                     <div class="col-md-3">
                         <label for="ddlOtherProfession" class="control-label font-weight-bold">Other Prof.</label>
-                        @Html.DropDownList("ddlOtherProfession", (IEnumerable<SelectListItem>)ViewBag.ddlOtherProfession, "--Select Profession--", new { @class = "form-control form-control-sm select2" })
+                        @Html.DropDownList("ddlOtherProfession", (IEnumerable<SelectListItem>)ViewBag.ddlOtherProfession, "--Select Profession--", new { @class = "form-control form-control-sm select2 select2bs4" })
                         <span class="error hide require-otherProfession font-weight-bold">Other Profession is required !</span>
                     </div>
                 </div>
@@ -64,28 +64,28 @@
                     <div class="col-md-3">
                         <div class="form-group col-md-12">
                             <label for="txtDocName" class="control-label font-weight-bold">Doc Name</label>
-                            <input type="text" name="name" value="" id="txtDocName" class="form-control form-control-sm search-control" />
+                            <input type="text" name="name" value="" id="txtDocName" placeholder="Input Doctor Name" class="form-control form-control-sm search-control" />
                             <span class="error hide require-doctorName font-weight-bold">Doctor is required !</span>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group col-md-12">
                             <label for="txtDocRegNo" class="control-label font-weight-bold">REG No.</label>
-                            <input type="text" name="name" value="" id="txtDocRegNo" class="form-control form-control-sm search-control" />
+                            <input type="text" name="name" value="" id="txtDocRegNo" placeholder="Input Reg No." class="form-control form-control-sm search-control" />
                             <span class="error hide require-regNo font-weight-bold">REG No is required !</span>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group col-md-12">
                             <label for="txtDegreeName" class="control-label font-weight-bold">Doc Degree</label>
-                            <input type="text" name="degree" value="" id="txtDegreeName" class="form-control form-control-sm search-control" />
+                            <input type="text" name="degree" value="" id="txtDegreeName" placeholder="Input Degree" class="form-control form-control-sm search-control" />
                             <span class="error hide require-degreeName font-weight-bold">Degree is required !</span>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group col-md-12">
                             <label for="txtMobileNo" class="control-label font-weight-bold">Doc Mobile</label>
-                            <input type="text" name="degree" value="" id="txtMobileNo" class="form-control form-control-sm search-control" />
+                            <input type="text" name="degree" value="" id="txtMobileNo" placeholder="Input Mobile No" class="form-control form-control-sm search-control" />
                             <span class="error hide require-mobileNo font-weight-bold">Mobile No is required !</span>
                         </div>
                     </div>
@@ -94,14 +94,14 @@
                     <div class="col-md-3">
                         <div class="form-group col-md-12">
                             <label for="txtDocAddress" class="control-label font-weight-bold">Doc Address</label>
-                            <input type="text" name="degree" value="" id="txtDocAddress" class="form-control form-control-sm search-control" />
+                            <input type="text" name="degree" value="" id="txtDocAddress" placeholder="Input Address" class="form-control form-control-sm search-control" />
                             <span class="error hide require-docAddress font-weight-bold">Address No is required !</span>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group col-md-12">
                             <label for="ddlDocSex" class="control-label font-weight-bold">Sex</label>
-                            <select id="ddlDocSex" name="docsex" class="form-control form-control-sm search-control">
+                            <select id="ddlDocSex" name="docsex" class="form-control form-control-sm search-control select2 select2bs4">
                                 <option value="">--Selecet One--</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
@@ -120,7 +120,7 @@
                     <div class="col-md-3">
                         <div class="form-group col-md-12">
                             <label for="txtEmail" class="control-label font-weight-bold">Email</label>
-                            <input type="text" name="degree" value="" id="txtEmail" class="form-control form-control-sm search-control" />
+                            <input type="text" name="degree" value="" id="txtEmail" placeholder="Input Email" class="form-control form-control-sm search-control" />
                             <span class="error hide require-emailAddress font-weight-bold">Degree is required !</span>
                         </div>
                     </div>
@@ -129,28 +129,28 @@
                     <div class="col-md-3">
                         <div class="form-group col-md-12">
                             <label for="txtGeneralFee" class="control-label font-weight-bold">General Fee</label>
-                            <input type="number" name="degree" value="" id="txtGeneralFee" class="form-control form-control-sm search-control" />
+                            <input type="number" name="degree" value="" id="txtGeneralFee" placeholder="Input Fee" class="form-control form-control-sm search-control" />
                             <span class="error hide require-generalFee font-weight-bold">General Fee is required !</span>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group col-md-12">
                             <label for="txtReportShowingFee" class="control-label font-weight-bold">Report Fee</label>
-                            <input type="number" name="degree" value="" id="txtReportShowingFee" class="form-control form-control-sm search-control" />
+                            <input type="number" name="degree" value="" id="txtReportShowingFee" placeholder="Input Report Fee" class="form-control form-control-sm search-control" />
                             <span class="error hide require-reportShowFee font-weight-bold">Report Showing Fee is required !</span>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group col-md-12">
                             <label for="txtFollowUpFee" class="control-label font-weight-bold">Follow Up Fee</label>
-                            <input type="number" name="degree" value="" id="txtFollowUpFee" class="form-control form-control-sm search-control" />
+                            <input type="number" name="degree" value="" id="txtFollowUpFee" placeholder="Input Follow Up Fee" class="form-control form-control-sm search-control" />
                             <span class="error hide require-followUpFee font-weight-bold">Follow Up Fee is required !</span>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group col-md-12">
                             <label for="txtCounselingFee" class="control-label font-weight-bold">Counseling Fee</label>
-                            <input type="number" name="degree" value="" id="txtCounselingFee" class="form-control form-control-sm search-control" />
+                            <input type="number" name="degree" value="" id="txtCounselingFee" placeholder="Input Conseling Fee" class="form-control form-control-sm search-control" />
                             <span class="error hide require-counselingFee font-weight-bold">CounselingUpFee Up Fee is required !</span>
                         </div>
                     </div>
@@ -159,7 +159,7 @@
                     <div class="col-md-3">
                         <div class="form-group col-md-12">
                             <label for="txtRemarks" class="control-label font-weight-bold">Remarks</label>
-                            <input type="text" name="remarks" value="" id="txtRemarks" class="form-control form-control-sm search-control" />
+                            <input type="text" name="remarks" value="" id="txtRemarks" placeholder="Input Remarks" class="form-control form-control-sm search-control" />
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -191,7 +191,7 @@
                     <div class="col-md-6">
                         <div class="form-group col-md-12">
                             <label for="txtDays" class="control-label font-weight-bold">Days</label>
-                            <select id="txtDays" name="docType" class="form-control form-control-sm">
+                            <select id="txtDays" name="docType" class="form-control form-control-sm select2 select2bs4">
                                 <option value="">--Selecet One--</option>
                                 <option value="Saturday">Saturday</option>
                                 <option value="Sunday">Sunday</option>
@@ -207,7 +207,7 @@
                     <div class="col-md-6">
                         <div class="form-group col-md-12">
                             <label for="txtShifTime" class="control-label font-weight-bold">Shift</label>
-                            <select id="txtShifTime" name="docType" class="form-control form-control-sm">
+                            <select id="txtShifTime" name="docType" class="form-control form-control-sm select2 select2bs4">
                                 <option value="">--Selecet One--</option>
                                 <option value="Morning">Morning</option>
                                 <option value="Evening">Evening</option>
@@ -220,12 +220,12 @@
                 <div class="row text-sm">
                     <div class="col-md-5">
                         <label for="ddlStartTime" class="control-label font-weight-bold">Start Time</label>
-                        @Html.DropDownList("ddlStartTime", (IEnumerable<SelectListItem>)ViewBag.ddlStartTime, "--Select Time--", new { @class = "form-control form-control-sm" })
+                        @Html.DropDownList("ddlStartTime", (IEnumerable<SelectListItem>)ViewBag.ddlStartTime, "--Select Time--", new { @class = "form-control form-control-sm select2 select2bs4" })
                         <span class="error hide require-startTime font-weight-bold">Start Time is required !</span>
                     </div>
                     <div class="col-md-5">
                         <label for="ddlEndTime" class="control-label font-weight-bold">End Time</label>
-                        @Html.DropDownList("ddlEndTime", (IEnumerable<SelectListItem>)ViewBag.ddlEndTime, "--Select Time--", new { @class = "form-control form-control-sm" })
+                        @Html.DropDownList("ddlEndTime", (IEnumerable<SelectListItem>)ViewBag.ddlEndTime, "--Select Time--", new { @class = "form-control form-control-sm select2 select2bs4" })
                         <span class="error hide require-endTime font-weight-bold">End Time is required !</span>
                     </div>
                     <div class="col-md-2 text-right">
@@ -293,8 +293,13 @@
         var txtCounselingFee = $("#txtCounselingFee");
         var txtRemarks = $("#txtRemarks");
         
-
         $(document).ready(function () {
+            $('.select2').select2();
+
+            //Initialize Select2 Elements
+            $('.select2bs4').select2({
+                theme: 'classic'
+            });
             $("#imgDoc").attr("src", "/Images/no_image.png");
         })
         
