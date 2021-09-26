@@ -1,0 +1,193 @@
+﻿
+@{
+    ViewBag.Title = "CustomerList";
+}
+
+<div class="row">
+    <div class="col-md-12 text-center">
+        <div class="card card-gray shadow">
+            <div class="card-header">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-4 text-left">
+
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <h4><b>Customer List</b></h4>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="btn btn-primary btn-sm float-right" id="btnAddNew"><i class="fa fa-plus"></i> Create New Customer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 text-sm" id="dataContainer">
+        @{Html.RenderAction("CustomerList", new { flag = "view" });}
+    </div>
+</div>
+<div class="modal fade" id="modalCustomer">
+    <div class="modal-dialog">
+        <div class="modal-content ">
+            <div class="modal-header  btn-success">
+                <h4 class="modal-title" id="modalHeading">Create New Customer</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <form id="frmInv" autocomplete="off">
+                <input type="hidden" id="hdfCustomerId" value="0" />
+                @Html.AntiForgeryToken()
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label class="control-label col-md-12 font-weight-bold" for="">Customer Name<span class="text-danger">*</span></label>
+                            <div class="col-md-12 input-group">
+                                <input type="text" id="txtCustomerName" name="product" placeholder="Input Customer Name" class="form-control form-control-sm" />
+                            </div>
+                            <span class="error hide required-customerName">Name is required</span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label class="control-label col-md-12 font-weight-bold" for="">Customer Mobile<span class="text-danger">*</span></label>
+                            <div class="col-md-12 input-group">
+                                <input type="text" id="txtMobileNumber" name="product" placeholder="Input Mobile No" class="form-control form-control-sm" />
+                            </div>
+                            <span class="error hide required-customerMobile">Mobile No is required</span>
+                            <span class="error hide duplicate-product">This Mobile No is Already Exits</span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label class="control-label col-md-12 font-weight-bold" for="">Address<span class="text-danger"></span></label>
+                            <div class="col-md-12 input-group">
+                                <input type="text" id="txtCustomerAddress" name="product" placeholder="Input Address" class="form-control form-control-sm" />
+                            </div>
+                            <span class="error hide required-barCode">Address is required</span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label class="control-label col-md-12 font-weight-bold" for="">Email<span class="text-danger"></span></label>
+                            <div class="col-md-12 input-group">
+                                <input type="text" id="txtCustomerEmail" name="product" placeholder="Input Email" class="form-control form-control-sm" />
+                            </div>
+                            <span class="error hide required-barCode">Email is required</span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label class="control-label col-md-12 font-weight-bold" for="">Remarks</label>
+                            <div class="col-md-12 input-group">
+                                <input type="text" id="txtRemarks" name="remarks" placeholder="Input Remarks" class="form-control form-control-sm" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-danger" id="btnCancel" title="Cancel the process"><i></i> Cancel </button>
+                        <button type="submit" id="btnSubmit" class="btn btn-sm btn-primary"><i class="fa fa-save"></i> Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        var hdfCustomerId = $("#hdfCustomerId");
+        var txtCustomerName = $("#txtCustomerName");
+        var txtMobileNumber = $("#txtMobileNumber");
+        var txtCustomerAddress = $("#txtCustomerAddress");
+        var txtCustomerEmail = $("#txtCustomerEmail");
+        var txtRemarks = $("#txtRemarks");
+
+        $("#btnCancel").click(function (e) {
+            e.preventDefault();
+            $("#modalCustomer").modal("toggle");
+        })
+        function LoadDataTable() {
+            var data = { flag: "search" };
+
+            console.log(data);
+            $.when(getReqWithData('html', 'GET', '/Inventory/CustomerList', data)).then(function (res, status) {
+                console.log(status);
+                if (status === "success") {
+                    $("#dataContainer").fadeOut('500', function () {
+                        $("#dataContainer").empty();
+                        $("#dataContainer").append(res).fadeIn('500');
+                    });
+                }
+            }).fail(function (error) {
+                console.log(error);
+            })
+        }
+
+        function OpenModal() {
+            clrCtrl();
+            $(".error").addClass("hide");
+            $("#modalHeading").text('Create New Customer');
+            $("#btnSubmit").text('Save');
+            $("#modalCustomer").modal();
+        }
+
+        $("#btnAddNew").click(function (e) {
+            e.preventDefault();
+            OpenModal();
+        })
+        function clrCtrl() {
+            hdfCustomerId.val('0');
+            txtCustomerName.val('');
+            txtMobileNumber.val('');
+            txtCustomerAddress.val('');
+            txtCustomerEmail.val('');
+            txtRemarks.val('');
+        }
+
+        function validation() {
+            var isValid = true;
+            $(".error").addClass('hide');
+            if (txtCustomerName.val().trim() == '') {
+                isValid = false;
+                $(".required-customerName").removeClass("hide");
+            }
+            if (txtMobileNumber.val().trim() == '') {
+                isValid = false;
+                $(".required-customerMobile").removeClass("hide");
+            }
+            //else {
+            //    if (ajaxBooleanChecker(JSON.stringify({ product: txtProductName.val().trim() }), '/Inventory/IsDuplicateProductName', getToken()) == true) {
+            //        $(".duplicate-product").removeClass("hide");
+            //        isValid = false;
+            //    }
+            //}
+            return isValid;
+        }
+
+        $("#btnSubmit").click(function (e) {
+            e.preventDefault();
+            if (validation()) {
+                var id = hdfCustomerId.val() == "" ? "0" : hdfCustomerId.val();
+                var data = { CustomerId: id, CustomerName: txtCustomerName.val(), CustomerMobile: txtMobileNumber.val(), CustomerAddress: txtCustomerAddress.val(), CustomerEmail: txtCustomerEmail.val(), Remarks: txtRemarks.val() };
+                data = JSON.stringify(data);
+                //return console.log(data);
+
+                $.when(postReqWithToken(dataType.applicationJson, dataType.json, 'POST', '/Inventory/SaveCustomer', data, getToken())).then(function (res, status) {
+                    if (res) {
+                        clrCtrl();
+                        alert(execuStatus.successSave);
+                        $("#modalCustomer").modal("toggle");
+                        LoadDataTable();
+                    }
+                    else {
+                        alert(execuStatus.fail);
+                    }
+                }).fail(function (err) {
+                    alert(execuStatus.fail);
+                })
+            }
+        })
+    </script>
+    }

@@ -1,0 +1,517 @@
+﻿
+@{
+    ViewBag.Title = "Create Invoice";
+}
+<div class="row">
+    <div class="col-md-12 text-center" style="background-color:darkblue;color:#fff;padding:5px;border-radius:5px 5px 0px 0px">
+        <h4>Create New Invoice</h4>
+    </div>
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-8" style="background-color:lightblue;padding:5px;color:#000">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="ddlCustomerType" class="control-label font-weight-bold">Customer Type</label>
+                        <select id="ddlCustomerType" name="docType" class="form-control form-control-sm select2 select2bs4">
+                            <option value="">--Selecet One--</option>
+                            <option value="Walk In Customer">Walk In Customer</option>
+                            <option value="Dealer">Dealer</option>
+                        </select>
+                        <span class="error hide require-customerType font-weight-bold">Type is required !</span>
+                    </div>
+                    <div class="col-md-3" id="divCustomerName">
+                        <label for="txtCustomerName" class="control-label font-weight-bold">Customer Name</label>
+                        <input type="text" name="name" value="" id="txtCustomerName" placeholder="Input Customer Name" class="form-control form-control-sm search-control" />
+                        <span class="error hide require-costPrice font-weight-bold">Cost Price is required !</span>
+                    </div>
+                    <div class="col-md-3" id="divdealerName">
+                        <label for="ddlDealerName" class="control-label font-weight-bold">Dealer Name</label>
+                        @Html.DropDownList("ddlDealerName", (IEnumerable<SelectListItem>)ViewBag.ddlDealerName, "--Select Category--", new { @class = "form-control form-control-sm select2 select2bs4 select2-danger search-control" })
+                        <span class="error hide require-dealerName font-weight-bold">Dealer Name is required !</span>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="txtCustomerMobile" class="control-label font-weight-bold">Customer Mobile</label>
+                        <input type="text" name="name" value="" id="txtCustomerMobile" placeholder="Input Customer Mobile" class="form-control form-control-sm search-control" />
+                        <span class="error hide require-costPrice font-weight-bold">Cost Price is required !</span>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="txtCustomerAddress" class="control-label font-weight-bold">Customer Address</label>
+                        <input type="text" name="name" value="" id="txtCustomerAddress" placeholder="Input Customer Address" class="form-control form-control-sm search-control" />
+                        <span class="error hide require-costPrice font-weight-bold">Cost Price is required !</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2">
+                        <label for="ddlPaymentType" class="control-label font-weight-bold">Payment</label>
+                        <select id="ddlPaymentType" name="docType" class="form-control form-control-sm select2 select2bs4">
+                            <option value="">--Selecet One--</option>
+                            <option value="Cash">Cash</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <span class="error hide require-paymentType font-weight-bold">Payment Type is required !</span>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="ddlCategory" class="control-label font-weight-bold">Category</label>
+                        @Html.DropDownList("ddlCategory", (IEnumerable<SelectListItem>)ViewBag.ddlCategory, "--Select Category--", new { @class = "form-control form-control-sm select2 select2bs4 select2-danger search-control" })
+                        <span class="error hide require-category font-weight-bold">Category is required !</span>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="ddlProductName" class="control-label font-weight-bold">Product Name</label>
+                        <select id="ddlProductName" class="form-control form-control-sm select2 select2bs4 select2-danger search-control">
+                            <option value="">--Selecet One--</option>
+                        </select>
+                        <span class="error hide require-productName font-weight-bold">Product is required !</span>
+                        <span class="error hide duplicate-productName font-weight-bold">Already This product Exits !</span>
+                    </div>
+                    <div class="col-md-1">
+                        <label for="txtSellPrice" class="control-label font-weight-bold">Price</label>
+                        <input type="text" name="name" value="0" id="txtSellPrice" class="form-control form-control-sm search-control" disabled />
+                        <span class="error hide require-sellPrice font-weight-bold">Price is required !</span>
+                    </div>
+                    <div class="col-md-3 hide">
+                        <label for="txtProduct" class="control-label font-weight-bold">product Name</label>
+                        <input type="text" name="name" value="0" id="txtProduct" class="form-control form-control-sm search-control" disabled />
+                    </div>
+                    <div class="col-md-2">
+                        <label for="txtSellQuantity" class="control-label font-weight-bold">Qty(<span id="txtAvailableQty" style="color:red">0</span>)</label>
+                        <input type="number" name="stock" value="" id="txtSellQuantity" placeholder="Input Qty" class="form-control form-control-sm search-control" />
+                        <span class="error hide require-qty font-weight-bold">Quantity is required !</span>
+                    </div>
+                    <div class="col-md-1">
+                        <label for="" class="control-label font-weight-bold" style="visibility:hidden">dddd</label>
+                        <div class="clearfix">
+                            <button type="submit" class="btn btn-sm btn-success float-lg-right mr-1" id="btnAddToList" title="Add To List"><i class="fas fa-plus"></i> </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row text-sm">
+                    <div class="col-md-12">
+                        <div class="card shadow">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-12" style="overflow-y:scroll">
+                                        <table class="table table-bordered table-sm table-striped table-responsive-lg" id="tblInvoice">
+                                            <thead>
+                                                <tr class="btn-info text-center" style="background-color:darkblue">
+                                                    <td>#SL</td>
+                                                    <td class="hide">CategoryName</td>
+                                                    <td>ProductName</td>
+                                                    <td>Sell Price</td>
+                                                    <td>Quantity</td>
+                                                    <td>Total</td>
+                                                    <td>Action</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" style="background-color:lightsteelblue;padding:5px;color:#000">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="txtSubTotal" class="control-label font-weight-bold">Sub Total</label>
+                        <input type="text" name="name" value="0" id="txtSubTotal" class="form-control form-control-sm search-control" disabled />
+                        <span class="error hide require-subTotal font-weight-bold">SubTotal is required !</span>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="txtVatAmount" class="control-label font-weight-bold">VAT</label>
+                        <input type="text" name="name" value="0" id="txtVatAmount" class="form-control form-control-sm search-control" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="txtDiscountAmount" class="control-label font-weight-bold">Discount</label>
+                        <input type="text" name="name" value="0" id="txtDiscountAmount" class="form-control form-control-sm search-control" />
+                    </div>
+                    <div class="col-md-6">
+                        <label for="txtNetAmount" class="control-label font-weight-bold">Net Amount</label>
+                        <input type="text" name="name" value="0" id="txtNetAmount" class="form-control form-control-sm search-control" disabled />
+                        <span class="error hide require-netAmount font-weight-bold">NetAmount is required !</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="txtReceiveAmount" class="control-label font-weight-bold">Receive Amount</label>
+                        <input type="text" name="name" value="0" id="txtReceiveAmount" class="form-control form-control-sm search-control" />
+                    </div>
+                    <div class="col-md-6">
+                        <label for="txtReceiveAmount" class="control-label font-weight-bold" style="visibility:hidden">Return Amount</label>
+                        <label for="txtReceiveAmount" class="control-label font-weight-bold">Return Amount(<span class="control-label font-weight-bold" id="txtReturnAmount" style="color:red">0</span>)</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="txtReceiveAmount" class="control-label font-weight-bold" style="visibility:hidden">Return</label>
+                        <button value="Save" type="submit" class="btn btn-success btn-sm" id="btnSubmit">Save <i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript">
+        var ddlCustomerType = $("#ddlCustomerType");
+        var txtCustomerName = $("#txtCustomerName");
+        var txtCustomerMobile = $("#txtCustomerMobile");
+        var txtCustomerAddress = $("#txtCustomerAddress");
+        var ddlPaymentType = $("#ddlPaymentType");
+        var ddlCategory = $("#ddlCategory");
+        var ddlProductName = $("#ddlProductName");
+        var txtSellPrice = $("#txtSellPrice");
+        var txtSellQuantity = $("#txtSellQuantity");
+        var txtRemarks = $("#txtRemarks");
+        var txtAvailableQty = $("#txtAvailableQty");
+        var txtProduct = $("#txtProduct");
+        var ddlDealerName = $("#ddlDealerName");
+        ////
+        var txtSubTotal = $("#txtSubTotal");
+        var txtVatAmount = $("#txtVatAmount");
+        var txtTaxAmount = $("#txtTaxAmount");
+        var txtDiscountAmount = $("#txtDiscountAmount");
+        var txtNetAmount = $("#txtNetAmount");
+        var txtReceiveAmount = $("#txtReceiveAmount");
+        var txtReturnAmount = $("#txtReturnAmount");
+
+        $(document).ready(function () {
+            //Initialize Select2 Elements
+            $('.select2').select2();
+
+            //Initialize Select2 Elements
+            $('.select2bs4').select2({
+                theme: 'classic'
+            });
+            $("#divdealerName").hide();
+        })
+
+        ddlCustomerType.change(function () {
+            if (ddlCustomerType.val() == "Dealer") {
+                $("#divdealerName").show();
+                $("#divCustomerName").hide();
+            } else {
+                $("#divdealerName").hide();
+                $("#divCustomerName").show();
+            }
+        })
+
+        
+
+        ddlDealerName.change(function () {
+            $("#txtCustomerMobile").val('');
+            $("#txtCustomerAddress").val('');
+            if (ddlDealerName.val() != "") {
+                $.when(postReqWithToken(dataType.applicationJson, dataType.json, 'POST', '/Inventory/GetCustomer', JSON.stringify({ customerId: TryParseInt(ddlDealerName.val(),0) }), getToken())).then(function (res, status) {
+                    if (status == "success") {
+                        $("#txtCustomerMobile").val(res.CustomerMobile);
+                        $("#txtCustomerAddress").val(res.CustomerAddress);
+                    }
+
+                }).fail(function (err) {
+                    alert(execuStatus.fail);
+                })
+            }
+        })
+        ddlCategory.change(function () {
+            clearDropdown("ddlProductName");
+            $("#txtSellPrice").val('0');
+            $("#txtAvailableQty").text('0');
+            if (ddlCategory.val() != "") {
+                LoadDropDown('/Inventory/GetProductNameAndSellPrice', 'POST', ddlProductName, JSON.stringify({ category: ddlCategory.val() }));
+            }
+        })
+
+        ddlProductName.change(function () {
+            $("#txtSellPrice").val('0');
+            $("#txtProduct").val('0');
+            $("#txtAvailableQty").text('0');
+            //if (ddlProductName.val() != "") {
+            //    LoadDropDown('/Inventory/GetSellPriceByProductName', 'POST', txtSellPrice, JSON.stringify({ productId: TryParseInt(ddlProductName.val(),0) }));
+            //}
+            if (ddlProductName.val() != "") {
+                $.when(postReqWithToken(dataType.applicationJson, dataType.json, 'POST', '/Inventory/GetSellPriceByProductName', JSON.stringify({ productId: ddlProductName.val().trim() }), getToken())).then(function (res, status) {
+                    if (status == "success") {
+                        $("#txtSellPrice").val(res.SellPrice);
+                        $("#txtAvailableQty").text(res.StockQty);
+                        $("#txtProduct").val(res.ProductName);
+                    }
+
+                }).fail(function (err) {
+                    alert(execuStatus.fail);
+                })
+            }
+        })
+
+        function validateInput() {
+            $('.error').addClass('hide');
+            var isValid = true;
+            //var count = $("#tblInvoice tbody tr").length;
+            //if (count > 0) {
+            //    $.each($("#tblInvoice tbody tr"), function (index, item) {
+            //        var product = $(this).children('td').eq(2).html();
+            //        if (product == ddlProductName.val()) {
+            //            isValid = false;
+            //            $(".duplicate-productName").removeClass('hide');
+            //        }
+            //    })
+            //}
+            
+            if ($.trim(ddlCustomerType.val()) == "") {
+                $(".require-customerType").removeClass("hide");
+                isValid = false;
+            }
+            if (ddlCustomerType.val() == "Dealer") {
+                if ($.trim(ddlDealerName.val()) == "") {
+                    $(".require-dealerName").removeClass("hide");
+                    isValid = false;
+                }
+            }
+            if ($.trim(ddlCategory.val()) == "") {
+                $(".require-category").removeClass("hide");
+                isValid = false;
+            }
+            if ($.trim(txtProduct.val()) == "") {
+                $(".require-productName").removeClass("hide");
+                isValid = false;
+            }
+            if (txtSellPrice.val() == "" || TryParseFloat(txtSellPrice.val(), 0) <= 0) {
+                isValid = false;
+                $(".require-sellPrice").removeClass("hide");
+            }
+            if (txtSellQuantity.val() == "" || TryParseInt(txtSellQuantity.val(), 0) <= 0) {
+                isValid = false;
+                $(".require-qty").removeClass("hide");
+            }
+            return isValid;
+        }
+        $("#btnAddToList").click(function (e) {
+            e.preventDefault();
+            if (validateInput() == true) {
+                disable("#ddlCustomerType");
+                disable("#txtCustomerName");
+                disable("#txtCustomerMobile");
+                disable("#txtCustomerAddress");
+                disable("#ddlPaymentType");
+                disable("#ddlDealerName");
+                var sl = $("#tblInvoice tbody tr").length;
+                var td1 = "<td class='text-center text-bold'>" + (sl + 1) + "</td>"
+                var td2 = "<td class='text-center hide'>" + ddlCategory.val() + "</td>";
+                var td3 = "<td class='text-center'>" + txtProduct.val() + "</td>";
+                var td4 = "<td class='text-center'>" + txtSellPrice.val() + "</td>";
+                var td5 = "<td class='text-center'>" + txtSellQuantity.val() + "</td>";
+                var td6 = "<td class='text-center' data val='" + txtSellPrice.val() * txtSellQuantity.val() + "'>" + txtSellPrice.val() * txtSellQuantity.val() + "</td>";
+                var td7 = "<td class='text-center'><a href='#' class='btn btn-sm btn-danger data-onfly-del data-del'><i class='far fa-trash-alt'></i></a></td>";
+
+                var tr = "<tr>" + td1 + td2 + td3 + td4 + td5 + td6 + td7 + "</tr>";
+
+                if ($("#tblInvoice tbody tr").length == 0) {
+                    $("#tblInvoice tbody").append(tr);
+                }
+                else {
+                    $("#tblInvoice tbody tr").eq(0).before(tr);
+                }
+                fnCalculateSubTotal();
+                fnCalculateNetAmount();
+                txtVatAmount.val('0');
+                txtDiscountAmount.val('0');
+                txtReturnAmount.val('0');
+                clearCtrl();
+            }
+        })
+        function clearCtrl() {
+            ddlProductName.val('');
+            ddlProductName.trigger("change");
+            txtProduct.val('');
+            $("#txtSellPrice").val('0');
+            $("#txtAvailableQty").text('0');
+            $("#txtSellQuantity").val('0')
+        }
+
+        $(document).on("click", "a.data-onfly-del", function (e) {
+            e.preventDefault();
+            var subTotal = 0;
+            var index = $(this).parent().parents('tbody tr').index();
+            removeTableRow("#tblInvoice tbody", index);
+            fnFixTheTbodyRowSerialInDecsOrder("#tblInvoice", index);
+
+            var amount = $(this).parent().parents('tbody tr').find('td:eq(5)').html();
+            var subTotal = fnCalculateSubTotal() - (parseFloat(amount));
+            txtSubTotal.val(subTotal);
+            txtNetAmount.val(subTotal);
+            txtVatAmount.val('0');
+            txtDiscountAmount.val('0');
+            txtReturnAmount.val('0');
+            
+        });
+
+        function fnCalculateSubTotal() {
+            //console.log('CalculateSubTotal');
+            var subTotal = 0;
+            $.each($("#tblInvoice tbody tr td:nth-child(6)"), function (index, item) {
+                subTotal += parseFloat(item.innerText);
+                console.log(item);
+            })
+            txtSubTotal.val(subTotal)
+            return subTotal;
+        }
+        function fnCalculateNetAmount() {
+            //console.log('CalculateSubTotal');
+            var subTotal = 0;
+            $.each($("#tblInvoice tbody tr td:nth-child(6)"), function (index, item) {
+                subTotal += parseFloat(item.innerText);
+                console.log(item);
+            })
+            txtNetAmount.val(subTotal)
+            return subTotal;
+        }
+        txtVatAmount.keyup(function () {
+            if (txtDiscountAmount.val() > 0) {
+                if (txtVatAmount.val() > 0) {
+                    total = (parseFloat(fnCalculateNetAmount(), 0) + parseFloat(txtVatAmount.val(), 0)) - parseFloat(txtDiscountAmount.val())
+                    txtNetAmount.val(total);
+                }
+                else {
+                    total = parseFloat(fnCalculateNetAmount(), 0) - parseFloat(txtDiscountAmount.val(),0)
+                    txtNetAmount.val(total);
+                }
+            }
+            else {
+                var total = parseFloat(fnCalculateNetAmount(), 0) + parseFloat(txtVatAmount.val(), 0);
+                if (txtVatAmount.val() == 0 || $.trim(txtVatAmount.val()) == "") {
+                    fnCalculateNetAmount();
+                }
+                else {
+                    txtNetAmount.val(total);
+                }
+            }
+        });
+
+        //txtTaxAmount.keyup(function () {
+        //    var total = 0;
+        //    if (txtTaxAmount.val() == 0 || $.trim(txtTaxAmount.val()) == "") {
+        //        total = parseFloat(fnCalculateNetAmount(), 0) + parseFloat(txtVatAmount.val(), 0);
+        //    } else {
+        //        total = parseFloat(txtNetAmount.val(), 0) + parseFloat(txtTaxAmount.val());
+        //    }
+        //    txtNetAmount.val(total);
+        //});
+
+        txtDiscountAmount.keyup(function () {
+            if (txtDiscountAmount.val() == 0 || txtDiscountAmount.val() == "" || txtDiscountAmount.val() > 0) {
+                if (txtVatAmount.val() > 0) {
+                    if (txtDiscountAmount.val() > 0) {
+                        total = (parseFloat(fnCalculateNetAmount(), 0) + parseFloat(txtVatAmount.val(), 0)) - parseFloat(txtDiscountAmount.val())
+                        txtNetAmount.val(total);
+                    }
+                    else {
+                        var total = parseFloat(fnCalculateNetAmount(), 0) + parseFloat(txtVatAmount.val(), 0);
+                        txtNetAmount.val(total);
+                    }
+                }
+                else {
+                    if (txtDiscountAmount.val() > 0) {
+                        total = parseFloat(fnCalculateNetAmount(), 0) - parseFloat(txtDiscountAmount.val(), 0)
+                        txtNetAmount.val(total);
+                    } else {
+                        total = parseFloat(fnCalculateNetAmount(), 0)
+                        txtNetAmount.val(total);
+                    }
+                }
+            } 
+        })
+        txtReceiveAmount.keyup(function () {
+            if (txtReceiveAmount.val() > 0) {
+                total = parseFloat(txtReceiveAmount.val(), 0) - parseFloat(txtNetAmount.val(), 0)
+                txtReturnAmount.text(total)
+            }
+            else {
+                txtReturnAmount.text('0')
+            }
+        })
+
+        function validateInvoice() {
+            $('.error').addClass('hide');
+            var isValid = true;
+            if ($.trim(ddlPaymentType.val()) == "") {
+                $(".require-paymentType").removeClass("hide");
+                isValid = false;
+            }
+            if (txtSubTotal.val() == "" || TryParseFloat(txtSubTotal.val(), 0) <= 0) {
+                isValid = false;
+                $(".require-subTotal").removeClass("hide");
+            }
+            if (txtNetAmount.val() == "" || TryParseFloat(txtNetAmount.val(), 0) <= 0) {
+                isValid = false;
+                $(".require-netAmount").removeClass("hide");
+            }
+            return isValid;
+        }
+
+        $("#btnSubmit").click(function (e) {
+            e.preventDefault();
+            if ($("#tblInvoice tbody tr").length > 0) {
+                $('.error').addClass('hide');
+                if (validateInvoice()) {
+                    var info = {
+                        CustomerType: ddlCustomerType.val(),
+                        CustomerName: txtCustomerName.val(),
+                        DealerName: TryParseInt( ddlDealerName.val(),0),
+                        CustomerMobile: txtCustomerMobile.val(),
+                        CustomerAddress: txtCustomerAddress.val(),
+                        PaymentMethod: ddlPaymentType.val(),
+                        SubTotalAmount: parseFloat(txtSubTotal.val(), 0),
+                        VATAmount: parseFloat(txtVatAmount.val(), 0),
+                        TAXAmount: 0,
+                        DisCountAmount: parseFloat(txtDiscountAmount.val(), 0),
+                        NetAmount: parseFloat(txtNetAmount.val(), 0),
+                        ReceiveAmount: parseFloat(txtReceiveAmount.val(),0),
+                    }
+
+                    var details = []; details.length = 0;
+                    $.each($("#tblInvoice tbody tr"), function (index, item) {
+                    var tds = $(this).children("td");
+                    var cate = tds.eq("1").html();
+                    var product = tds.eq("2").html();
+                    var sell = tds.eq("3").html();
+                    var qty = tds.eq("4").html();
+                    var total = tds.eq("5").html();
+
+                        details.push({
+                            CategoryName: cate,
+                            ProductName: product,
+                            SellPrice: TryParseFloat(sell, 0),
+                            Quantity: TryParseInt(qty, 0),
+                            Total: TryParseInt(total,0)
+                        })
+                    });
+                    info.salesInvoiceDetals = details;
+                    var data = JSON.stringify({ info: info });
+                //return console.log(data);
+                $.when(postReqWithToken(dataType.applicationJson, dataType.json, 'POST', '/Inventory/SaveSalesInvoice', data, getToken())).then(function (res, status) {
+                    if (res.IsSuccess === true && status === "success") {
+                            alert(execuStatus.successSave);
+                            var pdfWindow = window.open("", "_blank")
+                            pdfWindow.document.write("<iframe width='100%' height='100%' src='" + encodeURI(res.file) + "'></iframe>");
+                            //download(res.file, res.fileName, "application/pdf");
+                                setTimeout(function () {
+                                    redirectPage('@Url.Action("GetInvoiceInfoList")');
+                                }, 1000);
+                            }
+                            else {
+                            alert(execuStatus.fail);
+                            }
+                    }).fail(function (err) {
+                        alert(execuStatus.fail);
+                    })
+            }
+            }
+        })
+        function redirectPage(page) {
+            window.location.replace(page);
+        }
+    </script>
+    }

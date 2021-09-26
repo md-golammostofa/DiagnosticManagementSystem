@@ -74,6 +74,9 @@
     <Compile Include="Models\ProductStockInfo.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\RoleWiseUserMenu.cs" />
+    <Compile Include="Models\SalesCustomer.cs" />
+    <Compile Include="Models\SalesInvoiceDetails.cs" />
+    <Compile Include="Models\SalesInvoiceInfo.cs" />
     <Compile Include="Models\Specialist.cs" />
     <Compile Include="Models\SpecializationType.cs" />
     <Compile Include="Models\Submenu.cs" />
@@ -113,6 +116,9 @@
     <Compile Include="ViewModels\VmPatient.cs" />
     <Compile Include="ViewModels\VmProduct.cs" />
     <Compile Include="ViewModels\VmRoleWiseUserMenu.cs" />
+    <Compile Include="ViewModels\VmSalesCustomer.cs" />
+    <Compile Include="ViewModels\VmSalesInvoiceDetails.cs" />
+    <Compile Include="ViewModels\VmSalesInvoiceInfo.cs" />
     <Compile Include="ViewModels\VmSetUserMenu.cs" />
     <Compile Include="ViewModels\VmSpecialist.cs" />
     <Compile Include="ViewModels\VmSpecialization.cs" />

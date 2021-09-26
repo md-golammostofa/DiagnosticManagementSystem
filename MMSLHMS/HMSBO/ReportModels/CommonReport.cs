@@ -11,5 +11,7 @@ namespace HMSBO.ReportModels
         public string FromDate { get; set; }
         public string ToDate { get; set; }
         public string Name { get; set; }
+        public string OrgName { get; set; }
+        public string Address { get; set; }
     }
 }

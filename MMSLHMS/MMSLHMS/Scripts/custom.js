@@ -25,6 +25,10 @@ function clearDropdown(eletementId) {
     $('#' + eletementId + ' option:not(:first)').remove();
 }
 
+function disable(elementId) {
+    $(elementId).attr("disabled", true);
+}
+
 // Loading dropdown using ajax..
 // All the Parameters are required accept contextKey
 function LoadDropDown(url, type, elementId, contextKey) {

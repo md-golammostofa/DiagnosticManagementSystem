@@ -1,0 +1,56 @@
+﻿@model IEnumerable<HMSBO.ViewModels.VmSalesInvoiceInfo>
+@{
+    int sl = 0;
+    string badge = string.Empty;
+}
+<div class="col-md-12 text-sm" style="overflow-y:scroll">
+    <table class="table table-bordered table-sm table-striped" id="tblSalesInvoiceInfo">
+        <thead class="btn-info">
+            <tr class="text-center">
+                <th style="vertical-align:middle">#SL</th>
+                <th class="hide"></th>
+                <th style="vertical-align:middle">Invoice No</th>
+                <th style="vertical-align:middle">Customer Name</th>
+                <th style="vertical-align:middle">Customer Mobile</th>
+                <th style="vertical-align:middle">NetAmount</th>
+                <th style="vertical-align:middle">Receive Amount</th>
+                <th style="vertical-align:middle">DueAmount</th>
+                <th style="vertical-align:middle">Status</th>
+                <th style="vertical-align:middle">Date</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                sl = sl + 1;
+                badge = item.PaymentStatus == "Paid" ? "badge bg-success" : "badge bg-danger";
+            <tr>
+                <td class="text-center">@sl</td>
+                <td class="hide">@item.IInfoId</td>
+                <td>@item.InvoiceNo</td>
+                <td>@item.CustomerName</td>
+                <td>@item.CustomerMobile</td>
+                <td class="text-right">@item.NetAmount.ToString("0.00")</td>
+                <td class="text-right">@item.ReceiveAmount.ToString("0.00")</td>
+                <td class="text-right">@item.DueAmount.ToString("0.00")</td>
+                <td class="text-center" style="color:white" data-val="@item.PaymentStatus">
+                    <span class="@badge">@item.PaymentStatus</span>
+                </td>
+                <td>@item.EntryDate.Value.ToString("dd-MMM-yyyy")</td>
+                <td class="text-center">
+                    <a href='#' class='data-edit btn btn-danger btn-sm data-details-due' data-details-due='@item.IInfoId'><i class='fas fa-adjust' title="Details"></i> Due Adjust</a>
+                </td>
+            </tr>
+            }
+            @if (Model.Count() == 0)
+            {
+                <tr class="text-center empty-row">
+                    <td colspan="10">
+                        No Rows Found
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

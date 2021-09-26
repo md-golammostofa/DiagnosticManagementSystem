@@ -1,0 +1,42 @@
+﻿@model IEnumerable<HMSBO.ViewModels.VmSalesCustomer>
+@{
+    int sl = 0;
+}
+<div class="col-md-12 text-sm" style="overflow-y:scroll">
+    <table class="table table-bordered table-sm table-striped" id="">
+        <thead class="btn-info">
+            <tr class="text-center">
+                <th style="vertical-align:middle">#SL</th>
+                <th class="hide"></th>
+                <th style="vertical-align:middle">Customer Name</th>
+                <th style="vertical-align:middle">Address</th>
+                <th style="vertical-align:middle">Mobile No</th>
+                <th style="vertical-align:middle">Email</th>
+                <th style="vertical-align:middle">Remarks</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                sl = sl + 1;
+                <tr>
+                    <td class="text-center">@sl</td>
+                    <td class="hide">@item.CustomerId</td>
+                    <td>@item.CustomerName</td>
+                    <td>@item.CustomerAddress</td>
+                    <td>@item.CustomerMobile</td>
+                    <td>@item.CustomerEmail</td>
+                    <td>@item.Remarks</td>
+                </tr>
+            }
+            @if (Model.Count() == 0)
+            {
+                <tr class="text-center empty-row">
+                    <td colspan="9">
+                        No Rows Found
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

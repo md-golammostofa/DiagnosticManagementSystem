@@ -2205,6 +2205,14 @@
     <Compile Include="Migrations\202109201029164_StockInfo&amp;Details.Designer.cs">
       <DependentUpon>202109201029164_StockInfo&amp;Details.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202109231005011_SalesInvoiceInfoDetails.cs" />
+    <Compile Include="Migrations\202109231005011_SalesInvoiceInfoDetails.Designer.cs">
+      <DependentUpon>202109231005011_SalesInvoiceInfoDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202109250512338_SalesCustomer.cs" />
+    <Compile Include="Migrations\202109250512338_SalesCustomer.Designer.cs">
+      <DependentUpon>202109250512338_SalesCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reports\DataSet\Diagnostic.cs">
@@ -2296,6 +2304,14 @@
     <Content Include="Views\Inventory\CreateProductStock.cshtml" />
     <Content Include="Views\Inventory\GetProductStockDetailsList.cshtml" />
     <Content Include="Views\Inventory\_GetProductStockDetailsList.cshtml" />
+    <Content Include="Views\Inventory\GetInvoiceInfoList.cshtml" />
+    <Content Include="Views\Inventory\_GetInvoiceInfoList.cshtml" />
+    <Content Include="Views\Inventory\CreateInvoice.cshtml" />
+    <Content Include="Views\Inventory\_GetInvoiceDetailsList.cshtml" />
+    <Content Include="Views\Inventory\CustomerList.cshtml" />
+    <Content Include="Views\Inventory\_CustomerList.cshtml" />
+    <Content Include="Views\Inventory\GetInvoiceDueAdjustment.cshtml" />
+    <Content Include="Views\Inventory\_GetInvoiceDueAdjustment.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -2394,6 +2410,14 @@
     <EmbeddedResource Include="Migrations\202109201029164_StockInfo&amp;Details.resx">
       <DependentUpon>202109201029164_StockInfo&amp;Details.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109231005011_SalesInvoiceInfoDetails.resx">
+      <DependentUpon>202109231005011_SalesInvoiceInfoDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202109250512338_SalesCustomer.resx">
+      <DependentUpon>202109250512338_SalesCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptInvoicelistReport.rdlc" />
+    <EmbeddedResource Include="Reports\rptSalesInvoiceReceipt.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

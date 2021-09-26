@@ -65,6 +65,9 @@ namespace MMSLHMS.DAL
             modelBuilder.Entity<Product>().ToTable("tblProduct");
             modelBuilder.Entity<ProductStockInfo>().ToTable("tblProductStockInfo");
             modelBuilder.Entity<ProductStockDetails>().ToTable("tblProductStockDetails");
+            modelBuilder.Entity<SalesInvoiceInfo>().ToTable("tblSalesInvoiceInfo");
+            modelBuilder.Entity<SalesInvoiceDetails>().ToTable("tblSalesInvoiceDetails");
+            modelBuilder.Entity<SalesCustomer>().ToTable("tblSalesCustomer");
         }
 
         public DbSet<Organization> tblOrganizations { get; set; }
@@ -101,5 +104,8 @@ namespace MMSLHMS.DAL
         public DbSet<Product> tblProduct { get; set; }
         public DbSet<ProductStockInfo> tblProductStockInfo { get; set; }
         public DbSet<ProductStockDetails> tblProductStockDetails { get; set; }
+        public DbSet<SalesInvoiceInfo> tblSalesInvoiceInfo { get; set; }
+        public DbSet<SalesInvoiceDetails> tblSalesInvoiceDetails { get; set; }
+        public DbSet<SalesCustomer> tblSalesCustomer { get; set; }
     }
 }

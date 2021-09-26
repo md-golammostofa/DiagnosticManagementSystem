@@ -198,6 +198,7 @@ namespace MMSLHMS.Controllers
             return PartialView("_DoctorTimeDetails", doclist);
         }
         #endregion
+
         #region - Base64 Image String
         [HttpPost, ValidateJsonAntiForgeryToken]
         public ActionResult GetImageBase64String(long docId)

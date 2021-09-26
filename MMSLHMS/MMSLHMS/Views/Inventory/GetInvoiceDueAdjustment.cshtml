@@ -1,0 +1,256 @@
+﻿
+@{
+    ViewBag.Title = "GetInvoiceDueAdjustment";
+}
+
+<div class="row">
+    <div class="col-md-12 text-center">
+        <div class="card card-gray shadow">
+            <div class="card-header">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-4 text-left">
+
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <h4><b>Due Invoice List</b></h4>
+                        </div>
+                        <div class="col-md-4">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 text-center">
+        <div class="card card-gray shadow">
+            <div class="card-header card-gray">
+                <div class="col-md-12">
+                    <div class="row text-left">
+                        <div class="col-md-3">
+                            <label class="control-label font-weight-bold" for="txtInvoiceNoSearch">Invoice No</label>
+                            <input type="text" class="form-control form-control-sm" placeholder="Search By Invoice" id="txtInvoiceNoSearch" name="invoice" />
+                        </div>
+                        <div class="col-md-3">
+                            <label class="control-label font-weight-bold" for="txtCustomerNameSearch">Customer Name</label>
+                            <input type="text" class="form-control form-control-sm" placeholder="Search By Name" id="txtCustomerNameSearch" name="invoice" />
+                        </div>
+                        <div class="col-md-3">
+                            <label class="control-label font-weight-bold" for="txtCustomerMobileSearch">Mobile No</label>
+                            <input type="text" class="form-control form-control-sm" placeholder="Search By Mobile No" id="txtCustomerMobileSearch" name="invoice" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="card">
+        </div>
+    </div>
+    <div class="col-md-12 text-sm" id="dataContainer">
+        @{Html.RenderAction("GetInvoiceDueAdjustment", new { flag = "view" });}
+    </div>
+</div>
+
+<div class="modal fade" id="modalDueAdj">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content ">
+            <div class="modal-header  btn-success">
+                <h4 class="modal-title" id="modalHeading">Due Adjustment</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <form id="frmDueAdj" autocomplete="off">
+                <input type="hidden" id="hdfInvoiceInfoId" value="0" />
+                <input type="hidden" id="hdfInvoiceNo" value="" />
+                @Html.AntiForgeryToken()
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <div class="input-group">
+                                <label><b>Invoice No:</b></label> &nbsp;
+                                <label id="txtInvoiceNo"></label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <div class="input-group">
+                                <label><b>Customer Name:</b></label> &nbsp;
+                                <label id="txtCustomerName"></label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <div class="input-group">
+                                <label><b>Mobile No:</b></label> &nbsp;
+                                <label id="txtMobileNo"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <div class="input-group">
+                                <label><b>Net Amount:</b></label> &nbsp;
+                                <label id="txtNetAmount"></label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <div class="input-group">
+                                <label><b>Received Amount:</b></label> &nbsp;
+                                <label id="txtPreviousReceAmt"></label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <div class="input-group">
+                                <label><b>Due Amount:</b></label> &nbsp;
+                                <label id="txtDueAmount"></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-5 col-md-offset-7">
+                            <div class="input-group">
+                                <label for="txtNewReceiveAmt"><b>New Receive Amount:</b></label>&nbsp;
+                                <input id="txtNewReceiveAmt" class="form-control form-control-sm" type="number" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-offset-8 col-md-4">
+                            <div class="input-group">
+                                <label><b>Return Amount:</b></label> &nbsp;
+                                <label id="txtReturnAmt">0</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal" data-target="#modalDueAdj"><i class="fa fa-remove"></i> Cancel</button>
+                    <button type="submit" id="btnSubmit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript">
+        var hdfInvoiceInfoId = $("#hdfInvoiceInfoId");
+        var hdfInvoiceNo = $("#hdfInvoiceNo");
+        var txtInvoiceNo = $("#txtInvoiceNo");
+        var txtCustomerName = $("#txtCustomerName");
+        var txtMobileNo = $("#txtMobileNo");
+        var txtNetAmount = $("#txtNetAmount");
+        var txtPreviousReceAmt = $("#txtPreviousReceAmt");
+        var txtDueAmount = $("#txtDueAmount");
+        var txtNewReceiveAmt = $("#txtNewReceiveAmt");
+        var txtReturnAmt = $("#txtReturnAmt");
+        //
+        var txtInvoiceNoSearch = $("#txtInvoiceNoSearch");
+        var txtCustomerNameSearch = $("#txtCustomerNameSearch");
+        var txtCustomerMobileSearch = $("#txtCustomerMobileSearch");
+
+        txtInvoiceNoSearch.keyup(function () {
+            LoadDataTable();
+        })
+        txtCustomerNameSearch.keyup(function () {
+            LoadDataTable();
+        })
+        txtCustomerMobileSearch.keyup(function () {
+            LoadDataTable();
+        })
+
+        function LoadDataTable() {
+            var data = { flag: "search", invoice: txtInvoiceNoSearch.val().trim(), customerName: txtCustomerNameSearch.val().trim(), mobile: txtCustomerMobileSearch.val().trim() };
+
+            console.log(data);
+            $.when(getReqWithData('html', 'GET', '/Inventory/GetInvoiceDueAdjustment', data)).then(function (res, status) {
+                console.log(status);
+                if (status === "success") {
+                    $("#dataContainer").fadeOut('500', function () {
+                        $("#dataContainer").empty();
+                        $("#dataContainer").append(res).fadeIn('500');
+                    });
+                }
+            }).fail(function (error) {
+                console.log(error);
+            })
+        }
+
+        function OpenModal() {
+            clearCtrl();
+            $("#modalDueAdj").modal();
+        }
+        function clearCtrl() {
+            txtInvoiceNo.text('');
+            txtCustomerName.text('');
+            txtMobileNo.text('');
+            txtNetAmount.text('');
+            txtPreviousReceAmt.text('');
+            txtDueAmount.text('');
+            txtReturnAmt.text('0');
+            txtNewReceiveAmt.val('0');
+        }
+
+        $(document).on("click", "a.data-details-due", function (e) {
+            e.preventDefault();
+            OpenModal();
+
+            var parentTr = $(this).parent().parents('tr');
+            var invoiceId = parentTr.find('td:eq(1)').html();
+            var invoice = parentTr.find('td:eq(2)').html();
+            var customer = parentTr.find('td:eq(3)').html();
+            var mobile = parentTr.find('td:eq(4)').html();
+            var netAmt = parentTr.find('td:eq(5)').html();
+            var receAmt = parentTr.find('td:eq(6)').html();
+            var dueAmt = parentTr.find('td:eq(7)').html();
+
+            hdfInvoiceInfoId.val(invoiceId);
+            txtInvoiceNo.text(invoice);
+            txtCustomerName.text(customer);
+            txtMobileNo.text(mobile);
+            txtNetAmount.text(netAmt);
+            txtPreviousReceAmt.text(receAmt);
+            txtDueAmount.text(dueAmt);
+        })
+        txtNewReceiveAmt.keyup(function () {
+            if (txtNewReceiveAmt.val() > 0) {
+                returnAmount = parseFloat(txtNewReceiveAmt.val()) - parseFloat(txtDueAmount.text(), 0)
+                txtReturnAmt.text(returnAmount);
+            }
+            else {
+                txtReturnAmt.text('0');
+            }
+        })
+
+        $("#btnSubmit").click(function (e) {
+            e.preventDefault();
+            if (txtNewReceiveAmt.val() > 0) {
+                $('.error').addClass('hide');
+                var data = JSON.stringify({ invoiceId: TryParseInt(hdfInvoiceInfoId.val(), 0), preRecAmt: parseFloat(txtPreviousReceAmt.text(), 0), dueAmt: parseFloat(txtDueAmount.text(), 0), newRecAmt: parseFloat(txtNewReceiveAmt.val(), 0) });
+                //return console.log(data);
+                $.when(postReqWithToken(dataType.applicationJson, dataType.json, 'POST', '/Inventory/UpdateInvoiceDueAdjust', data, getToken())).then(function (res, status) {
+                    if (res.IsSuccess === true && status === "success") {
+                        $("#modalDueAdj").modal("toggle");
+                            alert(execuStatus.successSave);
+                            var pdfWindow = window.open("", "_blank")
+                            pdfWindow.document.write("<iframe width='100%' height='100%' src='" + encodeURI(res.file) + "'></iframe>");
+                                setTimeout(function () {
+                                    redirectPage('@Url.Action("GetInvoiceDueAdjustment")');
+                                }, 1000);
+                            }
+                            else {
+                            alert(execuStatus.fail);
+                            }
+                    }).fail(function (err) {
+                        alert(execuStatus.fail);
+                    })
+            }
+        })
+        function redirectPage(page) {
+            window.location.replace(page);
+        }
+        
+    </script>
+    }
